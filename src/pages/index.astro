@@ -1,0 +1,185 @@
+---
+import CourseLayout from '../layouts/CourseLayout.astro';
+import PvSystemLab from '../components/PvSystemLab.astro';
+import courseSource from '../content/pv-asset-auditor.md?raw';
+import { courseStages, quizzes, splitCourseContent } from '../lib/course.mjs';
+import { renderCourseMarkdown } from '../lib/course-renderer.mjs';
+import '../styles/course.css';
+import 'katex/dist/katex.min.css';
+
+const withBase = (assetPath) => `${import.meta.env.BASE_URL}${assetPath.replace(/^\/+/, '')}`;
+
+const sections = splitCourseContent(courseSource).map((section, stageIndex) => {
+  const toc = [...section.markdown.matchAll(/^##+\s+(.+)$/gm)].map((match, index) => ({
+    label: match[1].replace(/[*`]/g, ''),
+    href: `#stage-${stageIndex}-heading-${index}`,
+  }));
+  return { ...section, html: renderCourseMarkdown(section.markdown), toc };
+});
+
+const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u003c');
+---
+<CourseLayout
+  title="PV Asset Auditor | Interaktywna Akademia"
+  description="Interaktywny, 220-godzinny program od bezpieczeństwa i fizyki PV do pełnego audytu techniczno-finansowego farmy 80 MWp."
+  ogImage="assets/course/hero.webp"
+  ogImageAlt="Farma fotowoltaiczna w widoku RGB i termicznym"
+>
+  <div class="academy" data-course-theme="system">
+    <section class="course-hero" aria-labelledby="course-title">
+      <img class="course-hero__image" src={withBase('assets/course/hero.webp')} alt="Farma PV podczas radiometrycznej inspekcji dronem, zestawienie RGB i termiki" width="1674" height="943" fetchpriority="high" />
+      <div class="course-hero__veil"></div>
+      <div class="thermal-scan" aria-hidden="true"></div>
+      <div class="course-hero__content wrap">
+        <div class="course-topline">
+          <p class="course-kicker">PV Asset Auditor Academy <span>Program inżynierski</span></p>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Zmień motyw kursu">Motyw: system</button>
+        </div>
+        <div class="course-hero__copy">
+          <p class="course-overline">220 godzin · 7 etapów · poziom podstawowy → ekspercki</p>
+          <h1 id="course-title">PV Asset <em>Auditor</em></h1>
+          <p class="course-intro">Naucz się odrzucać niewiarygodne dane równie stanowczo, jak wskazywać istotne obserwacje. Przejdziesz pełny łańcuch: od fizyki i bezpieczeństwa do decyzji inwestycyjnej dla farmy 80 MWp.</p>
+          <div class="hero-actions">
+            <button class="course-button course-button--primary" type="button" data-course-start>Zacznij naukę <span aria-hidden="true">↗</span></button>
+            <a class="course-button course-button--ghost" href="#program">Zobacz program</a>
+          </div>
+        </div>
+        <dl class="hero-stats" aria-label="Parametry programu">
+          <div><dt>92 h</dt><dd>teorii</dd></div>
+          <div><dt>82 h</dt><dd>laboratorium i terenu</dd></div>
+          <div><dt>46 h</dt><dd>analizy i raportu</dd></div>
+          <div><dt>100%</dt><dd>krytycznych pytań safety</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="course-principle wrap" aria-labelledby="principle-title">
+      <div>
+        <p class="course-overline">Zasada nadrzędna</p>
+        <h2 id="principle-title">Termogram jest <em>obserwacją</em>, nie diagnozą.</h2>
+      </div>
+      <p>Każdy wniosek musi przejść przez kontrolowane pozyskanie danych, hipotezy różnicowe, badanie potwierdzające, niepewność oraz ocenę techniczno-finansową.</p>
+    </section>
+
+    <section class="chain-section" aria-labelledby="chain-title">
+      <div class="wrap">
+        <p class="course-overline">Łańcuch dowodowy</p>
+        <h2 id="chain-title">Od sygnału do decyzji bez skrótów</h2>
+        <div class="evidence-chain" role="list">
+          {['Fizyka i topologia', 'SCADA i warunki', 'RGB + IR', 'Ground truth', 'Strata + niepewność', 'Ryzyko + NPV'].map((label, index) => (
+            <div class="evidence-node" role="listitem"><span>{String(index + 1).padStart(2, '0')}</span><strong>{label}</strong></div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <PvSystemLab />
+
+    <section class="program-section wrap" id="program" aria-labelledby="program-title">
+      <div class="program-heading">
+        <div>
+          <p class="course-overline">Program</p>
+          <h2 id="program-title">Siedem etapów kompetencji</h2>
+        </div>
+        <p>Każdy etap kończy się sprawdzianem. Kolejny poziom odblokowuje się po osiągnięciu progu zaliczenia.</p>
+      </div>
+      <div class="program-grid">
+        {courseStages.map((stage, index) => (
+          <article class="program-card">
+            <img src={withBase(stage.image)} alt="" width="640" height="360" loading="lazy" />
+            <div class="program-card__body">
+              <div class="program-card__meta"><span>{stage.eyebrow}</span><span>{stage.hours ? `${stage.hours} h` : 'Capstone'}</span></div>
+              <h3>{stage.title}</h3>
+              <p>{stage.summary}</p>
+              <div class="program-card__level"><span>{String(index).padStart(2, '0')}</span>{stage.level}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="learning-app" id="nauka" aria-label="Platforma kursowa">
+      <div class="course-shell wrap">
+        <aside class="course-sidebar" aria-label="Etapy kursu">
+          <div class="progress-card">
+            <div class="progress-ring" data-progress-ring style="--progress: 0%"><span data-progress-value>0%</span></div>
+            <div><strong>Twój postęp</strong><span><b data-hours-complete>0</b> z 220 godzin</span></div>
+          </div>
+          <nav class="stage-nav">
+            {courseStages.map((stage, index) => (
+              <button type="button" data-stage-trigger={stage.id} aria-current={index === 0 ? 'step' : undefined} disabled={index > 0}>
+                <span class="stage-nav__index">{index > 0 ? '🔒' : '00'}</span>
+                <span><small>{stage.eyebrow}</small><strong>{stage.title}</strong></span>
+                <span class="stage-nav__status">{index === 0 ? 'Start' : 'Zablokowany'}</span>
+              </button>
+            ))}
+          </nav>
+          <button class="reset-progress" type="button" data-reset-progress>Wyzeruj postęp</button>
+        </aside>
+
+        <div class="course-workspace">
+          {sections.map((section, index) => {
+            const stage = courseStages[index];
+            const quiz = quizzes[stage.id];
+            return (
+              <article class="course-stage" data-course-stage={stage.id} hidden={index !== 0}>
+                <header class="stage-header">
+                  <div class="stage-header__copy">
+                    <p class="course-overline">{stage.eyebrow} · {stage.level}</p>
+                    <h2>{stage.title}</h2>
+                    <p>{stage.summary}</p>
+                    <ul>{stage.outcomes.map((outcome) => <li>{outcome}</li>)}</ul>
+                  </div>
+                  <figure><img src={withBase(stage.image)} alt="" width="960" height="540" loading="lazy" /><figcaption>Materiał ilustracyjny. Wnioski opieraj na danych źródłowych i QA.</figcaption></figure>
+                </header>
+
+                <details class="stage-toc">
+                  <summary>Spis lekcji tego etapu</summary>
+                  <ol>{section.toc.map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ol>
+                </details>
+
+                <div class="source-preserved"><span aria-hidden="true">✓</span><div><strong>Treść źródłowa zachowana w całości</strong><p>Formuły, procedury, checklisty, studia przypadków, macierze i źródła zostały przeniesione bez skrótów.</p></div></div>
+                <div class="course-prose" set:html={section.html}></div>
+
+                <section class="quiz" data-quiz={stage.id} aria-labelledby={`quiz-title-${stage.id}`}>
+                  <div class="quiz__heading">
+                    <div><p class="course-overline">Sprawdź zrozumienie</p><h2 id={`quiz-title-${stage.id}`}>Quiz: {stage.title}</h2></div>
+                    <span>Próg: {Math.round(quiz.passingScore * 100)}%</span>
+                  </div>
+                  <form>
+                    {quiz.questions.map((item, questionIndex) => (
+                      <fieldset data-quiz-question={questionIndex}>
+                        <legend><span>{String(questionIndex + 1).padStart(2, '0')}</span>{item.prompt}</legend>
+                        <div class="quiz-options">
+                          {item.options.map((option, optionIndex) => (
+                            <label class="quiz-option"><input type="radio" name={`q-${stage.id}-${questionIndex}`} value={optionIndex} /><span>{option}</span></label>
+                          ))}
+                        </div>
+                        <p class="quiz-feedback" hidden></p>
+                      </fieldset>
+                    ))}
+                    <button class="course-button course-button--primary" type="submit">Sprawdź odpowiedzi</button>
+                    <p class="quiz-result" aria-live="polite"></p>
+                  </form>
+                </section>
+              </article>
+            );
+          })}
+
+          <section class="certificate" data-certificate hidden aria-labelledby="certificate-title">
+            <p class="course-overline">Ścieżka ukończona</p>
+            <h2 id="certificate-title">Gotowy do obrony audytu</h2>
+            <p>Zaliczyłeś wszystkie siedem etapów programu PV Asset Auditor.</p>
+            <dl><div><dt>Program</dt><dd>220 godzin</dd></div><div><dt>Etapy</dt><dd>7 / 7</dd></div><div><dt>Standard</dt><dd>Evidence-first</dd></div></dl>
+            <button class="course-button course-button--ghost" type="button" data-print-certificate>Drukuj potwierdzenie</button>
+          </section>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script type="application/json" id="course-data" set:html={clientData}></script>
+  <script>
+    import { initializeCourse } from '../lib/course-client.mjs';
+    initializeCourse();
+  </script>
+</CourseLayout>

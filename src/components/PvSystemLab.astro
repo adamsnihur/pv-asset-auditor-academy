@@ -1,0 +1,156 @@
+---
+import { electricalGlossary, systemModes } from '../lib/pv-system-lab.mjs';
+import '../styles/pv-system-lab.css';
+
+const initialMode = systemModes[0];
+const initialComponent = initialMode.components.find(({ id }) => id === 'panel');
+const labData = JSON.stringify({ systemModes }).replace(/</g, '\\u003c');
+const flowLabels = { photon: 'fotony', dc: 'DC', ac: 'AC nN', mv: 'AC SN', data: 'dane / sterowanie' };
+---
+
+<section class="pv-lab" id="laboratorium-pv" data-pv-lab aria-labelledby="pv-lab-title">
+  <div class="pv-lab__heading wrap">
+    <div>
+      <p class="course-overline">Interaktywne laboratorium 3D</p>
+      <h2 id="pv-lab-title">Prześledź energię od <em>fotonu</em> do sieci</h2>
+    </div>
+    <p>Kliknij urządzenie w modelu albo wybierz je z listy. Zobaczysz, co dzieje się wewnątrz, co mierzy inspektor i gdzie kończy się jego zakres kompetencji.</p>
+  </div>
+
+  <div class="pv-lab__shell wrap">
+    <div class="pv-lab__toolbar" role="group" aria-label="Skala instalacji">
+      <button type="button" class="is-active" data-system-mode="micro" aria-pressed="true">
+        <span>01</span><strong>Mikroinstalacja</strong><small>3–50 kW · klient</small>
+      </button>
+      <button type="button" data-system-mode="utility" aria-pressed="false">
+        <span>02</span><strong>Farma PV</strong><small>&gt;1 MW · utility-scale</small>
+      </button>
+      <div class="pv-lab__mode-summary" aria-live="polite">
+        <strong data-mode-title>{initialMode.title}</strong>
+        <span data-mode-voltage>{initialMode.voltage}</span>
+      </div>
+    </div>
+
+    <div class="pv-lab__main">
+      <div class="pv-lab__viewport">
+        <div class="pv-lab__canvas" data-pv-canvas role="img" aria-label="Interaktywny model 3D mikroinstalacji fotowoltaicznej">
+          <div class="pv-lab__loading" data-pv-loading>
+            <span></span>
+            <p>Buduję model instalacji…</p>
+          </div>
+        </div>
+        <p class="webgl-fallback" data-webgl-fallback hidden>Model 3D nie jest dostępny w tej przeglądarce. Pełny opis i wszystkie komponenty pozostają dostępne poniżej.</p>
+        <div class="pv-lab__scene-ui" aria-hidden="true">
+          <span>Przeciągnij: obrót</span><span>Kółko: zbliżenie</span><span>Punkt: szczegóły</span>
+        </div>
+        <div class="pv-lab__legend" aria-label="Legenda przepływu">
+          <span class="is-photon">Fotony</span><span class="is-dc">Prąd DC</span><span class="is-ac">Prąd AC</span><span class="is-data">Dane</span>
+        </div>
+      </div>
+
+      <aside class="pv-lab__detail" aria-labelledby="component-title">
+        <div class="pv-lab__detail-head">
+          <p class="course-overline" data-component-kind>Konwersja fotowoltaiczna</p>
+          <span data-component-counter>02 / {String(initialMode.components.length).padStart(2, '0')}</span>
+        </div>
+        <h3 id="component-title" data-component-title>{initialComponent.title}</h3>
+        <p class="pv-lab__role" data-component-role>{initialComponent.role}</p>
+
+        <div class="pv-lab__inside">
+          <div class="cell-demo" data-cell-demo aria-hidden="true">
+            <div class="cell-demo__sun">hν</div>
+            <div class="cell-demo__photon"></div>
+            <div class="cell-demo__silicon"><span>warstwa n</span><i>złącze p–n</i><span>warstwa p</span></div>
+            <div class="cell-demo__carrier cell-demo__carrier--electron">e⁻</div>
+            <div class="cell-demo__carrier cell-demo__carrier--hole">h⁺</div>
+          </div>
+          <p class="pv-lab__section-label">Co dzieje się wewnątrz</p>
+          <ol data-component-inside>
+            {initialComponent.inside.map((step) => <li>{step}</li>)}
+          </ol>
+        </div>
+
+        <div class="pv-lab__inspect">
+          <p class="pv-lab__section-label">Co sprawdza inspektor</p>
+          <ul data-component-inspect>
+            {initialComponent.inspect.map((step) => <li>{step}</li>)}
+          </ul>
+        </div>
+
+        <div class="pv-lab__safety">
+          <span aria-hidden="true">!</span>
+          <p><strong>Granica bezpieczeństwa</strong><span data-component-safety>{initialComponent.safety}</span></p>
+        </div>
+        <p class="sr-only" aria-live="polite" data-component-announcement></p>
+      </aside>
+    </div>
+
+    <div class="pv-lab__map">
+      {systemModes.map((mode, modeIndex) => (
+        <div class="pv-lab__mode-panel" data-mode-panel={mode.id} hidden={modeIndex !== 0}>
+          <div class="pv-lab__mode-copy">
+            <p>{mode.description}</p>
+            <span>{mode.powerRange}</span>
+          </div>
+          <div class="pv-lab__component-list" role="group" aria-label={`Komponenty: ${mode.title}`}>
+            {mode.components.map((item, index) => (
+              <button
+                type="button"
+                class:list={[item.id === 'panel' && 'is-active']}
+                data-component-trigger={item.id}
+                data-component-mode={mode.id}
+                aria-pressed={item.id === 'panel' ? 'true' : 'false'}
+              >
+                <span>{String(index + 1).padStart(2, '0')}</span>{item.title}
+              </button>
+            ))}
+          </div>
+          <ol class="pv-lab__flow" aria-label={`Przepływ energii: ${mode.title}`}>
+            {mode.flow.filter(([, , kind]) => kind !== 'data').map(([from, to, kind]) => {
+              const source = mode.components.find(({ id }) => id === from);
+              const target = mode.components.find(({ id }) => id === to);
+              return <li><span>{source.title}</span><b class={`is-${kind}`}>{flowLabels[kind]}</b><span>{target.title}</span></li>;
+            })}
+          </ol>
+        </div>
+      ))}
+    </div>
+
+    <details class="pv-lab__glossary">
+      <summary><span>Otwórz pełny słownik</span><strong>{electricalGlossary.length} pojęć elektrycznych</strong></summary>
+      <div class="pv-lab__glossary-grid">
+        {electricalGlossary.map((item) => (
+          <article>
+            <div><h3>{item.term}</h3><span>{item.symbol}</span></div>
+            <p>{item.definition}</p>
+          </article>
+        ))}
+      </div>
+    </details>
+
+    <div class="pv-lab__bridge">
+      <p><strong>Model pokazuje topologię, nie projekt wykonawczy.</strong> Rzeczywiste napięcia, aparaty, ochrona, własność i procedury zależą od dokumentacji konkretnego obiektu.</p>
+      <a href="#nauka">Przejdź do pełnego programu i procedur <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+
+  <script type="application/json" data-pv-lab-data set:html={labData}></script>
+  <script>
+    const lab = document.querySelector('[data-pv-lab]');
+    let loading = false;
+    const loadLaboratory = async () => {
+      if (loading || !lab) return;
+      loading = true;
+      const { initializePvSystemLab } = await import('../lib/pv-system-lab-client.mjs');
+      initializePvSystemLab();
+    };
+    if ('IntersectionObserver' in window && lab) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        loadLaboratory();
+      }, { rootMargin: '500px' });
+      observer.observe(lab);
+    } else loadLaboratory();
+  </script>
+</section>
