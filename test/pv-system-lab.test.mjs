@@ -74,7 +74,6 @@ test('academy integrates an accessible WebGL laboratory with a text fallback', a
   assert.match(client, /disposeSceneObject/);
   assert.match(client, /resizeObserver\.disconnect\(\)/);
   assert.match(client, /visibilityObserver\.disconnect\(\)/);
-  assert.match(client, /mode\.id === 'micro' \? 24 : 27/);
   assert.match(styles, /\.academy \.pv-lab__detail h3/);
   assert.match(styles, /scroll-margin-top:/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)/);

@@ -29,6 +29,7 @@ import {
   WebGLRenderer,
 } from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { createEquipment, createLandscape, layouts } from './pv-scene-assets.mjs';
 
 const THREE = {
   ACESFilmicToneMapping, BoxGeometry, BufferGeometry, CanvasTexture, CylinderGeometry, DirectionalLight,
@@ -42,55 +43,6 @@ const kindLabels = { source: 'Źródło energii', dc: 'Tor prądu stałego', con
 
 function makeMaterial(color, options = {}) {
   return new THREE.MeshStandardMaterial({ color, roughness: options.roughness ?? 0.48, metalness: options.metalness ?? 0.16, emissive: options.emissive ?? 0x000000, emissiveIntensity: options.emissiveIntensity ?? 0 });
-}
-
-function box(group, size, position, material, rotation = [0, 0, 0]) {
-  const mesh = new THREE.Mesh(new THREE.BoxGeometry(...size), material);
-  mesh.position.set(...position); mesh.rotation.set(...rotation); group.add(mesh); return mesh;
-}
-
-function cylinder(group, radius, height, position, material, rotation = [0, 0, 0]) {
-  const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, height, 20), material);
-  mesh.position.set(...position); mesh.rotation.set(...rotation); group.add(mesh); return mesh;
-}
-
-function addPanel(group, offset = [0, 0, 0], scale = 1) {
-  const frame = makeMaterial(0x65777c, { metalness: .65 });
-  const cells = makeMaterial(0x123f5b, { metalness: .25, roughness: .24, emissive: 0x0b3350, emissiveIntensity: .25 });
-  box(group, [2.2 * scale, .09 * scale, 1.25 * scale], offset, frame, [-.34, 0, 0]);
-  box(group, [2.04 * scale, .035 * scale, 1.1 * scale], [offset[0], offset[1] + .055 * scale, offset[2] - .02 * scale], cells, [-.34, 0, 0]);
-  for (let x = -4; x <= 4; x += 1) box(group, [.012, .022, 1.04 * scale], [offset[0] + x * .2 * scale, offset[1] + .075 * scale, offset[2] - .02], frame, [-.34, 0, 0]);
-  for (let z = -2; z <= 2; z += 1) box(group, [1.96 * scale, .022, .012], [offset[0], offset[1] + .075 * scale - z * .012, offset[2] + z * .19 * scale], frame, [-.34, 0, 0]);
-}
-
-function makeAsset(item) {
-  const group = new THREE.Group();
-  const shell = makeMaterial(item.kind === 'dc' ? 0x2d7387 : item.kind === 'mv' ? 0x604a78 : item.kind === 'data' ? 0x39725a : 0xd9dedb, { metalness: .28 });
-  const dark = makeMaterial(0x26363b, { metalness: .38 });
-  const accent = makeMaterial(0xdf8c46, { emissive: 0x8a3d11, emissiveIntensity: .24 });
-
-  if (item.id === 'sun') {
-    const sun = new THREE.Mesh(new THREE.SphereGeometry(.72, 24, 18), makeMaterial(0xffc958, { emissive: 0xffa32d, emissiveIntensity: 1.5, roughness: 1 }));
-    group.add(sun); group.add(new THREE.PointLight(0xffd88a, 15, 28));
-  } else if (item.id === 'panel') addPanel(group);
-  else if (item.id === 'string') {
-    for (let index = 0; index < 3; index += 1) addPanel(group, [(index - 1) * 1.45, 0, 0], .62);
-  } else if (item.id === 'transformer' || item.id === 'grid-transformer') {
-    box(group, [1.35, 1.45, 1.1], [0, .1, 0], shell); cylinder(group, .16, 1.25, [-.38, .92, 0], dark); cylinder(group, .16, 1.25, [.38, .92, 0], dark); box(group, [1.65, .16, 1.28], [0, -.64, 0], dark);
-  } else if (item.id === 'grid') {
-    for (const x of [-.48, .48]) box(group, [.08, 2.5, .08], [x, .35, 0], dark, [0, 0, x * .18]);
-    box(group, [1.55, .08, .08], [0, 1.3, 0], dark); box(group, [1.08, .07, .07], [0, .72, 0], dark);
-  } else if (item.id === 'scada') {
-    box(group, [1.25, .65, .85], [0, -.15, 0], shell); cylinder(group, .035, 1.7, [0, .72, 0], dark); cylinder(group, .3, .04, [0, 1.25, 0], accent, [Math.PI / 2, 0, 0]);
-  } else if (item.id === 'meter') {
-    box(group, [.85, 1.25, .45], [0, 0, 0], shell); box(group, [.55, .34, .03], [0, .18, .24], dark); cylinder(group, .06, .04, [0, -.32, .25], accent, [Math.PI / 2, 0, 0]);
-  } else {
-    const wide = item.id.includes('switchboard') || item.id === 'mv-switchgear' ? 1.5 : 1.05;
-    box(group, [wide, 1.35, .82], [0, 0, 0], shell); box(group, [wide * .75, .11, .035], [0, .26, .43], dark); box(group, [wide * .75, .11, .035], [0, -.02, .43], dark); cylinder(group, .055, .035, [wide * .28, -.35, .43], accent, [Math.PI / 2, 0, 0]);
-  }
-  group.position.set(...item.position); group.userData.componentId = item.id;
-  group.traverse((object) => { if (object.isMesh) { object.userData.componentId = item.id; object.castShadow = true; object.receiveShadow = true; } });
-  return group;
 }
 
 function labelSprite(text) {
@@ -128,7 +80,11 @@ export function initializePvSystemLab(root = document) {
   const { systemModes } = JSON.parse(dataNode.textContent);
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let mode = systemModes[0]; let selectedId = 'panel'; let renderer; let scene; let camera; let controls; let assets = [];
-  let particles = []; let frame = 0; let visible = true; const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2();
+  let particles = []; let frame = 0; let visible = true; let cameraGoal; let targetGoal;
+  let paused = reducedMotion; let lastTime = 0; let elapsed = 0;
+  const pauseButton = lab.querySelector('[data-pv-pause]');
+  if (pauseButton) { pauseButton.textContent = paused ? 'Wznów przepływ' : 'Zatrzymaj przepływ'; pauseButton.setAttribute('aria-pressed', String(paused)); }
+  const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2();
 
   function updateDetail(id, announce = true) {
     const item = mode.components.find((entry) => entry.id === id) ?? mode.components[0]; selectedId = item.id;
@@ -150,6 +106,12 @@ export function initializePvSystemLab(root = document) {
       object.material.emissiveIntensity = asset.userData.componentId === item.id ? .52 : (object.material.emissive.getHex() ? .18 : 0);
     }));
     if (announce) lab.querySelector('[data-component-announcement]').textContent = `Wybrano: ${item.title}. ${item.role}`;
+    assets.forEach((asset) => { const label = asset.children.find((child) => child.isSprite); if (label) label.visible = asset.userData.componentId === item.id; });
+    if (announce && camera) {
+      targetGoal = new THREE.Vector3(...layouts[mode.id][item.id]).add(new THREE.Vector3(0, 1, 0));
+      cameraGoal = targetGoal.clone().add(new THREE.Vector3(6, 5, 8));
+      if (reducedMotion) { camera.position.copy(cameraGoal); controls.target.copy(targetGoal); }
+    }
   }
 
   function clearScene() {
@@ -162,11 +124,12 @@ export function initializePvSystemLab(root = document) {
   }
 
   function addFlow(from, to, kind) {
-    const start = new THREE.Vector3(...mode.components.find((item) => item.id === from).position);
-    const end = new THREE.Vector3(...mode.components.find((item) => item.id === to).position);
-    const bend = new THREE.Vector3().lerpVectors(start, end, .5); bend.y += kind === 'data' ? 1.1 : .24;
+    const start = new THREE.Vector3(...layouts[mode.id][from]);
+    const end = new THREE.Vector3(...layouts[mode.id][to]);
+    if (kind !== 'photon') { start.y = .25; end.y = .25; } else end.y = 1.5;
+    const bend = new THREE.Vector3().lerpVectors(start, end, .5); bend.y += kind === 'data' ? 1.8 : .08;
     const curve = new THREE.QuadraticBezierCurve3(start, bend, end); const color = flowColors[kind];
-    const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(28)), new THREE.LineBasicMaterial({ color, transparent: true, opacity: .38 }));
+    const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(48)), new THREE.LineBasicMaterial({ color, transparent: true, opacity: .85 }));
     scene.add(line);
     const count = kind === 'data' ? 2 : 4;
     for (let index = 0; index < count; index += 1) {
@@ -179,12 +142,15 @@ export function initializePvSystemLab(root = document) {
 
   function buildMode() {
     clearScene();
-    const ground = new THREE.Mesh(new THREE.PlaneGeometry(30, 13, 20, 10), new THREE.MeshStandardMaterial({ color: 0x102328, roughness: .9, metalness: 0, transparent: true, opacity: .88 }));
-    ground.rotation.x = -Math.PI / 2; ground.position.y = -.78; ground.receiveShadow = true; scene.add(ground);
-    const grid = new THREE.GridHelper(28, 28, 0x31545c, 0x1b343a); grid.position.y = -.76; scene.add(grid);
-    mode.components.forEach((item) => { const asset = makeAsset(item); asset.add(labelSprite(item.title)); assets.push(asset); scene.add(asset); });
+    scene.add(createLandscape(mode.id));
+    mode.components.forEach((item) => {
+      const asset = createEquipment(item, mode.id); const label = labelSprite(item.title);
+      label.position.y = item.id.includes('transformer') ? 2.8 : 2.3;
+      label.scale.set(3.2, .6, 1); asset.add(label); assets.push(asset); scene.add(asset);
+    });
     mode.flow.forEach((flow) => addFlow(...flow));
-    camera.position.set(mode.id === 'micro' ? 1.5 : .5, 8.6, mode.id === 'micro' ? 24 : 27); controls.target.set(.4, .9, 0); controls.update();
+    cameraGoal = null; targetGoal = null;
+    camera.position.set(17, 18, 24); controls.target.set(0, .5, -2); controls.update();
     viewport.setAttribute('aria-label', `Interaktywny model 3D: ${mode.title}, ${mode.powerRange}`); updateDetail('panel', false);
   }
 
@@ -193,11 +159,15 @@ export function initializePvSystemLab(root = document) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75)); renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFShadowMap;
     renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
     viewport.replaceChildren(renderer.domElement); renderer.domElement.tabIndex = 0; renderer.domElement.setAttribute('aria-label', 'Model 3D. Wybierz komponent z listy poniżej, aby nawigować klawiaturą.');
-    scene = new THREE.Scene(); scene.fog = new THREE.FogExp2(0x091317, .034); camera = new THREE.PerspectiveCamera(43, 1, .1, 100);
-    scene.add(new THREE.HemisphereLight(0xc9eff5, 0x173017, 2.2)); const key = new THREE.DirectionalLight(0xffe3bd, 3.8); key.position.set(-6, 10, 7); key.castShadow = true; scene.add(key);
-    controls = new OrbitControls(camera, renderer.domElement); controls.enableDamping = true; controls.dampingFactor = .06; controls.minDistance = 7; controls.maxDistance = 28; controls.maxPolarAngle = Math.PI * .47;
+    scene = new THREE.Scene(); scene.fog = new THREE.FogExp2(0xb9cbd0, .008); camera = new THREE.PerspectiveCamera(43, 1, .1, 150);
+    scene.add(new THREE.HemisphereLight(0xe0f2ff, 0x596646, 2));
+    const key = new THREE.DirectionalLight(0xffe0ae, 3.2); key.position.set(-10, 17, 8); key.castShadow = true;
+    key.shadow.mapSize.set(2048, 2048); Object.assign(key.shadow.camera, { left: -18, right: 18, top: 18, bottom: -18, far: 60 }); key.shadow.bias = -.0004; key.shadow.normalBias = .025; scene.add(key);
+    controls = new OrbitControls(camera, renderer.domElement); controls.enableDamping = true; controls.dampingFactor = .07; controls.minDistance = 4; controls.maxDistance = 60; controls.maxPolarAngle = Math.PI * .47;
+    controls.addEventListener('start', () => { cameraGoal = null; targetGoal = null; });
     buildMode();
   } catch {
+    renderer?.dispose(); renderer = null;
     lab.dataset.webgl = 'unavailable'; fallback.hidden = false; lab.querySelector('[data-pv-loading]')?.setAttribute('hidden', '');
   }
 
@@ -209,19 +179,30 @@ export function initializePvSystemLab(root = document) {
 
   function animate(time) {
     frame = requestAnimationFrame(animate); if (!renderer || !visible) return;
-    if (!reducedMotion) particles.forEach(({ dot, curve, offset, speed }) => dot.position.copy(curve.getPoint((offset + time * speed) % 1)));
+    const dt = Math.min(time - lastTime, 50); lastTime = time;
+    if (!paused) elapsed += dt;
+    particles.forEach(({ dot, curve, offset, speed }) => dot.position.copy(curve.getPoint((offset + elapsed * speed * .25) % 1)));
+    if (cameraGoal && targetGoal) { const blend = reducedMotion ? 1 : 1 - Math.exp(-dt * .004); camera.position.lerp(cameraGoal, blend); controls.target.lerp(targetGoal, blend); }
     controls.update(); renderer.render(scene, camera);
   }
   frame = requestAnimationFrame(animate);
   const visibilityObserver = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; }, { rootMargin: '200px' });
   visibilityObserver.observe(lab);
 
+  let pointerStart;
+  renderer?.domElement.addEventListener('pointerdown', (event) => { pointerStart = [event.clientX, event.clientY]; });
   renderer?.domElement.addEventListener('pointerup', (event) => {
+    if (!pointerStart || Math.hypot(event.clientX - pointerStart[0], event.clientY - pointerStart[1]) > 6) return;
     const rect = renderer.domElement.getBoundingClientRect(); pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1; pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
     raycaster.setFromCamera(pointer, camera); const hit = raycaster.intersectObjects(assets, true).find(({ object }) => object.userData.componentId);
     if (hit) updateDetail(hit.object.userData.componentId);
   });
-  lab.querySelectorAll('[data-component-trigger]').forEach((button) => button.addEventListener('click', () => updateDetail(button.dataset.componentTrigger)));
+  lab.querySelector('[data-pv-overview]')?.addEventListener('click', () => { cameraGoal = new THREE.Vector3(17, 18, 24); targetGoal = new THREE.Vector3(0, .5, -2); });
+  lab.querySelector('[data-pv-pause]')?.addEventListener('click', (event) => { paused = !paused; event.currentTarget.textContent = paused ? 'Wznów przepływ' : 'Zatrzymaj przepływ'; event.currentTarget.setAttribute('aria-pressed', String(paused)); });
+  lab.querySelectorAll('[data-component-trigger]').forEach((button) => button.addEventListener('click', () => {
+    updateDetail(button.dataset.componentTrigger);
+    viewport.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'center' });
+  }));
   lab.querySelectorAll('[data-system-mode]').forEach((button) => button.addEventListener('click', () => {
     mode = systemModes.find(({ id }) => id === button.dataset.systemMode); selectedId = 'panel';
     lab.querySelectorAll('[data-system-mode]').forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); });

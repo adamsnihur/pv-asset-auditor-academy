@@ -4,6 +4,9 @@
 .pv-lab__heading h2 em{font-family:"Fraunces",Georgia,serif;font-weight:400;color:#df8c46}
 .pv-lab__heading>p{font-size:17px;line-height:1.65;color:#aebfc2;border-left:1px solid rgba(180,205,210,.25);padding-left:28px}
 .pv-lab__shell{position:relative}
+.pv-lab__view-actions{position:absolute;right:16px;top:16px;z-index:5;display:flex;gap:8px}.pv-lab__view-actions button{background:#f3f3e9e8;border:1px solid #b8c3b2;border-radius:8px;padding:10px 12px;color:#26372e;font-size:12px;cursor:pointer;box-shadow:0 3px 12px #13231b18}.pv-lab__view-actions button:focus-visible{outline:3px solid #de8d47}
+.pv-lab .pv-lab__main{grid-template-columns:1fr;min-height:0}.pv-lab .pv-lab__viewport{height:660px;min-height:0;background:radial-gradient(ellipse at 50% 20%,#e8eee7,#afc4bd)}.pv-lab .pv-lab__detail{display:grid;grid-template-columns:1fr 1fr;gap:0 32px;border-left:0}.pv-lab .pv-lab__detail-head,.pv-lab .pv-lab__detail h3,.pv-lab .pv-lab__role,.pv-lab .pv-lab__safety{grid-column:1/-1}.pv-lab .pv-lab__scene-ui{top:auto;bottom:56px}
+@media(max-width:720px){.pv-lab .pv-lab__viewport{height:480px}.pv-lab .pv-lab__detail{display:block}.pv-lab__view-actions{left:12px;right:auto}.pv-lab__view-actions button{font-size:11px}}
 .pv-lab__toolbar{display:grid;grid-template-columns:220px 220px 1fr;gap:8px;padding:8px;background:#122126;border:1px solid rgba(180,205,210,.17);border-radius:18px 18px 0 0}
 .pv-lab__toolbar>button{display:grid;grid-template-columns:30px 1fr;column-gap:8px;align-items:center;text-align:left;padding:13px 15px;border:1px solid transparent;border-radius:11px;background:transparent;color:#d9e5e2;cursor:pointer;transition:background .25s,border-color .25s,transform .25s}
 .pv-lab__toolbar>button:hover{transform:translateY(-1px);border-color:rgba(223,140,70,.34)}
