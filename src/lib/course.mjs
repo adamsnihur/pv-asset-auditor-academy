@@ -29,7 +29,7 @@ export const courseStages = [
     id: '4', eyebrow: 'Moduł 4', title: 'Diagnostyka naziemna', hours: 38,
     level: 'Zaawansowany', kind: 'module', image: 'assets/course/pv-field-operations.webp',
     summary: 'I-V, EL/PL, izolacja i bezpieczne potwierdzanie obserwacji termicznych.',
-    outcomes: ['Wykonasz wiarygodny pomiar I-V', 'Dobierzesz EL/PL i próbę izolacji', 'Potwierdzisz lub odrzucisz hipotezę IR'],
+    outcomes: ['Wyjaśnisz kryteria wiarygodnego pomiaru I-V', 'Dobierzesz EL/PL i próbę izolacji', 'Potwierdzisz lub odrzucisz hipotezę IR'],
   },
   {
     id: '5', eyebrow: 'Moduł 5', title: 'TDD i ekonomika aktywa', hours: 18,
@@ -41,7 +41,7 @@ export const courseStages = [
     id: '6', eyebrow: 'Audyt końcowy', title: 'Capstone: farma 80 MWp', hours: 0,
     level: 'Ekspercki', kind: 'capstone', image: 'assets/course/hero.webp',
     summary: 'Pełna synteza dowodów: loss tree, misja BSP, ground truth, ryzyko i NPV.',
-    outcomes: ['Obronisz kompletny łańcuch dowodowy', 'Ustalysz priorytety S0-S4', 'Przygotujesz claims-ready evidence pack'],
+    outcomes: ['Obronisz kompletny łańcuch dowodowy', 'Ustalisz priorytety S0-S4', 'Przygotujesz claims-ready evidence pack'],
   },
 ];
 
@@ -51,7 +51,7 @@ export const quizzes = {
   '0': {
     passingScore: 1,
     questions: [
-      question('Co samodzielnie dowodzi pojedynczy termogram?', ['Przyczyny usterki', 'Straty energii', 'Pola temperatury powierzchni', 'Zgodności gwarancyjnej'], 2, 'Termogram jest obserwacją temperatury powierzchni. Przyczyna i strata wymagają dalszych dowodów.'),
+      question('Co samodzielnie dowodzi pojedynczy termogram?', ['Przyczyny usterki', 'Straty energii', 'Rozkładu sygnału IR i temperatury oszacowanej z modelu', 'Zgodności gwarancyjnej'], 2, 'Detektor rejestruje sygnał IR; temperatura jest wynikiem modelu z założonymi parametrami. Przyczyna i strata wymagają dalszych dowodów.'),
       question('Kto może pracować przy obwodach DC 1500 V i stacjach SN/WN?', ['Każdy pilot BSP', 'Kompetentny personel według zatwierdzonej instrukcji', 'Audytor po przeczytaniu podręcznika', 'Operator kamery termicznej'], 1, 'Materiał szkoleniowy nie zastępuje kwalifikacji, LOTO ani instrukcji organizacji bezpiecznej pracy.'),
       question('Co oznacza etykieta [A]?', ['Akt prawny', 'Aktualną normę', 'Założenie projektowe lub syntetyczne', 'Automatyczny wynik'], 2, '[A] identyfikuje założenie użyte do obliczenia lub przygotowania misji.'),
       question('Jaki próg dotyczy pozycji krytycznych w bramce Safety?', ['80%', '90%', '95%', '100%'], 3, 'Każda pozycja krytyczna musi być poprawna, a wynik całościowy wynosić co najmniej 90%.'),

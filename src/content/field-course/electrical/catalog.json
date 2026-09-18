@@ -1,0 +1,935 @@
+{
+  "id": "electrical",
+  "title": "Podstawy elektryki i fotowoltaiki",
+  "description": "Od jednostek i prostych obwodów do czytania danych PV i bezpiecznego przekazania obserwacji.",
+  "lessons": [
+    {
+      "id": "E01",
+      "title": "Cztery wielkości, które porządkują elektrykę",
+      "file": "e01.md",
+      "minutes": 25,
+      "objective": "po lekcji opiszesz syntetyczny zapis elektryczny, rozróżniając ładunek, prąd, napięcie i rezystancję, oraz poprawnie przeliczysz jego jednostki.",
+      "summary": "Ładunek, prąd, napięcie i rezystancja oraz kontrola jednostek.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Karta tłumacza danych: sześć wierszy, dwa rachunki z kontrolą i trzy zdania interpretacji.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "przygotuj kolumny „zapis źródłowy”, „wielkość”, „wartość w jednostce podstawowej”. Wpisz: 0,48 kV; 850 mA; 2,2 kΩ; 0,003 MA; 180 C; 90 s. Rozwiń słownie każdy symbol.",
+            "output": "sześć uporządkowanych wierszy."
+          },
+          {
+            "minutes": 5,
+            "instruction": "oblicz prąd dla 180 C w 90 s oraz ładunek dla 850 mA przez 40 s. Dopisz działanie odwrotne do obu odpowiedzi.",
+            "output": "dwa rozwiązania z jednostkami i dwie kontrole."
+          },
+          {
+            "minutes": 5,
+            "instruction": "popraw dwa wadliwe zdania: „Napięcie przewodu wynosi 850 mA” i „Prąd zniknął, więc przewody są bez napięcia”. Pierwsze popraw wyłącznie w zakresie informacji, którą rzeczywiście masz. W drugim nazwij brakujący dowód bez proponowania własnego pomiaru.",
+            "output": "trzy zdania oddzielające informację od założenia."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Przez przekrój modelu przepływa 180 C w 90 s. Jaki jest średni prąd?",
+          "options": [
+            "2 A",
+            "0,5 A",
+            "16 200 A",
+            "2 V"
+          ],
+          "answer": 0,
+          "explanation": "I = Q/t = 180/90 = 2 A. Wynik 0,5 odwraca dzielenie, 16 200 mnoży zamiast dzielić, a V jest jednostką napięcia.",
+          "critical": false
+        },
+        {
+          "prompt": "Prąd 850 mA płynie przez 40 s. Jaki ładunek przepłynął?",
+          "options": [
+            "34 000 C",
+            "0,02125 C",
+            "34 C",
+            "850 C"
+          ],
+          "answer": 2,
+          "explanation": "850 mA = 0,850 A, więc Q = 0,850 × 40 = 34 C. Pierwszy wynik pomija mili, drugi dzieli przez czas, ostatni pomija czas i przeliczenie.",
+          "critical": false
+        },
+        {
+          "prompt": "W eksporcie zapisano „napięcie: 850 mA”. Co możesz rzetelnie zapisać?",
+          "options": [
+            "Napięcie wynosi 0,850 V.",
+            "Jednostka wskazuje prąd; napięcia nie ustalono.",
+            "Rezystancja wynosi 850 Ω.",
+            "Napięcie wynosi 850 V."
+          ],
+          "answer": 1,
+          "explanation": "mA jest jednostką prądu. Nie ma podstaw do zmiany jednostki na V lub Ω ani do odtworzenia brakującego napięcia.",
+          "critical": false
+        },
+        {
+          "prompt": "Oświetlona instalacja ma odczyt 0 A. Czy to dowód braku napięcia?",
+          "options": [
+            "Tak, bo napięcie zawsze znika wraz z prądem.",
+            "Tak, jeśli falownik nie produkuje.",
+            "Tak, po odczekaniu jednej minuty.",
+            "Nie; stan bezpieczeństwa określa właściwa osoba według procedury."
+          ],
+          "answer": 3,
+          "explanation": "Przy otwartym obwodzie napięcie może występować mimo braku prądu. Zero produkcji i arbitralny czas oczekiwania nie są potwierdzeniem braku napięcia.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "E02",
+      "title": "Od obwodu do mocy i energii",
+      "file": "e02.md",
+      "minutes": 25,
+      "objective": "obliczysz prąd, rozkład napięcia, moc i energię w prostym syntetycznym obwodzie, sprawdzając bilans wyniku.",
+      "summary": "Prawo Ohma, bilanse połączeń oraz odróżnienie mocy od energii.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Karta dwóch obwodów z bilansem napięć, prądów, mocy i energii.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "narysuj model szeregowy: źródło 24 V, oporniki 4 Ω i 8 Ω. Oblicz rezystancję całkowitą, prąd i oba spadki napięcia. Podpisz kontrolę pętli.",
+            "output": "schemat i pięć wartości."
+          },
+          {
+            "minutes": 5,
+            "instruction": "narysuj równoległy model z tym samym źródłem i opornikami. Oblicz prądy gałęzi, ich sumę oraz rezystancję zastępczą. Wyjaśnij, dlaczego całkowity prąd zmienił się mimo tych samych części.",
+            "output": "drugi schemat i bilans węzła."
+          },
+          {
+            "minutes": 5,
+            "instruction": "policz moc źródła w obu wariantach oraz energię za 45 minut niezmiennej pracy. Sprawdź sumę mocy oporników. Napisz dwa zdania o tym, czego model nie mówi o prawdziwej instalacji PV.",
+            "output": "tabela porównawcza i ograniczenia."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Model szeregowy: 24 V oraz oporniki 4 Ω i 8 Ω. Jakie są prąd i spadki napięcia?",
+          "options": [
+            "6 A; 24 V i 48 V",
+            "2 A; 8 V i 16 V",
+            "3 A; 12 V i 24 V",
+            "2 A; 24 V i 24 V"
+          ],
+          "answer": 1,
+          "explanation": "R = 12 Ω, I = 24/12 = 2 A. Spadki 8 V i 16 V sumują się do 24 V. Pozostałe zestawy łamią prawo Ohma lub bilans pętli.",
+          "critical": false
+        },
+        {
+          "prompt": "Te same oporniki 4 Ω i 8 Ω łączymy równolegle przy 24 V. Jaki prąd pobiera źródło?",
+          "options": [
+            "2 A",
+            "3 A",
+            "6 A",
+            "9 A"
+          ],
+          "answer": 3,
+          "explanation": "Gałęzie pobierają 24/4 = 6 A i 24/8 = 3 A, razem 9 A. Wyniki 3 A i 6 A dotyczą jednej gałęzi; 2 A dotyczy szeregu.",
+          "critical": false
+        },
+        {
+          "prompt": "Model pobiera stale 216 W przez 45 minut. Ile energii pobrał?",
+          "options": [
+            "0,162 kWh",
+            "162 kWh",
+            "216 kWh",
+            "0,0096 kWh"
+          ],
+          "answer": 0,
+          "explanation": "45 min = 0,75 h; 216 W × 0,75 h = 162 Wh = 0,162 kWh. Wartość mocy i liczba minut nie są energią w kWh.",
+          "critical": false
+        },
+        {
+          "prompt": "Przez oba oporniki w szeregu płynie 2 A. Co dzieje się z prądem po pierwszym?",
+          "options": [
+            "Spada o połowę.",
+            "Zmienia jednostkę na W.",
+            "Nadal wynosi 2 A, a opornik przekazuje energię jako ciepło.",
+            "Wynosi 0 A, bo pierwszy opornik zużywa ładunek."
+          ],
+          "answer": 2,
+          "explanation": "W modelu szeregowym bez rozgałęzień prąd jest wspólny. Odbiornik zmienia postać energii, nie zużywa kolejnych amperów.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "E03",
+      "title": "Prąd przemienny, zabezpieczenia i granice roli",
+      "file": "e03.md",
+      "minutes": 25,
+      "objective": "poprawnie odczytasz podstawowy zapis mocy po stronie AC i wybierzesz bezpieczny sposób przekazania obserwacji, bez podejmowania prac elektrycznych.",
+      "summary": "Odczyt mocy AC, zadania ochrony oraz bezpieczna granica obserwatora.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Karta mocy AC, tabela trzech decyzji i notatka o SYN-E03-04.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "oblicz S, P i energię za 30 minut dla jednofazowego zapisu 230 V, 8 A, PF = 0,95. Podpisz jednostki i rozróżnij PF od sprawności.",
+            "output": "trzy wartości z działaniami."
+          },
+          {
+            "minutes": 5,
+            "instruction": "oceń sytuacje: ekran pokazuje 0 kW; klient prosi o rozpięcie złącza modułu; na dostarczonym zdjęciu widać uszkodzoną izolację. Do każdej wpisz „co wiem”, „czego nie wiem” i „następny krok”.",
+            "output": "tabela dziewięciu pól."
+          },
+          {
+            "minutes": 5,
+            "instruction": "napisz przekazanie do osoby odpowiedzialnej za instalację, maksymalnie sześć zdań. Podaj identyfikator zdjęcia SYN-E03-04 i jawnie zaznacz, że nie wykonywano badań elektrycznych.",
+            "output": "gotowa notatka bez diagnozy."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Jedna faza: 230 V, 8 A, PF = 0,95, stała praca przez 30 minut. Który zestaw jest poprawny?",
+          "options": [
+            "1840 W i 1,840 kWh",
+            "1748 VA i 0,874 kW",
+            "1840 VA, 1748 W i 0,874 kWh",
+            "1840 VA, 1936,8 W i 0,9684 kWh"
+          ],
+          "answer": 2,
+          "explanation": "S = 230 × 8 = 1840 VA, P = S × 0,95 = 1748 W, E = 1,748 × 0,5 = 0,874 kWh. PF mnoży moc pozorną, a nie zwiększa ją przez dzielenie.",
+          "critical": false
+        },
+        {
+          "prompt": "Trzy symetryczne fazy: napięcie międzyfazowe 400 V, prąd linii 10 A, PF = 0,9. Ile wynosi moc czynna?",
+          "options": [
+            "Około 6,24 kW",
+            "3,60 kW",
+            "18,71 kW",
+            "6,24 kWh"
+          ],
+          "answer": 0,
+          "explanation": "P = √3 × 400 × 10 × 0,9 ≈ 6235 W. Wzór uwzględnia trzy fazy; ponowne mnożenie przez trzy jest błędem. kWh oznacza energię.",
+          "critical": false
+        },
+        {
+          "prompt": "Klient prosi o rozpięcie złącza DC, bo ekran pokazuje 0 kW. Jak reagujesz w roli obserwatora?",
+          "options": [
+            "Rozłączam szybko, aby ograniczyć czas kontaktu.",
+            "Sprawdzam palcem temperaturę złącza.",
+            "Najpierw resetuję zabezpieczenie.",
+            "Nie manipuluję przy złączu i przekazuję sprawę odpowiedzialnej osobie."
+          ],
+          "answer": 3,
+          "explanation": "Zero kW nie potwierdza braku napięcia. Oświetlone moduły mogą wytwarzać DC, a złączy nie wolno rozłączać pod obciążeniem. Dotyk i reset nie są metodami weryfikacji bezpieczeństwa.",
+          "critical": true
+        },
+        {
+          "prompt": "Co wynika z oznaczenia RCCB?",
+          "options": [
+            "Urządzenie zawsze zastępuje ochronę nadprądową.",
+            "Samo RCCB nie zawiera ochrony nadprądowej; dobór ochrony wymaga dokumentacji.",
+            "Obudowę można bezpiecznie dotknąć w każdym stanie.",
+            "Przewód PE jest zbędny."
+          ],
+          "answer": 1,
+          "explanation": "RCCB zapewnia funkcję różnicowoprądową bez ochrony nadprądowej; RCBO łączy funkcje. Żadne z tych oznaczeń nie dowodzi skuteczności całego systemu ochrony.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "E04",
+      "title": "Od ogniwa do mapy instalacji PV",
+      "file": "e04.md",
+      "minutes": 25,
+      "objective": "zbudujesz mapę syntetycznej instalacji, łącząc ogniwa, moduły, stringi, wejścia MPPT i falownik z odpowiednimi rekordami danych.",
+      "summary": "Mapa od ogniwa przez string i MPPT do falownika oraz granice danych zbiorczych.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Mapa SYN-E04, tabela siedmiu wierszy i pytania o lokalizację obserwacji.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "rozrysuj INV-02 z torami MPPT-A i MPPT-B. Do A należą S01 i S02, każdy po 10 modułów. Do B należy S03 z 8 modułami. Moduł przyjmij jako 40 V i 9 A.",
+            "output": "mapa trzech stringów z liczbą modułów i legendą skrótów."
+          },
+          {
+            "minutes": 5,
+            "instruction": "policz napięcie i moc każdego stringu oraz prąd i moc każdego MPPT. Zakładaj jednakowe warunki i idealne połączenia.",
+            "output": "tabela siedmiu wierszy obejmująca stringi, tory i sumę DC oraz AC przy syntetycznej sprawności 96%."
+          },
+          {
+            "minutes": 5,
+            "instruction": "przypisz zapis „MPPT-A = 18 A” do mapy. Oceń zdanie „S01 ma 18 A”. Przygotuj zapytanie o lokalizację obserwacji „moduł 4 w drugim rzędzie”, wskazując minimum trzy brakujące informacje.",
+            "output": "korekta zdania i lista pytań do dokumentacji."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Dwa identyczne stringi mają po 10 modułów, każdy przy 40 V i 9 A. Są równoległe na jednym MPPT. Jakie są wartości toru?",
+          "options": [
+            "800 V, 9 A, 7,2 kW",
+            "400 V, 9 A, 3,6 kW",
+            "800 V, 18 A, 14,4 kW",
+            "400 V, 18 A, 7,2 kW"
+          ],
+          "answer": 3,
+          "explanation": "Napięcia modułów sumują się w stringu do 400 V, a prądy równoległych stringów do 18 A. Mnożenie daje 7200 W. Nie sumujemy napięć równoległych gałęzi.",
+          "critical": false
+        },
+        {
+          "prompt": "Odczyt MPPT-A wynosi 18 A dla dwóch stringów. Co wiadomo o S01?",
+          "options": [
+            "Na pewno ma 18 A.",
+            "Sam odczyt zbiorczy nie ustala prądu S01.",
+            "Na pewno ma 0 A.",
+            "Prąd S01 jest dwukrotnie większy od sumy."
+          ],
+          "answer": 1,
+          "explanation": "Kanał zbiorczy może sumować prądy. Równy podział wymaga dodatkowych danych lub jawnego założenia modelu; pozostałe odpowiedzi bezpodstawnie przypisują wartość jednej gałęzi.",
+          "critical": false
+        },
+        {
+          "prompt": "Suma mocy DC w modelu wynosi 10,08 kW, a sprawność przetwarzania 96%. Jaka jest moc AC?",
+          "options": [
+            "10,50 kW",
+            "9,6768 kWh",
+            "9,6768 kW",
+            "0,4032 kW"
+          ],
+          "answer": 2,
+          "explanation": "Moc AC = 10,08 × 0,96 = 9,6768 kW. Dzielenie zawyża wynik, kWh dotyczy energii, a 0,4032 kW jest różnicą mocy w modelu.",
+          "critical": false
+        },
+        {
+          "prompt": "Dokumentacja podaje kilka gniazd DC. Czy to wystarczy, aby ustalić liczbę niezależnych MPPT?",
+          "options": [
+            "Nie, potrzebny jest opis torów w dokumentacji falownika.",
+            "Tak, jedno gniazdo zawsze oznacza jeden MPPT.",
+            "Tak, MPPT to nazwa rzędu modułów.",
+            "Tak, MPPT oznacza obrót paneli ku słońcu."
+          ],
+          "answer": 0,
+          "explanation": "MPPT jest elektronicznym śledzeniem punktu mocy. Kilka wejść może należeć do wspólnego toru; rząd i mechaniczny tracker opisują inne rzeczy.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "E05",
+      "title": "Karta modułu, temperatura i cień",
+      "file": "e05.md",
+      "minutes": 25,
+      "objective": "odczytasz cztery podstawowe parametry karty modułu, obliczysz orientacyjne napięcie łańcucha w chłodzie i określisz granice wniosku o zacienieniu.",
+      "summary": "Parametry katalogowe, napięcie w chłodzie i ostrożna interpretacja cienia.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Tabela parametrów, rachunek napięcia w chłodzie i czterozdaniowa notatka.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "rozwiń cztery skróty, policz moc znamionową i wyjaśnij, dlaczego Voc × Isc nie daje jej wartości.",
+            "output": "cztery opisy i jeden poprawny rachunek."
+          },
+          {
+            "minutes": 5,
+            "instruction": "przelicz współczynnik na ułamek, różnicę temperatur, Voc modułu i Voc łańcucha. Porównaj z limitem bez przedwczesnego zaokrąglenia.",
+            "output": "pięć etapów rachunku i decyzja o przekazaniu."
+          },
+          {
+            "minutes": 5,
+            "instruction": "na syntetycznym opisie „wąski cień przecina dolną część trzech modułów” zbuduj notatkę: obserwacja, możliwy mechanizm, brakujące dane i następny krok.",
+            "output": "cztery zdania bez deklaracji konkretnej usterki lub procentu straty."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Karta podaje Voc 48 V, Isc 12 A, Vmpp 40 V i Impp 11 A. Jaka jest moc w MPP?",
+          "options": [
+            "440 W",
+            "576 W",
+            "528 W",
+            "480 W"
+          ],
+          "answer": 0,
+          "explanation": "Vmpp × Impp = 40 × 11 = 440 W. Voc i Isc są parametrami różnych stanów; mieszanie ich z parametrami MPP nie wyznacza mocy maksymalnej.",
+          "critical": false
+        },
+        {
+          "prompt": "Voc przy 25°C wynosi 48 V, β = −0,30%/°C, przyjęte T = −10°C. Ile wynosi Voc jednego modułu w liniowym modelu?",
+          "options": [
+            "42,96 V",
+            "552 V",
+            "48,105 V",
+            "53,04 V"
+          ],
+          "answer": 3,
+          "explanation": "β = −0,003/°C, ΔT = −35°C. Poprawka względna to +0,105, więc 48 × 1,105 = 53,04 V. Chłód podnosi Voc przy ujemnym współczynniku.",
+          "critical": false
+        },
+        {
+          "prompt": "20 takich modułów daje w ćwiczeniu 1060,8 V przy limicie 1000 V. Co robisz z wynikiem?",
+          "options": [
+            "Zaokrąglam do 1000 V i zatwierdzam.",
+            "Zgłaszam przekroczenie o 60,8 V właściwej osobie, bez zatwierdzania projektu.",
+            "Sprawdzam zwarciem, czy wynik się potwierdzi.",
+            "Pomijam temperaturę, bo STC zawsze obowiązuje."
+          ],
+          "answer": 1,
+          "explanation": "1060,8 − 1000 = 60,8 V. Nie wolno ukrywać przekroczenia zaokrągleniem. Model nie nadaje kompetencji projektowych ani nie jest instrukcją pomiaru.",
+          "critical": true
+        },
+        {
+          "prompt": "Na opisie syntetycznym cień przecina część trzech modułów. Który wniosek jest uzasadniony?",
+          "options": [
+            "Strata energii równa się dokładnie procentowi zacienionej powierzchni.",
+            "Na pewno uszkodziła się dioda.",
+            "Wpływ zależy od połączeń i obejść; do oceny potrzeba warunków oraz danych pracy.",
+            "Dioda zawsze usuwa całą stratę."
+          ],
+          "answer": 2,
+          "explanation": "Obejście może zmieniać charakterystykę, lecz nie odtwarza energii zacienionych ogniw. Sam opis cienia nie określa awarii ani procentu utraty energii.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "E06",
+      "title": "Dane pracy instalacji i bezpieczne przekazanie obserwacji",
+      "file": "e06.md",
+      "minutes": 25,
+      "objective": "przygotujesz krótką, policzalną notatkę o syntetycznych danych PV, rozróżniając obserwację, ograniczenie i pytanie do właściwego specjalisty.",
+      "summary": "Energia z eksportu, PR, brakujące dane i notatka dla utrzymania.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Jednostronicowa analiza SYN-E06 z energią znanych okresów, PR i przekazaniem.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "oblicz energię tylko znanych kwadransów i oznacz, czego brakuje do pełnej godziny. Porównaj z błędną metodą wstawienia zera.",
+            "output": "rachunek i opis granicy wniosku."
+          },
+          {
+            "minutes": 5,
+            "instruction": "policz miesięczny PR, zapisując jednostki w mianowniku. Wypisz trzy kontrole przed porównaniem z poprzednim miesiącem.",
+            "output": "rachunek PR oraz lista kontroli."
+          },
+          {
+            "minutes": 5,
+            "instruction": "napisz notatkę w sześciu polach: obiekt, zakres czasu, źródło, obserwacja, ograniczenie, pytanie do utrzymania. Włącz zdanie o tym, czy brak kwadransa dowodzi wyłączenia.",
+            "output": "gotowe przekazanie bez diagnozy."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Średnie kwadransowe to 30 kW, 50 kW, brak i 40 kW. Co można policzyć bez uzupełniania braków?",
+          "options": [
+            "120 kWh za całą godzinę",
+            "30 kWh za całą godzinę, bo brak oznacza zero",
+            "30 kWh za znane 45 minut",
+            "40 kWh za całą godzinę bez żadnego założenia"
+          ],
+          "answer": 2,
+          "explanation": "Znane okresy dają (30 + 50 + 40) × 0,25 = 30 kWh. Pełna godzina pozostaje nieustalona; wstawienie zera lub średniej wymaga jawnego założenia.",
+          "critical": false
+        },
+        {
+          "prompt": "P_STC = 80 kW, H_POA = 100 kWh/m², G_STC = 1 kW/m², E_AC = 6400 kWh. Ile wynosi PR?",
+          "options": [
+            "0,80, czyli 80%",
+            "80 kW",
+            "8%",
+            "Sprawność modułu 80%"
+          ],
+          "answer": 0,
+          "explanation": "Mianownik = 80 kW × 100 h = 8000 kWh; PR = 6400/8000 = 0,80. PR jest bez jednostki i nie jest sprawnością samego modułu.",
+          "critical": false
+        },
+        {
+          "prompt": "Które zdanie rozróżnia natężenie napromienienia i napromienienie?",
+          "options": [
+            "Obie wielkości mają jednostkę kW.",
+            "800 W/m² przez dwie godziny oznacza 800 kWh/m².",
+            "Napromienienie opisuje wyłącznie jedną chwilę.",
+            "Stałe 800 W/m² przez dwie godziny daje 1,6 kWh/m²."
+          ],
+          "answer": 3,
+          "explanation": "800 W/m² × 2 h = 1600 Wh/m² = 1,6 kWh/m². Pierwsza wielkość jest mocą na powierzchnię, druga energią na powierzchnię za okres.",
+          "critical": false
+        },
+        {
+          "prompt": "W eksporcie brakuje kwadransa, a na osobnym zdjęciu widać uszkodzenie izolacji. Jaki jest właściwy następny krok?",
+          "options": [
+            "Reset falownika w celu uzupełnienia danych.",
+            "Oznaczenie braku danych i przekazanie możliwego zagrożenia według procedury obiektu.",
+            "Dotknięcie przewodu, aby sprawdzić stan.",
+            "Przyjęcie braku napięcia na podstawie pustego rekordu."
+          ],
+          "answer": 1,
+          "explanation": "Brak rekordu nie potwierdza wyłączenia ani braku napięcia. Obserwator opisuje ograniczenie i zgłasza zagrożenie; nie resetuje urządzenia ani nie dotyka przewodów.",
+          "critical": true
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "E-S-current",
+      "title": "20.1 Current",
+      "url": "https://openstax.org/books/college-physics-2e/pages/20-1-current",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Definicja średniego/stałego prądu; nie model każdej instalacji. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-potential",
+      "title": "19.1 Electric Potential Energy: Potential Difference",
+      "url": "https://openstax.org/books/college-physics-2e/pages/19-1-electric-potential-energy-potential-difference",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Podstawy fizyki, bez procedur badań. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-ohm",
+      "title": "20.2 Ohm’s Law: Resistance and Simple Circuits",
+      "url": "https://openstax.org/books/college-physics-2e/pages/20-2-ohms-law-resistance-and-simple-circuits",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Liniowy model rezystora; nie pełna charakterystyka modułu PV. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-sma-safety",
+      "title": "Safety during Maintenance",
+      "url": "https://manuals.sma.de/STPxxx70/en-US/13841148043.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Instrukcja konkretnego falownika; wykorzystywana do rozpoznania zagrożeń, bez przenoszenia procedury serwisowej. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-osha-solar",
+      "title": "Green Job Hazards: Solar Energy: Electrical",
+      "url": "https://www.osha.gov/green-jobs/solar/electrical",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Weryfikacja przez indeksowany tekst oficjalnej strony; bezpośrednie otwarcie zwracało 403. Kontekst USA, nie polskie uprawnienia. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-kirchhoff",
+      "title": "10.3 Kirchhoff’s Rules",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-3-kirchhoffs-rules",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Idealne skupione obwody i bilanse. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-circuits",
+      "title": "Chapter 10 Summary",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-summary",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Połączenia oporników, nie projekt PV. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-power",
+      "title": "20.4 Electric Power and Energy",
+      "url": "https://openstax.org/books/college-physics/pages/20-4-electric-power-and-energy",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zależności fizyczne; zmienna moc wymaga sumowania/calkowania w czasie. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-ac",
+      "title": "20.5 Alternating Current versus Direct Current",
+      "url": "https://openstax.org/books/college-physics-2e/pages/20-5-alternating-current-versus-direct-current",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Podstawy AC, RMS i częstotliwości; wartości ćwiczeń są syntetyczne. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-three-phase",
+      "title": "Installed apparent power (kVA)",
+      "url": "https://www.electrical-installation.org/enwiki/Installed_apparent_power_%28kVA%29",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Wzór trójfazowy przy obciążeniu symetrycznym, rozróżnienie napięć. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-pf",
+      "title": "Power factor correction and harmonic filtering in electrical plants",
+      "url": "https://library.e.abb.com/public/4ffab4cf79db502fc12574ef004deed3/1SDC007107G0201.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Dokument z 2008 r.; stabilne definicje PF, bez aktualnego doboru urządzeń lub wymagań norm. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-rcd",
+      "title": "Which RCD Type?",
+      "url": "https://electrical.theiet.org/wiring-matters/years/2019/77-september-2019/which-rcd-type/",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "IET 2019, kontekst UK; definicje RCCB/RCBO, nie instrukcja doboru dla Polski. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-earthing",
+      "title": "Earthing connections",
+      "url": "https://www.electrical-installation.org/enwiki/Earthing_connections",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Funkcje ochronne; zdjęcie nie zastępuje badań. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-osha-safety",
+      "title": "Controlling Electrical Hazards, OSHA 3075",
+      "url": "https://obis.osha.gov/Publications/osha3075.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Oficjalny mirror publikacji 2002; fizyka zagrożeń, nie aktualna polska procedura prawna. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-cell",
+      "title": "Solar Photovoltaic Cell Basics",
+      "url": "https://www.energy.gov/cmei/systems/solar-photovoltaic-cell-basics",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Wprowadzenie DOE, bez pełnego modelu półprzewodnika. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-pv",
+      "title": "Solar Photovoltaic Technology Basics",
+      "url": "https://www.energy.gov/cmei/systems/solar-photovoltaic-technology-basics",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Hierarchia komponentów, nie specyfikacja konkretnej instalacji. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-jinko",
+      "title": "Installation manual for Photovoltaic Module",
+      "url": "https://jinkosolar.com.au/wp-content/uploads/2023/11/Installation-Manual-16.10.23.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Instrukcja 2023 dotyczy wymienionych produktów; STC, topologia i limity nie zatwierdzają projektu innego produktu. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-inverter",
+      "title": "PV Inverters: Basic Facts for Planning PV Systems",
+      "url": "https://www.sma.de/en/partners/knowledgebase/pv-inverters-basic-facts-for-planning-pv-systems",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Materiały producenta; role falownika i MPPT, bez rekomendacji zakupu. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-inverter-types",
+      "title": "Inverters",
+      "url": "https://www.energy.gov.au/solar/get-know-solar-technology/inverters",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Australijskie wprowadzenie do typów falowników i optymalizatorów. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-temperature",
+      "title": "Effect of Temperature",
+      "url": "https://www.pveducation.org/pvcdrom/solar-cell-operation/effect-of-temperature",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Wyjaśnienie fizyki; współczynniki i temperatury zadania są syntetyczne. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-ppa",
+      "title": "Grid-connected PV Operations and Maintenance Guideline",
+      "url": "https://www.ppa.org.fj/wp-content/uploads/2019/08/OM-PV-Systems-Guideline-V2-D2.1.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "PPA/SEIAPI 2019; sekcje 2.2.2 i 4.2.2. Objaśnienie obejść i potrzeby diagnozy; nie procedura dla początkującego. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-om",
+      "title": "Best Practices for Operation and Maintenance of Photovoltaic and Energy Storage Systems; 3rd Edition",
+      "url": "https://docs.nlr.gov/docs/fy19osti/73822.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "NREL 2018, obecny adres repozytorium NLR; jakość danych i monitoring, nie gwarancja rozpoznania przyczyny. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-pr",
+      "title": "Performance Ratio",
+      "url": "https://pvpmc.sandia.gov/modeling-guide/5-ac-system-output/pv-performance-metrics/performance-ratio/",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Wskaźnik produkcji względem odniesienia; nie sprawność modułów ani samodzielna diagnoza. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-poa",
+      "title": "Plane of Array (POA) Irradiance",
+      "url": "https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Płaszczyzna pomiaru ma znaczenie; uproszczone przykłady bez modelowania pełnej pogody. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-sma-pr",
+      "title": "Performance ratio: Quality factor for the PV plant",
+      "url": "https://files.sma.de/downloads/Perfratio-TI-en-11.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Definicja, okres analizy i czynniki wpływu; nie uniwersalny próg awarii. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    }
+  ],
+  "claims": [
+    {
+      "id": "E-C-quantities",
+      "statement": "Prąd opisuje przepływ ładunku w czasie; napięcie jest różnicą potencjałów, a om jednostką rezystancji.",
+      "source_ids": [
+        "E-S-current",
+        "E-S-potential",
+        "E-S-ohm"
+      ],
+      "lesson_ids": [
+        "E01"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-dc-hazard",
+      "statement": "Oświetlone moduły mogą wytwarzać niebezpieczne napięcie DC mimo braku produkcji; złączy nie rozłącza się pod obciążeniem.",
+      "source_ids": [
+        "E-S-sma-safety",
+        "E-S-osha-solar",
+        "E-S-jinko"
+      ],
+      "lesson_ids": [
+        "E01",
+        "E03",
+        "E06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-ohm",
+      "statement": "Dla stałej rezystancji U = I × R; model rezystora nie opisuje pełnej charakterystyki modułu PV.",
+      "source_ids": [
+        "E-S-ohm",
+        "E-S-inverter"
+      ],
+      "lesson_ids": [
+        "E01",
+        "E02",
+        "E04",
+        "E05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-topology",
+      "statement": "W szeregu płynie wspólny prąd i sumują się napięcia; w gałęziach równoległych napięcie jest wspólne, a prądy sumują się.",
+      "source_ids": [
+        "E-S-kirchhoff",
+        "E-S-circuits",
+        "E-S-jinko"
+      ],
+      "lesson_ids": [
+        "E02",
+        "E04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-energy",
+      "statement": "Moc DC to U × I, a energia przy stałej mocy to moc razy czas; dla danych przedziałowych sumujemy energie.",
+      "source_ids": [
+        "E-S-power"
+      ],
+      "lesson_ids": [
+        "E02",
+        "E06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-ac",
+      "statement": "Częstotliwość liczy cykle na sekundę, a wartość skuteczna nie jest wartością szczytową.",
+      "source_ids": [
+        "E-S-ac"
+      ],
+      "lesson_ids": [
+        "E03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-pf",
+      "statement": "PF = P/S; przy zniekształceniach nie należy utożsamiać całego PF z cos φ. Wzór √3 U I PF wymaga właściwego napięcia i symetrycznego układu.",
+      "source_ids": [
+        "E-S-pf",
+        "E-S-three-phase"
+      ],
+      "lesson_ids": [
+        "E03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-protection",
+      "statement": "RCCB nie zawiera ochrony nadprądowej, RCBO łączy funkcje; ochrona i uziemienie nie są dowodem bezpieczeństwa na podstawie zdjęcia.",
+      "source_ids": [
+        "E-S-rcd",
+        "E-S-earthing",
+        "E-S-osha-safety"
+      ],
+      "lesson_ids": [
+        "E03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-role",
+      "statement": "Rozpoznawanie zagrożeń i analiza danych nie upoważniają obserwatora do manipulacji przy instalacji; wymagane są właściwe kompetencje i procedury obiektu.",
+      "source_ids": [
+        "E-S-sma-safety",
+        "E-S-osha-solar",
+        "E-S-jinko"
+      ],
+      "lesson_ids": [
+        "E01",
+        "E03",
+        "E05",
+        "E06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-pv-chain",
+      "statement": "Ogniwa tworzą moduły, moduły łańcuchy i pole PV; falownik przekształca DC na AC.",
+      "source_ids": [
+        "E-S-cell",
+        "E-S-pv",
+        "E-S-jinko",
+        "E-S-inverter"
+      ],
+      "lesson_ids": [
+        "E04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-mppt",
+      "statement": "MPPT śledzi elektryczny punkt maksymalnej mocy; wejścia i kanały danych należy odczytać z dokumentacji, a nie utożsamiać z rzędami modułów.",
+      "source_ids": [
+        "E-S-inverter",
+        "E-S-inverter-types",
+        "E-S-om"
+      ],
+      "lesson_ids": [
+        "E04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-datasheet",
+      "statement": "Voc i Isc opisują odmienne stany; Pmpp jest iloczynem Vmpp i Impp przy określonych warunkach odniesienia.",
+      "source_ids": [
+        "E-S-inverter",
+        "E-S-jinko",
+        "E-S-ppa"
+      ],
+      "lesson_ids": [
+        "E05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-temperature",
+      "statement": "Dla ujemnego współczynnika Voc niższa temperatura podnosi napięcie; liniowe przybliżenie nie zastępuje projektu i weryfikacji limitów.",
+      "source_ids": [
+        "E-S-temperature",
+        "E-S-jinko"
+      ],
+      "lesson_ids": [
+        "E05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-bypass",
+      "statement": "Obejście zacienionej grupy zmienia charakterystykę; nie usuwa każdej straty ani nie pozwala wyznaczyć przyczyny z samego obrazu.",
+      "source_ids": [
+        "E-S-ppa",
+        "E-S-om"
+      ],
+      "lesson_ids": [
+        "E05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-monitoring",
+      "statement": "Porównanie monitoringu wymaga jednostek, czasu, agregacji, granic pomiaru i jakości danych; brak rekordu nie oznacza zera.",
+      "source_ids": [
+        "E-S-om",
+        "E-S-ppa"
+      ],
+      "lesson_ids": [
+        "E04",
+        "E06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-solar-resource",
+      "statement": "Natężenie napromienienia to moc na powierzchnię, napromienienie to energia na powierzchnię; płaszczyzna pomiaru ma znaczenie.",
+      "source_ids": [
+        "E-S-pr",
+        "E-S-poa",
+        "E-S-sma-pr"
+      ],
+      "lesson_ids": [
+        "E05",
+        "E06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-performance",
+      "statement": "PR odnosi energię AC do odniesienia wyznaczonego z mocy STC i napromienienia POA; nie jest sprawnością modułów ani rozpoznaniem awarii.",
+      "source_ids": [
+        "E-S-pr",
+        "E-S-sma-pr",
+        "E-S-om"
+      ],
+      "lesson_ids": [
+        "E06"
+      ],
+      "status": "supported"
+    }
+  ]
+}

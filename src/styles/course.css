@@ -84,3 +84,8 @@
 @media print{
   body>nav,body>footer,.course-hero,.course-principle,.chain-section,.program-section,.course-sidebar,.quiz,.stage-toc,.source-preserved{display:none!important}.learning-app{padding:0!important;background:#fff}.course-shell{display:block;max-width:none;padding:0}.course-stage{display:block!important;box-shadow:none;border-radius:0;break-after:page}.course-stage[hidden]{display:block!important}.stage-header{break-after:page}.course-prose{padding:20px;color:#111}.certificate{display:block!important;border:1px solid #111;color:#111}.academy{background:#fff;color:#111;color-scheme:light}
 }
+
+.reference-library{border-top:1px solid var(--course-line)}
+.reference-library>summary{padding:36px 24px;font-size:24px;cursor:pointer;color:var(--course-ink)}
+.reference-library>summary span{display:block;font-size:14px;color:var(--course-soft);margin-top:8px}
+.reference-library>summary:focus-visible{outline:3px solid var(--course-accent);outline-offset:-4px}

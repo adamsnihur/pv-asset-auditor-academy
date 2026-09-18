@@ -13,7 +13,7 @@ test('academy page exposes the complete learning shell and seven stage panels', 
   assert.match(page, /data-progress-ring/);
   assert.match(page, /data-certificate/);
   assert.match(page, /Zacznij naukę/);
-  assert.match(page, /Treść źródłowa zachowana w całości/);
+  assert.match(page, /Podręcznik do pogłębienia wiedzy/);
   assert.match(page, /PvSystemLab/);
   assert.doesNotMatch(page, /\son[a-z]+=/i);
   assert.match(page, /data-print-certificate/);

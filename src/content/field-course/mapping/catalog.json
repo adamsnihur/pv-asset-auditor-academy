@@ -1,0 +1,961 @@
+{
+  "id": "mapping",
+  "title": "Mapowanie i dane przestrzenne",
+  "description": "Sześć lekcji podstaw fotogrametrii i GIS: od geometrii zdjęcia do kontrolowanego przekazania danych. Wszystkie scenariusze są syntetyczne; blok nie nadaje uprawnień geodezyjnych ani elektrycznych.",
+  "lessons": [
+    {
+      "id": "M01",
+      "title": "Od zdjęcia do mapy: co naprawdę robi fotogrametria",
+      "file": "m01.md",
+      "minutes": 25,
+      "objective": "dobierzesz zdjęcie, ortomozaikę albo model przestrzenny do pytania klienta i uzasadnisz wybór ograniczeniami geometrii.",
+      "summary": "Dobór produktu do pytania odbiorcy, paralaksa, perspektywa i kontrolowane etapy SfM.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "tabela decyzji, obliczenie i sześciopunktowy proces. Sprawdź dopiero po wykonaniu całej karty.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "zrób tabelę z kolumnami „pytanie”, „potrzebny produkt”, „niezbędna kontrola” i „czego nie stwierdzę”. Wypełnij wszystkie cztery wiersze własnymi słowami.",
+            "output": "Tabela czterech potrzeb i produktów"
+          },
+          {
+            "minutes": 5,
+            "instruction": "policz analogiczny przypadek kwadratów przy odległościach 90 m i 60 m. Kwadrat gruntowy ma bok 3 m i zajmuje 120 pikseli. Zapisz stosunek, liczbę pikseli drugiego kwadratu i pozorne pole przy błędnej przeliczce.",
+            "output": "Obliczenie skali, pikseli i pola"
+          },
+          {
+            "minutes": 5,
+            "instruction": "napisz sześć kolejnych etapów od pytania do przekazania produktu. Zaznacz dwa miejsca, w których wstrzymasz dalszą pracę po wykryciu braku danych. Uzasadnij każde zatrzymanie jednym zdaniem.",
+            "output": "Proces z dwoma warunkami zatrzymania"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Klient chce pole poziomego rzutu placu. Który materiał odpowiada potrzebie?",
+          "options": [
+            "Dowolny kadr z naniesioną linijką",
+            "Ortomozaika ze sprawdzoną geometrią i odniesieniem",
+            "Panorama z największą liczbą pikseli",
+            "Zdjęcie z telefonu z poziomu ziemi"
+          ],
+          "answer": 1,
+          "explanation": "Ortomozaika koryguje geometrię obrazu, ale wymaga kontroli. Liczba pikseli, panorama i linijka na surowym zdjęciu nie usuwają perspektywy.",
+          "critical": false
+        },
+        {
+          "prompt": "Takie same kwadraty są 90 m i 60 m od idealnej kamery. Dalszy zajmuje 120 pikseli. Ile zajmie bliższy?",
+          "options": [
+            "80 pikseli",
+            "120 pikseli",
+            "180 pikseli",
+            "240 pikseli"
+          ],
+          "answer": 2,
+          "explanation": "Rozmiar obrazu jest odwrotnie proporcjonalny do odległości: 120 × 90/60 = 180. Mniejsza odległość zwiększa rozmiar; nie dodajemy różnicy metrów do pikseli.",
+          "critical": false
+        },
+        {
+          "prompt": "Program dopasował wszystkie zdjęcia. Co wynika z tego komunikatu?",
+          "options": [
+            "Geometria wymaga dalszej kontroli kompletności i niezależnego odniesienia",
+            "Każdy piksel jest dokładny do GSD",
+            "Model potwierdza nośność dachu",
+            "Nie trzeba kontrolować eksportu"
+          ],
+          "answer": 0,
+          "explanation": "Dopasowanie jest etapem rekonstrukcji. Nie zastępuje kontroli położenia, eksportu ani oceny konstrukcji przez specjalistę.",
+          "critical": false
+        },
+        {
+          "prompt": "Dlaczego kopia zdjęcia nie zastępuje ujęcia z drugiej pozycji?",
+          "options": [
+            "Kopia zawsze ma niższą rozdzielczość",
+            "Kopia usuwa geotag",
+            "Dwa pliki nie mogą mieć tej samej nazwy",
+            "Nie wnosi nowego kierunku obserwacji ani paralaksy"
+          ],
+          "answer": 3,
+          "explanation": "Paralaksa wynika ze zmiany miejsca obserwacji. Nazwa pliku, geotag i identyczna rozdzielczość nie tworzą drugiego widoku.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "M02",
+      "title": "Zaplanuj piksel, pokrycie i ostrość",
+      "file": "m02.md",
+      "minutes": 25,
+      "objective": "obliczysz dla uproszczonego scenariusza wielkość piksela terenowego, odstępy zdjęć i poruszenie oraz wskażesz, co zmienia rzeźba terenu.",
+      "summary": "Rachunek GSD, śladu, pokrycia, interwału i poruszenia z uwzględnieniem rzeźby terenu.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "karta z ośmioma wynikami liczbowymi, szkicem i decyzją operacyjną.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "oblicz GSD, wymiary śladu, odstęp zdjęć i linii nad gruntem. Każdy wynik zapisz z jednostką i jednym działaniem, żeby druga osoba mogła sprawdzić rachunek.",
+            "output": "Tabela GSD, śladu i odstępów"
+          },
+          {
+            "minutes": 5,
+            "instruction": "oblicz interwał zdjęć i poruszenie w pikselach. Następnie wylicz GSD oraz pokrycie nad dachem przy tych samych odstępach. Narysuj dwa prostokąty śladu w przybliżonej skali.",
+            "output": "Interwał, poruszenie i szkic pokrycia nad dachem"
+          },
+          {
+            "minutes": 5,
+            "instruction": "sporządź krótką kartę planu z trzema kontrolami: zgodność parametrów kamery, rzeczywiste odstępy plików i jakość obrazu. Dopisz decyzję, co zrobisz, gdy plan geometryczny wymaga toru niedostępnego operacyjnie.",
+            "output": "Karta kontroli i decyzja operacyjna"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Dla h = 100 m, s = 13,2 mm, f = 8,8 mm i szerokości 6000 pikseli GSD wynosi:",
+          "options": [
+            "0,25 m/piksel",
+            "0,0025 m/piksel",
+            "0,025 m/piksel",
+            "2,5 m/piksel"
+          ],
+          "answer": 2,
+          "explanation": "100 × 13,2 / (8,8 × 6000) = 0,025 m/piksel = 2,5 cm/piksel. Pozostałe odpowiedzi wynikają z błędnego przesunięcia przecinka lub jednostek.",
+          "critical": false
+        },
+        {
+          "prompt": "Ślad ma 150 × 100 m, krótszy bok jest wzdłuż lotu. Jakie odstępy dają 80% podłużnego i 70% poprzecznego pokrycia?",
+          "options": [
+            "20 m między zdjęciami i 45 m między liniami",
+            "80 m i 105 m",
+            "30 m i 30 m",
+            "45 m i 20 m"
+          ],
+          "answer": 0,
+          "explanation": "Nowe pokrycie wynosi 20% ze 100 m i 30% ze 150 m. Nie mnożymy przez część wspólną ani nie zamieniamy kierunków.",
+          "critical": false
+        },
+        {
+          "prompt": "Krótka ekspozycja daje z rachunku 0,25 piksela poruszenia. Czy wyklucza rolling shutter?",
+          "options": [
+            "Tak, bo wynik jest mniejszy niż jeden",
+            "Tak, gdy aparat ma dużo megapikseli",
+            "Tak, jeżeli występuje geotag",
+            "Nie; kolejność i czas odczytu sensora to osobne zagadnienie"
+          ],
+          "answer": 3,
+          "explanation": "Model v × t / GSD opisuje przesunięcie podczas ekspozycji. Odczyt linii w różnym czasie może nadal deformować obraz; liczba pikseli i geotag tego nie rozstrzygają.",
+          "critical": false
+        },
+        {
+          "prompt": "Tor potrzebny do zachowania pokrycia wchodzi w obszar niedostępny operacyjnie. Co robisz?",
+          "options": [
+            "Realizuję go, jeśli zwiększę wysokość",
+            "Zmieniam plan, cel lub termin po ocenie ograniczeń",
+            "Realizuję go z krótszą ekspozycją",
+            "Wykonuję lot szybciej"
+          ],
+          "answer": 1,
+          "explanation": "Geometria zdjęć nie daje zgody na niedostępny tor. Zmiana wysokości, ekspozycji ani prędkości nie stanowi samodzielnej oceny bezpieczeństwa i dopuszczalności.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "M03",
+      "title": "Współrzędne, RTK i niezależna kontrola",
+      "file": "m03.md",
+      "minutes": 25,
+      "objective": "sprawdzisz metrykę odniesienia danych i odróżnisz punkty użyte do dopasowania od punktów sprawdzających gotowy wynik.",
+      "summary": "Odniesienie współrzędnych, RTK/PPK, punkty dopasowania i niezależna kontrola pozioma oraz pionowa.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "metryka, pięć obliczeń i notatka dla dostawcy.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "zrób metrykę z polami „układ poziomy”, „układ pionowy”, „jednostki”, „kolejność osi”, „źródło odniesienia”, „rola punktu”. Zaznacz jawnie, które informacje podano, a których brakuje.",
+            "output": "Metryka z jawnymi brakami"
+          },
+          {
+            "minutes": 5,
+            "instruction": "policz trzy różnice dla B, długość błędu poziomego i wysokość z relacji h − N. Zapisz jednostki i kierunek odejmowania. Wyjaśnij, dlaczego wynik A nie zastępuje wyniku B.",
+            "output": "Różnice, błąd poziomy i wysokość"
+          },
+          {
+            "minutes": 5,
+            "instruction": "napisz wiadomość odbiorczą o długości 80–120 słów. Poproś o konkretne brakujące metadane i opisz, które porównanie można wykonać warunkowo, a którego wyniku jeszcze nie zatwierdzasz.",
+            "output": "Notatka odbiorcza 80–120 słów"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Punkt służył do ręcznego przesunięcia modelu. Jak użyć go w ocenie?",
+          "options": [
+            "Jako niezależny checkpoint",
+            "Jako dowód jakości każdego piksela",
+            "Jako pomiar GSD",
+            "Jako punkt użyty do dopasowania; do niezależnej oceny potrzebny jest inny punkt"
+          ],
+          "answer": 3,
+          "explanation": "Rola wynika z rzeczywistego użycia. Punkt wykorzystany do strojenia nie jest niezależny, nawet gdy w tabeli ma nazwę checkpoint.",
+          "critical": false
+        },
+        {
+          "prompt": "Odniesienie B to 1000,00; 2000,00 m, model 999,94; 2000,08 m. Jaki jest błąd poziomy?",
+          "options": [
+            "0,02 m",
+            "0,10 m",
+            "0,14 m",
+            "0,20 m"
+          ],
+          "answer": 1,
+          "explanation": "Różnice wynoszą −0,06 i +0,08 m. Pierwiastek z 0,06² + 0,08² daje 0,10 m. Ani suma ze znakami, ani suma wartości bezwzględnych nie jest długością tego wektora.",
+          "critical": false
+        },
+        {
+          "prompt": "Dla dydaktycznego h = 122,40 m i N = 32,40 m oblicz H oraz warunek użycia.",
+          "options": [
+            "H = 154,80 m; zawsze dla Polski",
+            "H = 32,40 m; N jest wysokością terenu",
+            "H = 90,00 m; rzeczywiste dane wymagają właściwego układu pionowego i modelu",
+            "H = 90,00 m; odejmowanie tej samej stałej naprawi każdy plik"
+          ],
+          "answer": 2,
+          "explanation": "H ≈ h − N daje 90,00 m w przykładzie. Nie jest to uniwersalna poprawka: polskie dane mogą wymagać wysokości normalnych i konkretnego modelu quasigeoidy.",
+          "critical": false
+        },
+        {
+          "prompt": "Eksport w metrach nie zawiera opisu układu pionowego. Co zapiszesz w odbiorze?",
+          "options": [
+            "Brak definicji odniesienia; wstrzymuję zatwierdzenie porównań wysokości do wyjaśnienia",
+            "Metry potwierdzają zgodność układów",
+            "Status RTK fixed zastępuje tę informację",
+            "Przypiszę losowy EPSG, aby warstwy się pokryły"
+          ],
+          "answer": 0,
+          "explanation": "Jednostka nie określa powierzchni odniesienia. RTK ani wizualne nałożenie warstw nie zastąpią metadanych; przypisanie losowego układu nie jest transformacją.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "M04",
+      "title": "Rekonstrukcja i kontrola powierzchni",
+      "file": "m04.md",
+      "minutes": 25,
+      "objective": "rozpoznasz, czy problem produktu pochodzi z dopasowania zdjęć, odtworzenia powierzchni czy utworzenia ortomozaiki, i zapiszesz właściwą decyzję o dalszej pracy.",
+      "summary": "Rozpoznawanie błędów dopasowania, chmury, DSM/DTM i ortomozaiki na syntetycznym raporcie.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "dwie liczby, trzy karty defektów i decyzja dla każdego produktu.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "policz odsetek wykorzystanych zdjęć i brakującej powierzchni. Dla każdego z trzech defektów wskaż etap, do którego wrócisz, oraz źródło kontroli.",
+            "output": "Dwa odsetki i przypisanie defektów do etapów"
+          },
+          {
+            "minutes": 5,
+            "instruction": "napisz trzy wpisy rejestru jakości. Każdy ma zawierać identyfikator sektora, obserwację, hipotezę przyczyny, konsekwencję i następny krok. Oddziel obserwację od hipotezy.",
+            "output": "Trzy karty defektów"
+          },
+          {
+            "minutes": 5,
+            "instruction": "sformułuj decyzję odbiorczą dla dwóch potrzeb klienta. Wskaż, które fragmenty można przekazać z opisem ograniczenia, a które trzeba wyłączyć lub ponownie pozyskać.",
+            "output": "Decyzja osobno dla powierzchni placu i dokumentacji dachu"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Z 240 zdjęć wykorzystano 216. Brak danych zajmuje 800 z 8000 m². Co raportujesz?",
+          "options": [
+            "90% zdjęć wykorzystanych i 10% powierzchni bez potwierdzenia",
+            "90% powierzchni na pewno dokładnej",
+            "10% zdjęć wykorzystanych i 90% braków",
+            "100% kompletności, bo blok się obliczył"
+          ],
+          "answer": 0,
+          "explanation": "216/240 = 90%, a 800/8000 = 10%. Procent zdjęć i procent powierzchni to różne miary. Nie opisują samodzielnie dokładności pozostałej części.",
+          "critical": false
+        },
+        {
+          "prompt": "Pod koroną drzewa nie odtworzono gruntu. Jaka decyzja jest poprawna?",
+          "options": [
+            "Wpisuję wysokość 0 m",
+            "Zmieniam nazwę DSM na DTM",
+            "Zwiększam gęstość i uznaję grunt za zmierzony",
+            "Oznaczam brak danych; ewentualną interpolację jawnie odróżniam od pomiaru"
+          ],
+          "answer": 3,
+          "explanation": "Brak widoku nie daje pomiaru gruntu. Interpolacja może szacować powierzchnię, lecz ani zmiana nazwy, ani gęstości nie dostarcza brakujących obserwacji.",
+          "critical": false
+        },
+        {
+          "prompt": "Na ortomozaice jest podwójna krawędź modułu. Jaki jest pierwszy krok kontroli?",
+          "options": [
+            "Retuszuję drugą krawędź",
+            "Porównuję sektor ze zdjęciami, powierzchnią i miejscem łączenia obrazów",
+            "Stwierdzam uszkodzenie fizyczne modułu",
+            "Uśredniam kolor całego rzędu"
+          ],
+          "answer": 1,
+          "explanation": "Najpierw rozróżniamy błąd geometrii, szwu i rzeczywisty obiekt. Retusz lub uśrednienie mogą ukryć problem, a diagnoza uszkodzenia nie wynika z samego artefaktu.",
+          "critical": false
+        },
+        {
+          "prompt": "Powtarzalne, odbijające moduły utrudniają rekonstrukcję. Co wybierasz w ramach ćwiczenia?",
+          "options": [
+            "Naklejam znaczniki na pracującej instalacji",
+            "Maluję moduły dla poprawy tekstury",
+            "Dokumentuję ograniczenie i uzgadniam bezpieczną metodę z odpowiedzialną osobą",
+            "Wchodzę między urządzenia, żeby zrobić lepszy kadr"
+          ],
+          "answer": 2,
+          "explanation": "Ćwiczenie nie wymaga kontaktu z instalacją. Poprawa tekstury nie uzasadnia ingerencji w moduły ani wejścia do obszaru zagrożenia elektrycznego.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "M05",
+      "title": "GIS: pomiar, objętość i uczciwa dokładność",
+      "file": "m05.md",
+      "minutes": 25,
+      "objective": "wykonasz kontrolne obliczenie powierzchni, objętości i błędu na punktach niezależnych oraz zapiszesz warunki, bez których wyniki nie nadają się do przekazania.",
+      "summary": "Raster i wektor, powierzchnia rzutu, baza objętości i poprawna interpretacja RMSE.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "tabela obliczeń i metryka pomiaru.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "policz pole i obwód prostokąta, objętość nasypu oraz objętość po podniesieniu bazy o 0,1 m. Zapisz, które wielkości dotyczą rzutu poziomego.",
+            "output": "Pole, obwód i dwa warianty objętości"
+          },
+          {
+            "minutes": 5,
+            "instruction": "policz błąd poziomy każdego punktu, poziome i pionowe RMSE oraz średni dz. Pokaż sumy kwadratów, aby wykryć pomyłkę przed pierwiastkowaniem.",
+            "output": "Błędy punktów, RMSE i średni dz"
+          },
+          {
+            "minutes": 5,
+            "instruction": "przygotuj tabelę wyników z kolumną ograniczeń. Dopisz metadane, których potrzebowałby odbiorca: układ, baza, jednostki, granica, punkty kontroli i zakres NoData. Napisz jedno zdanie odrzucające nieuzasadnioną deklarację dokładności.",
+            "output": "Tabela wyników, ograniczeń i wymaganych metadanych"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Cztery komórki po 100 m² mają grubości 0,5; 1; 1,5; 1 m. Ile wynosi objętość po podniesieniu bazy o 0,1 m?",
+          "options": [
+            "400 m³",
+            "360 m³",
+            "40 m³",
+            "1000 m³"
+          ],
+          "answer": 1,
+          "explanation": "Objętość pierwotna to 400 m³. Podniesienie bazy odejmuje 0,1 × 400 = 40 m³, pozostawiając 360 m³. Pole całego placu nie jest polem komórek nasypu.",
+          "critical": false
+        },
+        {
+          "prompt": "Błędy poziome to 0,05; 0,05; 0,10; 0,10 m. Poziome RMSE wynosi:",
+          "options": [
+            "0,075 m, bo to średnia błędów",
+            "0,025 m, bo to suma kwadratów",
+            "0 m, bo znaki się znoszą",
+            "Około 0,0791 m"
+          ],
+          "answer": 3,
+          "explanation": "Suma kwadratów wynosi 0,025 m². √(0,025/4) ≈ 0,0791 m. RMSE nie jest zwykłą średnią ani sumą ze znakami.",
+          "critical": false
+        },
+        {
+          "prompt": "Warstwa ma GSD 2 cm, a cztery punkty dają RMSE około 8 cm. Co możesz stwierdzić?",
+          "options": [
+            "Podaję osobno rozdzielczość i wynik tej próbki wraz z ograniczeniami kontroli",
+            "Każdy piksel ma błąd mniejszy niż 2 cm",
+            "Mapa ma certyfikowaną dokładność 8 cm",
+            "Maksymalny błąd wynosi dokładnie 8 cm"
+          ],
+          "answer": 0,
+          "explanation": "GSD opisuje rozdzielczość, RMSE statystykę próbki. Cztery punkty bez reprezentatywności i standardu kontroli nie certyfikują całej mapy, a RMSE nie jest maksimum.",
+          "critical": false
+        },
+        {
+          "prompt": "W rastrze wysokości komórka ma NoData. Jak traktujesz ją przy objętości?",
+          "options": [
+            "Jako dokładne 0 m",
+            "Jako minimum sąsiednich komórek bez adnotacji",
+            "Jako brak wartości wymagający wyłączenia lub uzasadnionego uzupełnienia z opisem",
+            "Jako wysokość bazy z definicji"
+          ],
+          "answer": 2,
+          "explanation": "NoData nie oznacza poziomu zero ani bazy. Automatyczne zastąpienie wartością może zmienić objętość i ukryć brak obserwacji.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "M06",
+      "title": "Przekaż opracowanie, które da się sprawdzić",
+      "file": "m06.md",
+      "minutes": 25,
+      "objective": "przygotujesz kartę przekazania syntetycznego opracowania mapowego z policzonymi wskaźnikami, zakresem użycia i decyzją o brakujących danych.",
+      "summary": "Końcowa karta przekazania z rachunkiem, rejestrem braków, decyzjami i rubryką oceny.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "jedna karta przekazania, tabela obliczeń i cztery decyzje produktowe.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "policz GSD, ślad zdjęcia, oba pokrycia, interwał i poruszenie. Dopisz odsetek zdjęć wykorzystanych oraz brakującej powierzchni. Wyniki zapisz w tabeli razem ze wzorem lub krótkim działaniem.",
+            "output": "Tabela geometrii zdjęć i kompletności"
+          },
+          {
+            "minutes": 5,
+            "instruction": "policz pole i obwód strefy składowania, objętość czterech komórek, poziome oraz pionowe RMSE na punktach C1–C4. Sprawdź wrażliwość objętości, podnosząc bazę o 0,2 m. Wskaż, czego nie dowodzi mały zestaw punktów.",
+            "output": "Pole, obwód, objętości i RMSE"
+          },
+          {
+            "minutes": 5,
+            "instruction": "napisz notatkę przekazania o długości 120–180 słów. Określ status obrazu, obrysu, objętości i sektora R2. Dodaj brak typu migawki, identyfikację układu lokalnego i potrzebę zachowania zdjęć źródłowych. Nie podpisuj decyzji zastrzeżonej dla właściwego specjalisty.",
+            "output": "Notatka 120–180 słów i cztery decyzje produktowe"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "W zadaniu wykorzystano 240/250 zdjęć; brak to 1000 m² z 200 × 100 m. Jakie liczby wpiszesz?",
+          "options": [
+            "96% kompletności powierzchni i 4% braków",
+            "95% zdjęć i 5% braków",
+            "96% zdjęć wykorzystanych i 5% powierzchni bez potwierdzonej rekonstrukcji",
+            "100% pokrycia, bo strefa składowania jest kompletna"
+          ],
+          "answer": 2,
+          "explanation": "240/250 = 96%, a 1000/20000 = 5%. Kompletność jednego obrysu nie usuwa braków reszty wymaganego obszaru.",
+          "critical": false
+        },
+        {
+          "prompt": "Cztery komórki po 25 m² dają 200 m³. Jak opiszesz wynik?",
+          "options": [
+            "200 m³ dotyczy tylko 100 m² komórek nad przyjętą bazą",
+            "200 m³ dotyczy całego placu 20 000 m²",
+            "200 m³ jest masą składowanego materiału",
+            "200 m³ potwierdza rozliczenie robót"
+          ],
+          "answer": 0,
+          "explanation": "100 m² to łączny obszar czterech komórek. Nie znamy reszty nasypu, gęstości materiału ani wymagań rozliczenia; wynik zachowuje wąski zakres.",
+          "critical": false
+        },
+        {
+          "prompt": "Sektor R2 ma podwójną krawędź; reszta danych jest częściowo kompletna. Co przekażesz?",
+          "options": [
+            "Jedno globalne zatwierdzenie opracowania",
+            "R2 po retuszu bez wzmianki w metryce",
+            "Tylko estetyczny zrzut ekranu",
+            "Osobne decyzje dla produktów, wyłączenie R2 z pomiarów do kontroli i jawny rejestr braków"
+          ],
+          "answer": 3,
+          "explanation": "Status zależy od potrzeb odbiorcy i kompletności produktu. Osobne decyzje umożliwiają ograniczone użycie danych; retusz i zrzut nie rozwiązują przyczyny problemu.",
+          "critical": false
+        },
+        {
+          "prompt": "Po zaliczeniu bloku potrzebujesz dodatkowych zdjęć przy pracującej instalacji. Która decyzja jest zgodna z zakresem kursu?",
+          "options": [
+            "Kurs upoważnia do wejścia do obszaru elektrycznego",
+            "Przekazuję potrzebę odpowiedzialnej osobie; ukończenie kursu nie daje uprawnień ani zgody na tę pracę",
+            "Wystarczy uzyskać dobry wynik z rachunków",
+            "Mogę ingerować w instalację, jeśli dane nazwę syntetycznymi"
+          ],
+          "answer": 1,
+          "explanation": "Zaliczenie podstaw mapowania nie nadaje kwalifikacji zawodowych ani upoważnienia do prac przy urządzeniach. Wynik quizu i etykieta danych nie usuwają zagrożenia.",
+          "critical": true
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "M-S01",
+      "title": "What is... (a densified point cloud? an orthomosaic? etc.)",
+      "url": "https://support.pix4d.com/hc/en-us/articles/206455126",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Definicje producenta. Nie przenosimy zapewnień dokładności ani instrukcji konkretnego produktu na każdy projekt."
+    },
+    {
+      "id": "M-S02",
+      "title": "Creating 3D point clouds, digital elevation models, and orthomosaics from historical aerial imagery through structure from motion aided photogrammetry",
+      "url": "https://www.usgs.gov/publications/creating-3d-point-clouds-digital-elevation-models-and-orthomosaics-historical-aerial",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Nie powielano tekstu, danych, zdjęć ani ilustracji źródłowych; zakres wykorzystania ograniczony do własnego objaśnienia faktów z odsyłaczem. Nie zadeklarowano licencji na materiały osób trzecich.",
+      "limitations": "USGS 2026, DOI 10.3133/tm11C11. Dotyczy zdjęć archiwalnych; użyto ogólnego procesu SfM, bez przenoszenia wyników przypadków na UAV. Strona publikacji dostępna; treść HTML pełnego raportu zweryfikowana w indeksie wyszukiwania, bezpośredni odczyt zwracał 403."
+    },
+    {
+      "id": "M-S03",
+      "title": "Ground sampling distance (GSD) in photogrammetry",
+      "url": "https://support.pix4d.com/hc/en-us/articles/202559809",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "GSD i parametry kamery. Rachunki kursu dotyczą uproszczonej kamery nadiralnej i syntetycznych parametrów, nie dokładności dowolnej mapy."
+    },
+    {
+      "id": "M-S04",
+      "title": "Step 1. Before Starting a Project > 1. Designing the Image Acquisition Plan > a. Selecting the Image Acquisition Plan Type - PIX4Dmapper",
+      "url": "https://support.pix4d.com/hc/en-us/articles/202557459",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Dokumentacja akwizycji producenta. Pokrycia 80%/70% są założeniami ćwiczeń; nie stanowią minimum normowego ani zatwierdzenia lotu."
+    },
+    {
+      "id": "M-S05",
+      "title": "How to correct for the Rolling Shutter Effect - PIX4Dmapper",
+      "url": "https://support.pix4d.com/hc/en-us/articles/208460436",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Wyjaśnienie czasowego odczytu sensora. Instrukcja korekcji dotyczy konkretnego programu i trybu; nie przyjęto, że każda migawka mechaniczna jest globalna."
+    },
+    {
+      "id": "M-S06",
+      "title": "What is the relative and absolute accuracy of drone mapping?",
+      "url": "https://support.pix4d.com/hc/en-us/articles/202558889",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Dokumentacja producenta rozróżnia dokładność względną i bezwzględną oraz lokalne problemy powierzchni. Nie przyjęto marketingowych zakresów wielokrotności GSD jako gwarancji."
+    },
+    {
+      "id": "M-S07",
+      "title": "RTK and PPK workflow - PIX4Dmatic",
+      "url": "https://support.pix4d.com/hc/rtk-ppk-pix4dmatic",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Użyto różnicy czasu korekcji GNSS. Opis producenta nie zastępuje niezależnej kontroli gotowego produktu ani instrukcji konkretnego odbiornika."
+    },
+    {
+      "id": "M-S08",
+      "title": "Converting Ground Control Points (GCPs) to Checkpoints - PIX4Dcatch",
+      "url": "https://support.pix4d.com/hc/converting-ground-control-points-gcps-to-checkpoints-pix4dcatch",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Użyto rozróżnienia roli punktów. Niezależność musi wynikać z całego procesu, nie z etykiety w aplikacji."
+    },
+    {
+      "id": "M-S09",
+      "title": "8. Coordinate Reference Systems",
+      "url": "https://docs.qgis.org/3.44/en/docs/gentle_gis_introduction/coordinate_reference_systems.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Dokumentacja QGIS: GNU FDL 1.3 lub późniejsza, https://docs.qgis.org/3.44/en/docs/about/license/index.html. Kurs ma własne przykłady i sformułowania; nie zawiera reprodukcji podręcznika ani jego ilustracji.",
+      "limitations": "Dokumentacja QGIS 3.44. Definicje i dobór układu; kurs nie przypisuje EPSG syntetycznym współrzędnym lokalnym."
+    },
+    {
+      "id": "M-S10",
+      "title": "Converting GPS Height into NAVD88 Elevation with the GEOID96 Geoid Height Model",
+      "url": "https://www.ngs.noaa.gov/PUBS_LIB/gislis96.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Nie powielano tekstu, danych, zdjęć ani ilustracji źródłowych; zakres wykorzystania ograniczony do własnego objaśnienia faktów z odsyłaczem. Nie zadeklarowano licencji na materiały osób trzecich.",
+      "limitations": "Historyczny materiał NOAA: wyłącznie relacja h, H i N. Nie używać modelu GEOID96 do Polski ani traktować strony jako aktualnej instrukcji transformacji."
+    },
+    {
+      "id": "M-S11",
+      "title": "Model quasi-geoidy PL-geoid2021 modelem obowiązującym",
+      "url": "https://www.gov.pl/web/gugik/model-quasi-geoidy-pl-geoid2021-modelem-obowiazujacym",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Stopka źródła: tekst CC BY-SA 4.0, multimedia CC BY-NC-ND 4.0 z zastrzeżeniami. Cytowany fakt i odsyłacz, bez kopiowania tekstu lub ilustracji.",
+      "limitations": "Komunikat GUGiK z 05.04.2022 potwierdza przeliczanie wysokości elipsoidalnych na normalne. Kurs nie dostarcza siatki transformacji ani certyfikowanego pomiaru."
+    },
+    {
+      "id": "M-S12",
+      "title": "Quality report - PIX4Dmatic",
+      "url": "https://support.pix4d.com/hc/en-us/articles/360040686852",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Definicje reprojekcji, błędów współrzędnych i statystyk raportu. Kolory oraz progi konkretnego programu nie są kryteriami certyfikacji kursu."
+    },
+    {
+      "id": "M-S13",
+      "title": "Photogrammetric Processing Algorithms",
+      "url": "https://developer.pix4d.com/server/2.9.0/processing.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Dokumentacja API w wersji 2.9.0. Służy do wyjaśnienia kalibracji i zagęszczania, nie do instrukcji bieżącego interfejsu."
+    },
+    {
+      "id": "M-S14",
+      "title": "6. Raster Data",
+      "url": "https://docs.qgis.org/3.44/en/docs/gentle_gis_introduction/raster_data.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Dokumentacja QGIS: GNU FDL 1.3 lub późniejsza, https://docs.qgis.org/3.44/en/docs/about/license/index.html. Kurs ma własne przykłady i sformułowania; nie zawiera reprodukcji podręcznika ani jego ilustracji.",
+      "limitations": "Dokumentacja QGIS 3.44. Raster, piksel i rozdzielczość; przykłady liczbowe kursu są własne."
+    },
+    {
+      "id": "M-S15",
+      "title": "3. Vector Data",
+      "url": "https://docs.qgis.org/3.44/en/docs/gentle_gis_introduction/vector_data.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Dokumentacja QGIS: GNU FDL 1.3 lub późniejsza, https://docs.qgis.org/3.44/en/docs/about/license/index.html. Kurs ma własne przykłady i sformułowania; nie zawiera reprodukcji podręcznika ani jego ilustracji.",
+      "limitations": "Dokumentacja QGIS 3.44. Geometria i atrybuty nie dowodzą niezależnej dokładności narysowanego obrysu."
+    },
+    {
+      "id": "M-S16",
+      "title": "8. General Tools",
+      "url": "https://docs.qgis.org/3.44/en/docs/user_manual/introduction/general_tools.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Dokumentacja QGIS: GNU FDL 1.3 lub późniejsza, https://docs.qgis.org/3.44/en/docs/about/license/index.html. Kurs ma własne przykłady i sformułowania; nie zawiera reprodukcji podręcznika ani jego ilustracji.",
+      "limitations": "Dokumentacja QGIS 3.44, narzędzia pomiarów. Rzeczywisty wynik zależy od ustawień elipsoidy, jednostek i geometrii."
+    },
+    {
+      "id": "M-S17",
+      "title": "24.1.18. Raster analysis",
+      "url": "https://docs.qgis.org/3.44/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Dokumentacja QGIS: GNU FDL 1.3 lub późniejsza, https://docs.qgis.org/3.44/en/docs/about/license/index.html. Kurs ma własne przykłady i sformułowania; nie zawiera reprodukcji podręcznika ani jego ilustracji.",
+      "limitations": "Sekcja Raster surface volume wiąże objętość z bazą i metodą liczenia nad/pod bazą. Braki NoData i granice nadal wymagają kontroli."
+    },
+    {
+      "id": "M-S18",
+      "title": "Landsat Normalized Difference Vegetation Index",
+      "url": "https://www.usgs.gov/landsat-missions/landsat-normalized-difference-vegetation-index",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Nie powielano tekstu, danych, zdjęć ani ilustracji źródłowych; zakres wykorzystania ograniczony do własnego objaśnienia faktów z odsyłaczem. Nie zadeklarowano licencji na materiały osób trzecich.",
+      "limitations": "Definicja NDVI wykorzystująca pasma czerwone i bliską podczerwień. Nie przenosimy parametrów Landsat na kamerę UAV."
+    },
+    {
+      "id": "M-S19",
+      "title": "What is Lidar data and where can I download it?",
+      "url": "https://www.usgs.gov/faqs/what-lidar-data-and-where-can-i-download-it?items_per_page=6&page=0",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Nie powielano tekstu, danych, zdjęć ani ilustracji źródłowych; zakres wykorzystania ograniczony do własnego objaśnienia faktów z odsyłaczem. Nie zadeklarowano licencji na materiały osób trzecich.",
+      "limitations": "Wyłącznie definicja aktywnego pomiaru laserowego; nie twierdzimy, że każda technika LiDAR zapewnia pomiar każdego punktu pod roślinnością."
+    },
+    {
+      "id": "M-S20",
+      "title": "Green Job Hazards - Solar Energy: Electrical",
+      "url": "https://www.osha.gov/green-jobs/solar/electrical",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Nie powielano tekstu, danych, zdjęć ani ilustracji źródłowych; zakres wykorzystania ograniczony do własnego objaśnienia faktów z odsyłaczem. Nie zadeklarowano licencji na materiały osób trzecich.",
+      "limitations": "Pierwotne źródło o zagrożeniu porażeniem i łukiem przy PV, zweryfikowane przez indeks wyszukiwania; bezpośredni odczyt 403. To amerykańska informacja o zagrożeniach, nie polska podstawa uprawnień ani odległości bezpieczeństwa. Kurs wyklucza ingerencję w instalację."
+    }
+  ],
+  "claims": [
+    {
+      "id": "M-C01",
+      "statement": "Ortomozaika koryguje geometrię perspektywy i skali; nie jest zwykłym sklejeniem zdjęć.",
+      "source_ids": [
+        "M-S01"
+      ],
+      "lesson_ids": [
+        "M01",
+        "M04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C02",
+      "statement": "Fotogrametria SfM dopasowuje widoki, wyznacza parametry kamer i buduje geometrię przed tworzeniem produktów.",
+      "source_ids": [
+        "M-S02",
+        "M-S13"
+      ],
+      "lesson_ids": [
+        "M01",
+        "M04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C03",
+      "statement": "GSD zależy od odległości kamery od powierzchni, rozmiaru sensora, ogniskowej i liczby pikseli; nie jest samodzielną miarą błędu położenia.",
+      "source_ids": [
+        "M-S03",
+        "M-S06"
+      ],
+      "lesson_ids": [
+        "M02",
+        "M03",
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C04",
+      "statement": "Zmiana odległości od powierzchni zmienia ślad zdjęcia, GSD i uzyskane pokrycie przy stałych odstępach zdjęć.",
+      "source_ids": [
+        "M-S03",
+        "M-S04"
+      ],
+      "lesson_ids": [
+        "M02",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C05",
+      "statement": "Zalecane pokrycie i kierunki obserwacji zależą od sceny, a powtarzalna lub uboga tekstura utrudnia dopasowanie.",
+      "source_ids": [
+        "M-S04"
+      ],
+      "lesson_ids": [
+        "M02",
+        "M04",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C06",
+      "statement": "Rolling shutter odczytuje części obrazu w różnym czasie; krótka ekspozycja nie dowodzi usunięcia zniekształceń tego odczytu.",
+      "source_ids": [
+        "M-S05"
+      ],
+      "lesson_ids": [
+        "M02",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C07",
+      "statement": "RTK korzysta z korekcji podczas pracy, a PPK przetwarza zapisane obserwacje po pozyskaniu danych.",
+      "source_ids": [
+        "M-S07"
+      ],
+      "lesson_ids": [
+        "M03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C08",
+      "statement": "GCP wpływa na dopasowanie, a niezależny checkpoint kontroluje wynik bez udziału w dopasowaniu.",
+      "source_ids": [
+        "M-S08",
+        "M-S12"
+      ],
+      "lesson_ids": [
+        "M03",
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C09",
+      "statement": "Współrzędne wymagają określenia układu odniesienia; przypisanie CRS nie jest przeliczeniem między układami.",
+      "source_ids": [
+        "M-S09"
+      ],
+      "lesson_ids": [
+        "M03",
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C10",
+      "statement": "W dydaktycznej relacji wysokości ortometrycznej, elipsoidalnej i odstępu geoidy stosuje się H ≈ h − N.",
+      "source_ids": [
+        "M-S10"
+      ],
+      "lesson_ids": [
+        "M03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C11",
+      "statement": "Polski model quasigeoidy opisany przez GUGiK służy do przeliczania wysokości elipsoidalnych na normalne, nie do mechanicznego stosowania dowolnej stałej.",
+      "source_ids": [
+        "M-S11"
+      ],
+      "lesson_ids": [
+        "M03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C12",
+      "statement": "Błąd reprojekcji w obrazie i błąd współrzędnych terenowych są odrębnymi wielkościami raportu jakości.",
+      "source_ids": [
+        "M-S12"
+      ],
+      "lesson_ids": [
+        "M04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C13",
+      "statement": "DSM obejmuje powierzchnię z obiektami, DTM opisuje teren po odróżnieniu obiektów; raster wysokości zapisuje pojedynczą wysokość w komórce.",
+      "source_ids": [
+        "M-S01"
+      ],
+      "lesson_ids": [
+        "M04",
+        "M05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C14",
+      "statement": "Odbijające powierzchnie, krawędzie i uboga tekstura mogą obniżyć lokalną jakość odtworzenia.",
+      "source_ids": [
+        "M-S06",
+        "M-S04"
+      ],
+      "lesson_ids": [
+        "M04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C15",
+      "statement": "Raster jest siatką komórek; wektor opisuje geometrię punktów, linii i wielokątów oraz atrybuty.",
+      "source_ids": [
+        "M-S14",
+        "M-S15"
+      ],
+      "lesson_ids": [
+        "M05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C16",
+      "statement": "Sposób pomiaru w QGIS zależy od jednostek i ustawień elipsoidy; pole rzutu nie jest automatycznie powierzchnią przestrzenną połaci.",
+      "source_ids": [
+        "M-S16"
+      ],
+      "lesson_ids": [
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C17",
+      "statement": "Objętość rastra oblicza się względem określonej bazy i z wybraną metodą sumowania wartości ponad oraz poniżej bazy.",
+      "source_ids": [
+        "M-S17"
+      ],
+      "lesson_ids": [
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C18",
+      "statement": "Błędy punktów liczy się jako model minus odniesienie; RMSE opiera się na kwadratach błędów i nie jest średnią ze znakami ani maksimum.",
+      "source_ids": [
+        "M-S12"
+      ],
+      "lesson_ids": [
+        "M03",
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C19",
+      "statement": "NDVI wykorzystuje pasmo czerwone i bliską podczerwień; standardowe RGB nie zawiera pomiaru tego drugiego pasma.",
+      "source_ids": [
+        "M-S18"
+      ],
+      "lesson_ids": [
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C20",
+      "statement": "LiDAR jest pomiarem z wykorzystaniem światła laserowego, odrębnym od odtworzenia chmury ze zdjęć.",
+      "source_ids": [
+        "M-S19"
+      ],
+      "lesson_ids": [
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C21",
+      "statement": "PV wiąże się z zagrożeniami elektrycznymi; ćwiczenia mapowania nie uzasadniają kontaktu ani ingerencji w instalację.",
+      "source_ids": [
+        "M-S20"
+      ],
+      "lesson_ids": [
+        "M04",
+        "M06"
+      ],
+      "status": "supported"
+    }
+  ]
+}

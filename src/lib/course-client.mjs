@@ -70,7 +70,7 @@ export function initializeCourse(root = document) {
     const completed = new Set(state.completed);
     const unlocked = getUnlocked(stageIds, completed);
     const percent = Math.round((completed.size / stageIds.length) * 100);
-    const hours = courseStages.filter(({ id }) => completed.has(id)).reduce((sum, stage) => sum + stage.hours, 0);
+    const hours = courseStages.filter(({ id }) => completed.has(id)).length;
     const ring = root.querySelector('[data-progress-ring]');
     const value = root.querySelector('[data-progress-value]');
     const hoursNode = root.querySelector('[data-hours-complete]');

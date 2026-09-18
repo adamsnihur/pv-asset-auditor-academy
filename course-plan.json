@@ -1,0 +1,2785 @@
+{
+  "course": {
+    "title": "Od podstaw do danych z inspekcji UAV",
+    "template": false,
+    "quality_profile": "proficiency",
+    "declared_minutes": 450,
+    "reading_wpm": 180,
+    "research": {
+      "openalex_queries": [
+        "photovoltaic infrared thermography unmanned aerial vehicle review",
+        "UAV structure from motion ground control checkpoints accuracy"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "E-S-current",
+      "title": "20.1 Current",
+      "url": "https://openstax.org/books/college-physics-2e/pages/20-1-current",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Definicja średniego/stałego prądu; nie model każdej instalacji. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-potential",
+      "title": "19.1 Electric Potential Energy: Potential Difference",
+      "url": "https://openstax.org/books/college-physics-2e/pages/19-1-electric-potential-energy-potential-difference",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Podstawy fizyki, bez procedur badań. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-ohm",
+      "title": "20.2 Ohm’s Law: Resistance and Simple Circuits",
+      "url": "https://openstax.org/books/college-physics-2e/pages/20-2-ohms-law-resistance-and-simple-circuits",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Liniowy model rezystora; nie pełna charakterystyka modułu PV. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-sma-safety",
+      "title": "Safety during Maintenance",
+      "url": "https://manuals.sma.de/STPxxx70/en-US/13841148043.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Instrukcja konkretnego falownika; wykorzystywana do rozpoznania zagrożeń, bez przenoszenia procedury serwisowej. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-osha-solar",
+      "title": "Green Job Hazards: Solar Energy: Electrical",
+      "url": "https://www.osha.gov/green-jobs/solar/electrical",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Weryfikacja przez indeksowany tekst oficjalnej strony; bezpośrednie otwarcie zwracało 403. Kontekst USA, nie polskie uprawnienia. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-kirchhoff",
+      "title": "10.3 Kirchhoff’s Rules",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-3-kirchhoffs-rules",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Idealne skupione obwody i bilanse. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-circuits",
+      "title": "Chapter 10 Summary",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-summary",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Połączenia oporników, nie projekt PV. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-power",
+      "title": "20.4 Electric Power and Energy",
+      "url": "https://openstax.org/books/college-physics/pages/20-4-electric-power-and-energy",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zależności fizyczne; zmienna moc wymaga sumowania/calkowania w czasie. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-ac",
+      "title": "20.5 Alternating Current versus Direct Current",
+      "url": "https://openstax.org/books/college-physics-2e/pages/20-5-alternating-current-versus-direct-current",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Podstawy AC, RMS i częstotliwości; wartości ćwiczeń są syntetyczne. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-three-phase",
+      "title": "Installed apparent power (kVA)",
+      "url": "https://www.electrical-installation.org/enwiki/Installed_apparent_power_%28kVA%29",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Wzór trójfazowy przy obciążeniu symetrycznym, rozróżnienie napięć. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-pf",
+      "title": "Power factor correction and harmonic filtering in electrical plants",
+      "url": "https://library.e.abb.com/public/4ffab4cf79db502fc12574ef004deed3/1SDC007107G0201.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Dokument z 2008 r.; stabilne definicje PF, bez aktualnego doboru urządzeń lub wymagań norm. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-rcd",
+      "title": "Which RCD Type?",
+      "url": "https://electrical.theiet.org/wiring-matters/years/2019/77-september-2019/which-rcd-type/",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "IET 2019, kontekst UK; definicje RCCB/RCBO, nie instrukcja doboru dla Polski. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-earthing",
+      "title": "Earthing connections",
+      "url": "https://www.electrical-installation.org/enwiki/Earthing_connections",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Funkcje ochronne; zdjęcie nie zastępuje badań. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-osha-safety",
+      "title": "Controlling Electrical Hazards, OSHA 3075",
+      "url": "https://obis.osha.gov/Publications/osha3075.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Oficjalny mirror publikacji 2002; fizyka zagrożeń, nie aktualna polska procedura prawna. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-cell",
+      "title": "Solar Photovoltaic Cell Basics",
+      "url": "https://www.energy.gov/cmei/systems/solar-photovoltaic-cell-basics",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Wprowadzenie DOE, bez pełnego modelu półprzewodnika. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-pv",
+      "title": "Solar Photovoltaic Technology Basics",
+      "url": "https://www.energy.gov/cmei/systems/solar-photovoltaic-technology-basics",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Hierarchia komponentów, nie specyfikacja konkretnej instalacji. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-jinko",
+      "title": "Installation manual for Photovoltaic Module",
+      "url": "https://jinkosolar.com.au/wp-content/uploads/2023/11/Installation-Manual-16.10.23.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Instrukcja 2023 dotyczy wymienionych produktów; STC, topologia i limity nie zatwierdzają projektu innego produktu. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-inverter",
+      "title": "PV Inverters: Basic Facts for Planning PV Systems",
+      "url": "https://www.sma.de/en/partners/knowledgebase/pv-inverters-basic-facts-for-planning-pv-systems",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Materiały producenta; role falownika i MPPT, bez rekomendacji zakupu. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-inverter-types",
+      "title": "Inverters",
+      "url": "https://www.energy.gov.au/solar/get-know-solar-technology/inverters",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Australijskie wprowadzenie do typów falowników i optymalizatorów. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-temperature",
+      "title": "Effect of Temperature",
+      "url": "https://www.pveducation.org/pvcdrom/solar-cell-operation/effect-of-temperature",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Wyjaśnienie fizyki; współczynniki i temperatury zadania są syntetyczne. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-ppa",
+      "title": "Grid-connected PV Operations and Maintenance Guideline",
+      "url": "https://www.ppa.org.fj/wp-content/uploads/2019/08/OM-PV-Systems-Guideline-V2-D2.1.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "PPA/SEIAPI 2019; sekcje 2.2.2 i 4.2.2. Objaśnienie obejść i potrzeby diagnozy; nie procedura dla początkującego. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-om",
+      "title": "Best Practices for Operation and Maintenance of Photovoltaic and Energy Storage Systems; 3rd Edition",
+      "url": "https://docs.nlr.gov/docs/fy19osti/73822.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "NREL 2018, obecny adres repozytorium NLR; jakość danych i monitoring, nie gwarancja rozpoznania przyczyny. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-pr",
+      "title": "Performance Ratio",
+      "url": "https://pvpmc.sandia.gov/modeling-guide/5-ac-system-output/pv-performance-metrics/performance-ratio/",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Wskaźnik produkcji względem odniesienia; nie sprawność modułów ani samodzielna diagnoza. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-poa",
+      "title": "Plane of Array (POA) Irradiance",
+      "url": "https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Płaszczyzna pomiaru ma znaczenie; uproszczone przykłady bez modelowania pełnej pogody. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "E-S-sma-pr",
+      "title": "Performance ratio: Quality factor for the PV plant",
+      "url": "https://files.sma.de/downloads/Perfratio-TI-en-11.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Definicja, okres analizy i czynniki wpływu; nie uniwersalny próg awarii. Zakres ponownego użycia: własna parafraza faktów i odsyłacz; bez kopiowania tabel, ilustracji lub fragmentów źródła. Brak deklaracji prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "F-S1",
+      "title": "Open Category — Low Risk — Civil Drones | EASA",
+      "url": "https://www.easa.europa.eu/en/domains/drones-air-mobility/operating-drone/open-category-low-risk-civil-drones",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Aktualna strona ogólna, nie zastępuje przepisów i oceny konkretnej operacji."
+    },
+    {
+      "id": "F-S2",
+      "title": "Gdzie mogę latać swoim dronem? | ULC",
+      "url": "https://ulc.gov.pl/drony/informacje-ogolne/czesto-zadawane-pytania-faq/pytania-ogolne/gdzie-moge-latac-swoim-dronem",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Wymaga ponownej kontroli przed lotem."
+    },
+    {
+      "id": "F-S3",
+      "title": "Thermographic measurement techniques | FLIR",
+      "url": "https://support.flir.com/DSDownload/Assets/T810442-en-US_A4.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Własna parafraza, bez kopiowania ilustracji; instrukcja nie jest kwalifikacją."
+    },
+    {
+      "id": "F-S4",
+      "title": "DJI Matrice 4 Series — Specs",
+      "url": "https://enterprise.dji.com/matrice-4-series/specs",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Dane producenta dla podanego modelu, nie walidacja konkretnej misji."
+    },
+    {
+      "id": "F-S5",
+      "title": "Review on Infrared and Electroluminescence Imaging for PV Field Applications",
+      "url": "https://iea-pvps.org/wp-content/uploads/2020/01/Review_on_IR_and_EL_Imaging_for_PV_Field_Applications_by_Task_13.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Raport T13-10:2018. Zalecenia, nie pełna aktualna norma; brak kopiowanych tabel i zdjęć."
+    },
+    {
+      "id": "F-S6",
+      "title": "VIM 2.26 measurement uncertainty | BIPM",
+      "url": "https://jcgm.bipm.org/vim/en/2.26.html",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Definicja, nie budżet niepewności danego urządzenia."
+    },
+    {
+      "id": "F-S7",
+      "title": "Green Job Hazards — Solar Energy: Electrical | OSHA",
+      "url": "https://www.osha.gov/green-jobs/solar/electrical",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Opis zagrożeń, nie źródło polskich wymogów prawnych; dostęp przez indeks wyszukiwarki, bezpośredni serwer 403."
+    },
+    {
+      "id": "F-S8",
+      "title": "Best Practices for Operation and Maintenance of Photovoltaic and Energy Storage Systems; 3rd Edition",
+      "url": "https://research-hub.nlr.gov/en/publications/best-practices-for-operation-and-maintenance-of-photovoltaic-and-/",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Oryginał NREL 2018, obecny rekord repozytorium NLR. Metadane i opis zakresu, nie potwierdzenie każdej procedury."
+    },
+    {
+      "id": "F-S9",
+      "title": "Consumer Guide to Home Energy Assessments | DOE",
+      "url": "https://www.energy.gov/sites/default/files/2021-08/ES-Home%20Energy%20Assessments_080221.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Kontekst USA, wyłącznie techniki oceny, bez przenoszenia zasad prawnych i cen."
+    },
+    {
+      "id": "F-S10",
+      "title": "Can Thermal Imaging See Through Walls? | FLIR",
+      "url": "https://www.flir.com/discover/home-outdoor/can-thermal-imaging-see-through-walls/",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Ogólne ograniczenia kamer termicznych; własna parafraza."
+    },
+    {
+      "id": "F-S11",
+      "title": "Guides in Metrology | BIPM",
+      "url": "https://www.bipm.org/en/web/guest/publications/guides",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Indeks aktualnych dokumentów; pełny budżet należy opracować dla pomiaru."
+    },
+    {
+      "id": "M-S01",
+      "title": "What is... (a densified point cloud? an orthomosaic? etc.)",
+      "url": "https://support.pix4d.com/hc/en-us/articles/206455126",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Definicje producenta. Nie przenosimy zapewnień dokładności ani instrukcji konkretnego produktu na każdy projekt."
+    },
+    {
+      "id": "M-S02",
+      "title": "Creating 3D point clouds, digital elevation models, and orthomosaics from historical aerial imagery through structure from motion aided photogrammetry",
+      "url": "https://www.usgs.gov/publications/creating-3d-point-clouds-digital-elevation-models-and-orthomosaics-historical-aerial",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Nie powielano tekstu, danych, zdjęć ani ilustracji źródłowych; zakres wykorzystania ograniczony do własnego objaśnienia faktów z odsyłaczem. Nie zadeklarowano licencji na materiały osób trzecich.",
+      "limitations": "USGS 2026, DOI 10.3133/tm11C11. Dotyczy zdjęć archiwalnych; użyto ogólnego procesu SfM, bez przenoszenia wyników przypadków na UAV. Strona publikacji dostępna; treść HTML pełnego raportu zweryfikowana w indeksie wyszukiwania, bezpośredni odczyt zwracał 403."
+    },
+    {
+      "id": "M-S03",
+      "title": "Ground sampling distance (GSD) in photogrammetry",
+      "url": "https://support.pix4d.com/hc/en-us/articles/202559809",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "GSD i parametry kamery. Rachunki kursu dotyczą uproszczonej kamery nadiralnej i syntetycznych parametrów, nie dokładności dowolnej mapy."
+    },
+    {
+      "id": "M-S04",
+      "title": "Step 1. Before Starting a Project > 1. Designing the Image Acquisition Plan > a. Selecting the Image Acquisition Plan Type - PIX4Dmapper",
+      "url": "https://support.pix4d.com/hc/en-us/articles/202557459",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Dokumentacja akwizycji producenta. Pokrycia 80%/70% są założeniami ćwiczeń; nie stanowią minimum normowego ani zatwierdzenia lotu."
+    },
+    {
+      "id": "M-S05",
+      "title": "How to correct for the Rolling Shutter Effect - PIX4Dmapper",
+      "url": "https://support.pix4d.com/hc/en-us/articles/208460436",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Wyjaśnienie czasowego odczytu sensora. Instrukcja korekcji dotyczy konkretnego programu i trybu; nie przyjęto, że każda migawka mechaniczna jest globalna."
+    },
+    {
+      "id": "M-S06",
+      "title": "What is the relative and absolute accuracy of drone mapping?",
+      "url": "https://support.pix4d.com/hc/en-us/articles/202558889",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Dokumentacja producenta rozróżnia dokładność względną i bezwzględną oraz lokalne problemy powierzchni. Nie przyjęto marketingowych zakresów wielokrotności GSD jako gwarancji."
+    },
+    {
+      "id": "M-S07",
+      "title": "RTK and PPK workflow - PIX4Dmatic",
+      "url": "https://support.pix4d.com/hc/rtk-ppk-pix4dmatic",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Użyto różnicy czasu korekcji GNSS. Opis producenta nie zastępuje niezależnej kontroli gotowego produktu ani instrukcji konkretnego odbiornika."
+    },
+    {
+      "id": "M-S08",
+      "title": "Converting Ground Control Points (GCPs) to Checkpoints - PIX4Dcatch",
+      "url": "https://support.pix4d.com/hc/converting-ground-control-points-gcps-to-checkpoints-pix4dcatch",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Użyto rozróżnienia roli punktów. Niezależność musi wynikać z całego procesu, nie z etykiety w aplikacji."
+    },
+    {
+      "id": "M-S09",
+      "title": "8. Coordinate Reference Systems",
+      "url": "https://docs.qgis.org/3.44/en/docs/gentle_gis_introduction/coordinate_reference_systems.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Dokumentacja QGIS: GNU FDL 1.3 lub późniejsza, https://docs.qgis.org/3.44/en/docs/about/license/index.html. Kurs ma własne przykłady i sformułowania; nie zawiera reprodukcji podręcznika ani jego ilustracji.",
+      "limitations": "Dokumentacja QGIS 3.44. Definicje i dobór układu; kurs nie przypisuje EPSG syntetycznym współrzędnym lokalnym."
+    },
+    {
+      "id": "M-S10",
+      "title": "Converting GPS Height into NAVD88 Elevation with the GEOID96 Geoid Height Model",
+      "url": "https://www.ngs.noaa.gov/PUBS_LIB/gislis96.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Nie powielano tekstu, danych, zdjęć ani ilustracji źródłowych; zakres wykorzystania ograniczony do własnego objaśnienia faktów z odsyłaczem. Nie zadeklarowano licencji na materiały osób trzecich.",
+      "limitations": "Historyczny materiał NOAA: wyłącznie relacja h, H i N. Nie używać modelu GEOID96 do Polski ani traktować strony jako aktualnej instrukcji transformacji."
+    },
+    {
+      "id": "M-S11",
+      "title": "Model quasi-geoidy PL-geoid2021 modelem obowiązującym",
+      "url": "https://www.gov.pl/web/gugik/model-quasi-geoidy-pl-geoid2021-modelem-obowiazujacym",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Stopka źródła: tekst CC BY-SA 4.0, multimedia CC BY-NC-ND 4.0 z zastrzeżeniami. Cytowany fakt i odsyłacz, bez kopiowania tekstu lub ilustracji.",
+      "limitations": "Komunikat GUGiK z 05.04.2022 potwierdza przeliczanie wysokości elipsoidalnych na normalne. Kurs nie dostarcza siatki transformacji ani certyfikowanego pomiaru."
+    },
+    {
+      "id": "M-S12",
+      "title": "Quality report - PIX4Dmatic",
+      "url": "https://support.pix4d.com/hc/en-us/articles/360040686852",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Definicje reprojekcji, błędów współrzędnych i statystyk raportu. Kolory oraz progi konkretnego programu nie są kryteriami certyfikacji kursu."
+    },
+    {
+      "id": "M-S13",
+      "title": "Photogrammetric Processing Algorithms",
+      "url": "https://developer.pix4d.com/server/2.9.0/processing.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Sprawdzono oznaczenie copyright producenta; brak przyjętej otwartej licencji. Użyto wyłącznie odsyłaczy i własnego objaśnienia faktów, bez kopiowania ilustracji, instrukcji lub danych.",
+      "limitations": "Dokumentacja API w wersji 2.9.0. Służy do wyjaśnienia kalibracji i zagęszczania, nie do instrukcji bieżącego interfejsu."
+    },
+    {
+      "id": "M-S14",
+      "title": "6. Raster Data",
+      "url": "https://docs.qgis.org/3.44/en/docs/gentle_gis_introduction/raster_data.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Dokumentacja QGIS: GNU FDL 1.3 lub późniejsza, https://docs.qgis.org/3.44/en/docs/about/license/index.html. Kurs ma własne przykłady i sformułowania; nie zawiera reprodukcji podręcznika ani jego ilustracji.",
+      "limitations": "Dokumentacja QGIS 3.44. Raster, piksel i rozdzielczość; przykłady liczbowe kursu są własne."
+    },
+    {
+      "id": "M-S15",
+      "title": "3. Vector Data",
+      "url": "https://docs.qgis.org/3.44/en/docs/gentle_gis_introduction/vector_data.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Dokumentacja QGIS: GNU FDL 1.3 lub późniejsza, https://docs.qgis.org/3.44/en/docs/about/license/index.html. Kurs ma własne przykłady i sformułowania; nie zawiera reprodukcji podręcznika ani jego ilustracji.",
+      "limitations": "Dokumentacja QGIS 3.44. Geometria i atrybuty nie dowodzą niezależnej dokładności narysowanego obrysu."
+    },
+    {
+      "id": "M-S16",
+      "title": "8. General Tools",
+      "url": "https://docs.qgis.org/3.44/en/docs/user_manual/introduction/general_tools.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Dokumentacja QGIS: GNU FDL 1.3 lub późniejsza, https://docs.qgis.org/3.44/en/docs/about/license/index.html. Kurs ma własne przykłady i sformułowania; nie zawiera reprodukcji podręcznika ani jego ilustracji.",
+      "limitations": "Dokumentacja QGIS 3.44, narzędzia pomiarów. Rzeczywisty wynik zależy od ustawień elipsoidy, jednostek i geometrii."
+    },
+    {
+      "id": "M-S17",
+      "title": "24.1.18. Raster analysis",
+      "url": "https://docs.qgis.org/3.44/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Dokumentacja QGIS: GNU FDL 1.3 lub późniejsza, https://docs.qgis.org/3.44/en/docs/about/license/index.html. Kurs ma własne przykłady i sformułowania; nie zawiera reprodukcji podręcznika ani jego ilustracji.",
+      "limitations": "Sekcja Raster surface volume wiąże objętość z bazą i metodą liczenia nad/pod bazą. Braki NoData i granice nadal wymagają kontroli."
+    },
+    {
+      "id": "M-S18",
+      "title": "Landsat Normalized Difference Vegetation Index",
+      "url": "https://www.usgs.gov/landsat-missions/landsat-normalized-difference-vegetation-index",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Nie powielano tekstu, danych, zdjęć ani ilustracji źródłowych; zakres wykorzystania ograniczony do własnego objaśnienia faktów z odsyłaczem. Nie zadeklarowano licencji na materiały osób trzecich.",
+      "limitations": "Definicja NDVI wykorzystująca pasma czerwone i bliską podczerwień. Nie przenosimy parametrów Landsat na kamerę UAV."
+    },
+    {
+      "id": "M-S19",
+      "title": "What is Lidar data and where can I download it?",
+      "url": "https://www.usgs.gov/faqs/what-lidar-data-and-where-can-i-download-it?items_per_page=6&page=0",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Nie powielano tekstu, danych, zdjęć ani ilustracji źródłowych; zakres wykorzystania ograniczony do własnego objaśnienia faktów z odsyłaczem. Nie zadeklarowano licencji na materiały osób trzecich.",
+      "limitations": "Wyłącznie definicja aktywnego pomiaru laserowego; nie twierdzimy, że każda technika LiDAR zapewnia pomiar każdego punktu pod roślinnością."
+    },
+    {
+      "id": "M-S20",
+      "title": "Green Job Hazards - Solar Energy: Electrical",
+      "url": "https://www.osha.gov/green-jobs/solar/electrical",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-17",
+      "license_note": "Nie powielano tekstu, danych, zdjęć ani ilustracji źródłowych; zakres wykorzystania ograniczony do własnego objaśnienia faktów z odsyłaczem. Nie zadeklarowano licencji na materiały osób trzecich.",
+      "limitations": "Pierwotne źródło o zagrożeniu porażeniem i łukiem przy PV, zweryfikowane przez indeks wyszukiwania; bezpośredni odczyt 403. To amerykańska informacja o zagrożeniach, nie polska podstawa uprawnień ani odległości bezpieczeństwa. Kurs wyklucza ingerencję w instalację."
+    }
+  ],
+  "source_units": [
+    {
+      "id": "legacy-000",
+      "title": "Program szkoleniowy i podręcznik inżynierski farm PV utility-scale",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-001",
+      "title": "Executive summary",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-002",
+      "title": "1. Granice kompetencji i bezpieczeństwa",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-003",
+      "title": "2. Architektura kompetencji",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-004",
+      "title": "3. Plan nauki i kryteria zaliczenia",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-005",
+      "title": "3.1 Kolejność i rytm",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-006",
+      "title": "3.2 Ćwiczenia obowiązkowe",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-007",
+      "title": "3.3 Bramki zaliczeniowe",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-008",
+      "title": "4. Notacja, jednostki i niepewność",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-009",
+      "title": "5. Hierarchia dowodów i źródeł",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-010",
+      "title": "Moduł 1. Fizyka ogniwa i mechanizmy degradacji",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-011",
+      "title": "1.1 Struktura pasmowa, transport i rekombinacja",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-012",
+      "title": "1.2 Architektury PERC, TOPCon, HJT i tandem",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-013",
+      "title": "1.3 Modele elektryczne",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-014",
+      "title": "1.4 Mechanizmy degradacji",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-015",
+      "title": "1.5 Procedura: od sygnału degradacji do hipotezy",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-016",
+      "title": "1.6 Diagnostyka różnicowa",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-017",
+      "title": "1.7 Studium przypadku [A, dane syntetyczne]",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-018",
+      "title": "Zadania z rozwiązaniami",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-019",
+      "title": "Checklista modułu 1",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-020",
+      "title": "Moduł 2. Architektura farmy, O&M, SCADA i bezpieczeństwo",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-021",
+      "title": "2.1 Topologia od modułu do punktu przyłączenia",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-022",
+      "title": "2.2 Stacje nN/SN/WN, straty i regulacja",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-023",
+      "title": "2.3 SCADA i KPI",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-024",
+      "title": "Minimalny model jakości danych",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-025",
+      "title": "2.4 Bezpieczeństwo DC 1500 V i stacji",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-026",
+      "title": "2.5 Procedura analizy O&M",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-027",
+      "title": "2.6 Diagnostyka różnicowa",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-028",
+      "title": "2.7 Studium przypadku [A, dane syntetyczne]",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-029",
+      "title": "Zadania z rozwiązaniami",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-030",
+      "title": "Checklista modułu 2",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-031",
+      "title": "Moduł 3. Radiometryczna termografia BSP",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-032",
+      "title": "3.1 Radiacja cieplna i to, co mierzy kamera",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-033",
+      "title": "3.2 Bilans cieplny modułu i znaczenie ΔT",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-034",
+      "title": "3.3 Parametry kamery",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-035",
+      "title": "3.4 Geometria obserwacji i odbicia",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-036",
+      "title": "3.5 POA, wiatr i stabilność",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-037",
+      "title": "3.6 Pojedyncze kadry, ortomozajka i RTK/PPK",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-038",
+      "title": "3.7 Diagnostyka różnicowa: wzorce anomalii i hipotezy",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-039",
+      "title": "3.8 RGB, IR i AI",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-040",
+      "title": "3.9 SOP misji radiometrycznej",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-041",
+      "title": "A. Plan i bezpieczeństwo",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-042",
+      "title": "B. Aparatura i nastawy",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-043",
+      "title": "C. Projekt geometrii",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-044",
+      "title": "D. Warunki i wykonanie",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-045",
+      "title": "E. QA i analiza",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-046",
+      "title": "3.10 Budżet niepewności termografii",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-047",
+      "title": "3.11 Studium przypadku lotu [A, dane syntetyczne]",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-048",
+      "title": "Zadania z rozwiązaniami",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-049",
+      "title": "Checklista modułu 3",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-050",
+      "title": "Moduł 4. Diagnostyka naziemna i potwierdzanie anomalii IR",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-051",
+      "title": "4.1 Pomiar I-V i korekcja warunków",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-052",
+      "title": "Procedura I-V krok po kroku",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-053",
+      "title": "4.2 Interpretacja I-V",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-054",
+      "title": "4.3 Electroluminescence i photoluminescence",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-055",
+      "title": "4.4 Rezystancja izolacji, próby i ciągłość",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-056",
+      "title": "4.5 Diagnostyka różnicowa i potwierdzanie IR",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-057",
+      "title": "4.6 Studium przypadku [A, dane syntetyczne]",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-058",
+      "title": "Zadania z rozwiązaniami",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-059",
+      "title": "Checklista modułu 4",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-060",
+      "title": "Moduł 5. Technical Due Diligence, konstrukcje i ekonomika",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-061",
+      "title": "5.1 TDD jako badanie spójności dowodów",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-062",
+      "title": "Data room minimum",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-063",
+      "title": "5.2 Gwarancje i roszczenia",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-064",
+      "title": "5.3 Konstrukcje, pale, korozja i śruby",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-065",
+      "title": "Procedura konstrukcyjna",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-066",
+      "title": "5.4 Energia, pieniądz i NPV",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-067",
+      "title": "5.5 Procedura decyzji naprawczej",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-068",
+      "title": "5.6 Diagnostyka różnicowa TDD",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-069",
+      "title": "5.7 Studium przypadku NPV [A, dane syntetyczne]",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-070",
+      "title": "Zadania z rozwiązaniami",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-071",
+      "title": "Checklista modułu 5",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-072",
+      "title": "Macierz diagnostyczna usterek",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-073",
+      "title": "Audyt końcowy farmy 80 MWp",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-074",
+      "title": "A.1 Charakterystyka aktywa i pytania audytowe",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-075",
+      "title": "A.2 Plan dowodowy",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-076",
+      "title": "Faza 1: dokumenty i topologia",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-077",
+      "title": "Faza 2: SCADA i loss tree",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-078",
+      "title": "Faza 3: misja BSP",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-079",
+      "title": "Faza 4: ground truth",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-080",
+      "title": "A.3 Łańcuch wnioskowania dla trzech findingów",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-081",
+      "title": "Finding F-01: powtarzalna niedostępność dwóch rodzin inwerterów, S3",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-082",
+      "title": "Finding F-02: 38 otwartych lub błędnie zmapowanych stringów, S2-S3",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-083",
+      "title": "Finding F-03: osiem rezystancyjnych złączy, S4",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-084",
+      "title": "A.4 Energia odzyskiwalna i model finansowy",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-085",
+      "title": "A.5 Priorytety interwencji",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-086",
+      "title": "A.6 Roszczenia",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-087",
+      "title": "A.7 Ostateczna opinia syntetyczna",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-088",
+      "title": "A.8 Kryterium zaliczenia capstone",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-089",
+      "title": "Rejestr norm i zakresów",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-090",
+      "title": "Co skorygowano względem częstych założeń",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-091",
+      "title": "Źródła techniczne i naukowe",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-092",
+      "title": "Metodyka opracowania, ograniczenia i cykl aktualizacji",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    },
+    {
+      "id": "legacy-093",
+      "title": "Minimalny pakiet raportowy z rzeczywistego audytu",
+      "lesson_ids": [],
+      "excluded_reason": "Zachowane w całości w podręczniku pogłębionym, poza czasem nowej prowadzonej ścieżki; nie pomijane w produkcie."
+    }
+  ],
+  "claims": [
+    {
+      "id": "E-C-quantities",
+      "statement": "Prąd opisuje przepływ ładunku w czasie; napięcie jest różnicą potencjałów, a om jednostką rezystancji.",
+      "source_ids": [
+        "E-S-current",
+        "E-S-potential",
+        "E-S-ohm"
+      ],
+      "lesson_ids": [
+        "E01"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-dc-hazard",
+      "statement": "Oświetlone moduły mogą wytwarzać niebezpieczne napięcie DC mimo braku produkcji; złączy nie rozłącza się pod obciążeniem.",
+      "source_ids": [
+        "E-S-sma-safety",
+        "E-S-osha-solar",
+        "E-S-jinko"
+      ],
+      "lesson_ids": [
+        "E01",
+        "E03",
+        "E06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-ohm",
+      "statement": "Dla stałej rezystancji U = I × R; model rezystora nie opisuje pełnej charakterystyki modułu PV.",
+      "source_ids": [
+        "E-S-ohm",
+        "E-S-inverter"
+      ],
+      "lesson_ids": [
+        "E01",
+        "E02",
+        "E04",
+        "E05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-topology",
+      "statement": "W szeregu płynie wspólny prąd i sumują się napięcia; w gałęziach równoległych napięcie jest wspólne, a prądy sumują się.",
+      "source_ids": [
+        "E-S-kirchhoff",
+        "E-S-circuits",
+        "E-S-jinko"
+      ],
+      "lesson_ids": [
+        "E02",
+        "E04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-energy",
+      "statement": "Moc DC to U × I, a energia przy stałej mocy to moc razy czas; dla danych przedziałowych sumujemy energie.",
+      "source_ids": [
+        "E-S-power"
+      ],
+      "lesson_ids": [
+        "E02",
+        "E06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-ac",
+      "statement": "Częstotliwość liczy cykle na sekundę, a wartość skuteczna nie jest wartością szczytową.",
+      "source_ids": [
+        "E-S-ac"
+      ],
+      "lesson_ids": [
+        "E03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-pf",
+      "statement": "PF = P/S; przy zniekształceniach nie należy utożsamiać całego PF z cos φ. Wzór √3 U I PF wymaga właściwego napięcia i symetrycznego układu.",
+      "source_ids": [
+        "E-S-pf",
+        "E-S-three-phase"
+      ],
+      "lesson_ids": [
+        "E03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-protection",
+      "statement": "RCCB nie zawiera ochrony nadprądowej, RCBO łączy funkcje; ochrona i uziemienie nie są dowodem bezpieczeństwa na podstawie zdjęcia.",
+      "source_ids": [
+        "E-S-rcd",
+        "E-S-earthing",
+        "E-S-osha-safety"
+      ],
+      "lesson_ids": [
+        "E03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-role",
+      "statement": "Rozpoznawanie zagrożeń i analiza danych nie upoważniają obserwatora do manipulacji przy instalacji; wymagane są właściwe kompetencje i procedury obiektu.",
+      "source_ids": [
+        "E-S-sma-safety",
+        "E-S-osha-solar",
+        "E-S-jinko"
+      ],
+      "lesson_ids": [
+        "E01",
+        "E03",
+        "E05",
+        "E06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-pv-chain",
+      "statement": "Ogniwa tworzą moduły, moduły łańcuchy i pole PV; falownik przekształca DC na AC.",
+      "source_ids": [
+        "E-S-cell",
+        "E-S-pv",
+        "E-S-jinko",
+        "E-S-inverter"
+      ],
+      "lesson_ids": [
+        "E04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-mppt",
+      "statement": "MPPT śledzi elektryczny punkt maksymalnej mocy; wejścia i kanały danych należy odczytać z dokumentacji, a nie utożsamiać z rzędami modułów.",
+      "source_ids": [
+        "E-S-inverter",
+        "E-S-inverter-types",
+        "E-S-om"
+      ],
+      "lesson_ids": [
+        "E04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-datasheet",
+      "statement": "Voc i Isc opisują odmienne stany; Pmpp jest iloczynem Vmpp i Impp przy określonych warunkach odniesienia.",
+      "source_ids": [
+        "E-S-inverter",
+        "E-S-jinko",
+        "E-S-ppa"
+      ],
+      "lesson_ids": [
+        "E05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-temperature",
+      "statement": "Dla ujemnego współczynnika Voc niższa temperatura podnosi napięcie; liniowe przybliżenie nie zastępuje projektu i weryfikacji limitów.",
+      "source_ids": [
+        "E-S-temperature",
+        "E-S-jinko"
+      ],
+      "lesson_ids": [
+        "E05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-bypass",
+      "statement": "Obejście zacienionej grupy zmienia charakterystykę; nie usuwa każdej straty ani nie pozwala wyznaczyć przyczyny z samego obrazu.",
+      "source_ids": [
+        "E-S-ppa",
+        "E-S-om"
+      ],
+      "lesson_ids": [
+        "E05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-monitoring",
+      "statement": "Porównanie monitoringu wymaga jednostek, czasu, agregacji, granic pomiaru i jakości danych; brak rekordu nie oznacza zera.",
+      "source_ids": [
+        "E-S-om",
+        "E-S-ppa"
+      ],
+      "lesson_ids": [
+        "E04",
+        "E06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-solar-resource",
+      "statement": "Natężenie napromienienia to moc na powierzchnię, napromienienie to energia na powierzchnię; płaszczyzna pomiaru ma znaczenie.",
+      "source_ids": [
+        "E-S-pr",
+        "E-S-poa",
+        "E-S-sma-pr"
+      ],
+      "lesson_ids": [
+        "E05",
+        "E06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "E-C-performance",
+      "statement": "PR odnosi energię AC do odniesienia wyznaczonego z mocy STC i napromienienia POA; nie jest sprawnością modułów ani rozpoznaniem awarii.",
+      "source_ids": [
+        "E-S-pr",
+        "E-S-sma-pr",
+        "E-S-om"
+      ],
+      "lesson_ids": [
+        "E06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C1",
+      "statement": "Zgoda dotycząca obiektu nie zastępuje oceny operacji i aktualnych stref.",
+      "source_ids": [
+        "F-S1",
+        "F-S2"
+      ],
+      "lesson_ids": [
+        "F01"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C2",
+      "statement": "Temperatura wyznaczona z sygnału IR zależy od modelu i parametrów radiometrycznych.",
+      "source_ids": [
+        "F-S3"
+      ],
+      "lesson_ids": [
+        "F02"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C3",
+      "statement": "Natywny detektor Matrice 4T ma 640 × 512; Super Resolution jest odrębnym trybem obrazu.",
+      "source_ids": [
+        "F-S4"
+      ],
+      "lesson_ids": [
+        "F02"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C4",
+      "statement": "Warunki środowiskowe, geometria i stan pracy wpływają na interpretację IR PV.",
+      "source_ids": [
+        "F-S5",
+        "F-S3"
+      ],
+      "lesson_ids": [
+        "F03",
+        "F04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C5",
+      "statement": "Zagrożenia porażeniem i łukiem wymagają kompetencji i właściwych procedur; zdalny obraz nie uzasadnia samodzielnej ingerencji.",
+      "source_ids": [
+        "F-S7",
+        "F-S5"
+      ],
+      "lesson_ids": [
+        "F01",
+        "F04",
+        "F06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C6",
+      "statement": "Termografia budynku jest częścią zestawu metod oceny; zwykła kamera termiczna nie widzi przez ściany.",
+      "source_ids": [
+        "F-S9",
+        "F-S10"
+      ],
+      "lesson_ids": [
+        "F05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C7",
+      "statement": "Niepewność i definicja wielkości mierzonej muszą towarzyszyć interpretacji wyniku.",
+      "source_ids": [
+        "F-S6",
+        "F-S11"
+      ],
+      "lesson_ids": [
+        "F02",
+        "F06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C01",
+      "statement": "Ortomozaika koryguje geometrię perspektywy i skali; nie jest zwykłym sklejeniem zdjęć.",
+      "source_ids": [
+        "M-S01"
+      ],
+      "lesson_ids": [
+        "M01",
+        "M04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C02",
+      "statement": "Fotogrametria SfM dopasowuje widoki, wyznacza parametry kamer i buduje geometrię przed tworzeniem produktów.",
+      "source_ids": [
+        "M-S02",
+        "M-S13"
+      ],
+      "lesson_ids": [
+        "M01",
+        "M04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C03",
+      "statement": "GSD zależy od odległości kamery od powierzchni, rozmiaru sensora, ogniskowej i liczby pikseli; nie jest samodzielną miarą błędu położenia.",
+      "source_ids": [
+        "M-S03",
+        "M-S06"
+      ],
+      "lesson_ids": [
+        "M02",
+        "M03",
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C04",
+      "statement": "Zmiana odległości od powierzchni zmienia ślad zdjęcia, GSD i uzyskane pokrycie przy stałych odstępach zdjęć.",
+      "source_ids": [
+        "M-S03",
+        "M-S04"
+      ],
+      "lesson_ids": [
+        "M02",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C05",
+      "statement": "Zalecane pokrycie i kierunki obserwacji zależą od sceny, a powtarzalna lub uboga tekstura utrudnia dopasowanie.",
+      "source_ids": [
+        "M-S04"
+      ],
+      "lesson_ids": [
+        "M02",
+        "M04",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C06",
+      "statement": "Rolling shutter odczytuje części obrazu w różnym czasie; krótka ekspozycja nie dowodzi usunięcia zniekształceń tego odczytu.",
+      "source_ids": [
+        "M-S05"
+      ],
+      "lesson_ids": [
+        "M02",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C07",
+      "statement": "RTK korzysta z korekcji podczas pracy, a PPK przetwarza zapisane obserwacje po pozyskaniu danych.",
+      "source_ids": [
+        "M-S07"
+      ],
+      "lesson_ids": [
+        "M03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C08",
+      "statement": "GCP wpływa na dopasowanie, a niezależny checkpoint kontroluje wynik bez udziału w dopasowaniu.",
+      "source_ids": [
+        "M-S08",
+        "M-S12"
+      ],
+      "lesson_ids": [
+        "M03",
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C09",
+      "statement": "Współrzędne wymagają określenia układu odniesienia; przypisanie CRS nie jest przeliczeniem między układami.",
+      "source_ids": [
+        "M-S09"
+      ],
+      "lesson_ids": [
+        "M03",
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C10",
+      "statement": "W dydaktycznej relacji wysokości ortometrycznej, elipsoidalnej i odstępu geoidy stosuje się H ≈ h − N.",
+      "source_ids": [
+        "M-S10"
+      ],
+      "lesson_ids": [
+        "M03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C11",
+      "statement": "Polski model quasigeoidy opisany przez GUGiK służy do przeliczania wysokości elipsoidalnych na normalne, nie do mechanicznego stosowania dowolnej stałej.",
+      "source_ids": [
+        "M-S11"
+      ],
+      "lesson_ids": [
+        "M03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C12",
+      "statement": "Błąd reprojekcji w obrazie i błąd współrzędnych terenowych są odrębnymi wielkościami raportu jakości.",
+      "source_ids": [
+        "M-S12"
+      ],
+      "lesson_ids": [
+        "M04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C13",
+      "statement": "DSM obejmuje powierzchnię z obiektami, DTM opisuje teren po odróżnieniu obiektów; raster wysokości zapisuje pojedynczą wysokość w komórce.",
+      "source_ids": [
+        "M-S01"
+      ],
+      "lesson_ids": [
+        "M04",
+        "M05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C14",
+      "statement": "Odbijające powierzchnie, krawędzie i uboga tekstura mogą obniżyć lokalną jakość odtworzenia.",
+      "source_ids": [
+        "M-S06",
+        "M-S04"
+      ],
+      "lesson_ids": [
+        "M04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C15",
+      "statement": "Raster jest siatką komórek; wektor opisuje geometrię punktów, linii i wielokątów oraz atrybuty.",
+      "source_ids": [
+        "M-S14",
+        "M-S15"
+      ],
+      "lesson_ids": [
+        "M05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C16",
+      "statement": "Sposób pomiaru w QGIS zależy od jednostek i ustawień elipsoidy; pole rzutu nie jest automatycznie powierzchnią przestrzenną połaci.",
+      "source_ids": [
+        "M-S16"
+      ],
+      "lesson_ids": [
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C17",
+      "statement": "Objętość rastra oblicza się względem określonej bazy i z wybraną metodą sumowania wartości ponad oraz poniżej bazy.",
+      "source_ids": [
+        "M-S17"
+      ],
+      "lesson_ids": [
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C18",
+      "statement": "Błędy punktów liczy się jako model minus odniesienie; RMSE opiera się na kwadratach błędów i nie jest średnią ze znakami ani maksimum.",
+      "source_ids": [
+        "M-S12"
+      ],
+      "lesson_ids": [
+        "M03",
+        "M05",
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C19",
+      "statement": "NDVI wykorzystuje pasmo czerwone i bliską podczerwień; standardowe RGB nie zawiera pomiaru tego drugiego pasma.",
+      "source_ids": [
+        "M-S18"
+      ],
+      "lesson_ids": [
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C20",
+      "statement": "LiDAR jest pomiarem z wykorzystaniem światła laserowego, odrębnym od odtworzenia chmury ze zdjęć.",
+      "source_ids": [
+        "M-S19"
+      ],
+      "lesson_ids": [
+        "M06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "M-C21",
+      "statement": "PV wiąże się z zagrożeniami elektrycznymi; ćwiczenia mapowania nie uzasadniają kontaktu ani ingerencji w instalację.",
+      "source_ids": [
+        "M-S20"
+      ],
+      "lesson_ids": [
+        "M04",
+        "M06"
+      ],
+      "status": "supported"
+    }
+  ],
+  "objectives": [
+    {
+      "id": "O-E01",
+      "module_id": "electrical",
+      "statement": "po lekcji opiszesz syntetyczny zapis elektryczny, rozróżniając ładunek, prąd, napięcie i rezystancję, oraz poprawnie przeliczysz jego jednostki.",
+      "critical": true
+    },
+    {
+      "id": "O-E02",
+      "module_id": "electrical",
+      "statement": "obliczysz prąd, rozkład napięcia, moc i energię w prostym syntetycznym obwodzie, sprawdzając bilans wyniku.",
+      "critical": false
+    },
+    {
+      "id": "O-E03",
+      "module_id": "electrical",
+      "statement": "poprawnie odczytasz podstawowy zapis mocy po stronie AC i wybierzesz bezpieczny sposób przekazania obserwacji, bez podejmowania prac elektrycznych.",
+      "critical": true
+    },
+    {
+      "id": "O-E04",
+      "module_id": "electrical",
+      "statement": "zbudujesz mapę syntetycznej instalacji, łącząc ogniwa, moduły, stringi, wejścia MPPT i falownik z odpowiednimi rekordami danych.",
+      "critical": false
+    },
+    {
+      "id": "O-E05",
+      "module_id": "electrical",
+      "statement": "odczytasz cztery podstawowe parametry karty modułu, obliczysz orientacyjne napięcie łańcucha w chłodzie i określisz granice wniosku o zacienieniu.",
+      "critical": true
+    },
+    {
+      "id": "O-E06",
+      "module_id": "electrical",
+      "statement": "przygotujesz krótką, policzalną notatkę o syntetycznych danych PV, rozróżniając obserwację, ograniczenie i pytanie do właściwego specjalisty.",
+      "critical": true
+    },
+    {
+      "id": "O-F01",
+      "module_id": "field",
+      "statement": "Przygotujesz plan pozyskania danych z kryteriami odbioru i podziałem odpowiedzialności.",
+      "critical": true
+    },
+    {
+      "id": "O-F02",
+      "module_id": "field",
+      "statement": "Rozdzielisz sygnał IR, temperaturę z modelu i hipotezę przyczyny.",
+      "critical": false
+    },
+    {
+      "id": "O-F03",
+      "module_id": "field",
+      "statement": "Ocenić przydatność materiału z dziennika warunków i próbnego pasa.",
+      "critical": false
+    },
+    {
+      "id": "O-F04",
+      "module_id": "field",
+      "statement": "Zbudujesz kartę obserwacji z alternatywami, dowodem rozstrzygającym i dalszą rolą.",
+      "critical": true
+    },
+    {
+      "id": "O-F05",
+      "module_id": "field",
+      "statement": "Dobierzesz dane i granice wyniku do czterech zastosowań poza PV.",
+      "critical": false
+    },
+    {
+      "id": "O-F06",
+      "module_id": "field",
+      "statement": "Przygotujesz audytowalny pakiet obserwacji, pokrycia i następnych kroków.",
+      "critical": true
+    },
+    {
+      "id": "O-M01",
+      "module_id": "mapping",
+      "statement": "dobierzesz zdjęcie, ortomozaikę albo model przestrzenny do pytania klienta i uzasadnisz wybór ograniczeniami geometrii.",
+      "critical": false
+    },
+    {
+      "id": "O-M02",
+      "module_id": "mapping",
+      "statement": "obliczysz dla uproszczonego scenariusza wielkość piksela terenowego, odstępy zdjęć i poruszenie oraz wskażesz, co zmienia rzeźba terenu.",
+      "critical": true
+    },
+    {
+      "id": "O-M03",
+      "module_id": "mapping",
+      "statement": "sprawdzisz metrykę odniesienia danych i odróżnisz punkty użyte do dopasowania od punktów sprawdzających gotowy wynik.",
+      "critical": false
+    },
+    {
+      "id": "O-M04",
+      "module_id": "mapping",
+      "statement": "rozpoznasz, czy problem produktu pochodzi z dopasowania zdjęć, odtworzenia powierzchni czy utworzenia ortomozaiki, i zapiszesz właściwą decyzję o dalszej pracy.",
+      "critical": true
+    },
+    {
+      "id": "O-M05",
+      "module_id": "mapping",
+      "statement": "wykonasz kontrolne obliczenie powierzchni, objętości i błędu na punktach niezależnych oraz zapiszesz warunki, bez których wyniki nie nadają się do przekazania.",
+      "critical": false
+    },
+    {
+      "id": "O-M06",
+      "module_id": "mapping",
+      "statement": "przygotujesz kartę przekazania syntetycznego opracowania mapowego z policzonymi wskaźnikami, zakresem użycia i decyzją o brakujących danych.",
+      "critical": true
+    }
+  ],
+  "modules": [
+    {
+      "id": "electrical",
+      "title": "Podstawy elektryki i fotowoltaiki",
+      "declared_minutes": 150,
+      "lessons": [
+        {
+          "id": "E01",
+          "title": "Cztery wielkości, które porządkują elektrykę",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/electrical/e01.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-E01"
+          ],
+          "claim_ids": [
+            "E-C-quantities",
+            "E-C-dc-hazard",
+            "E-C-ohm",
+            "E-C-role"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "sześć uporządkowanych wierszy."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "dwa rozwiązania z jednostkami i dwie kontrole."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "trzy zdania oddzielające informację od założenia."
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "title": "Od obwodu do mocy i energii",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/electrical/e02.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-E02"
+          ],
+          "claim_ids": [
+            "E-C-ohm",
+            "E-C-topology",
+            "E-C-energy"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "schemat i pięć wartości."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "drugi schemat i bilans węzła."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "tabela porównawcza i ograniczenia."
+            }
+          ]
+        },
+        {
+          "id": "E03",
+          "title": "Prąd przemienny, zabezpieczenia i granice roli",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/electrical/e03.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-E03"
+          ],
+          "claim_ids": [
+            "E-C-dc-hazard",
+            "E-C-ac",
+            "E-C-pf",
+            "E-C-protection",
+            "E-C-role"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "trzy wartości z działaniami."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "tabela dziewięciu pól."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "gotowa notatka bez diagnozy."
+            }
+          ]
+        },
+        {
+          "id": "E04",
+          "title": "Od ogniwa do mapy instalacji PV",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/electrical/e04.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-E04"
+          ],
+          "claim_ids": [
+            "E-C-ohm",
+            "E-C-topology",
+            "E-C-pv-chain",
+            "E-C-mppt",
+            "E-C-monitoring"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "mapa trzech stringów z liczbą modułów i legendą skrótów."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "tabela siedmiu wierszy obejmująca stringi, tory i sumę DC oraz AC przy syntetycznej sprawności 96%."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "korekta zdania i lista pytań do dokumentacji."
+            }
+          ]
+        },
+        {
+          "id": "E05",
+          "title": "Karta modułu, temperatura i cień",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/electrical/e05.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-E05"
+          ],
+          "claim_ids": [
+            "E-C-ohm",
+            "E-C-role",
+            "E-C-datasheet",
+            "E-C-temperature",
+            "E-C-bypass",
+            "E-C-solar-resource"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "cztery opisy i jeden poprawny rachunek."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "pięć etapów rachunku i decyzja o przekazaniu."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "cztery zdania bez deklaracji konkretnej usterki lub procentu straty."
+            }
+          ]
+        },
+        {
+          "id": "E06",
+          "title": "Dane pracy instalacji i bezpieczne przekazanie obserwacji",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/electrical/e06.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-E06"
+          ],
+          "claim_ids": [
+            "E-C-dc-hazard",
+            "E-C-energy",
+            "E-C-role",
+            "E-C-monitoring",
+            "E-C-solar-resource",
+            "E-C-performance"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "rachunek i opis granicy wniosku."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "rachunek PR oraz lista kontroli."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "gotowe przekazanie bez diagnozy."
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "id": "A-E01-general",
+          "type": "quiz",
+          "estimated_minutes": 4,
+          "objective_ids": [
+            "O-E01"
+          ],
+          "item_count": 3,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-E01-critical",
+          "type": "quiz",
+          "estimated_minutes": 1,
+          "objective_ids": [
+            "O-E01"
+          ],
+          "item_count": 1,
+          "passing_score": 1,
+          "critical": true
+        },
+        {
+          "id": "A-E02-general",
+          "type": "quiz",
+          "estimated_minutes": 5,
+          "objective_ids": [
+            "O-E02"
+          ],
+          "item_count": 4,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-E03-general",
+          "type": "quiz",
+          "estimated_minutes": 4,
+          "objective_ids": [
+            "O-E03"
+          ],
+          "item_count": 2,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-E03-critical",
+          "type": "quiz",
+          "estimated_minutes": 1,
+          "objective_ids": [
+            "O-E03"
+          ],
+          "item_count": 2,
+          "passing_score": 1,
+          "critical": true
+        },
+        {
+          "id": "A-E04-general",
+          "type": "quiz",
+          "estimated_minutes": 5,
+          "objective_ids": [
+            "O-E04"
+          ],
+          "item_count": 4,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-E05-general",
+          "type": "quiz",
+          "estimated_minutes": 4,
+          "objective_ids": [
+            "O-E05"
+          ],
+          "item_count": 3,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-E05-critical",
+          "type": "quiz",
+          "estimated_minutes": 1,
+          "objective_ids": [
+            "O-E05"
+          ],
+          "item_count": 1,
+          "passing_score": 1,
+          "critical": true
+        },
+        {
+          "id": "A-E06-general",
+          "type": "quiz",
+          "estimated_minutes": 4,
+          "objective_ids": [
+            "O-E06"
+          ],
+          "item_count": 3,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-E06-critical",
+          "type": "quiz",
+          "estimated_minutes": 1,
+          "objective_ids": [
+            "O-E06"
+          ],
+          "item_count": 1,
+          "passing_score": 1,
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "field",
+      "title": "Inspekcje i termowizja",
+      "declared_minutes": 150,
+      "lessons": [
+        {
+          "id": "F01",
+          "title": "Zanim wystartujesz: pytanie klienta i plan misji",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/field/f01.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-F01"
+          ],
+          "claim_ids": [
+            "F-C1",
+            "F-C5"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Napisz pytanie decyzyjne i pięć wymaganych danych z osobami odpowiedzialnymi."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Narysuj plan hali, parkingu i startu"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Uzupełnij sześć warunków, dowodów i decyzji oraz listę plików dla O&M."
+            }
+          ]
+        },
+        {
+          "id": "F02",
+          "title": "Kamera termiczna: od ciepła do obserwacji",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/field/f02.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-F02"
+          ],
+          "claim_ids": [
+            "F-C2",
+            "F-C3",
+            "F-C7"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Policz nominalne różnice dla A 58/46°C, B 51/45°C, C 61/48°C."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Przypisz hipotezy oraz ograniczenia na podstawie opisów w lekcji."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Napisz trzy zdania raportu i listę brakujących metadanych."
+            }
+          ]
+        },
+        {
+          "id": "F03",
+          "title": "Warunki, geometria i jakość nalotu",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/field/f03.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-F03"
+          ],
+          "claim_ids": [
+            "F-C4"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Policz średnie i skrajne odchylenia POA z tabeli pasów A/B/C."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Wystaw decyzję według syntetycznych kryteriów z lekcji."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Zaproponuj uzupełnienie dowodów"
+            }
+          ]
+        },
+        {
+          "id": "F04",
+          "title": "Od anomalii do hipotezy i potwierdzenia",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/field/f04.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-F04"
+          ],
+          "claim_ids": [
+            "F-C4",
+            "F-C5"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Zapisz obserwację, dwie hipotezy i ograniczenie dla każdego ID."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Dobierz dodatkowy dowód oraz kompetentnego wykonawcę."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Nadaj priorytet przekazania i wyjaśnij wynik 30 potwierdzeń na 40 sprawdzonych."
+            }
+          ]
+        },
+        {
+          "id": "F05",
+          "title": "Dachy, budynki i przemysł",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/field/f05.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-F05"
+          ],
+          "claim_ids": [
+            "F-C6"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Zbuduj macierz dla briefów A-D z lekcji."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Opisz wykonalny zakres i rolę właściwego partnera."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Napisz odpowiedź dla B i D oraz pięć kryteriów powtarzalności C."
+            }
+          ]
+        },
+        {
+          "id": "F06",
+          "title": "Raport i zadanie końcowe inspekcji",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/field/f06.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-F06"
+          ],
+          "claim_ids": [
+            "F-C5",
+            "F-C7"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Policz moc 120 × 450 Wp i trzy kontrasty"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Oblicz przyjęte pokrycie 100/120 i zapisz dalsze działania oraz role."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Napisz podsumowanie do 120 słów, listę plików i samoocenę według rubryki."
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "id": "A-F01-general",
+          "type": "quiz",
+          "estimated_minutes": 4,
+          "objective_ids": [
+            "O-F01"
+          ],
+          "item_count": 2,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-F01-critical",
+          "type": "quiz",
+          "estimated_minutes": 1,
+          "objective_ids": [
+            "O-F01"
+          ],
+          "item_count": 1,
+          "passing_score": 1,
+          "critical": true
+        },
+        {
+          "id": "A-F02-general",
+          "type": "quiz",
+          "estimated_minutes": 5,
+          "objective_ids": [
+            "O-F02"
+          ],
+          "item_count": 3,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-F03-general",
+          "type": "quiz",
+          "estimated_minutes": 5,
+          "objective_ids": [
+            "O-F03"
+          ],
+          "item_count": 3,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-F04-general",
+          "type": "quiz",
+          "estimated_minutes": 4,
+          "objective_ids": [
+            "O-F04"
+          ],
+          "item_count": 2,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-F04-critical",
+          "type": "quiz",
+          "estimated_minutes": 1,
+          "objective_ids": [
+            "O-F04"
+          ],
+          "item_count": 1,
+          "passing_score": 1,
+          "critical": true
+        },
+        {
+          "id": "A-F05-general",
+          "type": "quiz",
+          "estimated_minutes": 5,
+          "objective_ids": [
+            "O-F05"
+          ],
+          "item_count": 3,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-F06-general",
+          "type": "quiz",
+          "estimated_minutes": 4,
+          "objective_ids": [
+            "O-F06"
+          ],
+          "item_count": 2,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-F06-critical",
+          "type": "quiz",
+          "estimated_minutes": 1,
+          "objective_ids": [
+            "O-F06"
+          ],
+          "item_count": 1,
+          "passing_score": 1,
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "title": "Mapowanie i dane przestrzenne",
+      "declared_minutes": 150,
+      "lessons": [
+        {
+          "id": "M01",
+          "title": "Od zdjęcia do mapy: co naprawdę robi fotogrametria",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/mapping/m01.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-M01"
+          ],
+          "claim_ids": [
+            "M-C01",
+            "M-C02"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Tabela czterech potrzeb i produktów"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Obliczenie skali, pikseli i pola"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Proces z dwoma warunkami zatrzymania"
+            }
+          ]
+        },
+        {
+          "id": "M02",
+          "title": "Zaplanuj piksel, pokrycie i ostrość",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/mapping/m02.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-M02"
+          ],
+          "claim_ids": [
+            "M-C03",
+            "M-C04",
+            "M-C05",
+            "M-C06"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Tabela GSD, śladu i odstępów"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Interwał, poruszenie i szkic pokrycia nad dachem"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Karta kontroli i decyzja operacyjna"
+            }
+          ]
+        },
+        {
+          "id": "M03",
+          "title": "Współrzędne, RTK i niezależna kontrola",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/mapping/m03.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-M03"
+          ],
+          "claim_ids": [
+            "M-C03",
+            "M-C07",
+            "M-C08",
+            "M-C09",
+            "M-C10",
+            "M-C11",
+            "M-C18"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Metryka z jawnymi brakami"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Różnice, błąd poziomy i wysokość"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Notatka odbiorcza 80–120 słów"
+            }
+          ]
+        },
+        {
+          "id": "M04",
+          "title": "Rekonstrukcja i kontrola powierzchni",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/mapping/m04.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-M04"
+          ],
+          "claim_ids": [
+            "M-C01",
+            "M-C02",
+            "M-C05",
+            "M-C12",
+            "M-C13",
+            "M-C14",
+            "M-C21"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Dwa odsetki i przypisanie defektów do etapów"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Trzy karty defektów"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Decyzja osobno dla powierzchni placu i dokumentacji dachu"
+            }
+          ]
+        },
+        {
+          "id": "M05",
+          "title": "GIS: pomiar, objętość i uczciwa dokładność",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/mapping/m05.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-M05"
+          ],
+          "claim_ids": [
+            "M-C03",
+            "M-C08",
+            "M-C09",
+            "M-C13",
+            "M-C15",
+            "M-C16",
+            "M-C17",
+            "M-C18"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Pole, obwód i dwa warianty objętości"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Błędy punktów, RMSE i średni dz"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Tabela wyników, ograniczeń i wymaganych metadanych"
+            }
+          ]
+        },
+        {
+          "id": "M06",
+          "title": "Przekaż opracowanie, które da się sprawdzić",
+          "delivery": "case_study",
+          "content_path": "src/content/field-course/mapping/m06.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "O-M06"
+          ],
+          "claim_ids": [
+            "M-C03",
+            "M-C04",
+            "M-C05",
+            "M-C06",
+            "M-C08",
+            "M-C09",
+            "M-C16",
+            "M-C17",
+            "M-C18",
+            "M-C19",
+            "M-C20",
+            "M-C21"
+          ],
+          "media": [],
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Tabela geometrii zdjęć i kompletności"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Pole, obwód, objętości i RMSE"
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Notatka 120–180 słów i cztery decyzje produktowe"
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "id": "A-M01-general",
+          "type": "quiz",
+          "estimated_minutes": 5,
+          "objective_ids": [
+            "O-M01"
+          ],
+          "item_count": 4,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-M02-general",
+          "type": "quiz",
+          "estimated_minutes": 4,
+          "objective_ids": [
+            "O-M02"
+          ],
+          "item_count": 3,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-M02-critical",
+          "type": "quiz",
+          "estimated_minutes": 1,
+          "objective_ids": [
+            "O-M02"
+          ],
+          "item_count": 1,
+          "passing_score": 1,
+          "critical": true
+        },
+        {
+          "id": "A-M03-general",
+          "type": "quiz",
+          "estimated_minutes": 5,
+          "objective_ids": [
+            "O-M03"
+          ],
+          "item_count": 4,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-M04-general",
+          "type": "quiz",
+          "estimated_minutes": 4,
+          "objective_ids": [
+            "O-M04"
+          ],
+          "item_count": 3,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-M04-critical",
+          "type": "quiz",
+          "estimated_minutes": 1,
+          "objective_ids": [
+            "O-M04"
+          ],
+          "item_count": 1,
+          "passing_score": 1,
+          "critical": true
+        },
+        {
+          "id": "A-M05-general",
+          "type": "quiz",
+          "estimated_minutes": 5,
+          "objective_ids": [
+            "O-M05"
+          ],
+          "item_count": 4,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-M06-general",
+          "type": "quiz",
+          "estimated_minutes": 4,
+          "objective_ids": [
+            "O-M06"
+          ],
+          "item_count": 3,
+          "passing_score": 0.8,
+          "critical": false
+        },
+        {
+          "id": "A-M06-critical",
+          "type": "quiz",
+          "estimated_minutes": 1,
+          "objective_ids": [
+            "O-M06"
+          ],
+          "item_count": 1,
+          "passing_score": 1,
+          "critical": true
+        }
+      ]
+    }
+  ]
+}

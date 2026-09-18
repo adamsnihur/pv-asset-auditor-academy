@@ -15,7 +15,7 @@ status: verified-training-reference
 
 Ten materiał przygotowuje do pracy na styku niezależnego audytu aktywów PV, doradztwa technicznego i radiometrycznej diagnostyki lotniczej. Rdzeniem metody jest łańcuch dowodowy: model fizyczny i topologia elektryczna, dane SCADA, kontrolowane pozyskanie RGB/IR, badanie naziemne, kwantyfikacja straty z niepewnością oraz decyzja techniczno-finansowa. Termogram jest obserwacją pola temperatury powierzchni, nie bezpośrednim pomiarem sprawności, przyczyny ani straty energii.
 
-Program obejmuje 220 godzin: 92 h teorii, 82 h laboratoriów i terenu oraz 46 h analizy i raportowania. Warunkiem ukończenia jest zaliczenie pięciu bramek modułowych, egzamin bezpieczeństwa 100%, wykonanie misji BSP z audytowalnym QA oraz obrona audytu syntetycznej farmy 80 MWp. Absolwent ma umieć odrzucić niewiarygodne dane równie stanowczo, jak wskazać usterkę.
+Historyczna koncepcja programu zakładała 220 godzin: 92 h teorii, 82 h laboratoriów i terenu oraz 46 h analizy i raportowania. To plan szkolenia wymagający organizacji zajęć, zbiorów danych, stanowisk i instruktora, a nie czas treści zweryfikowany w tej platformie. W tym rozszerzonym modelu ukończenie wymagałoby bramek modułowych, egzaminu bezpieczeństwa 100%, misji BSP z audytowalnym QA oraz obrony audytu syntetycznej farmy 80 MWp. Quizy podręcznika nie potwierdzają wykonania tych czynności. Prowadzona ścieżka podstawowa ma odrębny plan czasu i zadania.
 
 Dokument rozróżnia trzy klasy stwierdzeń: **[N] wymaganie normatywne** potwierdzone w publicznie dostępnej informacji o normie lub w posiadanym tekście normy, **[R] rekomendacja** instytucji lub publikacji oraz **[A] założenie projektowe/syntetyczne** użyte do obliczeń albo przygotowania misji. Dostęp do samego spisu treści lub streszczenia IEC nie uprawnia do odtwarzania niedostępnych klauzul. Wartości POA, wiatru, kąta, GSD, liczby pikseli na ogniwo i ΔT są zawsze opatrzone źródłem lub etykietą [A].
 
@@ -56,6 +56,8 @@ fizyka złącza i modułu
 8. zamiana obserwacji diagnostycznej w rozstrzygnięcie gwarancyjne bez łańcucha dowodowego.
 
 ## 3. Plan nauki i kryteria zaliczenia
+
+Poniższa tabela i harmonogram są koncepcją dodatkowego szkolenia z praktyką. Nie stanowią ewidencji zajęć dostępnych lub ukończonych online. Ćwiczenia ingerujące w instalację wymagają właściwych kompetencji, stanowiska i organizacji pracy.
 
 | Etap | Zakres | Teoria | Laboratorium/teren | Analiza/raport | Razem | Produkt zaliczeniowy |
 |---|---|---:|---:|---:|---:|---|

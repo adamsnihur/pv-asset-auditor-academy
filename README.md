@@ -1,8 +1,7 @@
 # PV Asset Auditor Academy
 
-Niezależna, interaktywna platforma e-learningowa prowadząca od podstaw
-bezpieczeństwa i metrologii do kompletnego audytu techniczno-finansowego
-instalacji utility-scale PV.
+Niezależna platforma e-learningowa: od podstaw elektryczności przez PV,
+inspekcje UAV i termografię do mapowania, GIS oraz przekazania danych.
 
 Platforma jest samodzielnym produktem edukacyjnym. Nie jest częścią żadnej
 strony usługowej ani marki operatorskiej.
@@ -31,10 +30,32 @@ artefakt przez GitHub Pages. Produkcyjny adres:
 
 ## Zakres
 
-- 220 godzin programu w siedmiu etapach;
-- pełna treść programu źródłowego;
-- quiz po każdym etapie i blokady wymagań wstępnych;
-- zapis postępu w przeglądarce;
+- 18 odrębnych lekcji w trzech ścieżkach, z przykładami i pracą własną;
+- planowany czas pracy udokumentowany w `course-plan.json`, oparty na tekście,
+  zadaniach i ocenianiu, nie na pomiarze aktywności użytkownika;
+- źródła i macierz twierdzeń w katalogach każdej ścieżki;
+- quizy z objaśnieniami: 80% pytań ogólnych i 100% krytycznych;
+- zapis rezultatu ćwiczenia oraz jawna samoocena przed odblokowaniem kolejnej lekcji;
+- wznowienie nauki i eksport własnych notatek, lokalnie w przeglądarce;
+- syntetyczne CSV, raster ASCII Grid i szablon raportu do pobrania;
+- istniejący podręcznik pogłębiony w siedmiu częściach;
 - interaktywne laboratorium instalacji mikro i utility-scale;
 - wzory matematyczne, tabele, checklisty i studium końcowe;
 - tryb jasny, ciemny, druk oraz reduced motion.
+
+Dawne 220 godzin to koncepcja rozszerzonego programu obejmującego także teren,
+laboratoria i ocenę instruktora. Nie jest to zweryfikowany czas treści dostarczonej
+na platformie. Zaliczenie quizów i samooceny nie stanowi kwalifikacji zawodowej.
+Próby praktyczne do uzgodnienia z partnerem opisano w
+`public/assets/practice/README.md`.
+
+## Weryfikacja dydaktyczna
+
+`course-plan.json` łączy cele, lekcje, ćwiczenia, oceny oraz źródła. Katalogi
+`src/content/field-course/*/catalog.json` dostarczają te same lekcje interfejsowi.
+Testy kontrolują spójność tych danych, odpowiedzi, bramki bezpieczeństwa i postęp.
+Pliki Markdown są zaufaną treścią repozytorium. Renderer nie jest przeznaczony
+do wyświetlania niezaufanego HTML przesłanego przez kursantów.
+
+Aktualizacja z 2026-09-18 jest zmianą lokalną; jej przygotowanie nie oznacza
+publikacji pod podanym wyżej adresem produkcyjnym.

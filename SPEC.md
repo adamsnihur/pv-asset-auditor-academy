@@ -1,5 +1,11 @@
 # PV Asset Auditor Academy Technical Specification
 
+## Guided curriculum upgrade, 2026-09-16
+
+User-authorized scope: improve domain substance and learner experience from zero electrical knowledge through PV, UAV inspection and mapping. Keep the independent product identity and existing advanced reference. Add 18 discrete lessons across electrical/PV, field/thermal, and mapping/GIS tracks, backed by primary sources, worked examples, learner artifacts and explanatory assessment feedback. Use existing Astro dependencies and theme.
+
+Completion of self-study is not electrical, UAV or surveying qualification. Critical quiz items must all be correct; ordinary quiz threshold is 80%. An artifact and explicit self-review are also required, labelled as self-review rather than professional assessment. Persist locally and resume by lesson. Remove unsupported 220-hour and expert-readiness promises from the delivery surface; evidence the new path in course-plan.json. Verify content/depth, state/quiz logic, production build, browser accessibility and input-injection behavior. No deployment is part of this request.
+
 ## Root Problem
 
 The e-learning platform was implemented inside an unrelated service website and

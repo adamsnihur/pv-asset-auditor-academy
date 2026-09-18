@@ -1,6 +1,7 @@
 ---
 import CourseLayout from '../layouts/CourseLayout.astro';
 import PvSystemLab from '../components/PvSystemLab.astro';
+import GuidedCourse from '../components/GuidedCourse.astro';
 import courseSource from '../content/pv-asset-auditor.md?raw';
 import { courseStages, quizzes, splitCourseContent } from '../lib/course.mjs';
 import { renderCourseMarkdown } from '../lib/course-renderer.mjs';
@@ -21,7 +22,7 @@ const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u0
 ---
 <CourseLayout
   title="PV Asset Auditor | Interaktywna Akademia"
-  description="Interaktywny, 220-godzinny program od bezpieczeństwa i fizyki PV do pełnego audytu techniczno-finansowego farmy 80 MWp."
+  description="Prowadzona nauka od podstaw elektryczności i PV po inspekcje UAV, termowizję i mapowanie. Przykłady, ćwiczenia, quizy i własny dziennik pracy."
   ogImage="assets/course/hero.webp"
   ogImageAlt="Farma fotowoltaiczna w widoku RGB i termicznym"
 >
@@ -32,26 +33,28 @@ const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u0
       <div class="thermal-scan" aria-hidden="true"></div>
       <div class="course-hero__content wrap">
         <div class="course-topline">
-          <p class="course-kicker">PV Asset Auditor Academy <span>Program inżynierski</span></p>
+          <p class="course-kicker">PV Asset Auditor Academy <span>Elektryczność · PV · UAV · GIS</span></p>
           <button class="theme-toggle" type="button" data-theme-toggle aria-label="Zmień motyw kursu">Motyw: system</button>
         </div>
         <div class="course-hero__copy">
-          <p class="course-overline">220 godzin · 7 etapów · poziom podstawowy → ekspercki</p>
+          <p class="course-overline">Od zera · 18 lekcji · trzy ścieżki praktyczne</p>
           <h1 id="course-title">PV Asset <em>Auditor</em></h1>
-          <p class="course-intro">Naucz się odrzucać niewiarygodne dane równie stanowczo, jak wskazywać istotne obserwacje. Przejdziesz pełny łańcuch: od fizyki i bezpieczeństwa do decyzji inwestycyjnej dla farmy 80 MWp.</p>
+          <p class="course-intro">Zrozum prąd, poznaj instalację PV i naucz się pracować z obrazem termicznym oraz mapą. Krok po kroku: objaśnienie, przykład, własne zadanie i informacja zwrotna. Wiedzę utrwalisz w dzienniku, do którego zawsze możesz wrócić.</p>
           <div class="hero-actions">
-            <button class="course-button course-button--primary" type="button" data-course-start>Zacznij naukę <span aria-hidden="true">↗</span></button>
-            <a class="course-button course-button--ghost" href="#program">Zobacz program</a>
+            <a class="course-button course-button--primary" href="#guided-learning">Zacznij naukę <span aria-hidden="true">↗</span></a>
+            <a class="course-button course-button--ghost" href="#program">Podręcznik pogłębiony</a>
           </div>
         </div>
         <dl class="hero-stats" aria-label="Parametry programu">
-          <div><dt>92 h</dt><dd>teorii</dd></div>
-          <div><dt>82 h</dt><dd>laboratorium i terenu</dd></div>
-          <div><dt>46 h</dt><dd>analizy i raportu</dd></div>
+          <div><dt>18</dt><dd>odrębnych lekcji</dd></div>
+          <div><dt>18</dt><dd>rezultatów własnej pracy</dd></div>
+          <div><dt>3</dt><dd>dziedziny połączone w praktyce</dd></div>
           <div><dt>100%</dt><dd>krytycznych pytań safety</dd></div>
         </dl>
       </div>
     </section>
+
+    <GuidedCourse />
 
     <section class="course-principle wrap" aria-labelledby="principle-title">
       <div>
@@ -75,20 +78,22 @@ const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u0
 
     <PvSystemLab />
 
-    <section class="program-section wrap" id="program" aria-labelledby="program-title">
+    <details class="reference-library" id="program">
+      <summary class="wrap">Podręcznik pogłębiony PV <span>Otwórz siedem części referencyjnych i dodatkowe quizy</span></summary>
+    <section class="program-section wrap" aria-labelledby="program-title">
       <div class="program-heading">
         <div>
           <p class="course-overline">Program</p>
-          <h2 id="program-title">Siedem etapów kompetencji</h2>
+          <h2 id="program-title">Siedem części podręcznika</h2>
         </div>
-        <p>Każdy etap kończy się sprawdzianem. Kolejny poziom odblokowuje się po osiągnięciu progu zaliczenia.</p>
+        <p>To materiał do dalszego studiowania po ścieżce podstawowej. Quizy sprawdzają rozumienie podręcznika. Prace terenowe i ocena instruktora wymagają odrębnej organizacji.</p>
       </div>
       <div class="program-grid">
         {courseStages.map((stage, index) => (
           <article class="program-card">
             <img src={withBase(stage.image)} alt="" width="640" height="360" loading="lazy" />
             <div class="program-card__body">
-              <div class="program-card__meta"><span>{stage.eyebrow}</span><span>{stage.hours ? `${stage.hours} h` : 'Capstone'}</span></div>
+              <div class="program-card__meta"><span>{stage.eyebrow}</span><span>{stage.kind === 'capstone' ? 'Studium końcowe' : 'Materiał referencyjny'}</span></div>
               <h3>{stage.title}</h3>
               <p>{stage.summary}</p>
               <div class="program-card__level"><span>{String(index).padStart(2, '0')}</span>{stage.level}</div>
@@ -103,7 +108,7 @@ const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u0
         <aside class="course-sidebar" aria-label="Etapy kursu">
           <div class="progress-card">
             <div class="progress-ring" data-progress-ring style="--progress: 0%"><span data-progress-value>0%</span></div>
-            <div><strong>Twój postęp</strong><span><b data-hours-complete>0</b> z 220 godzin</span></div>
+            <div><strong>Twój postęp</strong><span><b data-hours-complete>0</b> z 7 części</span></div>
           </div>
           <nav class="stage-nav">
             {courseStages.map((stage, index) => (
@@ -138,7 +143,7 @@ const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u0
                   <ol>{section.toc.map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ol>
                 </details>
 
-                <div class="source-preserved"><span aria-hidden="true">✓</span><div><strong>Treść źródłowa zachowana w całości</strong><p>Formuły, procedury, checklisty, studia przypadków, macierze i źródła zostały przeniesione bez skrótów.</p></div></div>
+                <div class="source-preserved"><span aria-hidden="true">✓</span><div><strong>Podręcznik do pogłębienia wiedzy</strong><p>Dawny plan 220 godzin obejmuje także projektowane zajęcia z instruktorem i teren. Nie jest czasem nauki potwierdzonym przez tę platformę. Procedury czytaj w granicach swoich kwalifikacji.</p></div></div>
                 <div class="course-prose" set:html={section.html}></div>
 
                 <section class="quiz" data-quiz={stage.id} aria-labelledby={`quiz-title-${stage.id}`}>
@@ -168,14 +173,15 @@ const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u0
 
           <section class="certificate" data-certificate hidden aria-labelledby="certificate-title">
             <p class="course-overline">Ścieżka ukończona</p>
-            <h2 id="certificate-title">Gotowy do obrony audytu</h2>
-            <p>Zaliczyłeś wszystkie siedem etapów programu PV Asset Auditor.</p>
-            <dl><div><dt>Program</dt><dd>220 godzin</dd></div><div><dt>Etapy</dt><dd>7 / 7</dd></div><div><dt>Standard</dt><dd>Evidence-first</dd></div></dl>
+            <h2 id="certificate-title">Quizy podręcznika ukończone</h2>
+            <p>Rozwiązałeś quizy siedmiu części. Ten zapis nie potwierdza wykonania pomiarów, praktyki terenowej ani obrony audytu.</p>
+            <dl><div><dt>Tryb</dt><dd>Samokształcenie</dd></div><div><dt>Etapy</dt><dd>7 / 7</dd></div><div><dt>Standard</dt><dd>Evidence-first</dd></div></dl>
             <button class="course-button course-button--ghost" type="button" data-print-certificate>Drukuj potwierdzenie</button>
           </section>
         </div>
       </div>
     </section>
+    </details>
   </div>
   <script type="application/json" id="course-data" set:html={clientData}></script>
   <script>

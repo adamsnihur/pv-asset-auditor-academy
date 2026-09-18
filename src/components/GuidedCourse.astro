@@ -1,0 +1,90 @@
+---
+import { flattenCatalogs, REVIEW_ITEMS } from '../lib/guided-course.mjs';
+import { renderCourseMarkdown } from '../lib/course-renderer.mjs';
+import '../styles/guided-course.css';
+
+const catalogFiles = import.meta.glob('../content/field-course/*/catalog.json', { eager: true, import: 'default' });
+const markdownFiles = import.meta.glob('../content/field-course/*/*.md', { eager: true, query: '?raw', import: 'default' });
+const catalogs = Object.values(catalogFiles);
+const lessons = flattenCatalogs(catalogs);
+const groups = ['electrical', 'field', 'mapping'].map((id) => catalogs.find((catalog) => catalog.id === id)).filter(Boolean);
+const lessonHtml = (lesson) => {
+  const file = lesson.file.includes('/') ? lesson.file : `${lesson.group}/${lesson.file}`;
+  const markdown = markdownFiles[`../content/field-course/${file}`];
+  if (typeof markdown !== 'string') throw new Error(`Missing guided lesson: ${lesson.file}`);
+  return renderCourseMarkdown(markdown);
+};
+const clientData = JSON.stringify({ lessons }).replace(/</g, '\\u003c');
+const practiceFiles = [
+  ['README.md', 'Instrukcja ćwiczeń i sprawdzenie praktyki'],
+  ['m06-checkpoints.csv', 'M06: błędy punktów kontrolnych'],
+  ['m06-stockpile.asc', 'M06: raster wysokości do GIS'],
+  ['m06-boundary.csv', 'M06: obrys strefy w formacie WKT'],
+  ['f06-observations.csv', 'F06: obserwacje inspekcji'],
+  ['field-report-template.csv', 'Szablon tabeli raportu'],
+];
+---
+
+<section class="guided-course" id="guided-learning" data-guided-course aria-labelledby="guided-heading">
+  <div class="wrap">
+    <header class="guided-intro">
+      <div><p class="course-overline">Pracownia inspektora · krok po kroku</p><h2 id="guided-heading">Zrozum. Przećwicz.<br /><em>Sprawdź swój tok myślenia.</em></h2></div>
+      <p>Krótkie lekcje prowadzą od podstaw elektryczności do decyzji w terenie. Każda kończy się własnym rezultatem i informacją zwrotną.</p>
+    </header>
+    <div class="guided-tracks" aria-label="Ścieżka nauki">
+      {groups.map((group, index) => <div><span class="guided-track-number">0{index + 1}</span><div><strong>{group.title}</strong><p>{group.description}</p><small>{group.lessons.length} lekcji · {group.lessons.reduce((total, lesson) => total + lesson.minutes, 0)} min planowanej pracy</small></div></div>)}
+    </div>
+    <details class="guided-resources">
+      <summary>Pliki do ćwiczeń <span>CSV · raster · szablon raportu</span></summary>
+      <p>Autorskie dane syntetyczne do F06 i M06. Raster oraz geometria mają lokalne współrzędne w metrach, bez EPSG. To ćwiczenie formatów i obliczeń; nie są to rzeczywiste zdjęcia ani ortomozaika.</p>
+      <ul>{practiceFiles.map(([file, label]) => <li><a href={`${import.meta.env.BASE_URL}assets/practice/${file}`} download>{label} ↓</a></li>)}</ul>
+      <p>Czasy lekcji są planem samodzielnej pracy z tekstem, ćwiczeniem i quizem, nie pomiarem Twojej aktywności. Dodatkowe ćwiczenia w GIS i teren z instruktorem są poza tym planem.</p>
+    </details>
+    {!lessons.length ? <p>Materiały lekcji są przygotowywane.</p> : <div class="guided-shell">
+      <aside class="guided-sidebar" aria-label="Plan i postęp nauki">
+        <div class="guided-progress"><div><strong>Twoja ścieżka</strong><span data-guided-progress>0 / {lessons.length}</span></div><progress value="0" max={lessons.length} aria-label="Ukończone lekcje"></progress><p>Wrócisz do ostatniej otwartej lekcji.</p></div>
+        <details class="guided-navigation" open><summary>Plan lekcji <span>Rozwiń / zwiń</span></summary><nav aria-label="Lekcje">
+          {groups.map((group) => <div class="guided-nav-group"><h3>{group.title}</h3>{group.lessons.map((lesson) => {
+            const index = lessons.findIndex((item) => item.id === lesson.id);
+            return <button type="button" data-lesson-trigger={lesson.id} aria-current={index === 0 ? 'step' : undefined} disabled={index > 0}>
+              <span class="guided-nav-number">{String(index + 1).padStart(2, '0')}</span><span><strong>{lesson.title}</strong><small>{lesson.minutes} min · <span data-lesson-state>{index === 0 ? 'Teraz' : 'Zablokowana'}</span></small></span>
+            </button>;
+          })}</div>)}
+        </nav></details>
+        <div class="guided-tools"><button type="button" data-guided-export>Pobierz notatki (.txt) ↓</button><button type="button" data-guided-reset>Wyzeruj naukę</button></div>
+        <div class="guided-reset-box" data-guided-reset-box hidden><p>Usunąć wszystkie odpowiedzi, notatki i postęp tej ścieżki? Najpierw pobierz notatki, jeśli chcesz je zachować.</p><button type="button" data-guided-reset-cancel>Zachowaj dane</button><button type="button" data-guided-reset-confirm>Usuń dane tej ścieżki</button></div>
+        <p class="guided-privacy">Prywatnie na tym urządzeniu. Notatki i odpowiedzi pozostają w pamięci tej przeglądarki. Brak synchronizacji i oceny instruktora.</p>
+        <p class="guided-storage" data-guided-storage role="status">Zapis postępu wymaga JavaScript.</p>
+      </aside>
+      <div class="guided-workspace">
+        <p class="guided-screen-reader" data-guided-status role="status" aria-live="polite"></p>
+        <noscript><p class="guided-no-script">Pierwszą lekcję możesz przeczytać poniżej. Nawigacja, sprawdzanie odpowiedzi i zapis wymagają włączenia JavaScript.</p></noscript>
+        {lessons.map((lesson, index) => <article class="guided-lesson" data-lesson-panel={lesson.id} hidden={index !== 0} aria-labelledby={`guided-title-${lesson.id}`}>
+          <header class="guided-lesson-header"><p class="course-overline">{lesson.groupTitle} <span>· Lekcja {index + 1} z {lessons.length}</span></p><h2 id={`guided-title-${lesson.id}`} data-guided-title tabindex="-1">{lesson.title}</h2><p>{lesson.summary}</p><div class="guided-lesson-meta"><span>◷ {lesson.minutes} min planowanej pracy</span><a href={`#practice-${lesson.id}`}>Przejdź do ćwiczenia ↓</a></div><div class="guided-objective"><strong>Po tej lekcji potrafisz</strong><p>{lesson.objective}</p></div></header>
+          <div class="course-prose guided-prose" set:html={lessonHtml(lesson)}></div>
+          <section class="guided-practice" id={`practice-${lesson.id}`} aria-labelledby={`practice-title-${lesson.id}`}>
+            <p class="course-overline">Teraz Twoja kolej · {lesson.activity.minutes} min</p><h3 id={`practice-title-${lesson.id}`}>Przygotuj własny rezultat</h3><p class="guided-deliverable"><strong>Do wykonania:</strong> {lesson.activity.deliverable}</p>
+            <ol class="guided-activity-steps">{lesson.activity.steps.map((step) => <li><div><span>{step.minutes} min</span><p>{step.instruction}</p><small>Rezultat: {step.output}</small></div></li>)}</ol>
+            <a class="guided-inline-link" href={`#notes-${lesson.id}`}>Zapisz rezultat w dzienniku poniżej ↓</a>
+          </section>
+          <section class="guided-assessment" aria-labelledby={`check-title-${lesson.id}`}>
+            <p class="course-overline">Sprawdź rozumowanie</p><h3 id={`check-title-${lesson.id}`}>Krótki sprawdzian</h3><p>Odpowiedz na każde pytanie. Wymagane: 80% pytań ogólnych i wszystkie pytania krytyczne. Po sprawdzeniu zobaczysz wyjaśnienia.</p>
+            <form data-guided-quiz>{lesson.questions.map((question, questionIndex) => <fieldset><legend><span>{questionIndex + 1}.</span> {question.prompt}{question.critical && <strong class="guided-critical">Krytyczne · wymagane</strong>}</legend><div class="guided-options">{question.options.map((option, optionIndex) => <label><input type="radio" name={`guided-${lesson.id}-${questionIndex}`} value={optionIndex} data-guided-answer data-question={questionIndex} /><span>{option}</span></label>)}</div><p class="guided-feedback" data-guided-feedback hidden></p></fieldset>)}<button class="guided-button" type="submit">Sprawdź odpowiedzi</button><p class="guided-result" data-guided-result tabindex="-1" aria-live="polite"></p></form>
+          </section>
+          <section class="guided-journal" aria-labelledby={`journal-title-${lesson.id}`}>
+            <p class="course-overline">Twój dziennik nauki</p><h3 id={`journal-title-${lesson.id}`}>Rezultat i samoocena</h3><label class="guided-notes-label" for={`notes-${lesson.id}`}>Zapisz obliczenia, decyzję lub treść opracowanego dokumentu.</label><p id={`notes-help-${lesson.id}`}>Uwzględnij: {lesson.activity.deliverable} Nie wpisuj danych klientów ani informacji poufnych.</p><textarea id={`notes-${lesson.id}`} data-guided-notes rows="8" maxlength="50000" aria-describedby={`notes-help-${lesson.id}`} placeholder="Moje rozwiązanie…&#10;&#10;Uzasadnienie…&#10;&#10;Ograniczenia i pytania…"></textarea>
+            <fieldset class="guided-self-review"><legend>Sprawdź swoją pracę przed ukończeniem</legend>{REVIEW_ITEMS.map((item) => <label><input type="checkbox" data-guided-review /><span>{item}</span></label>)}</fieldset><p class="guided-review-note">Zmiana rezultatu wymaga ponownej samooceny. Zmiana ukończonej lekcji cofa jej zaliczenie i zaliczenia kolejnych lekcji. Treść notatek pozostaje zachowana.</p>
+            <p class="guided-gate" data-guided-gate>Do ukończenia: zalicz sprawdzian · zapisz rezultat · zaznacz trzy kryteria samooceny.</p><button class="guided-button" type="button" data-guided-complete disabled>Zapisz ukończenie lekcji</button>
+          </section>
+          <footer class="guided-lesson-footer"><button type="button" data-guided-back disabled={index === 0}>← Poprzednia lekcja</button><button type="button" data-guided-next disabled>Następna lekcja →</button><p>Przechodzisz dalej po zapisaniu ukończenia tej lekcji.</p></footer>
+        </article>)}
+        <section class="guided-finished" data-guided-finished tabindex="-1" hidden><p class="course-overline">Ścieżka samokształcenia ukończona</p><h2>Masz własny dziennik pracy.</h2><p>Ukończenie odnotowuje samodzielną naukę i samoocenę. Nie stanowi kwalifikacji zawodowych, uprawnień ani potwierdzenia umiejętności praktycznych przez instruktora.</p><p>Zachowaj notatki i omów otwarte pytania z kompetentnym instruktorem przed pracą w terenie.</p></section>
+      </div>
+    </div>}
+  </div>
+  <script type="application/json" data-guided-data set:html={clientData}></script>
+</section>
+<script>
+  import { initializeGuidedCourse } from '../lib/guided-course-client.mjs';
+  initializeGuidedCourse();
+</script>

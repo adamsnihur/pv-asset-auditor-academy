@@ -1,0 +1,2 @@
+id,wkt,description
+S1,"POLYGON ((10 10,60 10,60 30,10 30,10 10))","Synthetic local metre coordinates; no EPSG assigned"

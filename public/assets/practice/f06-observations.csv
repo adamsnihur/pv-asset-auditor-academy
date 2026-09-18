@@ -1,0 +1,4 @@
+id,asset,string,temperature_c,reference_c,evidence,limitation
+A,R02-M05,S2,57,45,RGB shows soiling,no controlled repeat
+B,R04-M11,S4,52,46,bright area shifts with view angle,not a diagnosis
+C,R06-Z01,S6,64,46,changed appearance near connection,no electrical verification

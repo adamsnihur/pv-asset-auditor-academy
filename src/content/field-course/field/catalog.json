@@ -1,0 +1,620 @@
+{
+  "id": "field",
+  "title": "Inspekcje i termowizja",
+  "description": "Od kwalifikacji misji po raport z ograniczeniami i dalszym działaniem.",
+  "lessons": [
+    {
+      "id": "F01",
+      "title": "Zanim wystartujesz: pytanie klienta i plan misji",
+      "file": "f01.md",
+      "minutes": 25,
+      "objective": "Przygotujesz plan pozyskania danych z kryteriami odbioru i podziałem odpowiedzialności.",
+      "summary": "Od pytania klienta do wykonalnego zakresu i decyzji o starcie.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Jednostronicowy brief dachu 180 kWp z sześcioma warunkami i dowodami.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Napisz pytanie decyzyjne i pięć wymaganych danych z osobami odpowiedzialnymi.",
+            "output": "Napisz pytanie decyzyjne i pięć wymaganych danych z osobami odpowiedzialnymi."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Narysuj plan hali, parkingu i startu; zaznacz trzy niewiadome.",
+            "output": "Narysuj plan hali, parkingu i startu"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Uzupełnij sześć warunków, dowodów i decyzji oraz listę plików dla O&M.",
+            "output": "Uzupełnij sześć warunków, dowodów i decyzji oraz listę plików dla O&M."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Właściciel hali zgadza się na lot. Co to rozstrzyga?",
+          "options": [
+            "Wszystkie wymagania lotnicze",
+            "Brak konieczności sprawdzania stref",
+            "Zgodę dotyczącą obiektu, w jej uzgodnionym zakresie",
+            "Automatycznie bezpieczną geometrię"
+          ],
+          "answer": 2,
+          "explanation": "Zgoda właściciela nie zastępuje oceny przestrzeni, kwalifikacji i warunków operacji.",
+          "critical": true
+        },
+        {
+          "prompt": "400 modułów po 450 Wp daje:",
+          "options": [
+            "180 kWp mocy znamionowej DC",
+            "180 kWh w każdej godzinie",
+            "450 kW eksportu",
+            "400 kWp"
+          ],
+          "answer": 0,
+          "explanation": "400 × 450 Wp = 180 000 Wp. Moc znamionowa nie określa energii ani aktualnego eksportu.",
+          "critical": false
+        },
+        {
+          "prompt": "W SCADA brakuje 25 minut. W raporcie:",
+          "options": [
+            "Przyjmujesz zerową produkcję",
+            "Potwierdzasz awarię",
+            "Pomijasz ten okres bez komentarza",
+            "Oznaczasz lukę i szukasz niezależnego potwierdzenia"
+          ],
+          "answer": 3,
+          "explanation": "Brak danych nie oznacza zerowego wyniku ani awarii. Luka musi pozostać widoczna.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "title": "Kamera termiczna: od ciepła do obserwacji",
+      "file": "f02.md",
+      "minutes": 25,
+      "objective": "Rozdzielisz sygnał IR, temperaturę z modelu i hipotezę przyczyny.",
+      "summary": "Emisyjność, odbicia, paleta, rozdzielczość i niepewność bez skrótów.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Trzy karty interpretacji A/B/C, nominalne różnice i brakujące metadane.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Policz nominalne różnice dla A 58/46°C, B 51/45°C, C 61/48°C.",
+            "output": "Policz nominalne różnice dla A 58/46°C, B 51/45°C, C 61/48°C."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Przypisz hipotezy oraz ograniczenia na podstawie opisów w lekcji.",
+            "output": "Przypisz hipotezy oraz ograniczenia na podstawie opisów w lekcji."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Napisz trzy zdania raportu i listę brakujących metadanych.",
+            "output": "Napisz trzy zdania raportu i listę brakujących metadanych."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Zmiana palety z tęczy na szarość:",
+          "options": [
+            "Usuwa odbicie",
+            "Zmienia prezentację wartości",
+            "Poprawia emisyjność",
+            "Potwierdza temperaturę ogniwa"
+          ],
+          "answer": 1,
+          "explanation": "Paleta jest sposobem prezentacji. Nie zmienia fizyki sygnału ani parametrów pomiaru.",
+          "critical": false
+        },
+        {
+          "prompt": "Detektor 640 × 512 eksportuje 1280 × 1024. Co można stwierdzić?",
+          "options": [
+            "Detektor ma cztery razy więcej elementów",
+            "GSD poprawiło się zawsze dwukrotnie",
+            "Obraz ma więcej pikseli eksportu, nie tyle samo nowych niezależnych próbek",
+            "Każdy mały defekt jest teraz mierzalny"
+          ],
+          "answer": 2,
+          "explanation": "Przetworzenie obrazu nie zmienia liczby elementów natywnego detektora.",
+          "critical": false
+        },
+        {
+          "prompt": "Obszar ma 58°C, referencja 46°C. Poprawny wniosek:",
+          "options": [
+            "Kontrast 12 K, bez samodzielnego dowodu przyczyny",
+            "12% straty energii",
+            "Pewna wada diody",
+            "Temperatura obszaru wynosi 12 K"
+          ],
+          "answer": 0,
+          "explanation": "Różnica to 12 K. Temperatura, energia i przyczyna są różnymi wielkościami.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "title": "Warunki, geometria i jakość nalotu",
+      "file": "f03.md",
+      "minutes": 25,
+      "objective": "Ocenić przydatność materiału z dziennika warunków i próbnego pasa.",
+      "summary": "POA, GSD, rozmycie oraz przyjęcie lub powtórzenie materiału.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Tabela QA pasów A/B/C, średnie POA, odchylenia i plan poprawek.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Policz średnie i skrajne odchylenia POA z tabeli pasów A/B/C.",
+            "output": "Policz średnie i skrajne odchylenia POA z tabeli pasów A/B/C."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wystaw decyzję według syntetycznych kryteriów z lekcji.",
+            "output": "Wystaw decyzję według syntetycznych kryteriów z lekcji."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Zaproponuj uzupełnienie dowodów; policz GSD dla 48 m i 640 pikseli.",
+            "output": "Zaproponuj uzupełnienie dowodów"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Pokrycie 32 m i 640 pikseli daje:",
+          "options": [
+            "50 cm/piksel",
+            "0,5 cm/piksel",
+            "5 mm/piksel",
+            "5 cm/piksel"
+          ],
+          "answer": 3,
+          "explanation": "32/640 = 0,05 m, czyli 5 cm. Sama ta liczba nie gwarantuje dokładnej temperatury.",
+          "critical": false
+        },
+        {
+          "prompt": "Przy 4 m/s, 1/200 s i GSD 0,05 m/piksel prosty model daje:",
+          "options": [
+            "40 pikseli",
+            "0,4 piksela",
+            "4 piksele",
+            "0,04 piksela"
+          ],
+          "answer": 1,
+          "explanation": "4 × 0,005 / 0,05 = 0,4. Model nie obejmuje wszystkich efektów sensora.",
+          "critical": false
+        },
+        {
+          "prompt": "Pas C ma stabilne POA, ale brak ID i stanu instalacji. Decyzja:",
+          "options": [
+            "Zatwierdź, pogoda wystarcza",
+            "Uznaj brak usterek",
+            "Najpierw uzupełnij identyfikację i stan, a jeśli się nie da, pozyskanie",
+            "Wystarczy zmienić paletę"
+          ],
+          "answer": 2,
+          "explanation": "Stabilność pogody jest tylko jednym kryterium. Materiał musi być przypisany i interpretowalny.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "F04",
+      "title": "Od anomalii do hipotezy i potwierdzenia",
+      "file": "f04.md",
+      "minutes": 25,
+      "objective": "Zbudujesz kartę obserwacji z alternatywami, dowodem rozstrzygającym i dalszą rolą.",
+      "summary": "Diagnostyka różnicowa, ground truth i priorytety przekazania.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Trzy karty R04-M08, R07-M11 i R09-Z02 oraz interpretacja 30/40.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Zapisz obserwację, dwie hipotezy i ograniczenie dla każdego ID.",
+            "output": "Zapisz obserwację, dwie hipotezy i ograniczenie dla każdego ID."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Dobierz dodatkowy dowód oraz kompetentnego wykonawcę.",
+            "output": "Dobierz dodatkowy dowód oraz kompetentnego wykonawcę."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Nadaj priorytet przekazania i wyjaśnij wynik 30 potwierdzeń na 40 sprawdzonych.",
+            "output": "Nadaj priorytet przekazania i wyjaśnij wynik 30 potwierdzeń na 40 sprawdzonych."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Na 40 zweryfikowanych alarmów 30 potwierdzono. Co wynika?",
+          "options": [
+            "Czułość wynosi 75%",
+            "Cała farma jest sprawdzona",
+            "W wybranej zweryfikowanej grupie potwierdzono 75% alarmów",
+            "Pozostałe 10 niesprawdzonych na pewno jest fałszywych"
+          ],
+          "answer": 2,
+          "explanation": "Nie znamy przeoczonych defektów ani reprezentatywności próby. To odsetek potwierdzeń w tej grupie.",
+          "critical": false
+        },
+        {
+          "prompt": "Podejrzane połączenie DC wymaga lepszego zdjęcia. Kursant powinien:",
+          "options": [
+            "Otworzyć obudowę",
+            "Przekazać sprawę według procedury i nie ingerować samodzielnie",
+            "Dotknąć izolacji, żeby ocenić temperaturę",
+            "Odłączyć przewód bez uzgodnienia"
+          ],
+          "answer": 1,
+          "explanation": "Lepszy dowód nie usprawiedliwia wejścia w niebezpieczną strefę lub ingerencji bez kwalifikacji.",
+          "critical": true
+        },
+        {
+          "prompt": "Brak anomalii IR przy podejrzeniu pęknięcia oznacza:",
+          "options": [
+            "Pewny brak pęknięcia",
+            "Pełną sprawność",
+            "Brak potrzeby innych metod",
+            "IR nie rozstrzyga i trzeba dobrać adekwatną weryfikację"
+          ],
+          "answer": 3,
+          "explanation": "Brak kontrastu w danym badaniu nie dowodzi nieobecności wszystkich defektów.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "F05",
+      "title": "Dachy, budynki i przemysł",
+      "file": "f05.md",
+      "minutes": 25,
+      "objective": "Dobierzesz dane i granice wyniku do czterech zastosowań poza PV.",
+      "summary": "Dokumentacja RGB, termika budynku i powtarzalny rejestr zmian.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Macierz sensor/dane/produkt/ograniczenie dla czterech briefów.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Zbuduj macierz dla briefów A-D z lekcji.",
+            "output": "Zbuduj macierz dla briefów A-D z lekcji."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Opisz wykonalny zakres i rolę właściwego partnera.",
+            "output": "Opisz wykonalny zakres i rolę właściwego partnera."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Napisz odpowiedź dla B i D oraz pięć kryteriów powtarzalności C.",
+            "output": "Napisz odpowiedź dla B i D oraz pięć kryteriów powtarzalności C."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Południowa elewacja jest cieplejsza po słońcu. Co dalej?",
+          "options": [
+            "Zbierz historię warunków i konstrukcję przed przypisaniem przyczyny",
+            "Potwierdź mostek cieplny",
+            "Oblicz U z koloru",
+            "Zamów ocieplenie bez badań"
+          ],
+          "answer": 0,
+          "explanation": "Nasłonecznienie i materiały mogą wpływać na obraz. Kontrast nie rozstrzyga przyczyny.",
+          "critical": false
+        },
+        {
+          "prompt": "Zwykła kamera termiczna skierowana na ścianę:",
+          "options": [
+            "Daje przekrój wszystkich warstw",
+            "Mierzy temperaturę przewodów niezależnie od pokrycia",
+            "Pokazuje sygnał powierzchni, który może mieć różne przyczyny",
+            "Potwierdza szczelność dachu"
+          ],
+          "answer": 2,
+          "explanation": "Obserwacja powierzchni może wspierać dalsze badania; nie jest widzeniem przez przegrodę.",
+          "critical": false
+        },
+        {
+          "prompt": "Dwa zdjęcia z innych perspektyw różnią się. Co to dowodzi?",
+          "options": [
+            "Zmiany konstrukcji",
+            "Co najmniej różnicy obrazów; zmianę obiektu trzeba oddzielić od geometrii",
+            "Dokładnego postępu procentowego",
+            "Przemieszczenia fundamentu"
+          ],
+          "answer": 1,
+          "explanation": "Do porównań potrzebujesz zgodnego odniesienia. Metryczne wnioski wymagają kontroli geometrii.",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "F06",
+      "title": "Raport i zadanie końcowe inspekcji",
+      "file": "f06.md",
+      "minutes": 25,
+      "objective": "Przygotujesz audytowalny pakiet obserwacji, pokrycia i następnych kroków.",
+      "summary": "Syntetyczna inspekcja 54 kWp zakończona raportem i rubryką samooceny.",
+      "activity": {
+        "minutes": 15,
+        "deliverable": "Pakiet dla O&M: 3 obserwacje, pokrycie, sześć elementów przekazania i rubryka.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Policz moc 120 × 450 Wp i trzy kontrasty; wypełnij karty obserwacji.",
+            "output": "Policz moc 120 × 450 Wp i trzy kontrasty"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Oblicz przyjęte pokrycie 100/120 i zapisz dalsze działania oraz role.",
+            "output": "Oblicz przyjęte pokrycie 100/120 i zapisz dalsze działania oraz role."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Napisz podsumowanie do 120 słów, listę plików i samoocenę według rubryki.",
+            "output": "Napisz podsumowanie do 120 słów, listę plików i samoocenę według rubryki."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "100 z 120 modułów ma przyjęty materiał. Pokrycie to:",
+          "options": [
+            "100% bo wykonano lot",
+            "16,7%",
+            "120%",
+            "83,3% z jawnym opisem pozostałych braków"
+          ],
+          "answer": 3,
+          "explanation": "100/120 = 0,8333. Zasłonięte lub błędnie przypisane moduły nie są wynikami ujemnymi.",
+          "critical": false
+        },
+        {
+          "prompt": "54 kWh w ciągu godziny oznacza:",
+          "options": [
+            "54% sprawności",
+            "Średnią moc 54 kW w tym okresie",
+            "54 kWp dodatkowej mocy",
+            "Dowód 15% straty"
+          ],
+          "answer": 1,
+          "explanation": "Energia podzielona przez czas daje średnią moc. Brak modelu odniesienia uniemożliwia ocenę straty.",
+          "critical": false
+        },
+        {
+          "prompt": "Czy wysoki wynik quizu wyrównuje polecenie nieuprawnionej ingerencji elektrycznej w raporcie?",
+          "options": [
+            "Nie; kryterium bezpieczeństwa jest bezwzględne",
+            "Tak przy 90%",
+            "Tak gdy kontrast jest duży",
+            "Tak po zmianie nazwy dokumentu"
+          ],
+          "answer": 0,
+          "explanation": "Nie można kompensować zagrożenia punktami za inne elementy. Rubryka i weryfikacja praktyczna to odrębne wymagania.",
+          "critical": true
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "F-S1",
+      "title": "Open Category — Low Risk — Civil Drones | EASA",
+      "url": "https://www.easa.europa.eu/en/domains/drones-air-mobility/operating-drone/open-category-low-risk-civil-drones",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Aktualna strona ogólna, nie zastępuje przepisów i oceny konkretnej operacji."
+    },
+    {
+      "id": "F-S2",
+      "title": "Gdzie mogę latać swoim dronem? | ULC",
+      "url": "https://ulc.gov.pl/drony/informacje-ogolne/czesto-zadawane-pytania-faq/pytania-ogolne/gdzie-moge-latac-swoim-dronem",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Wymaga ponownej kontroli przed lotem."
+    },
+    {
+      "id": "F-S3",
+      "title": "Thermographic measurement techniques | FLIR",
+      "url": "https://support.flir.com/DSDownload/Assets/T810442-en-US_A4.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Własna parafraza, bez kopiowania ilustracji; instrukcja nie jest kwalifikacją."
+    },
+    {
+      "id": "F-S4",
+      "title": "DJI Matrice 4 Series — Specs",
+      "url": "https://enterprise.dji.com/matrice-4-series/specs",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Dane producenta dla podanego modelu, nie walidacja konkretnej misji."
+    },
+    {
+      "id": "F-S5",
+      "title": "Review on Infrared and Electroluminescence Imaging for PV Field Applications",
+      "url": "https://iea-pvps.org/wp-content/uploads/2020/01/Review_on_IR_and_EL_Imaging_for_PV_Field_Applications_by_Task_13.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Raport T13-10:2018. Zalecenia, nie pełna aktualna norma; brak kopiowanych tabel i zdjęć."
+    },
+    {
+      "id": "F-S6",
+      "title": "VIM 2.26 measurement uncertainty | BIPM",
+      "url": "https://jcgm.bipm.org/vim/en/2.26.html",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Definicja, nie budżet niepewności danego urządzenia."
+    },
+    {
+      "id": "F-S7",
+      "title": "Green Job Hazards — Solar Energy: Electrical | OSHA",
+      "url": "https://www.osha.gov/green-jobs/solar/electrical",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Opis zagrożeń, nie źródło polskich wymogów prawnych; dostęp przez indeks wyszukiwarki, bezpośredni serwer 403."
+    },
+    {
+      "id": "F-S8",
+      "title": "Best Practices for Operation and Maintenance of Photovoltaic and Energy Storage Systems; 3rd Edition",
+      "url": "https://research-hub.nlr.gov/en/publications/best-practices-for-operation-and-maintenance-of-photovoltaic-and-/",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Oryginał NREL 2018, obecny rekord repozytorium NLR. Metadane i opis zakresu, nie potwierdzenie każdej procedury."
+    },
+    {
+      "id": "F-S9",
+      "title": "Consumer Guide to Home Energy Assessments | DOE",
+      "url": "https://www.energy.gov/sites/default/files/2021-08/ES-Home%20Energy%20Assessments_080221.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Kontekst USA, wyłącznie techniki oceny, bez przenoszenia zasad prawnych i cen."
+    },
+    {
+      "id": "F-S10",
+      "title": "Can Thermal Imaging See Through Walls? | FLIR",
+      "url": "https://www.flir.com/discover/home-outdoor/can-thermal-imaging-see-through-walls/",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Ogólne ograniczenia kamer termicznych; własna parafraza."
+    },
+    {
+      "id": "F-S11",
+      "title": "Guides in Metrology | BIPM",
+      "url": "https://www.bipm.org/en/web/guest/publications/guides",
+      "kind": "official_doc",
+      "verified": true,
+      "verified_on": "2026-09-16",
+      "license_checked": true,
+      "reuse": "Original prose and synthetic exercises; links only, no copied figures.",
+      "limitations": "Indeks aktualnych dokumentów; pełny budżet należy opracować dla pomiaru."
+    }
+  ],
+  "claims": [
+    {
+      "id": "F-C1",
+      "statement": "Zgoda dotycząca obiektu nie zastępuje oceny operacji i aktualnych stref.",
+      "source_ids": [
+        "F-S1",
+        "F-S2"
+      ],
+      "lesson_ids": [
+        "F01"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C2",
+      "statement": "Temperatura wyznaczona z sygnału IR zależy od modelu i parametrów radiometrycznych.",
+      "source_ids": [
+        "F-S3"
+      ],
+      "lesson_ids": [
+        "F02"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C3",
+      "statement": "Natywny detektor Matrice 4T ma 640 × 512; Super Resolution jest odrębnym trybem obrazu.",
+      "source_ids": [
+        "F-S4"
+      ],
+      "lesson_ids": [
+        "F02"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C4",
+      "statement": "Warunki środowiskowe, geometria i stan pracy wpływają na interpretację IR PV.",
+      "source_ids": [
+        "F-S5",
+        "F-S3"
+      ],
+      "lesson_ids": [
+        "F03",
+        "F04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C5",
+      "statement": "Zagrożenia porażeniem i łukiem wymagają kompetencji i właściwych procedur; zdalny obraz nie uzasadnia samodzielnej ingerencji.",
+      "source_ids": [
+        "F-S7",
+        "F-S5"
+      ],
+      "lesson_ids": [
+        "F01",
+        "F04",
+        "F06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C6",
+      "statement": "Termografia budynku jest częścią zestawu metod oceny; zwykła kamera termiczna nie widzi przez ściany.",
+      "source_ids": [
+        "F-S9",
+        "F-S10"
+      ],
+      "lesson_ids": [
+        "F05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "F-C7",
+      "statement": "Niepewność i definicja wielkości mierzonej muszą towarzyszyć interpretacji wyniku.",
+      "source_ids": [
+        "F-S6",
+        "F-S11"
+      ],
+      "lesson_ids": [
+        "F02",
+        "F06"
+      ],
+      "status": "supported"
+    }
+  ]
+}
