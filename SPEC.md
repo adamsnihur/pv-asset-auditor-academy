@@ -1,5 +1,9 @@
 # PV Asset Auditor Academy Technical Specification
 
+## Equipment anatomy expansion, 2026-09-19
+
+Add a detailed 3D anatomy view alongside the existing installation view. Cover AC/nN switchboards, MV switchgear, transformer, inverter, DC protection/combiner and metering. Each device exposes selectable internal parts, a cutaway and exploded arrangement, a narrated energy/protection path, a worked example and source links. Distinguish conceptual models from equipment-specific wiring and procedures. Selection must work through native buttons as well as raycasting; the complete explanation must remain available without WebGL. Preserve the course and existing overview. Validate all parts against renderable geometry, transitions, responsive layout, disposal and the built artifact.
+
 ## Guided curriculum upgrade, 2026-09-16
 
 User-authorized scope: improve domain substance and learner experience from zero electrical knowledge through PV, UAV inspection and mapping. Keep the independent product identity and existing advanced reference. Add 18 discrete lessons across electrical/PV, field/thermal, and mapping/GIS tracks, backed by primary sources, worked examples, learner artifacts and explanatory assessment feedback. Use existing Astro dependencies and theme.

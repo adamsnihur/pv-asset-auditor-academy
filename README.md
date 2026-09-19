@@ -40,6 +40,9 @@ artefakt przez GitHub Pages. Produkcyjny adres:
 - syntetyczne CSV, raster ASCII Grid i szablon raportu do pobrania;
 - istniejący podręcznik pogłębiony w siedmiu częściach;
 - interaktywne laboratorium instalacji mikro i utility-scale;
+- przekroje sześciu rodzin urządzeń: rozdzielnice nN i SN, transformator,
+  falownik, tor DC oraz pomiar energii; 40 wybieralnych części, 24 etapy
+  działania i sześć przykładów obliczeniowych ze źródłami;
 - wzory matematyczne, tabele, checklisty i studium końcowe;
 - tryb jasny, ciemny, druk oraz reduced motion.
 
@@ -57,5 +60,7 @@ Testy kontrolują spójność tych danych, odpowiedzi, bramki bezpieczeństwa i 
 Pliki Markdown są zaufaną treścią repozytorium. Renderer nie jest przeznaczony
 do wyświetlania niezaufanego HTML przesłanego przez kursantów.
 
-Aktualizacja z 2026-09-18 jest zmianą lokalną; jej przygotowanie nie oznacza
-publikacji pod podanym wyżej adresem produkcyjnym.
+Modele wnętrz są ilustracjami dydaktycznymi, a nie projektami wykonawczymi.
+Widok rozsunięty pokazuje części i ich funkcje, nie sekwencję obsługi urządzenia.
+Testy anatomii weryfikują rzeczywistą geometrię Three.js, wybieranie elementów,
+odwracalność rozsunięcia oraz zgodność części z katalogiem treści.

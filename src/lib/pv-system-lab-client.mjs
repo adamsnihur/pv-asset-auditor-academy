@@ -1,6 +1,7 @@
 import {
   ACESFilmicToneMapping,
   BoxGeometry,
+  Box3,
   BufferGeometry,
   CanvasTexture,
   CylinderGeometry,
@@ -30,6 +31,8 @@ import {
 } from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { createEquipment, createLandscape, layouts } from './pv-scene-assets.mjs';
+import { createEquipmentCutaway, setCutawayExploded, selectCutawayPart } from './pv-equipment-cutaway.mjs';
+import { createAnatomyController } from './pv-anatomy-client.mjs';
 
 const THREE = {
   ACESFilmicToneMapping, BoxGeometry, BufferGeometry, CanvasTexture, CylinderGeometry, DirectionalLight,
@@ -70,6 +73,16 @@ function disposeSceneObject(object) {
   });
 }
 
+function partNumberSprite(number) {
+  const canvas = document.createElement('canvas'); canvas.width = 128; canvas.height = 128;
+  const context = canvas.getContext('2d');
+  context.fillStyle = '#173c40'; context.beginPath(); context.arc(64, 64, 55, 0, Math.PI * 2); context.fill();
+  context.strokeStyle = '#ebc99a'; context.lineWidth = 5; context.stroke();
+  context.fillStyle = '#ffffff'; context.font = '600 43px Arial'; context.textAlign = 'center'; context.textBaseline = 'middle'; context.fillText(number, 64, 66);
+  const sprite = new Sprite(new SpriteMaterial({ map: new CanvasTexture(canvas), depthTest: false }));
+  sprite.scale.set(.32, .32, 1); sprite.renderOrder = 10; return sprite;
+}
+
 export function initializePvSystemLab(root = document) {
   const lab = root.querySelector('[data-pv-lab]');
   if (!lab || lab.dataset.initialized === 'true') return;
@@ -82,12 +95,56 @@ export function initializePvSystemLab(root = document) {
   let mode = systemModes[0]; let selectedId = 'panel'; let renderer; let scene; let camera; let controls; let assets = [];
   let particles = []; let frame = 0; let visible = true; let cameraGoal; let targetGoal;
   let paused = reducedMotion; let lastTime = 0; let elapsed = 0;
+  let cutaway = null;
   const pauseButton = lab.querySelector('[data-pv-pause]');
   if (pauseButton) { pauseButton.textContent = paused ? 'Wznów przepływ' : 'Zatrzymaj przepływ'; pauseButton.setAttribute('aria-pressed', String(paused)); }
   const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2();
+  const anatomyView = createAnatomyController(lab, {
+    onOpen(record) {
+      if (!renderer) return;
+      clearScene();
+      cutaway = createEquipmentCutaway(record); scene.add(cutaway); assets = [cutaway];
+      record.parts.forEach((part, index) => {
+        const group = cutaway.userData.partGroups[part.id];
+        const label = partNumberSprite(String(index + 1).padStart(2, '0'));
+        if (group.userData.labelPosition) label.position.copy(group.userData.labelPosition);
+        else label.position.set(0, .25, .5);
+        // Concentric windings share a center; put their numbered callouts on separate visible regions.
+        const callouts = record.id === 'transformer' ? {
+          core: [0, .83, 0], 'lv-winding': [-.72, .2, 0], 'mv-winding': [.72, -.15, 0],
+          insulation: [0, -.65, 0], cooling: [-1.29, -.27, 0],
+        } : record.id === 'inverter' ? { cooling: [1.15, -.9, .8] } : {};
+        if (callouts[part.id]) label.position.add(new Vector3(...callouts[part.id]));
+        label.userData.partId = part.id; group.add(label);
+      });
+      controls.minDistance = 2; controls.maxDistance = 30; controls.maxPolarAngle = Math.PI * .85;
+      viewport.setAttribute('aria-label', `Przekrój 3D: ${record.title}. ${record.parts.length} części do wyboru z listy poniżej.`);
+      frameCutaway();
+    },
+    onClose(id) { if (renderer) buildMode(); updateDetail(id, false); if (renderer) renderer.render(scene, camera); },
+    onPart(id) { if (cutaway) { selectCutawayPart(cutaway, id); renderer.render(scene, camera); } },
+    onExplode(value) { if (cutaway) { setCutawayExploded(cutaway, value); frameCutaway(); } },
+  });
+  anatomyView.setMode(mode);
+
+  function frameCutaway() {
+    if (!cutaway || !camera) return;
+    const bounds = new Box3().setFromObject(cutaway), size = bounds.getSize(new Vector3());
+    targetGoal = bounds.getCenter(new Vector3());
+    const verticalFov = camera.fov * Math.PI / 180;
+    const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * camera.aspect);
+    const radius = size.length() / 2;
+    const distance = Math.max(5, radius / Math.sin(Math.min(verticalFov, horizontalFov) / 2) * 1.08);
+    cameraGoal = targetGoal.clone().add(new Vector3(.18, .15, 1).normalize().multiplyScalar(distance));
+    controls.maxDistance = Math.max(30, distance * 1.6);
+    // A new cutaway replaces the whole scene, so frame it immediately even in background tabs.
+    camera.position.copy(cameraGoal); controls.target.copy(targetGoal); controls.update();
+    renderer.render(scene, camera);
+  }
 
   function updateDetail(id, announce = true) {
     const item = mode.components.find((entry) => entry.id === id) ?? mode.components[0]; selectedId = item.id;
+    anatomyView.syncDevice(item.id);
     lab.querySelector('[data-component-title]').textContent = item.title;
     lab.querySelector('[data-component-kind]').textContent = kindLabels[item.kind] ?? 'Element systemu';
     lab.querySelector('[data-component-role]').textContent = item.role;
@@ -115,7 +172,7 @@ export function initializePvSystemLab(root = document) {
   }
 
   function clearScene() {
-    if (!scene) return; particles = []; assets = [];
+    if (!scene) return; particles = []; assets = []; cutaway = null;
     [...scene.children].forEach((child) => {
       if (child.isLight) return;
       disposeSceneObject(child);
@@ -142,6 +199,7 @@ export function initializePvSystemLab(root = document) {
 
   function buildMode() {
     clearScene();
+    controls.minDistance = 4; controls.maxDistance = 60; controls.maxPolarAngle = Math.PI * .47;
     scene.add(createLandscape(mode.id));
     mode.components.forEach((item) => {
       const asset = createEquipment(item, mode.id); const label = labelSprite(item.title);
@@ -174,6 +232,7 @@ export function initializePvSystemLab(root = document) {
   function resize() {
     if (!renderer) return; const { width, height } = viewport.getBoundingClientRect();
     renderer.setSize(width, height, false); camera.aspect = width / Math.max(height, 1); camera.updateProjectionMatrix();
+    if (anatomyView.active) frameCutaway();
   }
   const resizeObserver = new ResizeObserver(resize); resizeObserver.observe(viewport); resize();
 
@@ -194,17 +253,26 @@ export function initializePvSystemLab(root = document) {
   renderer?.domElement.addEventListener('pointerup', (event) => {
     if (!pointerStart || Math.hypot(event.clientX - pointerStart[0], event.clientY - pointerStart[1]) > 6) return;
     const rect = renderer.domElement.getBoundingClientRect(); pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1; pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-    raycaster.setFromCamera(pointer, camera); const hit = raycaster.intersectObjects(assets, true).find(({ object }) => object.userData.componentId);
+    raycaster.setFromCamera(pointer, camera);
+    if (anatomyView.active) {
+      const hit = raycaster.intersectObjects(assets, true).find(({ object }) => object.userData.partId);
+      if (hit) anatomyView.selectPart(hit.object.userData.partId);
+      return;
+    }
+    const hit = raycaster.intersectObjects(assets, true).find(({ object }) => object.userData.componentId);
     if (hit) updateDetail(hit.object.userData.componentId);
   });
-  lab.querySelector('[data-pv-overview]')?.addEventListener('click', () => { cameraGoal = new THREE.Vector3(17, 18, 24); targetGoal = new THREE.Vector3(0, .5, -2); });
+  lab.querySelector('[data-pv-overview]')?.addEventListener('click', () => { if (anatomyView.active) { frameCutaway(); return; } cameraGoal = new THREE.Vector3(17, 18, 24); targetGoal = new THREE.Vector3(0, .5, -2); });
   lab.querySelector('[data-pv-pause]')?.addEventListener('click', (event) => { paused = !paused; event.currentTarget.textContent = paused ? 'Wznów przepływ' : 'Zatrzymaj przepływ'; event.currentTarget.setAttribute('aria-pressed', String(paused)); });
   lab.querySelectorAll('[data-component-trigger]').forEach((button) => button.addEventListener('click', () => {
-    updateDetail(button.dataset.componentTrigger);
+    if (anatomyView.active) {
+      if (!anatomyView.open(button.dataset.componentTrigger)) { anatomyView.close(); updateDetail(button.dataset.componentTrigger); }
+    } else updateDetail(button.dataset.componentTrigger);
     viewport.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'center' });
   }));
   lab.querySelectorAll('[data-system-mode]').forEach((button) => button.addEventListener('click', () => {
     mode = systemModes.find(({ id }) => id === button.dataset.systemMode); selectedId = 'panel';
+    anatomyView.setMode(mode);
     lab.querySelectorAll('[data-system-mode]').forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); });
     lab.querySelectorAll('[data-mode-panel]').forEach((panel) => { panel.hidden = panel.dataset.modePanel !== mode.id; });
     lab.querySelector('[data-mode-title]').textContent = mode.title; lab.querySelector('[data-mode-voltage]').textContent = mode.voltage;

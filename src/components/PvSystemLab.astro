@@ -1,6 +1,7 @@
 ---
 import { electricalGlossary, systemModes } from '../lib/pv-system-lab.mjs';
 import '../styles/pv-system-lab.css';
+import EquipmentAnatomy from './EquipmentAnatomy.astro';
 
 const initialMode = systemModes[0];
 const initialComponent = initialMode.components.find(({ id }) => id === 'panel');
@@ -14,7 +15,7 @@ const flowLabels = { photon: 'fotony', dc: 'DC', ac: 'AC nN', mv: 'AC SN', data:
       <p class="course-overline">Interaktywne laboratorium 3D</p>
       <h2 id="pv-lab-title">Prześledź energię od <em>fotonu</em> do sieci</h2>
     </div>
-    <p>Kliknij urządzenie w modelu albo wybierz je z listy. Zobaczysz, co dzieje się wewnątrz, co mierzy inspektor i gdzie kończy się jego zakres kompetencji.</p>
+    <p>Poznaj instalację, a potem zajrzyj do urządzenia. Rozsuń części rozdzielnicy, prześledź uzwojenia transformatora i odkryj, jak każdy element współpracuje z pozostałymi.</p>
   </div>
 
   <div class="pv-lab__shell wrap">
@@ -31,6 +32,17 @@ const flowLabels = { photon: 'fotony', dc: 'DC', ac: 'AC nN', mv: 'AC SN', data:
       </div>
     </div>
 
+    <div class="pv-anatomy-launch">
+      <label for="anatomy-device">Z czego składa się urządzenie?<select id="anatomy-device" data-anatomy-device aria-describedby="anatomy-launch-hint"></select></label>
+      <button type="button" data-anatomy-open>Zajrzyj do środka <span aria-hidden="true">↗</span></button>
+      <p id="anatomy-launch-hint">Przekrój 3D, wybór części i wyjaśnienie krok po kroku.</p>
+    </div>
+    <div class="pv-anatomy-controls" data-anatomy-controls hidden>
+      <div><span class="course-overline">Widok wnętrza</span><strong data-anatomy-view-title></strong></div>
+      <button type="button" data-anatomy-explode aria-pressed="false">Rozsuń części</button>
+      <button type="button" data-anatomy-return>← Wróć do instalacji</button>
+      <p>Obróć model, wybierz numer lub część. Kolory są umowne i nie określają oznaczeń przewodów.</p>
+    </div>
     <div class="pv-lab__main">
       <div class="pv-lab__viewport">
         <div class="pv-lab__view-actions"><button type="button" data-pv-overview>Cała instalacja</button><button type="button" data-pv-pause aria-pressed="false">Zatrzymaj przepływ</button></div>
@@ -47,9 +59,10 @@ const flowLabels = { photon: 'fotony', dc: 'DC', ac: 'AC nN', mv: 'AC SN', data:
         <div class="pv-lab__legend" aria-label="Legenda przepływu">
           <span class="is-photon">Fotony</span><span class="is-dc">Prąd DC</span><span class="is-ac">Prąd AC</span><span class="is-data">Dane</span>
         </div>
+        <div class="pv-anatomy-caption" data-anatomy-caption hidden><span data-anatomy-selection></span><a href="#anatomy-part-title">Poznaj tę część ↓</a></div>
       </div>
 
-      <aside class="pv-lab__detail" aria-labelledby="component-title">
+      <aside class="pv-lab__detail" data-system-detail aria-labelledby="component-title">
         <div class="pv-lab__detail-head">
           <p class="course-overline" data-component-kind>Konwersja fotowoltaiczna</p>
           <span data-component-counter>02 / {String(initialMode.components.length).padStart(2, '0')}</span>
@@ -84,6 +97,7 @@ const flowLabels = { photon: 'fotony', dc: 'DC', ac: 'AC nN', mv: 'AC SN', data:
         </div>
         <p class="sr-only" aria-live="polite" data-component-announcement></p>
       </aside>
+      <EquipmentAnatomy />
     </div>
 
     <div class="pv-lab__map">

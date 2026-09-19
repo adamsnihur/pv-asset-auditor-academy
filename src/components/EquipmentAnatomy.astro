@@ -1,0 +1,23 @@
+---
+import '../styles/pv-equipment-anatomy.css';
+---
+<section class="pv-anatomy" data-anatomy-panel hidden aria-labelledby="anatomy-title">
+  <header class="pv-anatomy__header">
+    <div><p class="course-overline">Pracownia urządzeń · od części do zasady działania</p><h3 id="anatomy-title" tabindex="-1" data-anatomy-title></h3></div>
+    <p data-anatomy-intro></p>
+  </header>
+  <p class="pv-anatomy__scope" data-anatomy-scope></p>
+  <div class="pv-anatomy__body">
+    <nav class="pv-anatomy__parts" aria-label="Części urządzenia"><h4>Wybierz część</h4><div data-anatomy-parts></div><p>Numery odpowiadają oznaczeniom w modelu. Części możesz wybierać także klawiaturą.</p></nav>
+    <article class="pv-anatomy__part" aria-labelledby="anatomy-part-title">
+      <p class="course-overline" data-anatomy-part-number></p><h4 id="anatomy-part-title" data-anatomy-part-title></h4>
+      <p class="pv-anatomy__role" data-anatomy-part-role></p>
+      <dl><dt>Jak działa</dt><dd data-anatomy-part-mechanism></dd><dt>Co wnosi do inspekcji</dt><dd data-anatomy-part-observation></dd></dl>
+      <div class="pv-anatomy__misconception"><strong>Łatwo to pomylić</strong><p data-anatomy-part-misconception></p></div>
+    </article>
+  </div>
+  <section class="pv-anatomy__process" aria-labelledby="anatomy-process-title"><p class="course-overline">Połącz elementy w całość</p><h4 id="anatomy-process-title">Jak współpracuje urządzenie</h4><p data-anatomy-principle></p><div class="pv-anatomy__steps" data-anatomy-steps role="group" aria-label="Etapy działania"></div><p class="pv-anatomy__step-copy" data-anatomy-step-copy></p></section>
+  <details class="pv-anatomy__example"><summary>Przelicz i zrozum · przykład z rozwiązaniem</summary><p data-anatomy-question></p><p data-anatomy-working></p><p class="pv-anatomy__answer" data-anatomy-answer></p></details>
+  <details class="pv-anatomy__sources"><summary>Źródła i zakres modelu</summary><p>Przekrój jest modelem dydaktycznym. Pozycje, kolory i proporcje służą objaśnieniu, a wykonanie aparatury zależy od producenta i projektu. Widok wnętrza nie jest instrukcją otwierania ani obsługi urządzenia.</p><ul data-anatomy-sources></ul></details>
+  <p class="sr-only" data-anatomy-status aria-live="polite"></p>
+</section>
