@@ -3,10 +3,12 @@ import CourseLayout from '../layouts/CourseLayout.astro';
 import PvSystemLab from '../components/PvSystemLab.astro';
 import GuidedCourse from '../components/GuidedCourse.astro';
 import ThermalWorkshop from '../components/ThermalWorkshop.astro';
+import AcademyNavigation from '../components/AcademyNavigation.astro';
 import courseSource from '../content/pv-asset-auditor.md?raw';
 import { courseStages, quizzes, splitCourseContent } from '../lib/course.mjs';
 import { renderCourseMarkdown } from '../lib/course-renderer.mjs';
 import '../styles/course.css';
+import '../styles/academy-experience.css';
 import 'katex/dist/katex.min.css';
 
 const withBase = (assetPath) => `${import.meta.env.BASE_URL}${assetPath.replace(/^\/+/, '')}`;
@@ -28,31 +30,26 @@ const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u0
   ogImageAlt="Farma fotowoltaiczna w widoku RGB i termicznym"
 >
   <div class="academy" data-course-theme="system">
+    <AcademyNavigation />
     <section class="course-hero" aria-labelledby="course-title">
       <img class="course-hero__image" src={withBase('assets/course/hero.webp')} alt="Farma PV podczas radiometrycznej inspekcji dronem, zestawienie RGB i termiki" width="1674" height="943" fetchpriority="high" />
       <div class="course-hero__veil"></div>
       <div class="thermal-scan" aria-hidden="true"></div>
       <div class="course-hero__content wrap">
-        <div class="course-topline">
-          <p class="course-kicker">PV Asset Auditor Academy <span>Elektryczność · PV · UAV · GIS</span></p>
-          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Zmień motyw kursu">Motyw: system</button>
-        </div>
         <div class="course-hero__copy">
           <p class="course-overline">Od zera · 18 lekcji · trzy ścieżki praktyczne</p>
           <h1 id="course-title">PV Asset <em>Auditor</em></h1>
-          <p class="course-intro">Zrozum prąd, poznaj instalację PV i naucz się pracować z obrazem termicznym oraz mapą. Krok po kroku: objaśnienie, przykład, własne zadanie i informacja zwrotna. Wiedzę utrwalisz w dzienniku, do którego zawsze możesz wrócić.</p>
+          <p class="course-intro">Od podstaw prądu do inspekcji dronem. Poznaj instalacje PV, odczytuj obrazy termiczne i pracuj z mapą. Ucz się na przykładach, modelach 3D i własnych zadaniach.</p>
           <div class="hero-actions">
             <a class="course-button course-button--primary" href="#guided-learning">Zacznij naukę <span aria-hidden="true">↗</span></a>
-            <a class="course-button course-button--ghost" href="#program">Podręcznik pogłębiony</a>
-            <a class="course-button course-button--ghost" href="#laboratorium-pv">Laboratorium 3D</a>
-            <a class="course-button course-button--ghost" href="#termowizja">Termowizja i drony</a>
+            <a class="course-button course-button--ghost" href="#laboratorium-pv">Odkryj model 3D</a>
           </div>
         </div>
         <dl class="hero-stats" aria-label="Parametry programu">
           <div><dt>18</dt><dd>odrębnych lekcji</dd></div>
           <div><dt>18</dt><dd>rezultatów własnej pracy</dd></div>
           <div><dt>3</dt><dd>dziedziny połączone w praktyce</dd></div>
-          <div><dt>100%</dt><dd>krytycznych pytań safety</dd></div>
+          <div><dt>Twój rytm</dt><dd>postęp zapisuje się na tym urządzeniu</dd></div>
         </dl>
       </div>
     </section>

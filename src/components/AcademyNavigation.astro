@@ -1,0 +1,19 @@
+<header class="academy-header" data-academy-header>
+  <div class="academy-header__inner wrap">
+    <a class="academy-brand" href="#course-title" aria-label="PV Asset Auditor Academy, początek strony">
+      <span class="academy-brand__mark" aria-hidden="true">PV</span>
+      <span>Asset Auditor<small>AKADEMIA PRAKTYCZNA</small></span>
+    </a>
+    <nav class="academy-navigation" aria-label="Sekcje akademii" data-academy-navigation>
+      <a href="#guided-learning"><span aria-hidden="true">01</span> Lekcje</a>
+      <a href="#laboratorium-pv"><span aria-hidden="true">02</span> Model 3D</a>
+      <a href="#termowizja"><span aria-hidden="true">03</span> Termowizja</a>
+      <a href="#program"><span aria-hidden="true">04</span> Podręcznik</a>
+    </nav>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Zmień motyw kursu">Motyw: system</button>
+  </div>
+</header>
+<script>
+  import { initializeAcademyNavigation } from '../lib/academy-navigation.mjs';
+  initializeAcademyNavigation();
+</script>

@@ -16,6 +16,12 @@ export function initializeGuidedCourse() {
   const triggers = [...root.querySelectorAll('[data-lesson-trigger]')];
   const status = root.querySelector('[data-guided-status]');
   const storageStatus = root.querySelector('[data-guided-storage]');
+  const navigation = root.querySelector('.guided-navigation');
+  const currentLink = root.querySelector('[data-guided-current-link]');
+  const mobileLayout = window.matchMedia('(max-width: 760px)');
+  const syncNavigation = () => { navigation.open = !mobileLayout.matches; };
+  syncNavigation();
+  mobileLayout.addEventListener('change', syncNavigation);
   const announce = (message) => { status.textContent = message; };
   const invalidateCompletion = (record) => {
     if (record.completed) announce('Edycja cofnęła ukończenie tej i kolejnych lekcji. Notatki pozostają zachowane.');
@@ -30,6 +36,9 @@ export function initializeGuidedCourse() {
   };
 
   function render(focus = false) {
+    const currentLesson = lessons.find((lesson) => lesson.id === state.current);
+    currentLink.href = `#guided-title-${currentLesson.id}`;
+    currentLink.querySelector('[data-guided-current-label]').textContent = currentLesson.title;
     const completeCount = lessons.filter((lesson) => state.records[lesson.id]?.completed).length;
     root.querySelector('[data-guided-progress]').textContent = `${completeCount} / ${lessons.length}`;
     const progress = root.querySelector('progress');
@@ -83,6 +92,7 @@ export function initializeGuidedCourse() {
 
   function navigate(id) {
     if (!isLessonUnlocked(lessons, state, id)) return;
+    if (mobileLayout.matches) navigation.open = false;
     state.current = id;
     persist();
     render(true);

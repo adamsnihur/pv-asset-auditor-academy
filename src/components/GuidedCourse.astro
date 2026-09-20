@@ -29,7 +29,7 @@ const practiceFiles = [
   <div class="wrap">
     <header class="guided-intro">
       <div><p class="course-overline">Pracownia inspektora · krok po kroku</p><h2 id="guided-heading">Zrozum. Przećwicz.<br /><em>Sprawdź swój tok myślenia.</em></h2></div>
-      <p>Krótkie lekcje prowadzą od podstaw elektryczności do decyzji w terenie. Każda kończy się własnym rezultatem i informacją zwrotną.</p>
+      <div class="guided-intro-action"><p>Krótkie lekcje prowadzą od podstaw elektryczności do decyzji w terenie. Każda kończy się własnym rezultatem i informacją zwrotną.</p>{lessons.length > 0 && <a class="guided-current-link" href={`#guided-title-${lessons[0].id}`} data-guided-current-link><strong>Przejdź do swojej lekcji ↓</strong><span data-guided-current-label>{lessons[0].title}</span></a>}</div>
     </header>
     <div class="guided-tracks" aria-label="Ścieżka nauki">
       {groups.map((group, index) => <div><span class="guided-track-number">0{index + 1}</span><div><strong>{group.title}</strong><p>{group.description}</p><small>{group.lessons.length} lekcji · {group.lessons.reduce((total, lesson) => total + lesson.minutes, 0)} min planowanej pracy</small></div></div>)}
@@ -61,17 +61,18 @@ const practiceFiles = [
         <noscript><p class="guided-no-script">Pierwszą lekcję możesz przeczytać poniżej. Nawigacja, sprawdzanie odpowiedzi i zapis wymagają włączenia JavaScript.</p></noscript>
         {lessons.map((lesson, index) => <article class="guided-lesson" data-lesson-panel={lesson.id} hidden={index !== 0} aria-labelledby={`guided-title-${lesson.id}`}>
           <header class="guided-lesson-header"><p class="course-overline">{lesson.groupTitle} <span>· Lekcja {index + 1} z {lessons.length}</span></p><h2 id={`guided-title-${lesson.id}`} data-guided-title tabindex="-1">{lesson.title}</h2><p>{lesson.summary}</p><div class="guided-lesson-meta"><span>◷ {lesson.minutes} min planowanej pracy</span><a href={`#practice-${lesson.id}`}>Przejdź do ćwiczenia ↓</a></div><div class="guided-objective"><strong>Po tej lekcji potrafisz</strong><p>{lesson.objective}</p></div></header>
-          <div class="course-prose guided-prose" set:html={lessonHtml(lesson)}></div>
+          <nav class="guided-lesson-shortcuts" aria-label="Sekcje lekcji"><a href={`#material-${lesson.id}`}>Materiał</a><a href={`#practice-${lesson.id}`}>Ćwiczenie</a><a href={`#check-${lesson.id}`}>Sprawdzian</a><a href={`#journal-${lesson.id}`}>Notatki</a></nav>
+          <div class="course-prose guided-prose" id={`material-${lesson.id}`} tabindex="-1" set:html={lessonHtml(lesson)}></div>
           <section class="guided-practice" id={`practice-${lesson.id}`} aria-labelledby={`practice-title-${lesson.id}`}>
             <p class="course-overline">Teraz Twoja kolej · {lesson.activity.minutes} min</p><h3 id={`practice-title-${lesson.id}`}>Przygotuj własny rezultat</h3><p class="guided-deliverable"><strong>Do wykonania:</strong> {lesson.activity.deliverable}</p>
             <ol class="guided-activity-steps">{lesson.activity.steps.map((step) => <li><div><span>{step.minutes} min</span><p>{step.instruction}</p><small>Rezultat: {step.output}</small></div></li>)}</ol>
             <a class="guided-inline-link" href={`#notes-${lesson.id}`}>Zapisz rezultat w dzienniku poniżej ↓</a>
           </section>
-          <section class="guided-assessment" aria-labelledby={`check-title-${lesson.id}`}>
+          <section class="guided-assessment" id={`check-${lesson.id}`} aria-labelledby={`check-title-${lesson.id}`}>
             <p class="course-overline">Sprawdź rozumowanie</p><h3 id={`check-title-${lesson.id}`}>Krótki sprawdzian</h3><p>Odpowiedz na każde pytanie. Wymagane: 80% pytań ogólnych i wszystkie pytania krytyczne. Po sprawdzeniu zobaczysz wyjaśnienia.</p>
             <form data-guided-quiz>{lesson.questions.map((question, questionIndex) => <fieldset><legend><span>{questionIndex + 1}.</span> {question.prompt}{question.critical && <strong class="guided-critical">Krytyczne · wymagane</strong>}</legend><div class="guided-options">{question.options.map((option, optionIndex) => <label><input type="radio" name={`guided-${lesson.id}-${questionIndex}`} value={optionIndex} data-guided-answer data-question={questionIndex} /><span>{option}</span></label>)}</div><p class="guided-feedback" data-guided-feedback hidden></p></fieldset>)}<button class="guided-button" type="submit">Sprawdź odpowiedzi</button><p class="guided-result" data-guided-result tabindex="-1" aria-live="polite"></p></form>
           </section>
-          <section class="guided-journal" aria-labelledby={`journal-title-${lesson.id}`}>
+          <section class="guided-journal" id={`journal-${lesson.id}`} aria-labelledby={`journal-title-${lesson.id}`}>
             <p class="course-overline">Twój dziennik nauki</p><h3 id={`journal-title-${lesson.id}`}>Rezultat i samoocena</h3><label class="guided-notes-label" for={`notes-${lesson.id}`}>Zapisz obliczenia, decyzję lub treść opracowanego dokumentu.</label><p id={`notes-help-${lesson.id}`}>Uwzględnij: {lesson.activity.deliverable} Nie wpisuj danych klientów ani informacji poufnych.</p><textarea id={`notes-${lesson.id}`} data-guided-notes rows="8" maxlength="50000" aria-describedby={`notes-help-${lesson.id}`} placeholder="Moje rozwiązanie…&#10;&#10;Uzasadnienie…&#10;&#10;Ograniczenia i pytania…"></textarea>
             <fieldset class="guided-self-review"><legend>Sprawdź swoją pracę przed ukończeniem</legend>{REVIEW_ITEMS.map((item) => <label><input type="checkbox" data-guided-review /><span>{item}</span></label>)}</fieldset><p class="guided-review-note">Zmiana rezultatu wymaga ponownej samooceny. Zmiana ukończonej lekcji cofa jej zaliczenie i zaliczenia kolejnych lekcji. Treść notatek pozostaje zachowana.</p>
             <p class="guided-gate" data-guided-gate>Do ukończenia: zalicz sprawdzian · zapisz rezultat · zaznacz trzy kryteria samooceny.</p><button class="guided-button" type="button" data-guided-complete disabled>Zapisz ukończenie lekcji</button>

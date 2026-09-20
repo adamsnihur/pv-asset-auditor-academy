@@ -1,5 +1,9 @@
 # PV Asset Auditor Academy Technical Specification
 
+## UX and UI refinement, 2026-09-20
+
+User-authorized scope: improve academy navigation, visual hierarchy, mobile lesson access and 3D model/context layout. Add persistent section navigation with accessible active-section indication, theme control and skip link; shorten the hero, provide lesson section shortcuts and compact mobile navigation; keep 3D model beside its explanation on desktop. Preserve content, progress, quizzes and storage contracts. Validate keyboard and mobile interactions, deep links including closed reference sections, both themes, dynamic input safety and existing tests/build. Publish with standing Pages authorization.
+
 ## Thermography workshop, 2026-09-19
 
 Add a standalone thermography and UAV thermography section after the 3D lab, linked from the hero. Provide eight readable topics, source references, exercises with explanations, a synthetic thermal viewer demonstrating palette/scale versus unchanged data, a nadir flight geometry calculator, a mission evidence workflow and knowledge checks. Explain emissivity, reflections, atmosphere, spatial resolution versus NETD/accuracy, radiometric originals, PV/electrical/building limitations and UAV-specific acquisition. All simulated values must be labelled and separated from manufacturer specifications or field findings. No universal diagnostic or flight thresholds. Preserve existing 18-lesson progression and local notes. New controls use native form elements and work on mobile. Validate math against analytic fixtures, teaching data references, invalid inputs, browser interactions, injection handling and Pages artifact; publish under the standing Pages authorization.

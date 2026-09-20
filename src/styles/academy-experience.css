@@ -1,0 +1,95 @@
+/* Shared navigation and spatial rhythm across the learning workspaces. */
+.academy { --academy-header-height: 72px; }
+.academy [id] { scroll-margin-top: calc(var(--academy-header-height) + 24px); }
+.academy-header {
+  position: sticky; top: 0; z-index: 50; background: var(--course-panel);
+  border-bottom: 1px solid var(--course-line); box-shadow: 0 4px 24px #07121616;
+}
+.academy-header__inner { min-height: 72px; display: flex; align-items: center; gap: 24px; }
+.academy-brand { display: flex; align-items: center; gap: 10px; color: var(--course-ink); text-decoration: none; font-size: 15px; font-weight: 650; white-space: nowrap; }
+.academy-brand__mark { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--course-accent); border-radius: 9px; color: var(--course-accent); font: 600 13px var(--mono); }
+.academy-brand small { display: block; font: 9px/1.8 var(--mono); letter-spacing: .08em; color: var(--course-faint); }
+.academy-navigation { display: flex; align-items: center; justify-content: center; gap: 4px; margin-left: auto; }
+.academy-navigation a { display: flex; align-items: center; gap: 7px; padding: 12px 13px; min-height: 44px; border-radius: 8px; border: 1px solid transparent; color: var(--course-soft); text-decoration: none; font-size: 13px; white-space: nowrap; }
+.academy-navigation a span { font: 10px var(--mono); color: var(--course-faint); }
+.academy-navigation a:hover { background: var(--course-panel-2); color: var(--course-ink); }
+.academy-navigation a[aria-current] { background: var(--course-panel-2); border-color: var(--course-accent); color: var(--course-ink); }
+.academy-header .theme-toggle { min-height: 44px; font-size: 10px; white-space: nowrap; }
+.academy-header a:focus-visible, .academy-header button:focus-visible { outline: 3px solid var(--course-accent); outline-offset: 3px; }
+.academy .course-hero { min-height: 600px; }
+.academy .course-hero__content { width: min(1180px, 100%); grid-template-rows: 1fr auto; padding-top: 0; padding-bottom: 30px; }
+.academy .course-hero__copy { padding: 64px 0 48px; max-width: 690px; }
+.academy .course-hero h1 { color: #f5f8f6; font-size: clamp(64px, 8vw, 102px); margin-bottom: 26px; }
+.academy .course-intro { max-width: 54ch; font-size: 18px; }
+.academy .hero-stats { padding-top: 24px; }
+.academy .hero-stats dt { font-size: 23px; }
+.academy .course-principle { padding-block: 64px !important; gap: 48px; }
+.academy .course-principle h2, .academy .chain-section h2 { font-size: clamp(32px, 4vw, 48px); }
+.academy .chain-section { padding-block: 56px !important; }
+.academy .pv-lab, .academy .thermal-workshop { padding-block: 72px !important; }
+.academy .pv-lab__heading h2 { color: #f2f7f5; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; }
+.academy .thermal-heading h2 { font-size: clamp(38px, 5vw, 62px); }
+.academy .thermal-heading h2 em { color: #a44f2b; }
+.academy .pv-lab__heading, .academy .thermal-heading { gap: 40px; margin-bottom: 32px; }
+.academy .thermal-jump a { min-height: 44px; display: inline-flex; align-items: center; }
+.academy .thermal-topic summary { min-height: 52px; }
+.academy .pv-lab .pv-anatomy { padding: 28px; }
+.academy .pv-anatomy__process { padding-top: 26px; }
+.academy .course-prose h1, .academy .course-prose h2, .academy .course-prose h3 { color: #243a43; }
+.academy .stage-header h2, .academy .quiz h2 { color: #f4f6f5; }
+.academy .course-sidebar { top: calc(var(--academy-header-height) + 16px); }
+.academy .program-section { padding-block: 64px !important; }
+.academy .reference-library > summary { font-size: 26px; padding-block: 32px; }
+@media (min-width: 1061px) {
+  .academy .pv-lab__main { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; }
+  .academy .pv-lab .pv-lab__viewport { position: sticky; top: calc(var(--academy-header-height) + 16px); height: min(660px, calc(100dvh - var(--academy-header-height) - 32px)); min-height: 430px; }
+  .academy .pv-lab .pv-lab__detail { display: block; padding: 28px; overflow: visible; }
+  .academy .pv-anatomy__header, .academy .pv-anatomy__body { grid-template-columns: 1fr; gap: 18px; }
+  .academy .pv-anatomy__parts > div { grid-template-columns: 1fr 1fr; }
+  .academy .pv-anatomy__parts button { padding: 10px; font-size: 13px; gap: 8px; }
+  .academy .pv-anatomy h3 { font-size: 32px; }
+  .academy .pv-anatomy__part { padding: 20px; }
+  .academy .pv-anatomy__part h4 { font-size: 25px; }
+  .academy .pv-anatomy-caption { left: 12px; right: 12px; flex-direction: column; align-items: start; gap: 5px; }
+}
+@media (max-width: 1060px) {
+  .academy-header__inner { gap: 12px; }
+  .academy-navigation a { padding-inline: 9px; }
+  .academy-navigation a span { display: none; }
+}
+@media (max-width: 760px) {
+  .academy { --academy-header-height: 112px; }
+  .academy-header__inner { min-height: 112px; padding: 10px 16px 0; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; }
+  .academy-brand { font-size: 14px; }
+  .academy-brand__mark { width: 32px; height: 32px; }
+  .academy-header .theme-toggle { padding-inline: 10px; }
+  .academy-navigation { grid-row: 2; grid-column: 1 / -1; width: 100%; margin: 0; justify-content: space-between; gap: 2px; }
+  .academy-navigation a { padding: 10px 8px; font-size: 12px; border-radius: 7px 7px 0 0; }
+  .academy .course-hero { min-height: 0; }
+  .academy .course-hero__content { padding-inline: 20px; padding-bottom: 26px; }
+  .academy .course-hero__copy { padding: 42px 0 32px; }
+  .academy .course-hero h1 { font-size: 64px; }
+  .academy .course-overline { font-size: 10px; }
+  .academy .course-intro { font-size: 16px; line-height: 1.65; }
+  .academy .hero-actions { margin-top: 24px; flex-direction: row; }
+  .academy .hero-actions a { padding-inline: 16px; font-size: 13px; flex: 1 1 auto; }
+  .academy .hero-stats { gap: 20px 12px; padding-top: 22px; }
+  .academy .hero-stats dt { font-size: 21px; }
+  .academy .hero-stats dd { line-height: 1.5; font-size: 11px; }
+  .academy .course-principle { padding-block: 44px !important; gap: 24px; }
+  .academy .chain-section { padding-block: 40px !important; }
+  .academy .pv-lab, .academy .thermal-workshop { padding-block: 48px !important; }
+  .academy .pv-lab__heading, .academy .thermal-heading { grid-template-columns: 1fr; gap: 20px; }
+  .academy .pv-lab .pv-lab__viewport { height: 390px; }
+  .academy .pv-lab .pv-anatomy { padding: 22px 16px; }
+  .academy .pv-lab__view-actions button { min-height: 44px; }
+  .academy .pv-lab__toolbar > button small { font-size: 10px; }
+  .academy .thermal-jump { gap: 6px; padding-bottom: 24px; }
+  .academy .thermal-jump a { padding-inline: 10px; }
+  .academy .reference-library > summary { font-size: 23px; }
+  .academy .course-sidebar { position: static; }
+}
+@media print {
+  .academy-header { display: none; }
+  .academy .pv-lab__main { display: block; }
+}
