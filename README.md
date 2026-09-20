@@ -43,6 +43,8 @@ artefakt przez GitHub Pages. Produkcyjny adres:
 - przekroje sześciu rodzin urządzeń: rozdzielnice nN i SN, transformator,
   falownik, tor DC oraz pomiar energii; 40 wybieralnych części, 24 etapy
   działania i sześć przykładów obliczeniowych ze źródłami;
+- pracownia termowizji i UAV: osiem tematów z ćwiczeniami, trzy syntetyczne
+  sceny IR, palety i skale, kalkulator geometrii, osiem pytań oraz karta obserwacji;
 - wzory matematyczne, tabele, checklisty i studium końcowe;
 - tryb jasny, ciemny, druk oraz reduced motion.
 
@@ -64,3 +66,8 @@ Modele wnętrz są ilustracjami dydaktycznymi, a nie projektami wykonawczymi.
 Widok rozsunięty pokazuje części i ich funkcje, nie sekwencję obsługi urządzenia.
 Testy anatomii weryfikują rzeczywistą geometrię Three.js, wybieranie elementów,
 odwracalność rozsunięcia oraz zgodność części z katalogiem treści.
+
+Pracownia termowizji jest otwartym uzupełnieniem 18 lekcji. Nie zmienia ich
+postępu. Symulacje nie są zapisami z kamery, a kalkulator geometrii nie dobiera
+parametrów operacyjnych ani nie potwierdza jakości pomiaru. Źródła znajdują się
+przy tematach; zakres weryfikacji opisano w `docs/thermal-workshop-validation.md`.

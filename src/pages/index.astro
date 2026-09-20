@@ -2,6 +2,7 @@
 import CourseLayout from '../layouts/CourseLayout.astro';
 import PvSystemLab from '../components/PvSystemLab.astro';
 import GuidedCourse from '../components/GuidedCourse.astro';
+import ThermalWorkshop from '../components/ThermalWorkshop.astro';
 import courseSource from '../content/pv-asset-auditor.md?raw';
 import { courseStages, quizzes, splitCourseContent } from '../lib/course.mjs';
 import { renderCourseMarkdown } from '../lib/course-renderer.mjs';
@@ -44,6 +45,7 @@ const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u0
             <a class="course-button course-button--primary" href="#guided-learning">Zacznij naukę <span aria-hidden="true">↗</span></a>
             <a class="course-button course-button--ghost" href="#program">Podręcznik pogłębiony</a>
             <a class="course-button course-button--ghost" href="#laboratorium-pv">Laboratorium 3D</a>
+            <a class="course-button course-button--ghost" href="#termowizja">Termowizja i drony</a>
           </div>
         </div>
         <dl class="hero-stats" aria-label="Parametry programu">
@@ -78,6 +80,7 @@ const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u0
     </section>
 
     <PvSystemLab />
+    <ThermalWorkshop />
 
     <details class="reference-library" id="program">
       <summary class="wrap">Podręcznik pogłębiony PV <span>Otwórz siedem części referencyjnych i dodatkowe quizy</span></summary>

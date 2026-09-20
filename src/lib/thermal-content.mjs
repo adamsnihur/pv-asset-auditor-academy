@@ -1,0 +1,160 @@
+// Original Polish teaching material. Sources checked 2026-09-19; examples are synthetic.
+export const thermalSources = [
+  { id: 'flir-surfaces', title: 'FLIR: co kamera widzi przez materiały', url: 'https://www.flir.com/discover/home-outdoor/can-thermal-imaging-see-through-walls/' },
+  { id: 'flir-emissivity', title: 'FLIR: techniki pomiaru emisyjności i temperatury odbitej', url: 'https://support.flir.com/docdownload/assets/web/2p5q/en-us/T505000.xml.html' },
+  { id: 'flir-specs', title: 'FLIR: zakres, rozdzielczość i czułość NETD', url: 'https://www.flir.com/discover/professional-tools/thermal-camera-specs-you-should-know-before-buying/' },
+  { id: 'flir-spot', title: 'FLIR: odległość i rozmiar pola pomiarowego', url: 'https://www.flir.com/discover/professional-tools/understanding-distancesize-ratio/' },
+  { id: 'flir-nuc', title: 'FLIR: korekcja niejednorodności NUC', url: 'https://www.flir.com/discover/professional-tools/what-is-a-non-uniformity-correction-nuc/' },
+  { id: 'flir-moisture', title: 'FLIR: termografia a potwierdzanie wilgoci', url: 'https://www.flir.com/discover/professional-tools/how-to-detect-a-water-leak-with-thermal-imaging/' },
+  { id: 'flir-window', title: 'FLIR: parametry pomiaru i kompensacja okna IR', url: 'https://docs.flir.com/T810605/en-US/latest/s10.html' },
+  { id: 'iea-pvps', title: 'IEA PVPS: Review on IR and EL Imaging for PV Field Applications', url: 'https://iea-pvps.org/wp-content/uploads/2020/01/Review_on_IR_and_EL_Imaging_for_PV_Field_Applications_by_Task_13.pdf' },
+  { id: 'iec-scope', title: 'IEC TS 62446-3:2017: publiczny opis zakresu', url: 'https://webstore.iec.ch/en/publication/28628' },
+  { id: 'dji-basics', title: 'DJI Enterprise: podstawy termografii z drona i formaty danych', url: 'https://enterprise-insights.dji.com/blog/thermal-drone-basics' },
+  { id: 'dji-roof', title: 'DJI Enterprise: workflow dachu i ograniczenia mozaiki', url: 'https://enterprise-insights.dji.com/blog/roof-inspection-workflow' },
+  { id: 'nrel-om', title: 'NREL: Best Practices for O&M, wydanie trzecie (2018)', url: 'https://research-hub.nlr.gov/en/publications/best-practices-for-operation-and-maintenance-of-photovoltaic-and-/' },
+  { id: 'osha-electrical', title: 'OSHA: zagrożenia elektryczne przy instalacjach PV', url: 'https://www.osha.gov/green-jobs/solar/electrical' },
+  { id: 'easa-open', title: 'EASA: kategoria otwarta i wymagania operacyjne', url: 'https://www.easa.europa.eu/en/domains/drones-air-mobility/operating-drone/open-category-low-risk-civil-drones' },
+  { id: 'pansa-tower', title: 'PAŻP: DroneTower i aktualne warunki przestrzeni', url: 'https://www.pansa.pl/dronetower/' },
+];
+
+export const thermalTopics = [
+  {
+    id: 'physics', kicker: '01 / Zrozum sygnał', title: 'Kamera rejestruje promieniowanie, potem oblicza temperaturę',
+    lead: 'Najpierw ustal, skąd pochodzi sygnał. Jasna plama może być skutkiem ogrzania powierzchni albo odbiciem otoczenia.',
+    paragraphs: [
+      'Temperatura opisuje stan cieplny, a ciepło jest energią przekazywaną wskutek różnicy temperatur. Przewodzenie przenosi energię przez materiał; konwekcja wiąże się z ruchem powietrza lub cieczy; promieniowanie nie potrzebuje kontaktu. Powierzchnia panelu jednocześnie pochłania energię słoneczną, oddaje energię otoczeniu i wymienia ją z wnętrzem modułu. Jej temperatura jest wynikiem tego bilansu oraz wcześniejszych warunków.',
+      'Detektor termiczny reaguje na promieniowanie w określonym paśmie. Do kamery może docierać emisja badanej powierzchni, promieniowanie od niej odbite oraz promieniowanie przechodzące przez materiał, jeżeli jest on w tym paśmie częściowo przezroczysty. Atmosfera po drodze również wpływa na sygnał. Kamera wykorzystuje model i kalibrację, aby wyznaczyć temperaturę z zarejestrowanych danych.',
+      'Typowa kamera inspekcyjna LWIR obserwuje długofalową podczerwień. Ściana, metalowa obudowa i zwykła szyba okienna są dla niej zasadniczo nieprzezroczyste. Szyba przepuszczająca światło widzialne nie daje takiego samego widoku termicznego. Widzisz jej powierzchnię i odbicia, a nie bezpośrednio temperaturę urządzenia za szybą. Dla nieprzezroczystej powierzchni transmisję przez materiał pomijamy, lecz odbicia pozostają.',
+      'Przed interpretacją nazwij powierzchnię, którą faktycznie obserwujesz: szkło modułu, farbę na obudowie czy pokrycie dachu. Następnie narysuj trzy strzałki: źródło energii, droga chłodzenia i możliwe źródło odbicia. To prosty sposób wykrycia brakującego założenia. W karcie obserwacji zapisz materiał, kąt i warunki, zamiast zaczynać od nazwy awarii. Brak kontrastu na zewnętrznej osłonie nie stanowi badania wszystkich elementów ukrytych w środku.',
+    ],
+    takeaways: ['Mierzysz powierzchnię dostępną w paśmie kamery.', 'Temperatura powierzchni wynika z bilansu energii i historii warunków.', 'Oddziel zmianę powierzchni od zmiany odbitego otoczenia.'],
+    exercise: { task: 'Kamera LWIR pokazuje jasny kształt na szybie zamkniętej szafy. Napisz jedną poprawną obserwację i jeden niedopuszczalny wniosek.', answer: 'Obserwacja: na powierzchni szyby widoczny jest obszar o innym sygnale IR. Niedopuszczalny wniosek: zmierzyłem temperaturę zacisku za szybą. Potrzebna jest ocena odbicia i właściwa metoda dostępu optycznego do badanego elementu.' },
+    sourceIds: ['flir-surfaces', 'dji-basics'],
+  },
+  {
+    id: 'emissivity', kicker: '02 / Ustal parametry', title: 'Emisyjność i odbita temperatura pozorna',
+    lead: 'Dwa obiekty o tej samej temperaturze mogą dawać różne odczyty. Parametry radiometrii opisują powierzchnię i otoczenie, a nie oczekiwany wynik.',
+    paragraphs: [
+      'Emisyjność ε opisuje emisję powierzchni względem ciała doskonale czarnego w tej samej temperaturze. W praktyce dotyczy konkretnego pasma, materiału, wykończenia i kierunku obserwacji. Wartość z tabeli jest punktem wyjścia wymagającym oceny zastosowania. Polerowany metal i lakierowana część tego samego elementu nie muszą mieć jednakowej emisyjności. Kolor widzialny sam nie rozstrzyga zachowania w podczerwieni.',
+      'Odbita temperatura pozorna opisuje promieniowanie otoczenia odbijane w stronę kamery. Nie jest automatycznie temperaturą powietrza. Powierzchnia może odbijać niebo, człowieka albo rozgrzane urządzenie. Przy niskiej emisyjności wpływ odbicia staje się szczególnie istotny. Ustawienie obu parametrów wymaga uzasadnienia i zapisania sposobu ich ustalenia; sama domyślna wartość w menu nie jest takim uzasadnieniem.',
+      'Praktykę rozpocznij od bezpiecznej próbki szkoleniowej o znanych właściwościach i procedury producenta. Metody porównawcze wykorzystujące powierzchnię odniesienia wymagają założenia, że odniesienie i próbka osiągnęły tę samą temperaturę. Nie naklejaj materiałów na czynną instalację tylko po to, aby poprawić odczyt. Przy obiekcie produkcyjnym sposób przygotowania powierzchni uzgadnia osoba odpowiedzialna za urządzenie.',
+      'W ćwiczeniu porównaj dwa kadry tej samej próbki z różnych kierunków. Zapisz, co zmieniło położenie, a co pozostało związane z obiektem. To test hipotezy odbicia, nie automatyczny dowód usterki lub jej braku. W raporcie dodaj ε, odbitą temperaturę pozorną, metodę ich przyjęcia i ograniczenia. Jeżeli parametrów nie znasz, jawnie ogranicz interpretację ilościową. Nie dopasowuj ich do liczby, którą chciałby zobaczyć odbiorca raportu.',
+    ],
+    takeaways: ['Wartość ε musi pasować do powierzchni i warunków obserwacji.', 'Temperatura odbita pozorna i temperatura powietrza to różne wejścia.', 'Zmiana kąta pomaga sprawdzić hipotezę odbicia.'],
+    exercise: { task: 'W syntetycznej scenie jasna plama przesuwa się po zmianie kąta, chociaż obiekt pozostaje nieruchomy. Jak ją zapiszesz i co zachowasz?', answer: 'Zapiszę podejrzenie odbicia, zachowam obie pary RGB/IR i geometrię ujęć. Nie wpiszę pewnej awarii ani nie uznam całego obiektu za sprawny. Sprawdzę ten sam obszar przy ograniczonym wpływie odbić.' },
+    sourceIds: ['flir-emissivity', 'flir-surfaces'],
+  },
+  {
+    id: 'camera', kicker: '03 / Opanuj kamerę', title: 'Ostrość, zakres, skala i cztery różne parametry jakości',
+    lead: 'Czytelny obraz i wiarygodny pomiar wymagają innych kontroli. Zmiana kolorów nie naprawia utraconych danych.',
+    paragraphs: [
+      'Najpierw sprawdź ostrość na rzeczywistym obiekcie i dopuszczalny dystans pracy optyki. Wybierz zakres pomiarowy odpowiedni do przewidywanych temperatur. Zakres pomiarowy określa możliwości rejestracji; skala wyświetlania wybiera fragment danych prezentowany kolorami. Level przesuwa środek tej skali, a span zmienia jej szerokość. Zbyt wąska skala może podkreślać drobny kontrast, ale nie poprawia pomiaru.',
+      'Paleta przypisuje wartościom kolory. Przełączenie z tęczy na szarość pozostawia wartości radiometryczne bez zmian. Przy porównaniu kadrów pokaż tę samą skalę albo wyraźnie opisz różne skale. Osobno kontroluj nasycenie zakresu pomiarowego: danych, których kamera poprawnie nie zarejestrowała, nie odzyskasz zmianą palety ani eksportem większego obrazka.',
+      'NETD opisuje czułość na mały kontrast termiczny w określonych warunkach badania. Nie jest dokładnością temperatury bezwzględnej. IFOV opisuje kąt odpowiadający pojedynczemu elementowi detektora; pole skutecznego pomiaru obejmuje również wpływ optyki i sąsiednich obszarów. Widoczny drobny punkt nie musi wypełniać pola wymaganego do pomiaru. Dobieraj wielkość celu według charakterystyki zestawu, nie według samego celownika.',
+      'NUC, nazywane też w części urządzeń FFC, ogranicza niejednorodność odpowiedzi detektora i dryft; może chwilowo zatrzymać obraz. Nie zastępuje wzorcowania z odniesieniem do znanych temperatur. Sprawdź instrukcję, stabilizację urządzenia i dokumentację kalibracji. W ćwiczeniu przygotuj dwie wersje tego samego pliku: inną paletę oraz inną skalę. Odczytaj ten sam obszar i porównaj liczby. Do karty sprzętu wpisz obiektyw, natywną rozdzielczość, zakres, status kalibracji i zauważone przerwy NUC. Dzięki temu kolejna osoba wie, co kontrolowano przed interpretacją.',
+    ],
+    takeaways: ['Ostrość i właściwy zakres sprawdź przed zapisem.', 'NETD, dokładność i rozdzielczość przestrzenna opisują różne cechy.', 'NUC porządkuje odpowiedź detektora; nie jest pełnym wzorcowaniem.'],
+    exercise: { task: 'Katalog podaje NETD 40 mK. Czy możesz obiecać odczyt temperatury z błędem najwyżej 0,04°C?', answer: 'Nie. 40 mK to 0,04 K różnicy, ale NETD opisuje czułość w warunkach testu, a nie granicę błędu całego pomiaru. Potrzebne są dane o dokładności oraz ocena powierzchni, geometrii, ustawień i warunków.' },
+    sourceIds: ['flir-specs', 'flir-spot', 'flir-nuc', 'dji-basics'],
+  },
+  {
+    id: 'acquisition', kicker: '04 / Zbierz dowód', title: 'Para RGB/IR, stan pracy i dziennik warunków',
+    lead: 'Dobre zdjęcie zaczyna się od pytania pomiarowego. Materiał musi pozwalać wrócić do tego samego obiektu i odtworzyć warunki obserwacji.',
+    paragraphs: [
+      'Zdefiniuj najmniejszy element, który chcesz ocenić, i sposób jego identyfikacji. Obraz RGB dokumentuje wygląd i otoczenie; plik radiometryczny IR zachowuje informacje potrzebne do dalszej analizy w zgodnym programie. Zrzut ekranu z kolorami służy do prezentacji. Nie zastępuje natywnego pliku ani metadanych, nawet gdy na obrazie widnieje liczba z jednostką temperatury.',
+      'Przed właściwą serią zapisz próbkę i otwórz ją w docelowym oprogramowaniu. Sprawdź możliwość odczytu danych, ostrość, obszar odniesienia, orientację i przypisanie RGB do IR. Zsynchronizuj zegary kamery oraz dziennika. Wymyślony numer modułu jest gorszy niż jawny status „identyfikacja do potwierdzenia”. Uporządkuj nazwy tak, aby później dało się przejść od wpisu w tabeli do oryginalnego pliku.',
+      'Na wynik wpływają nasłonecznienie, wiatr, opady, temperatura otoczenia i stan pracy urządzenia. W PV zapisuj irradiancję w płaszczyźnie modułów, czyli POA, oraz informacje o obciążeniu i pracy falownika. Sama godzina lub prognoza pogody nie odtwarza warunków konkretnego kadru. Po przejściu chmury powierzchnia reaguje z opóźnieniem; porównanie dwóch chwil może mieszać zmianę obiektu ze zmianą warunków.',
+      'Ustal z odbiorcą kryteria przyjęcia materiału, odwołując się do właściwej procedury, urządzenia i celu. Ten warsztat nie narzuca uniwersalnego progu irradiancji ani wiatru. W dzienniku nadaj serii status: przyjęta, z ograniczeniem albo do powtórzenia, i dopisz przyczynę. Zachowaj także odrzucone identyfikatory oraz luki pokrycia. Taki zapis pozwala odróżnić brak obserwowanej anomalii od miejsca, którego nie udało się wiarygodnie zbadać.',
+    ],
+    takeaways: ['Oryginał radiometryczny, RGB i identyfikator tworzą komplet.', 'Warunki i stan pracy przypisz do czasu zdjęcia.', 'Luka w danych musi być widoczna w raporcie.'],
+    exercise: { task: 'Masz ostre IR i RGB, lecz czas kamery różni się od dziennika o nieznane kilka minut podczas przejścia chmur. Czy zatwierdzisz porównanie ilościowe?', answer: 'Nie bez odtworzenia synchronizacji i warunków. Oznaczę serię jako ograniczoną lub do powtórzenia. Zachowam pliki i opis problemu; nie dopasuję arbitralnie najkorzystniejszego odczytu pogody.' },
+    sourceIds: ['dji-basics', 'iea-pvps', 'iec-scope'],
+  },
+  {
+    id: 'pv', kicker: '05 / Interpretuj PV', title: 'Wzorzec wskazuje pytanie, nie gotową diagnozę',
+    lead: 'Punkt, pas, moduł i string to różne skale obserwacji. Każda powinna prowadzić do hipotezy i dodatkowego sprawdzenia.',
+    paragraphs: [
+      'Rozpocznij od opisu przestrzennego: lokalny punkt, fragment ogniwa, pas odpowiadający części modułu, cały moduł albo grupa zgodna z przebiegiem stringu. Sprawdź RGB pod kątem cienia, zabrudzeń i widocznych zmian. Porównuj elementy o zbliżonej konstrukcji, orientacji i stanie pracy. Najcieplejszy obiekt w kadrze nie staje się automatycznie najpoważniejszą usterką instalacji.',
+      'Lokalne ogrzanie może wiązać się z niejednorodnością elektryczną lub zacienieniem. Obszar odpowiadający części modułu może kierować uwagę na pracę obwodu bypass, lecz sam obraz nie rozstrzyga stanu diody. Podobny wzorzec wielu modułów uzasadnia sprawdzenie połączeń i stanu pracy stringu. Każdą z tych hipotez trzeba zestawić z geometrią, odbiciami i danymi instalacji.',
+      'Zbuduj kartę zawierającą osobne pola: obserwacja, hipotezy, ograniczenia, dowód rozstrzygający i wykonawca następnego kroku. Powtórny kadr pomaga ocenić trwałość wzorca; RGB pomaga wskazać cień; dane eksploatacyjne i odpowiednio dobrane badanie elektryczne pomagają rozstrzygać przyczyny. Inspekcja nie upoważnia kursanta do otwierania rozdzielnic ani dotykania obwodów. Dostęp oraz prace przy instalacji organizuje właściwy personel według procedury obiektu.',
+      'Ćwicz język raportu na syntetycznej parze 58°C i 46°C: różnica wynosi 12 K, czyli liczbowo 12°C różnicy. Zapisz sposób wyznaczenia wartości, obszar odniesienia i warunki. Nie przeliczaj tej liczby na procent utraty mocy, koszt ani nakaz wymiany. Priorytet dalszego działania zależy również od rodzaju obiektu, możliwych konsekwencji i jakości dowodu. Podejrzenie zagrożenia przekazuj zgodnie z procedurą obiektu; brak pewnej diagnozy nie jest powodem do ukrywania obserwacji.',
+    ],
+    takeaways: ['Wzorce termiczne są wskazówkami do weryfikacji.', 'Kontrast ΔT wymaga opisanej, porównywalnej referencji.', 'Podaj następny dowód i osobę odpowiedzialną za jego uzyskanie.'],
+    exercise: { task: 'Ciepły pas pokrywa się z zabrudzeniem w RGB. Uzupełnij hipotezę, alternatywę i kolejny dowód.', answer: 'Hipoteza: efekt zabrudzenia lub lokalnego zacienienia. Alternatywa: współistniejąca niejednorodność elektryczna. Kolejny dowód: uzgodnione z obsługą powtórzenie po usunięciu zabrudzenia przy porównywalnych warunkach, a w razie utrzymania wzorca dalsze badanie dobrane przez personel techniczny.' },
+    sourceIds: ['iea-pvps', 'nrel-om', 'iec-scope', 'osha-electrical'],
+  },
+  {
+    id: 'buildings', kicker: '06 / Zmień obiekt', title: 'Dach, elewacja i zamknięta obudowa wymagają innego pytania',
+    lead: 'Podobny kolor na dachu i na instalacji elektrycznej może oznaczać zupełnie inny mechanizm. Zawsze wróć do powierzchni i warunków.',
+    paragraphs: [
+      'Na budynku oceniasz rozkład temperatury powierzchni i jego możliwe związki z konstrukcją. Słońce, wiatr, opady, ogrzewanie wnętrza oraz historia pogody mogą zmienić obraz. Porównaj strony budynku, materiał i czas obserwacji. Widoczny pas przy elemencie konstrukcyjnym nie wystarcza do wyznaczenia współczynnika przenikania ciepła ani wystawienia oceny całego budynku.',
+      'Przy dachu wilgoć może zmieniać sposób nagrzewania, stygnięcia i parowania. Kamera nie pokazuje jednak wody bezpośrednio ani nie widzi dowolnie przez pokrycie. Obszar o odmiennym przebiegu temperatury jest miejscem do sprawdzenia. Podobny sygnał może wynikać z innego materiału, grubości, cienia lub naprawy. Weryfikację wilgoci zaplanuj odpowiednią dodatkową metodą, np. pomiarem wilgotności dobranym do przegrody.',
+      'Zamknięta metalowa rozdzielnica udostępnia kamerze zewnętrzną powierzchnię obudowy. Nie jest bezpośrednim pomiarem zacisków w środku. Specjalne okno IR może zapewniać dostęp optyczny w określonym paśmie, ale wymaga znajomości jego transmisji, kompatybilności i procedury pomiarowej. Nie traktuj zwykłej szyby jako takiego okna. Otwieranie obudów i zbliżanie do części czynnych nie jest ćwiczeniem dla początkującego operatora.',
+      'Dla nowego typu obiektu przygotuj krótką kartę przed wyjazdem: pytanie odbiorcy, widoczna powierzchnia, potrzebny kontrast, metoda potwierdzenia i ograniczenia dostępu. Przykładowo pytanie „gdzie sprawdzić szczelność dachu?” prowadzi do mapy obszarów wymagających weryfikacji, a nie do deklaracji znalezienia wszystkich przecieków. W wyniku pokaż również fragmenty zasłonięte lub nieocenialne. To uczciwy produkt inspekcji, nawet gdy późniejsze badanie wykaże inną przyczynę obserwowanego kontrastu.',
+    ],
+    takeaways: ['Wilgoć jest hipotezą wymagającą potwierdzenia.', 'Obudowa może zasłaniać właściwy cel pomiarowy.', 'Warunki dobieraj do obiektu i mechanizmu, którego szukasz.'],
+    exercise: { task: 'Wieczorna mapa dachu pokazuje cieplejszy prostokąt nad dawną naprawą. Jak uniknąć przedwczesnej diagnozy?', answer: 'Opiszę prostokątny kontrast i jego zgodność z naprawą. Rozważę różnicę materiału oraz wilgoć, sprawdzę dokumentację i zaplanuję niezależną weryfikację przegrody. Nie nazwę obszaru potwierdzonym przeciekiem na podstawie samego IR.' },
+    sourceIds: ['flir-moisture', 'flir-surfaces', 'flir-window', 'dji-roof', 'osha-electrical'],
+  },
+  {
+    id: 'uav', kicker: '07 / Zaplanuj ujęcie', title: 'GSD, ruch i geometria lotu',
+    lead: 'Wykrycie kontrastu, rozpoznanie elementu i pomiar jego temperatury to trzy różne zadania. Wysokość sama nie określa jakości.',
+    paragraphs: [
+      'Dla kamery skierowanej pionowo w dół na płaską powierzchnię GSD to szerokość objętego fragmentu podzielona przez liczbę pikseli. Dystans licz od kamery do badanej płaszczyzny, nie automatycznie od miejsca startu. Ujęcie ukośne zmienia skalę w obrębie kadru i kąt obserwacji materiału. Wartości GSD aparatu RGB nie przenoś na tor termiczny z inną optyką i detektorem.',
+      'W syntetycznym przykładzie szerokość 32 m na 640 pikselach daje 5 cm na piksel. Element szeroki na 15 cm zajmuje około trzech pikseli w poprzek. To opis próbkowania, a nie potwierdzenie możliwości pomiaru. Sprawdź pole pomiarowe zestawu, ostrość oraz rzeczywistą próbkę. Cyfrowe powiększenie nie tworzy dodatkowych niezależnych danych z powierzchni.',
+      'Ruch podczas rejestracji rozmywa szczegóły. Uproszczony model to prędkość razy czas integracji podzielone przez GSD. Przy 4 m/s, 5 ms i 0,05 m/piksel otrzymujesz 0,4 piksela rozmycia translacyjnego. Model nie obejmuje drgań, obrotu ani pełnej odpowiedzi sensora. Nie podstawiaj czasu migawki RGB za nieznany czas integracji IR. Kalkulator służy do ćwiczenia geometrii, a decyzję o przyjęciu danych oprzyj także na ujęciu próbnym.',
+      'Przed misją sprawdź aktualne wymagania kategorii operacji, kompetencje i uprawnienia, warunki stref oraz procedury PAŻP dla miejsca i czasu lotu. Zapisz datę sprawdzenia i spełnione warunki, a następnie oceń przeszkody, ludzi, pogodę i plan przerwania. Źródła EASA i PAŻP prowadzą do bieżących zasad; wynik kalkulatora nie jest zgodą na lot. Nie istnieje jedna wysokość, prędkość ani dopuszczalny wiatr właściwy dla wszystkich kamer, obiektów i operacji.',
+    ],
+    takeaways: ['GSD opisuje próbkowanie w zadanej geometrii.', 'Wykrycie elementu nie gwarantuje pomiaru temperatury.', 'Sprawdzenie przestrzeni i wymagań wykonuj dla konkretnej misji.'],
+    exercise: { task: 'Przy niezmienionej geometrii podwajasz prędkość z 4 do 8 m/s. Czas integracji wynosi nadal 5 ms, a GSD 5 cm/piksel. Jak zmieni się modelowe rozmycie?', answer: 'Wzrośnie z 0,4 do 0,8 piksela. To wynik modelu translacyjnego, bez oceny dopuszczalności lotu i bez gwarancji jakości obrazu. Nadal potrzebujesz kontroli próbki i charakterystyki sensora.' },
+    sourceIds: ['flir-spot', 'dji-roof', 'easa-open', 'pansa-tower'],
+  },
+  {
+    id: 'reporting', kicker: '08 / Przekaż wynik', title: 'Raport, który pozwala wrócić od wniosku do pliku',
+    lead: 'Odbiorca potrzebuje lokalizacji, dowodu, ograniczeń i następnego działania. Sama efektowna mapa nie zapewnia odtwarzalności.',
+    paragraphs: [
+      'Zacznij raport od pytania, zakresu i kryteriów przyjęcia. Wymień urządzenie, obiektyw, ustawienia, czas, warunki i stan pracy obiektu. Oddziel zakres zaplanowany od faktycznie ocenionego. Publiczny opis IEC TS 62446-3 obejmuje sprzęt, środowisko, procedurę, raport i kwalifikacje; nie daje podstaw do deklarowania spełnienia wszystkich klauzul normy bez dostępu do właściwego tekstu i sprawdzenia realizacji.',
+      'Każda obserwacja powinna mieć stały identyfikator obiektu, lokalizację, parę RGB/IR, oryginalny plik i czas. Dopisz obszar pomiarowy, referencję, wartości oraz przyjęte parametry radiometrii. Następnie osobno przedstaw hipotezę, jej alternatywę, ograniczenia i proponowany dowód rozstrzygający. Niepewności nie zastępuj arbitralnym „±2°C” przepisanym z katalogu: odnotuj również nierozstrzygnięte wpływy powierzchni, warunków i geometrii.',
+      'Ortomozaika łączy kadry w przestrzenny obraz. Dopasowanie RGB do IR sprawdzaj na rozpoznawalnych obiektach; niewłaściwe przypisanie może przenieść obserwację na sąsiedni moduł. Samo zszycie termicznych obrazów nie gwarantuje zachowania wiarygodnej radiometrii. Sprawdź format, przetwarzanie, wersję programu i porównanie z oryginałami. Mapa ułatwia lokalizację, a ilościowy wynik musi wskazywać zweryfikowane dane źródłowe. Nie odczytuj temperatury z koloru zwykłego eksportu graficznego.',
+      'Pakiet szkoleniowy uporządkuj w pięć części: opis zakresu, dziennik warunków, indeks oryginałów, tabela obserwacji i kopie do prezentacji. Do każdej decyzji dodaj osobę odpowiedzialną za dalszą weryfikację oraz status. Czytelnik powinien sam znaleźć wskazany obiekt i zrozumieć, dlaczego przyjęto albo odrzucono materiał. Ten warsztat rozwija taki sposób pracy; ukończenie ćwiczeń nie jest certyfikatem kompetencji ani potwierdzeniem gotowości do samodzielnej diagnostyki.',
+    ],
+    takeaways: ['Każdy wniosek prowadzi do identyfikowalnego dowodu.', 'Mozaika wymaga weryfikacji geometrii i zachowania radiometrii.', 'Oddziel obserwację, hipotezę, ograniczenie i działanie.'],
+    exercise: { task: 'Klient otrzymał kolorową mozaikę z numerem modułu, lecz bez oryginalnego IR i opisu skali. Czego brakuje do odtworzenia pomiaru?', answer: 'Oryginału radiometrycznego, przypisania obiektu, czasu i warunków, parametrów pomiarowych, definicji obszaru i referencji oraz opisu przetwarzania. Sama legenda kolorów nie odtworzy informacji utraconych podczas eksportu.' },
+    sourceIds: ['iec-scope', 'dji-roof', 'nrel-om'],
+  },
+];
+
+export const thermalMissionSteps = [
+  { title: '1. Zdefiniuj pytanie', body: 'Ustal obiekt, najmniejszy oceniany element, odbiorcę i oczekiwaną decyzję. Rozdziel lokalizację anomalii od rozpoznania przyczyny.', evidence: 'Brief: identyfikator obiektu, cel, planowany zakres, kryteria przyjęcia i granice interpretacji.' },
+  { title: '2. Sprawdź możliwość wykonania', body: 'Zweryfikuj dostęp, procedury obiektu, wymagania operacji UAV oraz bieżące strefy i koordynację. Dobierz warunki do metody i przygotuj przerwanie misji.', evidence: 'Karta przygotowania: źródła i czas sprawdzenia, warunki do spełnienia, role, przeszkody i decyzja wykonawcza.' },
+  { title: '3. Przygotuj aparat i próbkę', body: 'Sprawdź dokumentację zestawu, stabilizację, ostrość, zakres, rozdzielczość celu, parametry radiometrii oraz otwieranie pliku w programie.', evidence: 'Karta sprzętu i próbna para RGB/IR: obiektyw, zakres, status kalibracji, nastawy, geometria i wynik kontroli.' },
+  { title: '4. Pozyskaj powtarzalny materiał', body: 'Zapisuj oryginały i RGB z identyfikacją. Rejestruj czas, środowisko i stan pracy. Kontroluj zmiany warunków, odbicia, rozmycie i pokrycie.', evidence: 'Dziennik misji, indeks plików, mapa pokrycia, pary kadrów kontrolnych oraz wykaz przerw i luk.' },
+  { title: '5. Oddziel obserwację od przyczyny', body: 'Dla przyjętych kadrów wybierz referencję. Oceń alternatywne wyjaśnienia i zaplanuj potwierdzenie. Materiał nieocenialny oznacz jawnie.', evidence: 'Tabela: obiekt, plik, obszar, referencja, wynik, hipotezy, ograniczenia, następny dowód i wykonawca.' },
+  { title: '6. Przekaż i sprawdź odtwarzalność', body: 'Dołącz zakres, oryginały, dziennik i raport. Otwórz losowo wybraną obserwację tak, jak zrobi to odbiorca, i przejdź od wniosku do źródła.', evidence: 'Pakiet raportowy z wersją opracowania, statusem obserwacji, lukami i zapisem kontroli ścieżki do oryginału.' },
+];
+
+export const thermalQuestions = [
+  { id: 'q-surface', prompt: 'Co oznacza odczyt zwykłej kamery LWIR skierowanej na zamkniętą metalową obudowę?', options: ['Bezpośrednią temperaturę każdego zacisku wewnątrz', 'Sygnał od widocznej powierzchni obudowy, z możliwym udziałem odbić', 'Średnią temperaturę powietrza w szafie'], answerIndex: 1, explanation: 'Metalowa obudowa zasłania elementy wewnętrzne w tym paśmie. Wniosek o zacisku wymaga właściwej metody dostępu i dodatkowych danych.' },
+  { id: 'q-reflection', prompt: 'Który zapis o odbitej temperaturze pozornej jest poprawny?', options: ['Zawsze równa się temperaturze powietrza', 'Można ją zastąpić zmianą palety', 'Opisuje promieniowanie otoczenia odbijane w kierunku kamery'], answerIndex: 2, explanation: 'Jest parametrem radiometrycznym związanym z otoczeniem widzianym w odbiciu. Sam termometr powietrza nie wyznacza tego promieniowania.' },
+  { id: 'q-netd', prompt: 'NETD 40 mK uprawnia do stwierdzenia, że:', options: ['podano czułość termiczną w określonych warunkach testu', 'każdy odczyt ma błąd najwyżej 0,04°C', 'każdy cel mieszczący się w jednym pikselu można zmierzyć'], answerIndex: 0, explanation: 'Czułość opisuje rozróżnianie małego kontrastu. Dokładność temperatury i skuteczny rozmiar celu wymagają osobnej oceny.' },
+  { id: 'q-data', prompt: 'Co najlepiej zachować do ponownej analizy ilościowej?', options: ['Screenshot z atrakcyjną paletą', 'Natywny plik radiometryczny, RGB, metadane i dziennik warunków', 'Tylko mozaikę po kompresji'], answerIndex: 1, explanation: 'Oryginał i kontekst umożliwiają sprawdzenie parametrów, geometrii oraz identyfikacji. Obraz prezentacyjny może nie zawierać danych pomiarowych.' },
+  { id: 'q-pv', prompt: 'Ciepły pas na module pokrywa się z zabrudzeniem. Najlepszy następny krok to:', options: ['zadeklarować uszkodzoną diodę', 'przeliczyć kontrast na procent utraty mocy', 'zapisać hipotezy i uzgodnić weryfikację z obsługą obiektu'], answerIndex: 2, explanation: 'Zgodność z zabrudzeniem jest przesłanką, lecz nie wyklucza innej przyczyny. Potrzebny jest dalszy dowód w porównywalnych warunkach.' },
+  { id: 'q-roof', prompt: 'Prostokątny kontrast na dachu jest:', options: ['obserwacją wymagającą oceny materiału, warunków i ewentualnego potwierdzenia wilgoci', 'bezpośrednim obrazem wody pod pokryciem', 'dowodem niesprawności całej izolacji'], answerIndex: 0, explanation: 'Termika pokazuje skutek na powierzchni. Różne mechanizmy, w tym materiał naprawy, mogą tworzyć podobne wzorce.' },
+  { id: 'q-gsd', prompt: 'Cel zajmuje trzy piksele w poprzek. Co już wiesz?', options: ['Pomiar temperatury spełnia każdą normę', 'Znasz próbkowanie w danej geometrii, lecz potrzebna jest ocena pola pomiarowego i jakości', 'Możesz bez sprawdzania zwiększyć wysokość dwukrotnie'], answerIndex: 1, explanation: 'Liczba pikseli pomaga planować. Nie zastępuje charakterystyki optyki, rozmycia i zasad pomiaru dla konkretnego zestawu.' },
+  { id: 'q-report', prompt: 'Jaki zapis najlepiej domyka kartę obserwacji?', options: ['„Czerwony moduł: wymienić”', '„Wykryto 12% straty, bo ΔT wynosi 12 K”', 'ID, plik źródłowy, warunki, referencja, obserwacja, hipoteza, ograniczenie i kolejny dowód'], answerIndex: 2, explanation: 'Odtwarzalna karta oddziela wynik obserwacji od diagnozy i decyzji. Kontrast termiczny sam nie określa utraty energii.' },
+];
+
+export const thermalGlossary = [
+  { term: 'LWIR', definition: 'Długofalowa podczerwień. Właściwe pasmo konkretnej kamery sprawdź w jej dokumentacji.' },
+  { term: 'Emisyjność ε', definition: 'Współczynnik opisujący emisję powierzchni względem ciała doskonale czarnego w tej samej temperaturze, dla określonych warunków spektralnych i kierunkowych.' },
+  { term: 'Odbita temperatura pozorna', definition: 'Temperaturowy opis promieniowania otoczenia odbijanego od obiektu w kierunku kamery; nie jest po prostu temperaturą powietrza.' },
+  { term: 'Radiometria', definition: 'Pomiar promieniowania; w kamerze termicznej dane i model umożliwiają wyznaczenie temperatury przy przyjętych parametrach.' },
+  { term: 'NETD', definition: 'Miara czułości termicznej związana z szumem detektora w określonych warunkach. Nie oznacza dokładności temperatury bezwzględnej.' },
+  { term: 'IFOV', definition: 'Kąt przypadający na pojedynczy element detektora. Sam nie określa minimalnego pola wiarygodnego pomiaru temperatury.' },
+  { term: 'NUC / FFC', definition: 'Korekcja niejednorodności odpowiedzi detektora, często z użyciem przesłony. Nie zastępuje wzorcowania względem odniesienia.' },
+  { term: 'Level / span', definition: 'Środek i szerokość skali wyświetlania; regulują prezentację danych, a nie stan cieplny obiektu.' },
+  { term: 'GSD', definition: 'Rozmiar fragmentu powierzchni przypadający na piksel w określonej geometrii, np. metry na piksel.' },
+  { term: 'POA', definition: 'Plane of array: płaszczyzna modułów. Irradiancja POA jest gęstością mocy promieniowania padającego na tę płaszczyznę, w W/m².' },
+  { term: 'ΔT', definition: 'Różnica temperatur obiektu i określonej referencji. Różnica 1 K jest liczbowo równa różnicy 1°C; nie oznacza procentu straty mocy.' },
+  { term: 'Ortomozaika', definition: 'Przestrzennie opracowana mozaika wielu obrazów. Jej geometria i zachowanie radiometrii wymagają odrębnej weryfikacji.' },
+];

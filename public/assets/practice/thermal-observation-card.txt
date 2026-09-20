@@ -1,0 +1,18 @@
+KARTA OBSERWACJI TERMICZNEJ
+PV Asset Auditor Academy · materiał do nauki
+
+Brakujące dane oznacz jako „nieustalone”. Oddziel obserwację od hipotezy.
+Nie wpisuj danych poufnych do ćwiczeń udostępnianych innym osobom.
+
+ID obiektu / obserwacji:
+Czas i lokalizacja / identyfikator elementu:
+Plik radiometryczny i odpowiadający RGB:
+Warunki, obciążenie i geometria:
+Ustawienia, emisyjność i parametry otoczenia:
+Co zaobserwowano / z czym porównano:
+Hipotezy i ograniczenia:
+Następna weryfikacja / odpowiedzialna osoba:
+Status obserwacji i wersja opracowania:
+
+Sprawdź: czy odbiorca odnajdzie oryginalny plik i rozpozna granice wniosku?
+Ta karta nie jest certyfikatem ani instrukcją ingerencji w instalację.

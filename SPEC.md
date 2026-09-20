@@ -1,5 +1,9 @@
 # PV Asset Auditor Academy Technical Specification
 
+## Thermography workshop, 2026-09-19
+
+Add a standalone thermography and UAV thermography section after the 3D lab, linked from the hero. Provide eight readable topics, source references, exercises with explanations, a synthetic thermal viewer demonstrating palette/scale versus unchanged data, a nadir flight geometry calculator, a mission evidence workflow and knowledge checks. Explain emissivity, reflections, atmosphere, spatial resolution versus NETD/accuracy, radiometric originals, PV/electrical/building limitations and UAV-specific acquisition. All simulated values must be labelled and separated from manufacturer specifications or field findings. No universal diagnostic or flight thresholds. Preserve existing 18-lesson progression and local notes. New controls use native form elements and work on mobile. Validate math against analytic fixtures, teaching data references, invalid inputs, browser interactions, injection handling and Pages artifact; publish under the standing Pages authorization.
+
 ## Equipment anatomy expansion, 2026-09-19
 
 Add a detailed 3D anatomy view alongside the existing installation view. Cover AC/nN switchboards, MV switchgear, transformer, inverter, DC protection/combiner and metering. Each device exposes selectable internal parts, a cutaway and exploded arrangement, a narrated energy/protection path, a worked example and source links. Distinguish conceptual models from equipment-specific wiring and procedures. Selection must work through native buttons as well as raycasting; the complete explanation must remain available without WebGL. Preserve the course and existing overview. Validate all parts against renderable geometry, transitions, responsive layout, disposal and the built artifact.

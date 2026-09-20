@@ -1,0 +1,99 @@
+---
+import { thermalTopics, thermalSources, thermalMissionSteps, thermalQuestions, thermalGlossary } from '../lib/thermal-content.mjs';
+import { thermalScenes, syntheticTemperature } from '../lib/thermal-lab.mjs';
+import '../styles/thermal-workshop.css';
+const first = thermalScenes[0];
+const clientData = JSON.stringify({ thermalQuestions }).replace(/</g, '\\u003c');
+---
+<section class="thermal-workshop" id="termowizja" data-thermal-workshop aria-labelledby="thermal-heading">
+  <div class="wrap">
+    <header class="thermal-heading">
+      <div><p class="course-overline">Pracownia 02 · termowizja naziemna i UAV</p><h2 id="thermal-heading">Zobacz ciepło.<br /><em>Zrozum sygnał.</em></h2></div>
+      <div><p>Od promieniowania podczerwonego do nalotu dronem. Naucz się czytać obraz, sprawdzać jakość danych i formułować wnioski, które da się zweryfikować.</p><div class="thermal-tags"><span>8 tematów</span><span>3 scenariusze</span><span>2 laboratoria</span></div></div>
+    </header>
+    <nav class="thermal-jump" aria-label="Pracownia termowizji"><a href="#thermal-viewer">01 · Czytaj obraz</a><a href="#thermal-topics">02 · Poznaj podstawy</a><a href="#thermal-flight">03 · Zaplanuj geometrię</a><a href="#thermal-mission">04 · Zbuduj raport</a><a href="#thermal-check">05 · Sprawdź się</a></nav>
+
+    <section class="thermal-viewer" id="thermal-viewer" aria-labelledby="thermal-viewer-title">
+      <header class="thermal-block-heading"><div><p class="course-overline">Laboratorium obrazu</p><h3 id="thermal-viewer-title">Kolor to sposób wyświetlania.</h3></div><p>Wybierz scenę, zmień paletę i skalę. Obserwuj liczby w punktach A i B: pozostają takie same.</p></header>
+      <div class="thermal-console">
+        <div class="thermal-screen">
+          <div class="thermal-screen__top"><span>IR / PRACOWNIA</span><strong>DANE SYNTETYCZNE</strong></div>
+          <div class="thermal-image">
+            <canvas width="640" height="400" data-thermal-image role="img" aria-label={first.label}>Syntetyczny termogram; odczyty punktów A i B oraz opis sceny znajdują się poniżej.</canvas>
+            <button type="button" class="thermal-marker" data-thermal-point="target" aria-label="Wybierz punkt A" aria-pressed="true" style="left:56%;top:44%">A</button>
+            <button type="button" class="thermal-marker" data-thermal-point="reference" aria-label="Wybierz punkt B" aria-pressed="false" style="left:25%;top:44%">B</button>
+          </div>
+          <div class="thermal-scale"><span data-thermal-min>28°C</span><div data-thermal-gradient></div><span data-thermal-max>60°C</span></div>
+          <p class="thermal-screen__note">Ilustracja obliczeniowa, nie zapis z kamery. A i B to pojedyncze punkty sceny; nie są pomiarem obszarowym.</p>
+        </div>
+        <div class="thermal-controls">
+          <label>Scenariusz<select data-thermal-scene>{thermalScenes.map(scene => <option value={scene.id}>{scene.title}</option>)}</select></label>
+          <div class="thermal-controls__pair">
+            <label>Paleta<select data-thermal-palette><option value="iron">Żelazo</option><option value="gray">Biały = cieplej</option><option value="ice">Niebieski / czerwony</option></select></label>
+            <label>Skala obrazu<select data-thermal-range><option value="auto">Cały zakres sceny</option><option value="wide">Stała: 20–80°C</option><option value="narrow">Wąska: 35–50°C</option></select></label>
+          </div>
+          <div class="thermal-readouts"><div><span>Punkt A</span><strong data-thermal-a>{syntheticTemperature('pv', ...first.target).toFixed(1)}°C</strong></div><div><span>Punkt B</span><strong data-thermal-b>{syntheticTemperature('pv', ...first.reference).toFixed(1)}°C</strong></div><div><span>A − B</span><strong data-thermal-delta>—</strong></div></div>
+          <p class="thermal-display-note" data-thermal-display-note>Skala obejmuje całą scenę. Barwa sama nie wyznacza istotności anomalii.</p>
+          <p data-thermal-context>{first.context}</p>
+          <p class="thermal-point-status" data-thermal-point-status aria-live="polite">Wybrano punkt A.</p>
+        </div>
+      </div>
+      <div class="thermal-case"><div><p class="course-overline">Od obrazu do hipotezy</p><h4 data-thermal-case-question>{first.question}</h4><div class="thermal-case-options" data-thermal-case-options>{first.options.map((option,i) => <button type="button" data-thermal-case-answer={i}>{option}</button>)}</div><p class="thermal-feedback" data-thermal-case-feedback hidden aria-live="polite"></p></div><aside><h4>Co zapisać i sprawdzić</h4><p data-thermal-observation>{first.observation}</p><ul data-thermal-evidence>{first.evidence.map(item => <li>{item}</li>)}</ul></aside></div>
+      <noscript><p>Opisy i ćwiczenia pozostają dostępne. Włącz JavaScript, aby zmieniać sceny, palety i wykonywać obliczenia interaktywne.</p></noscript>
+    </section>
+
+    <section class="thermal-topics" id="thermal-topics" aria-labelledby="thermal-topics-title">
+      <header class="thermal-block-heading"><div><p class="course-overline">Wiedza od podstaw</p><h3 id="thermal-topics-title">Osiem kroków do świadomej interpretacji.</h3></div><p>Czytaj po kolei lub wracaj do wybranego zagadnienia. Każdy temat kończy się zadaniem i objaśnieniem.</p></header>
+      <div class="thermal-topic-list">{thermalTopics.map((topic, i) => <details class="thermal-topic" id={`thermal-topic-${topic.id}`} open={i === 0}>
+        <summary><span>{String(i+1).padStart(2,'0')}</span><div><small>{topic.kicker.replace(/^\d+\s*\/\s*/, '')}</small><h4>{topic.title}</h4></div><b aria-hidden="true">+</b></summary>
+        <div class="thermal-topic__body"><p class="thermal-topic__lead">{topic.lead}</p><div class="thermal-prose">{topic.paragraphs.map(text => <p>{text}</p>)}</div><div class="thermal-takeaways"><h5>Zapamiętaj</h5><ul>{topic.takeaways.map(text => <li>{text}</li>)}</ul></div><div class="thermal-exercise"><p class="course-overline">Przećwicz własnymi słowami</p><p>{topic.exercise.task}</p><details><summary>Porównaj tok rozumowania</summary><p>{topic.exercise.answer}</p></details></div><p class="thermal-topic__sources">Sprawdź źródła: {topic.sourceIds.map(id => { const source = thermalSources.find(item => item.id === id); return source && <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>; })}</p></div>
+      </details>)}</div>
+    </section>
+
+    <section class="thermal-flight" id="thermal-flight" aria-labelledby="thermal-flight-title">
+      <header class="thermal-block-heading"><div><p class="course-overline">Laboratorium geometrii UAV</p><h3 id="thermal-flight-title">Czy cel ma dość pikseli?</h3></div><p>Zobaczyć obiekt, rozpoznać wzór i zmierzyć temperaturę to różne wymagania. Przelicz geometrię, zanim ocenisz możliwości sensora.</p></header>
+      <div class="thermal-flight-grid">
+        <form data-thermal-flight-form class="thermal-flight-form">
+          <p>Wartości startowe opisują przykładową kamerę i scenę. Nie są profilem konkretnego drona ani zaleceniem wysokości lotu.</p>
+          <div class="thermal-input-grid">
+            <label>Odległość do płaszczyzny celu [m]<input name="distance" type="number" value="30" min="0.1" max="10000" step="any" required /></label>
+            <label>Poziome pole widzenia HFOV [°]<input name="hfov" type="number" value="45" min="0.1" max="179" step="any" required /></label>
+            <label>Natywna szerokość obrazu [px]<input name="width" type="number" value="640" min="1" max="20000" step="1" required /></label>
+            <label>Szerokość szczegółu [cm]<input name="targetCm" type="number" value="16" min="0.01" max="100000" step="any" required /></label>
+            <label>Prędkość nad celem [m/s]<input name="speed" type="number" value="3" min="0" max="100" step="any" required /></label>
+            <label>Założony czas integracji [ms]<input name="integrationMs" type="number" value="10" min="0" max="10000" step="any" required /></label>
+          </div>
+          <button class="thermal-action" type="submit">Przelicz geometrię ↗</button><p data-thermal-flight-error class="thermal-error" role="alert" hidden></p>
+        </form>
+        <div class="thermal-flight-result" data-thermal-flight-result>
+          <svg viewBox="0 0 420 185" role="img" aria-label="Schemat: kamera nad płaskim celem, trójkąt pola widzenia i szerokość pokrycia"><path d="M210 28L58 155H362Z" fill="#ecaa6130" stroke="#a25730" stroke-width="1.5"/><path d="M210 35V155M38 155H382" fill="none" stroke="#657c76" stroke-dasharray="4 5"/><rect x="191" y="15" width="38" height="22" rx="5" fill="#213f42"/><circle cx="210" cy="26" r="6" fill="#efba78"/><text x="224" y="96" fill="#35534f" font-size="12">D · do celu</text><text x="150" y="176" fill="#35534f" font-size="12">szerokość pokrycia</text></svg>
+          <dl><div><dt>Szerokość pokrycia</dt><dd data-thermal-footprint>24,85 m</dd></div><div><dt>GSD · rozmiar piksela na celu</dt><dd data-thermal-gsd>3,88 cm/px</dd></div><div><dt>Piksele na szerokości szczegółu</dt><dd data-thermal-pixels>4,12 px</dd></div><div><dt>Przesunięcie w czasie integracji</dt><dd data-thermal-blur>0,77 px</dd></div></dl>
+          <p data-thermal-flight-interpretation aria-live="polite">To geometria próbkowania, nie potwierdzenie dokładności pomiaru temperatury.</p>
+        </div>
+      </div>
+      <details class="thermal-assumptions"><summary>Wzory, założenia i ograniczenia kalkulatora</summary><p>Pokrycie W = 2 × D × tan(HFOV / 2). GSD = W / N. Piksele na celu = rozmiar celu / GSD. Przesunięcie w pikselach = prędkość × czas integracji / GSD. Jednostki w obliczeniu: metry i sekundy.</p><p>Model zakłada prostopadłą oś kamery, płaską powierzchnię, prostoliniowy obiektyw, kwadratowe piksele i równomierny ruch bez obrotu. Odległość dotyczy celu, nie punktu startu. Dla zdjęć ukośnych, elewacji, pochyłych modułów i zmiennego terenu geometria jest inna.</p><p>Czas integracji jest tu jawnym założeniem do nauki; nie utożsamiaj go z odstępem między zdjęciami ani odwrotnością liczby klatek na sekundę. Rzeczywiste rozmycie zależy też od sensora, optyki, ostrości, drgań i obróbki. Zmiana pola widzenia oznacza inną optykę lub tryb sensora, nie zoom cyfrowy.</p><p>Liczba pikseli nie wyznacza dopuszczenia lotu ani wiarygodnego pomiaru. Sprawdź wymagany obszar pomiarowy w dokumentacji kamery oraz metodę badania. <a href="https://www.flir.com/discover/professional-tools/understanding-distancesize-ratio/" target="_blank" rel="noopener noreferrer">FLIR: IFOV i rozmiar obszaru pomiarowego</a>.</p></details>
+    </section>
+
+    <section class="thermal-mission" id="thermal-mission" aria-labelledby="thermal-mission-title">
+      <header class="thermal-block-heading"><div><p class="course-overline">Termowizja z drona w praktyce</p><h3 id="thermal-mission-title">Każdy etap zostawia dowód.</h3></div><p>Rezultatem pracy jest uporządkowany materiał do decyzji. Przygotuj własną kartę misji według tej ścieżki.</p></header>
+      <ol>{thermalMissionSteps.map((step,i)=><li><span>{String(i+1).padStart(2,'0')}</span><div><h4>{step.title.replace(/^\d+\.\s*/, '')}</h4><p>{step.body}</p><p class="thermal-mission__evidence"><strong>Rezultat:</strong> {step.evidence}</p></div></li>)}</ol>
+      <div class="thermal-report"><h4>Karta jednej obserwacji</h4><p>Skopiuj szablon do własnego raportu. Uzupełnij go dla wybranego scenariusza, pozostawiając brakujące informacje jako „nieustalone”.</p><pre>ID obiektu / obserwacji:
+Czas i lokalizacja / identyfikator elementu:
+Plik radiometryczny i odpowiadający RGB:
+Warunki, obciążenie i geometria:
+Ustawienia, emisyjność i parametry otoczenia:
+Co zaobserwowano / z czym porównano:
+Hipotezy i ograniczenia:
+Następna weryfikacja / odpowiedzialna osoba:</pre><a class="thermal-action" href={`${import.meta.env.BASE_URL}assets/practice/thermal-observation-card.txt`} download data-thermal-download>Pobierz pustą kartę (.txt) ↓</a></div>
+    </section>
+
+    <section class="thermal-check" id="thermal-check" aria-labelledby="thermal-check-title"><header class="thermal-block-heading"><div><p class="course-overline">Sprawdź rozumowanie</p><h3 id="thermal-check-title">Osiem decyzji inspektora.</h3></div><p>Odpowiedz na wszystkie pytania. Otrzymasz wyjaśnienie każdej odpowiedzi; ten sprawdzian nie nadaje uprawnień.</p></header><form data-thermal-quiz>{thermalQuestions.map((question,i)=><fieldset><legend><span>{String(i+1).padStart(2,'0')}</span>{question.prompt}</legend>{question.options.map((option,index)=><label><input type="radio" name={`thermal-${question.id}`} value={index} required /><span>{option}</span></label>)}<p class="thermal-feedback" data-thermal-question-feedback={question.id} hidden></p></fieldset>)}<button class="thermal-action" type="submit">Sprawdź odpowiedzi ↗</button><p data-thermal-quiz-result aria-live="polite"></p></form></section>
+
+    <details class="thermal-glossary"><summary>Słownik termowizji i źródła</summary><dl>{thermalGlossary.map(item=><div><dt>{item.term}</dt><dd>{item.definition}</dd></div>)}</dl><ul>{thermalSources.map(source=><li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a></li>)}</ul><p>Materiał do samodzielnej nauki. Parametry pracy, wymagania misji i interpretację odnosi się do konkretnego obiektu, sprzętu oraz aktualnych zasad.</p></details>
+  </div>
+  <script type="application/json" data-thermal-data set:html={clientData}></script>
+</section>
+<script>
+  import { initializeThermalWorkshop } from '../lib/thermal-workshop-client.mjs';
+  initializeThermalWorkshop();
+</script>
