@@ -2,6 +2,7 @@
 import CourseLayout from '../layouts/CourseLayout.astro';
 import PvSystemLab from '../components/PvSystemLab.astro';
 import GuidedCourse from '../components/GuidedCourse.astro';
+import G1Course from '../components/G1Course.astro';
 import ThermalWorkshop from '../components/ThermalWorkshop.astro';
 import AcademyNavigation from '../components/AcademyNavigation.astro';
 import courseSource from '../content/pv-asset-auditor.md?raw';
@@ -37,7 +38,7 @@ const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u0
       <div class="thermal-scan" aria-hidden="true"></div>
       <div class="course-hero__content wrap">
         <div class="course-hero__copy">
-          <p class="course-overline">Od zera · 18 lekcji · trzy ścieżki praktyczne</p>
+          <p class="course-overline">Od zera · 18 lekcji bazowych + 12 lekcji G1</p>
           <h1 id="course-title">PV Asset <em>Auditor</em></h1>
           <p class="course-intro">Od podstaw prądu do inspekcji dronem. Poznaj instalacje PV, odczytuj obrazy termiczne i pracuj z mapą. Ucz się na przykładach, modelach 3D i własnych zadaniach.</p>
           <div class="hero-actions">
@@ -46,15 +47,18 @@ const clientData = JSON.stringify({ courseStages, quizzes }).replace(/</g, '\\u0
           </div>
         </div>
         <dl class="hero-stats" aria-label="Parametry programu">
-          <div><dt>18</dt><dd>odrębnych lekcji</dd></div>
-          <div><dt>18</dt><dd>rezultatów własnej pracy</dd></div>
+          <div><dt>18 + 12</dt><dd>lekcji bazowych i rozszerzenia G1</dd></div>
+          <div><dt>30</dt><dd>rezultatów własnej pracy</dd></div>
           <div><dt>3</dt><dd>dziedziny połączone w praktyce</dd></div>
           <div><dt>Twój rytm</dt><dd>postęp zapisuje się na tym urządzeniu</dd></div>
         </dl>
       </div>
     </section>
 
-    <GuidedCourse />
+    <GuidedCourse>
+      <p class="g1-bridge">Rozbudowujesz wiedzę elektryczną? Po podstawach E01–E06 przejdź do <a href="#kwalifikacje-g1">ścieżki G1: ochrona, eksploatacja, pomiary i dozór →</a></p>
+    </GuidedCourse>
+    <G1Course />
 
     <section class="course-principle wrap" aria-labelledby="principle-title">
       <div>

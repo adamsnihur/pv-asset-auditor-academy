@@ -1,0 +1,2023 @@
+{
+  "course": {
+    "title": "G1: wiedza elektryczna i odpowiedzialność",
+    "template": false,
+    "quality_profile": "proficiency",
+    "declared_minutes": 300,
+    "reading_wpm": 180,
+    "research": {
+      "openalex_exemption_reason": "Audyt wymagań kwalifikacyjnych i bezpieczeństwa oparty na aktualnych przepisach, dokumentacji producentów i źródłach ratowniczych; nie jest przeglądem literatury naukowej."
+    }
+  },
+  "sources": [
+    {
+      "id": "G-ENG-S-earthing",
+      "title": "Definition of standardised earthing schemes",
+      "url": "https://www.electrical-installation.org/enwiki/Definition_of_standardised_earthing_schemes",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Rozróżnienie TN-C/TN-S/TN-C-S/TT/IT; przewodnik IEC nie zastępuje aktualnego projektu ani krajowych warunków stosowania. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-protection",
+      "title": "Types of protection against electric shock",
+      "url": "https://www.electrical-installation.org/enwiki/Types_of_protection_against_electric_shock",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Ochrona podstawowa i przy uszkodzeniu; nie przenosimy tabel czasu wyłączenia jako uniwersalnych progów. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-additional",
+      "title": "Additional protection: High sensitivity RCDs",
+      "url": "https://www.electrical-installation.org/enwiki/Additional_protection:_High_sensitivity_RCDs",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zakres ochrony dodatkowej RCD; nie zastępuje ochrony podstawowej ani przy uszkodzeniu. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-tn",
+      "title": "TN system - Principle",
+      "url": "https://www.electrical-installation.org/enwiki/TN_system_-_Principle",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zależność Zs, U₀ i Ia oraz rozdział PE/N przed RCD. Liczby w lekcjach są syntetyczne, czas wyłączenia i Ia wymagają właściwego kryterium. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-tt",
+      "title": "TT system - Principle",
+      "url": "https://www.electrical-installation.org/enwiki/TT_system_-_Principle",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zależność uziemienia i RCD. UL = 50 V jest jawnym założeniem modelu, nie progiem uniwersalnym dla dowolnego środowiska. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-it",
+      "title": "IT system - Principle",
+      "url": "https://www.electrical-installation.org/enwiki/IT_system_-_Principle",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Warunkowa kontynuacja po pierwszym uszkodzeniu, kontrola izolacji i reakcja na drugie uszkodzenie; bez instrukcji pracy w obiekcie. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-elv",
+      "title": "Extra Low Voltage (ELV)",
+      "url": "https://www.electrical-installation.org/enwiki/Extra_Low_Voltage_(ELV)",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "SELV/PELV obejmują źródło, oddzielenie i połączenia; lekcja nie odtwarza pełnych wymagań normy. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-class-ii",
+      "title": "Class II equipment",
+      "url": "https://www.electrical-installation.org/enwiki/Class_II_equipment",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Izolacja podwójna lub wzmocniona jako środek ochrony; wygląd obudowy nie dowodzi klasy. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-rcd-types",
+      "title": "Types of RCDs",
+      "url": "https://www.electrical-installation.org/enwiki/Types_of_RCDs",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zakres przebiegów AC/A/F/B, bez doboru konkretnego urządzenia lub przenoszenia ogólnych zaleceń do każdej instalacji. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-rcd-dc",
+      "title": "RCDs selection in presence of DC earth leakage currents",
+      "url": "https://www.electrical-installation.org/enwiki/RCDs_selection_in_presence_of_DC_earth_leakage_currents",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Ryzyko ograniczenia działania przez DC i koordynacja; wymagania falownika weryfikuje się w jego instrukcji. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-rcd-principle",
+      "title": "Description of RCDs",
+      "url": "https://www.electrical-installation.org/enwiki/Description_of_RCDs",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zasada bilansu prądów; rachunek 40 mA jest własnym przykładem i nie wyznacza czasu wyłączenia. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-rcd-forms",
+      "title": "Form factors of RCDs",
+      "url": "https://www.electrical-installation.org/enwiki/Form_factors_of_RCDs",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "RCCB i RCBO mają różny zakres funkcji; parametry trzeba ustalić dla konkretnego aparatu. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-sizing",
+      "title": "Practical values for a protective scheme",
+      "url": "https://www.electrical-installation.org/enwiki/Practical_values_for_a_protective_scheme",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Ib/In/Iz i I₂; współczynniki oraz I₂ w ćwiczeniu są zadane, a nie przyjęte jako dane katalogowe produktu. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-cable",
+      "title": "General method for cable sizing",
+      "url": "https://www.electrical-installation.org/enwiki/General_method_for_cable_sizing",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Metody ułożenia i korekty; nie reprodukujemy tabel ani nie ustanawiamy uniwersalnej obciążalności przekroju. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-overcurrent",
+      "title": "Overcurrent protection principles",
+      "url": "https://www.electrical-installation.org/enwiki/Overcurrent_protection_principles",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zależność cieplna I²t i warunki ochrony; k wymaga danych materiału, izolacji i metody. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-breaking",
+      "title": "Other characteristics of a circuit-breaker",
+      "url": "https://www.electrical-installation.org/enwiki/Other_characteristics_of_a_circuit-breaker",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Znaczenie parametrów zwarciowych; porównania należy wykonywać przy właściwym napięciu, normie i warunkach badań. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-selectivity",
+      "title": "Coordination between circuit-breakers",
+      "url": "https://www.electrical-installation.org/enwiki/Coordination_between_circuit-breakers",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Selektywność i ochrona rezerwowa zależą od konkretnej pary aparatów; brak rekomendacji produktowej. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-drop",
+      "title": "Calculation of voltage drop in steady load conditions",
+      "url": "https://www.electrical-installation.org/enwiki/Calculation_of_voltage_drop_in_steady_load_conditions",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Przykład ograniczono do rezystancyjnej pętli; rezystywność zadana, bez normatywnego limitu procentowego. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-spd",
+      "title": "The Surge Protection Device (SPD)",
+      "url": "https://www.electrical-installation.org/enwiki/The_Surge_Protection_Device_(SPD)",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Funkcja ograniczania przepięć, odmienna od zabezpieczeń nadprądowych; nie kopiujemy tabel klas i fal testowych. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-spd-pv",
+      "title": "SPD for photovoltaic applications",
+      "url": "https://www.electrical-installation.org/enwiki/SPD_for_photovoltaic_applications",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "SPD po stronie PV wymaga zgodności z aplikacją DC; lekcja nie podaje doboru ani schematu wykonania. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-transformer",
+      "title": "Protection of LV/LV transformers",
+      "url": "https://www.electrical-installation.org/enwiki/Protection_of_LV/LV_transformers",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Prąd załączenia, przeciążenie i zwarcie; model idealnego transformatora nie obejmuje strat ani szczegółów wykonawczych. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-motor",
+      "title": "Asynchronous motors",
+      "url": "https://www.electrical-installation.org/enwiki/Asynchronous_motors",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Znaczenie rozruchu i ochrony silnika; bez kopiowania statystyk popularności ani narzucania typowego prądu każdemu silnikowi. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-motor-power",
+      "title": "Induction motors",
+      "url": "https://www.electrical-installation.org/enwiki/Induction_motors",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Moc mechaniczna, sprawność i pobór prądu; własny przykład symetrycznego obciążenia sinusoidalnego. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-motor-protection",
+      "title": "Basic motor protection scheme: circuit-breaker + contactor + thermal relay",
+      "url": "https://www.electrical-installation.org/enwiki/Basic_motor_protection_scheme:_circuit-breaker_%2B_contactor_%2B_thermal_relay",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Rozdzielenie funkcji ochrony i sterowania; nie dobieramy nastaw ani konkretnych aparatów. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-star-delta",
+      "title": "Schneider Electric TeSys Giga: Star-Delta Starters",
+      "url": "https://productinfo.se.com/tesysgigainstallationguide/tesys-giga-series-giga-contactors-and-giga-thermal-overload-relays-installation-guide/English/TeSys%E2%84%A2%20Giga%20Series%20Giga%20Contactors%20and%20Giga%20Thermal%20Overload%20Relays%20Installation%20Guide_0000447511.xml/$/PanGu_3ContactorStar-Delta_0000449442",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Instrukcja konkretnej rodziny urządzeń; użyta do funkcji blokad i ograniczeń rozruchu, bez reprodukcji schematów połączeń. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-abb",
+      "title": "ABB ACS260-04 User Manual, revision A, motor connections",
+      "url": "https://library.e.abb.com/public/42f3fa4e4a3b4861909aff8377833d2c/ACS260-04_UM_EN_RevA.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Tabela połączeń silnika na stronie drukowanej 29; dokument przemiennika użyty wyłącznie do interpretacji napięć Δ/Y, nie jako instrukcja rozruchu stycznikowego. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-power",
+      "title": "Definition of reactive power",
+      "url": "https://www.electrical-installation.org/enwiki/Definition_of_reactive_power",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Trójkąt mocy i równania dla sinusoidalnych, symetrycznych modeli; nie uogólniamy S² = P² + Q² na przebiegi z harmonicznymi. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-compensation",
+      "title": "Equipment to improve power factor",
+      "url": "https://www.electrical-installation.org/enwiki/Equipment_to_improve_power_factor",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Rola kompensacji i dopasowania do obciążenia; brak projektu banku kondensatorów i deklaracji oszczędności całego napędu. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-pf-harmonics",
+      "title": "Harmonic distortion indicators - Power factor",
+      "url": "https://www.electrical-installation.org/enwiki/Harmonic_distortion_indicators_-_Power_factor",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Rozróżnienie PF i cosφ składowej podstawowej; bez zastępowania pomiarów jakości energii. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-harmonics",
+      "title": "Effects of harmonics - Overload of equipment",
+      "url": "https://www.electrical-installation.org/enwiki/Effects_of_harmonics_-_Overload_of_equipment",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Obciążenia cieplne i kondensatory przy harmonicznych; nie przenosimy współczynników obniżających na nieznaną instalację. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-verification",
+      "title": "Quality and safety of an electrical installation",
+      "url": "https://www.electrical-installation.org/enwiki/Quality_and_safety_of_an_electrical_installation",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zakres oględzin, badań i raportu; zagraniczne przykłady okresów kontroli nie są przedstawiane jako polskie obowiązki. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-iet",
+      "title": "IET Wiring Matters issue 105, May 2025: initial verification",
+      "url": "https://electrical.theiet.org/media/dydg4v05/wiring-matters-issue-105-may-2025.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Dokument odnosi się do BS 7671 i Wielkiej Brytanii; użyto logiki sekwencji i ograniczania badań pod napięciem, bez przenoszenia przepisów do Polski. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-fluke-sequence",
+      "title": "Fluke: Easier IMD, SPD, Voltage Drop testing with Fluke 1674 FC",
+      "url": "https://www.fluke.com/en/learn/blog/predictive-maintenance/how-to-test-imd-spd-voltage-drop",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Materiał konkretnego przyrządu; wykorzystano ograniczenia sekwencji i obecności odbiorników. Nie przyjęto podanego w artykule procentu spadku jako uniwersalnego. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-sma-test",
+      "title": "SMA: Check the PV system via insulation resistance measurement for ground faults",
+      "url": "https://manuals.sma.de/STPxx3SE40/en-US/14267430539.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Instrukcja dla właściwej rodziny falownika i wykwalifikowanych osób; cytujemy potrzebę wyposażenia i zgodnej metody, nie reprodukujemy kroków zwierania łańcuchów. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-cat",
+      "title": "Fluke: ABCs of multimeter safety",
+      "url": "https://media.fluke.com/51012112-8f43-4aa7-a30a-b2e3016e8f2f_original%20file.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Kategoria pomiarowa wraz z napięciem i osprzętem; brak zatwierdzenia dowolnego przyrządu do pracy pod napięciem. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-ENG-S-calibration",
+      "title": "Fluke: What Is Calibration? Understanding the Basics",
+      "url": "https://www.fluke.com/en/learn/blog/calibration/about-calibration",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Wzorcowanie i niepewność; zakres ±0,10 Ω oraz reguła decyzji są własnymi założeniami ćwiczenia, nie specyfikacją miernika. Sprawdzenie źródła: 2026-09-23. Ocena ponownego użycia: własne objaśnienia i syntetyczne przykłady z odsyłaczem; bez kopiowania ilustracji, tabel i prose źródłowej. Nie deklarujemy prawa do redystrybucji całego dokumentu."
+    },
+    {
+      "id": "G-SAF-bhp",
+      "title": "BHP przy urządzeniach energetycznych: tekst jednolity, Dz.U. 2021 poz. 1210",
+      "url": "https://eli.gov.pl/api/acts/DU/2021/1210/text.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Akt urzędowy; omówienie §2, §4, §23–30. Nie zastępuje instrukcji zakładowej. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-qual",
+      "title": "Kwalifikacje energetyczne, Dz.U. 2022 poz. 1392",
+      "url": "https://eli.gov.pl/api/acts/DU/2022/1392/text.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Akt urzędowy; zakres czynności i grupa 1 załącznika 1. Nie jest indywidualną oceną świadectwa. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-arc",
+      "title": "Schneider Electric: Protection against arc flash",
+      "url": "https://www.electrical-installation.org/enwiki/Protection_against_arc_flash_(assembly_internal_arc_faults)",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Opis zagrożeń łukowych; bez doboru PPE, progów energii i projektu. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-shock",
+      "title": "Schneider Electric: Protection against electric shock",
+      "url": "https://www.electrical-installation.org/enwiki/Protection_against_electric_shock",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Mechanizmy i ochrona; nie prognoza urazu określonej osoby. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-connector",
+      "title": "Stäubli MA273: MC4-Evo 2 assembly instructions",
+      "url": "https://www.staubli.com/content/dam/ecs/technical-documentation/assembly-instructions/RE/PV_MA273-en.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Wyłącznie wskazane typy MC4-Evo 2. Nie przenosić wartości ani dopuszczeń na inne produkty. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-si",
+      "title": "SMA Sunny Island SI-12: Important safety instructions",
+      "url": "https://manuals.sma.de/SI-12/en-US/388638859.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Wymagania wskazanego urządzenia; 15 minut nie jest uniwersalnym czasem rozładowania. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-sbs",
+      "title": "SMA SBS: Disconnecting the inverter from voltage sources",
+      "url": "https://manuals.sma.de/SBSxx-10/en-US/489941643.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Przykład innego modelu z innymi wymaganiami; bez przenoszenia procedury na pozostałe urządzenia. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-bls",
+      "title": "PRC/ERC 2025: Podstawowe zabiegi resuscytacyjne u dorosłych",
+      "url": "https://www.prc.krakow.pl/wp-content/uploads/2026/07/wytyczne-ERC-2025_BLS_final.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Źródło BLS dorosłych, nie pediatrii. PRC zastrzega prawa: wyłącznie własne omówienie faktów i link; bez kopiowania algorytmów, ilustracji ani redystrybucji PDF. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-mz",
+      "title": "Ministerstwo Zdrowia: pierwsza pomoc w nagłych wypadkach",
+      "url": "https://www.gov.pl/web/zdrowie/sposob-udzielania-pierwszej-pomocy-w-wybranych-naglych-wypadkach",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Ogólne zasady pomocy, kontaktu i 112; nie przenosimy porad o improwizowanej izolacji na instalacje przemysłowe. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-step",
+      "title": "RCB: Burza, bądź bezpieczny",
+      "url": "https://www.gov.pl/web/rcb/burza--badz-bezpieczny",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Źródło mechanizmu napięcia krokowego; nie instrukcja pracy przy zerwanej linii ani źródło aktualnego algorytmu BLS. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-pvfire",
+      "title": "PSP Krotoszyn: Pożar elementów instalacji fotowoltaicznej",
+      "url": "https://www.gov.pl/web/kppsp-krotoszyn/pozar-elementow-instalacji-fotowoltaicznej",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Komunikat 04.04.2026; tylko utrzymujące się zagrożenie i przekazanie informacji służbom, bez przenoszenia odległości gaśniczych. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-batteryfire",
+      "title": "PSP Wołów: Pożar baterii litowo-jonowych w Bukowicach",
+      "url": "https://www.gov.pl/web/kppsp-wolow/pozar-w-zakladzie-utylizujacym-baterie-litowo-jonowe-w-bukowicach2",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Relacja operacyjna ilustrująca chłodzenie i monitoring; nie kompletna taktyka BESS. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-pvsafety",
+      "title": "Schneider Electric: PV safety during normal operation",
+      "url": "https://www.electrical-installation.org/enwiki/PV_System:_how_to_ensure_safety_during_normal_operation",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Podstawy zagrożeń DC i zabezpieczeń; nie kopiujemy przykładów doboru ani progów do projektu. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-voc",
+      "title": "University of Maryland Extension: Working on Solar Wiring and Fusing",
+      "url": "https://www.extension.umd.edu/resource/working-solar-wiring-and-fusing-eb-2023-0676",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Tylko fizyczny model zimowego Voc; amerykańskie przepisy nie są podstawą prawną w Polsce. Dane przykładu są syntetyczne. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-backup",
+      "title": "SMA: Solar System During Power Outage",
+      "url": "https://www.sma.de/en/home/solar-system-power-outage",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Wyjaśnienie anti-islanding i backup; rzeczywiste funkcje zależą od modelu, konfiguracji i projektu. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-SAF-storage",
+      "title": "SMA Sunny Central Storage: Operating Manual",
+      "url": "https://files.sma.de/downloads/SCS-BE-E7-en-12.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "verified_at": "2026-09-23",
+      "limitations": "Rozdział 9.1: energia zwarciowa baterii i dodatkowe zasilania. Model przemysłowy; bez kopiowania jego procedury jako uniwersalnej. Zakres wykorzystania: własne objaśnienia i odsyłacz; bez kopiowania grafik, tabel i chronionej prozy. Brak deklaracji prawa do redystrybucji źródła."
+    },
+    {
+      "id": "G-GOV-law",
+      "title": "Rozporządzenie kwalifikacyjne, Dz.U. 2022 poz. 1392",
+      "url": "https://eli.gov.pl/api/acts/DU/2022/1392/text.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Akt urzędowy; §§4–7, 10 i 16. Sprawdzenie tekstu 23.09.2026. Dobór zakresu wymaga rzeczywistego obiektu. Weryfikacja 23.09.2026; użycie faktów i linku, bez redystrybucji źródła."
+    },
+    {
+      "id": "G-GOV-annex",
+      "title": "Załącznik nr 1: pełne 16 pozycji G1",
+      "url": "https://api.sejm.gov.pl/eli/acts/DU/2022/1392/text.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Akt urzędowy; strony 7–8. Załącznik 2 ma inną numerację i zakres przejściowy. Sprawdzono 23.09.2026. Weryfikacja 23.09.2026; użycie faktów i linku, bez redystrybucji źródła."
+    },
+    {
+      "id": "G-GOV-bhp",
+      "title": "BHP przy urządzeniach energetycznych, tekst jednolity 2021",
+      "url": "https://eli.gov.pl/api/acts/DU/2021/1210/text.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Akt urzędowy. Zasady organizacji wymagają instrukcji rzeczywistego obiektu; lekcja nie jest instrukcją łączeń. Weryfikacja 23.09.2026; użycie faktów i linku, bez redystrybucji źródła."
+    },
+    {
+      "id": "G-GOV-ure",
+      "title": "URE: komisje kwalifikacyjne",
+      "url": "https://www.ure.gov.pl/pl/biznes/komisje-kwalifikacyjne",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Strona urzędowa odczytana 23.09.2026; publikowany wykaz ma własną datę aktualizacji. Odczyt strony nie potwierdza konkretnej komisji. Weryfikacja 23.09.2026; użycie faktów i linku, bez redystrybucji źródła."
+    },
+    {
+      "id": "G-GOV-ure-five",
+      "title": "URE: kto przeprowadza egzaminy i wydaje świadectwa",
+      "url": "https://www.ure.gov.pl/pl/urzad/informacje-ogolne/aktualnosci/12599,Wazne-Prezes-URE-nie-organizuje-i-nie-przeprowadza-egzaminow-oraz-nie-wydaje-swi.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Oficjalny komunikat potwierdzony w indeksowanym tekście URE. Pięcioletnia ważność; konkretny dokument wymaga sprawdzenia. Weryfikacja 23.09.2026; użycie faktów i linku, bez redystrybucji źródła."
+    },
+    {
+      "id": "G-GOV-gunb",
+      "title": "GUNB: kontrole stanu technicznego obiektów",
+      "url": "https://www.gov.pl/web/gunb/kontrole-stanu-technicznego-obiektow",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Urzędowe objaśnienie art. 62 Prawa budowlanego, ponownie odczytane 24.09.2026. Kontrolę instalacji mogą prowadzić osoby z odpowiednimi uprawnieniami budowlanymi albo kwalifikacjami dozoru. Nie ustanawia jednego odstępu wszystkich badań eksploatacyjnych ani uniwersalnego obowiązku E+D. Własne objaśnienie faktów z linkiem, bez redystrybucji źródła."
+    },
+    {
+      "id": "G-GOV-osd",
+      "title": "TAURON Dystrybucja: IRiESD",
+      "url": "https://www.tauron-dystrybucja.pl/uslugi-dystrybucyjne/instrukcja-iriesd",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Oficjalna strona OSD odczytana 23.09.2026. Wykorzystana do statusów dokumentów; limity zadania są syntetyczne, nie pochodzą z IRiESD. Weryfikacja 23.09.2026; użycie faktów i linku, bez redystrybucji źródła."
+    },
+    {
+      "id": "G-GOV-power",
+      "title": "Schneider Electric: Definition of reactive power",
+      "url": "https://www.electrical-installation.org/enwiki/Definition_of_reactive_power",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Własne objaśnienie i syntetyczne rachunki dla modelu sinusoidalnego. Bez kopiowania tekstu, tabel lub grafik i bez deklaracji prawa redystrybucji; limit kVA nie zastępuje charakterystyki urządzenia. Weryfikacja 23.09.2026; użycie faktów i linku, bez redystrybucji źródła."
+    },
+    {
+      "id": "G-GOV-ex",
+      "title": "HSE: ATEX and explosive atmospheres",
+      "url": "https://www.hse.gov.uk/fireandexplosion/atex.htm",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Oficjalny materiał techniczny UK. Własna parafraza zasad bez kopiowania tekstu i bez deklaracji prawa redystrybucji. Nie stanowi polskiej podstawy prawnej ani instrukcji doboru Ex. Weryfikacja 23.09.2026; użycie faktów i linku, bez redystrybucji źródła."
+    }
+  ],
+  "claims": [
+    {
+      "id": "G-ENG-C-earthing",
+      "statement": "Układy TN-C, TN-S, TN-C-S, TT i IT różnią się połączeniem źródła, części dostępnych i rozdziałem funkcji PE/N/PEN. Po rozdziale PE/N nie odtwarza się TN-C za TN-S.",
+      "source_ids": [
+        "G-ENG-S-earthing",
+        "G-ENG-S-tn",
+        "G-ENG-S-tt",
+        "G-ENG-S-it"
+      ],
+      "lesson_ids": [
+        "G02"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-protection",
+      "statement": "Ochrona podstawowa, przy uszkodzeniu i dodatkowa mają odrębne zadania; RCD nie zastępuje wszystkich innych środków ochrony.",
+      "source_ids": [
+        "G-ENG-S-protection",
+        "G-ENG-S-additional"
+      ],
+      "lesson_ids": [
+        "G02"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-elv",
+      "statement": "SELV i PELV wymagają więcej niż określonego napięcia; klasa II opiera się na izolacji podwójnej lub wzmocnionej.",
+      "source_ids": [
+        "G-ENG-S-elv",
+        "G-ENG-S-class-ii"
+      ],
+      "lesson_ids": [
+        "G02"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-rcd",
+      "statement": "RCD wykrywa niezbilansowanie prądów; RCCB nie jest samodzielnym zabezpieczeniem nadprądowym, a typ RCD i koordynacja zależą od możliwych przebiegów różnicowych.",
+      "source_ids": [
+        "G-ENG-S-rcd-principle",
+        "G-ENG-S-rcd-forms",
+        "G-ENG-S-rcd-types",
+        "G-ENG-S-rcd-dc"
+      ],
+      "lesson_ids": [
+        "G02"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-cable",
+      "statement": "Dobór przeciążeniowy obejmuje Ib ≤ In ≤ Iz i I₂ ≤ 1,45 Iz, a Iz zależy od rzeczywistego sposobu ułożenia i właściwych korekt.",
+      "source_ids": [
+        "G-ENG-S-sizing",
+        "G-ENG-S-cable"
+      ],
+      "lesson_ids": [
+        "G03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-fault",
+      "statement": "Prąd znamionowy nie jest zdolnością wyłączania zwarcia; odporność cieplna przewodu i koordynacja aparatów wymagają osobnych sprawdzeń.",
+      "source_ids": [
+        "G-ENG-S-overcurrent",
+        "G-ENG-S-breaking",
+        "G-ENG-S-selectivity"
+      ],
+      "lesson_ids": [
+        "G03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-drop-spd",
+      "statement": "Spadek napięcia wymaga modelu obwodu i kryterium; SPD ogranicza przepięcia i nie zastępuje ochrony nadprądowej. Aplikacja PV wymaga właściwego SPD.",
+      "source_ids": [
+        "G-ENG-S-drop",
+        "G-ENG-S-spd",
+        "G-ENG-S-spd-pv"
+      ],
+      "lesson_ids": [
+        "G03"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-machine",
+      "statement": "Rozruch silnika i załączenie transformatora trzeba uwzględniać przy doborze ochrony; stycznik, ochrona przeciążeniowa i zwarciowa pełnią odrębne funkcje.",
+      "source_ids": [
+        "G-ENG-S-transformer",
+        "G-ENG-S-motor",
+        "G-ENG-S-motor-protection"
+      ],
+      "lesson_ids": [
+        "G04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-star-delta",
+      "statement": "Przy zasilaniu 400 V tabliczka 230/400 V Δ/Y wskazuje gwiazdę, a 400/690 V Δ/Y trójkąt; dopuszczalność rozruchu wymaga dodatkowych warunków i blokad.",
+      "source_ids": [
+        "G-ENG-S-abb",
+        "G-ENG-S-star-delta"
+      ],
+      "lesson_ids": [
+        "G04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-power",
+      "statement": "Sprawność silnika, moc czynna pobrana, mechaniczna i pozorna są odrębnymi wielkościami; S² = P² + Q² dotyczy przyjętego modelu sinusoidalnego.",
+      "source_ids": [
+        "G-ENG-S-motor-power",
+        "G-ENG-S-power"
+      ],
+      "lesson_ids": [
+        "G04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-harmonics",
+      "statement": "Kompensacja może ograniczać prąd i straty zasilania, lecz nie oznacza tego samego procentu oszczędności całej energii; harmoniczne wpływają na PF i nagrzewanie.",
+      "source_ids": [
+        "G-ENG-S-compensation",
+        "G-ENG-S-pf-harmonics",
+        "G-ENG-S-harmonics"
+      ],
+      "lesson_ids": [
+        "G04"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-verification",
+      "statement": "Weryfikacja łączy oględziny i właściwe badania z udokumentowaną metodą, kryterium i wynikiem; stan obwodu oraz zgodność urządzeń z próbą wymagają określenia przed badaniem.",
+      "source_ids": [
+        "G-ENG-S-verification",
+        "G-ENG-S-iet",
+        "G-ENG-S-fluke-sequence",
+        "G-ENG-S-sma-test"
+      ],
+      "lesson_ids": [
+        "G07"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-measurement",
+      "statement": "Kategoria CAT z napięciem i osprzętem ogranicza zastosowanie przyrządu; wzorcowanie nie usuwa niepewności ani błędów metody.",
+      "source_ids": [
+        "G-ENG-S-cat",
+        "G-ENG-S-calibration"
+      ],
+      "lesson_ids": [
+        "G07"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-ENG-C-tn-tt-model",
+      "statement": "Relacje Zs × Ia ≤ U₀ w TN oraz RA × IΔn ≤ UL w TT ocenia się dla właściwego aparatu, czasu i warunków; spełnienie jednego rachunku nie zatwierdza całej instalacji.",
+      "source_ids": [
+        "G-ENG-S-tn",
+        "G-ENG-S-tt",
+        "G-ENG-S-verification"
+      ],
+      "lesson_ids": [
+        "G07"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-roles",
+      "statement": "Kwalifikacja, pisemne upoważnienie i wyznaczenie funkcji są odrębne; role oraz organizację pracy określa rozporządzenie BHP.",
+      "source_ids": [
+        "G-SAF-bhp"
+      ],
+      "lesson_ids": [
+        "G05"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-dead",
+      "statement": "Stan bez napięcia wymaga rozpoznania źródeł i przygotowania zgodnego z instrukcją; sam OFF lub 0 A nie wystarcza.",
+      "source_ids": [
+        "G-SAF-bhp",
+        "G-SAF-pvsafety"
+      ],
+      "lesson_ids": [
+        "G05",
+        "G09"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-arc",
+      "statement": "Zagrożenie łukowe może występować bez dotknięcia części czynnej i wymaga odrębnej oceny ochrony.",
+      "source_ids": [
+        "G-SAF-arc"
+      ],
+      "lesson_ids": [
+        "G05",
+        "G08"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-service",
+      "statement": "Czynności obsługi, konserwacji, remontu, montażu i badań mają odrębne znaczenie; wykonanie i odbiór wynikają z właściwej dokumentacji.",
+      "source_ids": [
+        "G-SAF-qual",
+        "G-SAF-bhp"
+      ],
+      "lesson_ids": [
+        "G06"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-connector",
+      "statement": "Instrukcja MA273 wymaga zgodnych przewodów i narzędzi, zabrania łączenia z innymi producentami i rozłączania pod obciążeniem.",
+      "source_ids": [
+        "G-SAF-connector"
+      ],
+      "lesson_ids": [
+        "G06",
+        "G09"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-rescue",
+      "statement": "Bezpieczeństwo miejsca poprzedza kontakt z poszkodowanym; brak reakcji i prawidłowego oddechu wymaga wezwania pomocy i RKO/AED.",
+      "source_ids": [
+        "G-SAF-mz",
+        "G-SAF-bls"
+      ],
+      "lesson_ids": [
+        "G08"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-step",
+      "statement": "Różnica potencjałów pod stopami może powodować przepływ prądu bez dotknięcia źródła.",
+      "source_ids": [
+        "G-SAF-step",
+        "G-SAF-shock"
+      ],
+      "lesson_ids": [
+        "G08"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-fire",
+      "statement": "Zanik płomieni nie potwierdza braku energii w PV i baterii; służby potrzebują informacji o instalacji.",
+      "source_ids": [
+        "G-SAF-pvfire",
+        "G-SAF-batteryfire"
+      ],
+      "lesson_ids": [
+        "G08"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-scope",
+      "statement": "DC 1500 V nie mieści się w literalnym zakresie świadectwa do 1 kV.",
+      "source_ids": [
+        "G-SAF-qual"
+      ],
+      "lesson_ids": [
+        "G09"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-cold",
+      "statement": "Ujemny współczynnik temperaturowy Voc oznacza wzrost napięcia przy spadku temperatury; uproszczony rachunek nie jest projektem.",
+      "source_ids": [
+        "G-SAF-voc"
+      ],
+      "lesson_ids": [
+        "G09"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-backup",
+      "statement": "Anti-islanding nie wyklucza zasilania wydzielonych obwodów przez odpowiednio zaprojektowany backup.",
+      "source_ids": [
+        "G-SAF-backup"
+      ],
+      "lesson_ids": [
+        "G09"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-SAF-C-stored",
+      "statement": "Odłączenie źródła nie usuwa natychmiast energii kondensatorów; instrukcje różnych modeli przewidują różne wymagania.",
+      "source_ids": [
+        "G-SAF-si",
+        "G-SAF-sbs",
+        "G-SAF-storage"
+      ],
+      "lesson_ids": [
+        "G06",
+        "G09"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-GOV-C-scope",
+      "statement": "Kwalifikacje rozdzielają E/D, urządzenia i pięć zakresów prac; egzamin jest ustny i dotyczy wiedzy teoretycznej oraz praktycznej.",
+      "source_ids": [
+        "G-GOV-law"
+      ],
+      "lesson_ids": [
+        "G01",
+        "G12"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-GOV-C-certificate",
+      "statement": "Świadectwo wydaje właściwa komisja; ukończenie kursu nie wydaje świadectwa, a zasadnicza ważność świadectwa wynosi pięć lat.",
+      "source_ids": [
+        "G-GOV-ure",
+        "G-GOV-ure-five"
+      ],
+      "lesson_ids": [
+        "G01"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-GOV-C-equipment",
+      "statement": "Załącznik nr 1 G1 zawiera 16 pozycji, w tym przedziały napięciowe i magazyny o mocy wyższej niż 10 kW mogące oddawać energię do sieci.",
+      "source_ids": [
+        "G-GOV-annex"
+      ],
+      "lesson_ids": [
+        "G01",
+        "G11",
+        "G12"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-GOV-C-d",
+      "statement": "Zakres wiedzy dozoru §6 ust. 1 pkt 2 obejmuje dziewięć obszarów a–i.",
+      "source_ids": [
+        "G-GOV-law"
+      ],
+      "lesson_ids": [
+        "G10"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-GOV-C-organization",
+      "statement": "Przygotowanie pracy wymaga organizacji odpowiadającej urządzeniom i zagrożeniom, a planu nie zatwierdza się na podstawie niepotwierdzonego schematu.",
+      "source_ids": [
+        "G-GOV-bhp"
+      ],
+      "lesson_ids": [
+        "G10",
+        "G11",
+        "G12"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-GOV-C-controls",
+      "statement": "Pięcioletnia kontrola obiektu obejmuje badanie instalacji elektrycznej i piorunochronnej. GUNB wskazuje osoby z właściwymi uprawnieniami budowlanymi albo kwalifikacjami dozoru; zakres konkretnego zadania wymaga osobnej weryfikacji.",
+      "source_ids": [
+        "G-GOV-gunb"
+      ],
+      "lesson_ids": [
+        "G10"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-GOV-C-iriesd",
+      "statement": "Przy korzystaniu z IRiESD należy odróżniać dokument obowiązujący, zatwierdzone przyszłe zmiany i projekty konsultowane.",
+      "source_ids": [
+        "G-GOV-osd"
+      ],
+      "lesson_ids": [
+        "G10"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-GOV-C-power",
+      "statement": "Dla sinusoidalnego modelu mocy S²=P²+Q²; ocena punktu pracy wymaga też danych konkretnego przekształtnika.",
+      "source_ids": [
+        "G-GOV-power"
+      ],
+      "lesson_ids": [
+        "G10",
+        "G12"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-GOV-C-ex",
+      "statement": "Dobór urządzeń Ex zależy od przeznaczenia i środowiska; podobieństwo obudowy nie potwierdza właściwości przeciwwybuchowych.",
+      "source_ids": [
+        "G-GOV-ex"
+      ],
+      "lesson_ids": [
+        "G11"
+      ],
+      "status": "supported"
+    }
+  ],
+  "source_units": [
+    {
+      "id": "E-a",
+      "title": "Budowa, działanie i warunki techniczne obsługi",
+      "lesson_ids": [
+        "G02",
+        "G03",
+        "G04",
+        "G09",
+        "G11"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "E-b",
+      "title": "Zasady eksploatacji",
+      "lesson_ids": [
+        "G05",
+        "G06",
+        "G09"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "E-c",
+      "title": "Obsługa, konserwacja, remont, naprawa, montaż/demontaż i pomiary",
+      "lesson_ids": [
+        "G05",
+        "G06",
+        "G07"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "E-d",
+      "title": "BHP, ochrona przeciwpożarowa i pierwsza pomoc",
+      "lesson_ids": [
+        "G05",
+        "G08"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "E-e",
+      "title": "Awaria, pożar, zagrożenie ludzi i środowiska",
+      "lesson_ids": [
+        "G08",
+        "G09",
+        "G12"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "D-a",
+      "title": "Przyłączenie, dostarczanie energii, ruch i eksploatacja",
+      "lesson_ids": [
+        "G01",
+        "G10"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "D-b",
+      "title": "Programowanie pracy i racjonalne użytkowanie energii",
+      "lesson_ids": [
+        "G04",
+        "G10"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "D-c",
+      "title": "Dokumentacja techniczna i eksploatacyjna",
+      "lesson_ids": [
+        "G05",
+        "G06",
+        "G07",
+        "G10"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "D-d",
+      "title": "Przepisy budowy, normy i warunki techniczne",
+      "lesson_ids": [
+        "G02",
+        "G03",
+        "G10"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "D-e",
+      "title": "Postępowanie przy zagrożeniu ludzi, urządzeń i środowiska",
+      "lesson_ids": [
+        "G08",
+        "G10",
+        "G12"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "D-f",
+      "title": "BHP, ppoż., pierwsza pomoc i wymagania środowiskowe",
+      "lesson_ids": [
+        "G05",
+        "G06",
+        "G08",
+        "G10"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "D-g",
+      "title": "Zagrożenie ruchu urządzeń przyłączonych do sieci",
+      "lesson_ids": [
+        "G09",
+        "G10",
+        "G12"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "D-h",
+      "title": "Dysponowanie mocą przyłączonych urządzeń i instalacji",
+      "lesson_ids": [
+        "G04",
+        "G10",
+        "G12"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "D-i",
+      "title": "Zasady i warunki wykonywania prac eksploatacyjnych",
+      "lesson_ids": [
+        "G05",
+        "G06",
+        "G07",
+        "G10"
+      ],
+      "limitations": "Rozwinięcie teorii i ćwiczenie"
+    },
+    {
+      "id": "A1-1",
+      "title": "Generacja przyłączona do sieci, niezależnie od napięcia",
+      "lesson_ids": [
+        "G01",
+        "G09",
+        "G10"
+      ],
+      "limitations": "Podstawy; praktyka i dokumentacja konkretnego urządzenia wymagane"
+    },
+    {
+      "id": "A1-2",
+      "title": "Urządzenia i sieci o napięciu nie wyższym niż 1 kV",
+      "lesson_ids": [
+        "G02",
+        "G03",
+        "G04",
+        "G07"
+      ],
+      "limitations": "Podstawy; praktyka i dokumentacja konkretnego urządzenia wymagane"
+    },
+    {
+      "id": "A1-3",
+      "title": "Napięcie powyżej 1 kV do 30 kV włącznie",
+      "lesson_ids": [
+        "G01",
+        "G04",
+        "G05",
+        "G11"
+      ],
+      "limitations": "Orientacja w zakresie; wymagane szkolenie specjalistyczne i praktyka"
+    },
+    {
+      "id": "A1-4",
+      "title": "Napięcie powyżej 30 kV do 110 kV włącznie",
+      "lesson_ids": [
+        "G11"
+      ],
+      "limitations": "Orientacja w zakresie; wymagane szkolenie specjalistyczne i praktyka"
+    },
+    {
+      "id": "A1-5",
+      "title": "Napięcie powyżej 110 kV",
+      "lesson_ids": [
+        "G11"
+      ],
+      "limitations": "Orientacja w zakresie; wymagane szkolenie specjalistyczne i praktyka"
+    },
+    {
+      "id": "A1-6",
+      "title": "Zespoły prądotwórcze o mocy powyżej 50 kW",
+      "lesson_ids": [
+        "G09",
+        "G11"
+      ],
+      "limitations": "Orientacja w zakresie; wymagane szkolenie specjalistyczne i praktyka"
+    },
+    {
+      "id": "A1-7",
+      "title": "Urządzenia elektrotermiczne",
+      "lesson_ids": [
+        "G11"
+      ],
+      "limitations": "Orientacja w zakresie; wymagane szkolenie specjalistyczne i praktyka"
+    },
+    {
+      "id": "A1-8",
+      "title": "Urządzenia do elektrolizy",
+      "lesson_ids": [
+        "G11"
+      ],
+      "limitations": "Orientacja w zakresie; wymagane szkolenie specjalistyczne i praktyka"
+    },
+    {
+      "id": "A1-9",
+      "title": "Sieci oświetlenia ulicznego",
+      "lesson_ids": [
+        "G11"
+      ],
+      "limitations": "Orientacja w zakresie; wymagane szkolenie specjalistyczne i praktyka"
+    },
+    {
+      "id": "A1-10",
+      "title": "Elektryczna sieć trakcyjna",
+      "lesson_ids": [
+        "G11"
+      ],
+      "limitations": "Orientacja w zakresie; wymagane szkolenie specjalistyczne i praktyka"
+    },
+    {
+      "id": "A1-11",
+      "title": "Urządzenia w wykonaniu przeciwwybuchowym",
+      "lesson_ids": [
+        "G11"
+      ],
+      "limitations": "Orientacja w zakresie; wymagane szkolenie specjalistyczne i praktyka"
+    },
+    {
+      "id": "A1-12",
+      "title": "Magazynowanie i wprowadzanie energii do sieci, moc powyżej 10 kW",
+      "lesson_ids": [
+        "G09",
+        "G11"
+      ],
+      "limitations": "Podstawy; praktyka i dokumentacja konkretnego urządzenia wymagane"
+    },
+    {
+      "id": "A1-13",
+      "title": "Aparatura pomiarowa, automatyka, sterowanie i zabezpieczenia pkt 1–12",
+      "lesson_ids": [
+        "G04",
+        "G07",
+        "G10"
+      ],
+      "limitations": "Podstawy; praktyka i dokumentacja konkretnego urządzenia wymagane"
+    },
+    {
+      "id": "A1-14",
+      "title": "Urządzenia techniki wojskowej lub uzbrojenia",
+      "lesson_ids": [
+        "G11"
+      ],
+      "limitations": "Identyfikacja zakresu; szkolenie branżowe poza kursem"
+    },
+    {
+      "id": "A1-15",
+      "title": "Urządzenia ratowniczo-gaśnicze",
+      "lesson_ids": [
+        "G11"
+      ],
+      "limitations": "Identyfikacja zakresu; szkolenie branżowe poza kursem"
+    },
+    {
+      "id": "A1-16",
+      "title": "Urządzenia ochrony granic",
+      "lesson_ids": [
+        "G11"
+      ],
+      "limitations": "Identyfikacja zakresu; szkolenie branżowe poza kursem"
+    }
+  ],
+  "objectives": [
+    {
+      "id": "G01-O",
+      "module_id": "G1-M1",
+      "text": "Przygotujesz kartę zakresu kwalifikacji dla konkretnej pracy, odróżniając urządzenia, E/D, czynności i dopuszczenie.",
+      "critical": true
+    },
+    {
+      "id": "G02-O",
+      "module_id": "G1-M1",
+      "text": "wyjaśnisz drogę prądu uszkodzeniowego w TN, TT i IT, odróżnisz PE, N i PEN oraz rozpoznasz ograniczenia RCD.",
+      "critical": true
+    },
+    {
+      "id": "G03-O",
+      "module_id": "G1-M1",
+      "text": "sprawdzisz w modelu Ib ≤ In ≤ Iz, wpływ korekt, zdolność wyłączania i spadek napięcia oraz oddzielisz je od selektywności.",
+      "critical": true
+    },
+    {
+      "id": "G04-O",
+      "module_id": "G1-M1",
+      "text": "zinterpretujesz tabliczki Δ/Y, role aparatów silnikowych oraz obliczysz P, Q, S, PF i straty dla syntetycznego napędu.",
+      "critical": true
+    },
+    {
+      "id": "G05-O",
+      "module_id": "G1-M2",
+      "text": "Rozpoznasz brakujące warunki dopuszczenia i przypiszesz odpowiedzialność za ich uzupełnienie.",
+      "critical": true
+    },
+    {
+      "id": "G06-O",
+      "module_id": "G1-M2",
+      "text": "Zbudujesz plan usunięcia usterki łączący obserwację, decyzję, dokumentację i odbiór.",
+      "critical": true
+    },
+    {
+      "id": "G07-O",
+      "module_id": "G1-M2",
+      "text": "powiążesz rodzaj badania z kryterium i stanem obwodu, ocenisz syntetyczne TN/TT oraz uwzględnisz niepewność w ograniczonym wniosku.",
+      "critical": true
+    },
+    {
+      "id": "G08-O",
+      "module_id": "G1-M2",
+      "text": "Uporządkujesz decyzje świadka, przygotujesz wezwanie pomocy i rozpoznasz sytuację wymagającą RKO.",
+      "critical": true
+    },
+    {
+      "id": "G09-O",
+      "module_id": "G1-M3",
+      "text": "Sporządzisz mapę możliwych zasilań i obliczysz przybliżone zimowe Voc, wskazując granice wniosku.",
+      "critical": true
+    },
+    {
+      "id": "G10-O",
+      "module_id": "G1-M3",
+      "text": "Opracujesz warunkową decyzję ruchową i przypiszesz dowody do dziewięciu obszarów wiedzy D.",
+      "critical": true
+    },
+    {
+      "id": "G11-O",
+      "module_id": "G1-M3",
+      "text": "Przyporządkujesz urządzenia do szesnastu pozycji G1 i wskażesz braki wymagające specjalistycznej weryfikacji.",
+      "critical": true
+    },
+    {
+      "id": "G12-O",
+      "module_id": "G1-M3",
+      "text": "Zbudujesz pakiet decyzji łączący kwalifikacje, schemat, plan prac, ocenę raportu, ruch i reakcję awaryjną.",
+      "critical": true
+    }
+  ],
+  "modules": [
+    {
+      "id": "G1-M1",
+      "title": "Podstawy i ochrona",
+      "declared_minutes": 100,
+      "lessons": [
+        {
+          "id": "G01",
+          "title": "Co naprawdę obejmują kwalifikacje G1",
+          "content_path": "src/content/g1-course/g01.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G01-O"
+          ],
+          "claim_ids": [
+            "G-GOV-C-scope",
+            "G-GOV-C-certificate",
+            "G-GOV-C-equipment"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Cztery wiersze karty zakresu.",
+              "instruction": "Podziel zlecenie osoby A z lekcji na wymianę falownika, badania i część 15 kV. Dodaj analizę dostarczonego raportu. Zapisz czynność, urządzenie i napięcie."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Tabela dowodów dostępnych i brakujących.",
+              "instruction": "Przy E do 1 kV z obsługą i konserwacją wskaż braki dla każdego zadania. Oddziel świadectwo od instrukcji i upoważnienia."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Sześciopunktowa lista oraz korekta błędu.",
+              "instruction": "Zapisz komisję, stanowisko, urządzenia, czynności, dokument wiedzy i pytanie praktyczne. Podaj błędne rozszerzenie wyjątku do 20 kW."
+            }
+          ]
+        },
+        {
+          "id": "G02",
+          "title": "Układy sieci i warstwy ochrony przeciwporażeniowej",
+          "content_path": "src/content/g1-course/g02.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G02-O"
+          ],
+          "claim_ids": [
+            "G-ENG-C-earthing",
+            "G-ENG-C-protection",
+            "G-ENG-C-elv",
+            "G-ENG-C-rcd"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "pięć schematów z opisem drogi ochronnej.",
+              "instruction": "Narysuj uproszczone TN-C, TN-S, TN-C-S, TT i IT. Zaznacz źródło, ziemię, obudowę i odpowiednie PE/N/PEN. Nie odwzorowuj rzeczywistej rozdzielnicy."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "rachunek z jednostką oraz dwa ograniczenia interpretacji.",
+              "instruction": "Dla SYN-G02 oblicz różnicę między 5,000 A w L i 4,960 A w N. Wyjaśnij, czego wynik nie dowodzi oraz dlaczego przerwany PE nie musi wywołać RCD podczas zwykłej pracy."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "tabela czterech środków ochrony i poprawiona definicja.",
+              "instruction": "Przypisz izolację, wyłączenie przy uszkodzeniu, dodatkowy RCD i połączenia wyrównawcze do ich zadań. Popraw zdanie „24 V zawsze oznacza SELV”."
+            }
+          ]
+        },
+        {
+          "id": "G03",
+          "title": "Przewody i zabezpieczenia: kilka warunków jednocześnie",
+          "content_path": "src/content/g1-course/g03.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G03-O"
+          ],
+          "claim_ids": [
+            "G-ENG-C-cable",
+            "G-ENG-C-fault",
+            "G-ENG-C-drop-spd"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "dwa wiersze z pełnymi działaniami.",
+              "instruction": "Przygotuj tabelę SYN-G03: Ib = 18 A, In = 20 A, obciążalności odniesienia 30 i 36 A oraz współczynniki 0,80 i 0,75. Oblicz Iz i sprawdź podstawową nierówność."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "dwie niezależne oceny z uzasadnieniami.",
+              "instruction": "Dla drugiego kandydata sprawdź I₂ = 29 A względem 1,45 × Iz. Osobno porównaj zdolność wyłączania 6 kA z przewidywanym zwarciem 7,2 kA."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "rachunek i lista trzech brakujących dowodów.",
+              "instruction": "Dla L = 25 m, S = 4 mm², ρ = 0,018 Ω·mm²/m, I = 18 A policz spadek w modelu dwuprzewodowym i procent od 230 V. Wypisz brakujące kryterium spadku, dowód selektywności i ochrony przy uszkodzeniu."
+            }
+          ]
+        },
+        {
+          "id": "G04",
+          "title": "Transformatory, silniki i bilans mocy",
+          "content_path": "src/content/g1-course/g04.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G04-O"
+          ],
+          "claim_ids": [
+            "G-ENG-C-machine",
+            "G-ENG-C-star-delta",
+            "G-ENG-C-power",
+            "G-ENG-C-harmonics"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "pięć obliczeń z jednostkami i kontrola bilansu.",
+              "instruction": "Dla SYN-G04: 7,2 kW na wale, η = 0,90, PF = 0,80, symetryczne sinusoidalne zasilanie 400 V. Oblicz P, straty, S, I oraz Q i sprawdź P² + Q²."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "tabela dwóch silników z uzasadnieniem.",
+              "instruction": "Porównaj tabliczki 230/400 V Δ/Y i 400/690 V Δ/Y przy 400 V między fazami. Oblicz napięcie uzwojenia w gwieździe i trójkącie. Uzasadnij ograniczenie rozruchu."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "schemat funkcjonalny oraz dwa zdania interpretacji.",
+              "instruction": "Narysuj funkcje zabezpieczenia zwarciowego, stycznika i ochrony przeciążeniowej. Dopisz rolę blokad i wyjaśnij, dlaczego obniżenie strat przewodów o 36% nie oznacza takiej oszczędności całej energii."
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "id": "G01-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 3.75,
+          "item_count": 3,
+          "objective_ids": [
+            "G01-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        },
+        {
+          "id": "G01-GENERAL",
+          "type": "quiz",
+          "estimated_minutes": 1.25,
+          "item_count": 1,
+          "objective_ids": [
+            "G01-O"
+          ],
+          "critical": false,
+          "passing_score": 0.8
+        },
+        {
+          "id": "G02-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 5.0,
+          "item_count": 6,
+          "objective_ids": [
+            "G02-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        },
+        {
+          "id": "G03-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 4.166666666666667,
+          "item_count": 5,
+          "objective_ids": [
+            "G03-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        },
+        {
+          "id": "G03-GENERAL",
+          "type": "quiz",
+          "estimated_minutes": 0.8333333333333334,
+          "item_count": 1,
+          "objective_ids": [
+            "G03-O"
+          ],
+          "critical": false,
+          "passing_score": 0.8
+        },
+        {
+          "id": "G04-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 2.5,
+          "item_count": 3,
+          "objective_ids": [
+            "G04-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        },
+        {
+          "id": "G04-GENERAL",
+          "type": "quiz",
+          "estimated_minutes": 2.5,
+          "item_count": 3,
+          "objective_ids": [
+            "G04-O"
+          ],
+          "critical": false,
+          "passing_score": 0.8
+        }
+      ]
+    },
+    {
+      "id": "G1-M2",
+      "title": "Praca, pomiary i ratownictwo",
+      "declared_minutes": 100,
+      "lessons": [
+        {
+          "id": "G05",
+          "title": "Organizacja bezpiecznej pracy",
+          "content_path": "src/content/g1-course/g05.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G05-O"
+          ],
+          "claim_ids": [
+            "G-SAF-C-roles",
+            "G-SAF-C-dead",
+            "G-SAF-C-arc"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Szkic dwóch źródeł i lista trzech braków.",
+              "instruction": "Narysuj R2 z siecią i UPS z przykładu SYN-G05. Zapisz niewiadome dotyczące obwodów UPS, automatyki i dokumentacji odłączeń."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Macierz czterech ról.",
+              "instruction": "Przygotuj tabelę poleceniodawcy, koordynującego, dopuszczającego i kierującego zespołem. Wpisz E albo D, zadanie i wymagane wyznaczenie. Nie przypisuj upoważnień na podstawie samego świadectwa."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Karta ćwiczeniowa z brakami do wyjaśnienia.",
+              "instruction": "Napisz roboczą kartę polecenia: numer, osoby, zakres i strefa, warunki i ochrona, terminy i przerwy. Zapisz decyzję wstrzymania oraz warunek reakcji na zmianę schematu."
+            }
+          ]
+        },
+        {
+          "id": "G06",
+          "title": "Obsługa, konserwacja, remont i montaż",
+          "content_path": "src/content/g1-course/g06.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G06-O"
+          ],
+          "claim_ids": [
+            "G-SAF-C-service",
+            "G-SAF-C-connector",
+            "G-SAF-C-stored"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Trzy wiersze bez niepotwierdzonych diagnoz.",
+              "instruction": "Przepisz zgłoszenia SYN-G06: A starta etykieta, B uszkodzony zatrzask PV, C odbarwiony zacisk AC. Oddziel fakt, hipotezę, brakujący dowód i osobę decyzyjną."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Karta zgodności części.",
+              "instruction": "Dla B zapisz wymagane dane obu połówek złącza, przewodu, instrukcji, narzędzi i warunków montażu. Przy brakach wpisz do potwierdzenia."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Oś decyzji i kryteria zakończenia.",
+              "instruction": "Ułóż plan przygotowania, wykonania, odbioru i postępowania z odpadem. Do każdego etapu przypisz właściciela i dowód. Dodaj zatrzymanie przy niezgodności schematu."
+            }
+          ]
+        },
+        {
+          "id": "G07",
+          "title": "Pomiary ochronne: od pytania do uzasadnionego protokołu",
+          "content_path": "src/content/g1-course/g07.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G07-O"
+          ],
+          "claim_ids": [
+            "G-ENG-C-verification",
+            "G-ENG-C-measurement",
+            "G-ENG-C-tn-tt-model"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "plan pytań do osoby odpowiedzialnej za badania.",
+              "instruction": "Dla oględzin oraz badań ciągłości PE, izolacji, pętli, RCD i uziemienia zapisz pytanie kontrolne, potrzebny stan obwodu i brakującą dokumentację. Nie sporządzaj instrukcji podłączania."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "trzy decyzje odnoszące się wyłącznie do przyjętych kryteriów.",
+              "instruction": "Policz model TN: U₀ = 230 V, Ia = 160 A, Zs = 1,20 Ω; oceń osobno Zs = 1,40 Ω z zakresem ±0,10 Ω. W TT policz RA = 120 Ω, IΔn = 0,030 A i zadane UL = 50 V."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "wzór zapisu z wynikiem, podstawą oceny i lukami.",
+              "instruction": "Utwórz wiersz protokołu SYN-G07: obwód, układ, metoda, stan, przyrząd, wynik, jednostka, kryterium, niepewność, ocena i braki. Nieznane informacje oznacz „do ustalenia”."
+            }
+          ]
+        },
+        {
+          "id": "G08",
+          "title": "Porażenie, łuk, pierwsza pomoc i pożar",
+          "content_path": "src/content/g1-course/g08.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G08-O"
+          ],
+          "claim_ids": [
+            "G-SAF-C-arc",
+            "G-SAF-C-rescue",
+            "G-SAF-C-step",
+            "G-SAF-C-fire"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Karta granicy działania świadka.",
+              "instruction": "Dla SYN-G08 wypisz zagrożenia przy zadymionej szafie o nieustalonym zasilaniu oraz czynności dostępne z bezpiecznego miejsca."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Komunikat do odegrania przy biurku.",
+              "instruction": "Napisz sześci zdaniowe zgłoszenie 112 z fikcyjnym adresem, dojazdem, liczbą poszkodowanych, stanem i niepewnością dotyczącą UPS. Nie wybieraj rzeczywistego numeru."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Scenariusz komunikacji i przekazania służbom.",
+              "instruction": "Rozpisz wariant po zabezpieczeniu miejsca: dorosły nie reaguje i ma oddech agonalny, AED jest dostępne. Przydziel role pomocy, sprowadzenia AED i wskazania dojazdu."
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "id": "G05-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 5.0,
+          "item_count": 5,
+          "objective_ids": [
+            "G05-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        },
+        {
+          "id": "G06-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 5.0,
+          "item_count": 5,
+          "objective_ids": [
+            "G06-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        },
+        {
+          "id": "G07-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 5.0,
+          "item_count": 6,
+          "objective_ids": [
+            "G07-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        },
+        {
+          "id": "G08-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 5.0,
+          "item_count": 5,
+          "objective_ids": [
+            "G08-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        }
+      ]
+    },
+    {
+      "id": "G1-M3",
+      "title": "PV, dozór i integracja",
+      "declared_minutes": 100,
+      "lessons": [
+        {
+          "id": "G09",
+          "title": "PV, magazyny energii i wiele źródeł zasilania",
+          "content_path": "src/content/g1-course/g09.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G09-O"
+          ],
+          "claim_ids": [
+            "G-SAF-C-dead",
+            "G-SAF-C-connector",
+            "G-SAF-C-scope",
+            "G-SAF-C-cold",
+            "G-SAF-C-backup",
+            "G-SAF-C-stored"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Mapa pięciu źródeł i zależności.",
+              "instruction": "Narysuj sieć, PV, baterię, UPS i generator przy rozdzielnicy. Zaznacz obwody rezerwowe i automatyczny start jako niewiadome do potwierdzenia."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Rachunek z jednostkami i warunkowy wniosek.",
+              "instruction": "Powtórz SYN-G09 dla 18 modułów: Voc 49 V przy 25°C, współczynnik −0,28%/°C, temperatura ogniw −15°C. Porównaj z limitem 1000 V i zapisz ograniczenia."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Trzy korekty z wymaganiami sprawdzenia.",
+              "instruction": "Oceń zdania: AC wyłączone, więc DC bezpieczne; kamera nie widzi ciepła; anti-islanding odłączy wszystko. Dopisz do każdego brakujący dowód."
+            }
+          ]
+        },
+        {
+          "id": "G10",
+          "title": "Dozór: decyzje, dokumentacja i ruch instalacji",
+          "content_path": "src/content/g1-course/g10.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G10-O"
+          ],
+          "claim_ids": [
+            "G-GOV-C-d",
+            "G-GOV-C-organization",
+            "G-GOV-C-controls",
+            "G-GOV-C-iriesd",
+            "G-GOV-C-power"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Trzy wartości z jednostkami i założeniami.",
+              "instruction": "Dla PV 90 kW, odbioru 20 kW, limitu eksportu 40 kW i rezerwy 12 kWh w BESS 30 kW oblicz nadwyżkę, czas ładowania i eksport po zapełnieniu."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Mapa wszystkich dziewięciu obszarów.",
+              "instruction": "Utwórz dziewięć wierszy a–i z §6 dla dozoru i przypisz każdemu dokument albo działanie dotyczące przypadku."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Decyzja z horyzontem i kryteriami.",
+              "instruction": "Napisz dyspozycję warunkową oraz reakcję na utratę telemetrii: odpowiedzialna osoba, potrzebny dowód, warunek przerwania i kanał zgłoszenia."
+            }
+          ]
+        },
+        {
+          "id": "G11",
+          "title": "Cała mapa G1 i granice specjalizacji",
+          "content_path": "src/content/g1-course/g11.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G11-O"
+          ],
+          "claim_ids": [
+            "G-GOV-C-equipment",
+            "G-GOV-C-organization",
+            "G-GOV-C-ex"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Sześć elementów z uzasadnieniem.",
+              "instruction": "Przypisz PV sieciowe, rozdzielnicę 400 V, stację 15 kV, BESS 30 kW oddający energię do sieci, generator 80 kW i zabezpieczenia do pozycji G1."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Cztery rozstrzygnięcia albo braki danych.",
+              "instruction": "Oceń 30 kV, 110 kV, generator dokładnie 50 kW i magazyn 20 kWh bez mocy. Nie zgaduj brakujących parametrów."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Sześć pytań oraz trzy granice kompetencji.",
+              "instruction": "Dla oświetlenia ulicznego, elektrolizy i Ex zapisz po dwa pytania do dokumentacji i granicę swojej wiedzy."
+            }
+          ]
+        },
+        {
+          "id": "G12",
+          "title": "Studium końcowe: PV, BESS i stacja 15 kV",
+          "content_path": "src/content/g1-course/g12.md",
+          "planned_minutes": 20,
+          "objective_ids": [
+            "G12-O"
+          ],
+          "claim_ids": [
+            "G-GOV-C-scope",
+            "G-GOV-C-equipment",
+            "G-GOV-C-organization",
+            "G-GOV-C-power"
+          ],
+          "delivery": "case_study",
+          "activities": [
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Schemat funkcjonalny i karta kwalifikacji.",
+              "instruction": "Na podstawie SYN-G12 narysuj mapę funkcjonalną PV, BESS, 400 V i 15 kV. Zapisz zakres zespołu oraz fakty, założenia i braki."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Plan oraz lista wymaganych dowodów.",
+              "instruction": "Przygotuj plan dokumentacyjny pracy, listę braków raportu z wynikiem „2” i dwa warunki wstrzymania przygotowania."
+            },
+            {
+              "kind": "case_study",
+              "minutes": 5,
+              "deliverable": "Bilans, decyzja, komunikat i samoocena.",
+              "instruction": "Oblicz nadwyżkę i czas. Zapisz decyzję przy utracie telemetrii oraz komunikat po zgłoszeniu dymu. Oceń pakiet rubryką z lekcji."
+            }
+          ]
+        }
+      ],
+      "assessments": [
+        {
+          "id": "G09-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 5.0,
+          "item_count": 5,
+          "objective_ids": [
+            "G09-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        },
+        {
+          "id": "G10-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 4.0,
+          "item_count": 4,
+          "objective_ids": [
+            "G10-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        },
+        {
+          "id": "G10-GENERAL",
+          "type": "quiz",
+          "estimated_minutes": 1.0,
+          "item_count": 1,
+          "objective_ids": [
+            "G10-O"
+          ],
+          "critical": false,
+          "passing_score": 0.8
+        },
+        {
+          "id": "G11-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 2.5,
+          "item_count": 2,
+          "objective_ids": [
+            "G11-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        },
+        {
+          "id": "G11-GENERAL",
+          "type": "quiz",
+          "estimated_minutes": 2.5,
+          "item_count": 2,
+          "objective_ids": [
+            "G11-O"
+          ],
+          "critical": false,
+          "passing_score": 0.8
+        },
+        {
+          "id": "G12-CRIT",
+          "type": "quiz",
+          "estimated_minutes": 3.75,
+          "item_count": 3,
+          "objective_ids": [
+            "G12-O"
+          ],
+          "critical": true,
+          "passing_score": 1
+        },
+        {
+          "id": "G12-GENERAL",
+          "type": "quiz",
+          "estimated_minutes": 1.25,
+          "item_count": 1,
+          "objective_ids": [
+            "G12-O"
+          ],
+          "critical": false,
+          "passing_score": 0.8
+        }
+      ]
+    }
+  ]
+}

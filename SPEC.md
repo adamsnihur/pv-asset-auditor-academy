@@ -1,5 +1,9 @@
 # PV Asset Auditor Academy Technical Specification
 
+## G1 knowledge coverage and expansion, 2026-09-20
+
+Audit existing lessons and reference against Polish G1 qualification regulation DU2022/1392 §4, §6 and Annex1, and BHP DU2021/1210. Preserve every existing learning module, quiz and stored progress. Add 12 substantial supplementary G1 lessons connected to existing E01–E06 and reference module2, with independent progress, explanatory quizzes, worked examples, exercises and a capstone. Cover E and D separately, control/measurement tasks, protective systems, equipment selection, machines, work organization, maintenance, emergency/first aid, PV/storage and specialist scope boundaries. Publish an honest before/after coverage map for all five E domains, nine D domains and all16 Annex1 equipment categories; distinguish foundational coverage from specialist practice and certification. Reuse current learning UI; test independent storage, gating, content/source integrity, browser flow and deployment. Standing publication authorization applies.
+
 ## UX and UI refinement, 2026-09-20
 
 User-authorized scope: improve academy navigation, visual hierarchy, mobile lesson access and 3D model/context layout. Add persistent section navigation with accessible active-section indication, theme control and skip link; shorten the hero, provide lesson section shortcuts and compact mobile navigation; keep 3D model beside its explanation on desktop. Preserve content, progress, quizzes and storage contracts. Validate keyboard and mobile interactions, deep links including closed reference sections, both themes, dynamic input safety and existing tests/build. Publish with standing Pages authorization.

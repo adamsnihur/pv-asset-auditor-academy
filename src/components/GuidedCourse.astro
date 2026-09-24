@@ -3,14 +3,20 @@ import { flattenCatalogs, REVIEW_ITEMS } from '../lib/guided-course.mjs';
 import { renderCourseMarkdown } from '../lib/course-renderer.mjs';
 import '../styles/guided-course.css';
 
+const { lessonCatalogs, lessonMarkdown, courseId = 'guided-learning', storageKey,
+  heading = 'Zrozum. Przećwicz.', subtitle = 'Sprawdź swój tok myślenia.',
+  kicker = 'Pracownia inspektora · krok po kroku',
+  intro = 'Krótkie lekcje prowadzą od podstaw elektryczności do decyzji w terenie. Każda kończy się własnym rezultatem i informacją zwrotną.' } = Astro.props;
 const catalogFiles = import.meta.glob('../content/field-course/*/catalog.json', { eager: true, import: 'default' });
 const markdownFiles = import.meta.glob('../content/field-course/*/*.md', { eager: true, query: '?raw', import: 'default' });
 const catalogs = Object.values(catalogFiles);
-const lessons = flattenCatalogs(catalogs);
-const groups = ['electrical', 'field', 'mapping'].map((id) => catalogs.find((catalog) => catalog.id === id)).filter(Boolean);
+const groups = lessonCatalogs || ['electrical', 'field', 'mapping'].map((id) => catalogs.find((catalog) => catalog.id === id)).filter(Boolean);
+const lessons = lessonCatalogs
+  ? groups.flatMap((group) => group.lessons.map((lesson) => ({ ...lesson, group: group.id, groupTitle: group.title })))
+  : flattenCatalogs(catalogs);
 const lessonHtml = (lesson) => {
   const file = lesson.file.includes('/') ? lesson.file : `${lesson.group}/${lesson.file}`;
-  const markdown = markdownFiles[`../content/field-course/${file}`];
+  const markdown = lessonMarkdown ? lessonMarkdown[lesson.file] : markdownFiles[`../content/field-course/${file}`];
   if (typeof markdown !== 'string') throw new Error(`Missing guided lesson: ${lesson.file}`);
   return renderCourseMarkdown(markdown);
 };
@@ -25,21 +31,22 @@ const practiceFiles = [
 ];
 ---
 
-<section class="guided-course" id="guided-learning" data-guided-course aria-labelledby="guided-heading">
+<section class="guided-course" id={courseId} data-guided-course data-guided-storage-key={storageKey} aria-labelledby={`${courseId}-heading`}>
   <div class="wrap">
     <header class="guided-intro">
-      <div><p class="course-overline">Pracownia inspektora · krok po kroku</p><h2 id="guided-heading">Zrozum. Przećwicz.<br /><em>Sprawdź swój tok myślenia.</em></h2></div>
-      <div class="guided-intro-action"><p>Krótkie lekcje prowadzą od podstaw elektryczności do decyzji w terenie. Każda kończy się własnym rezultatem i informacją zwrotną.</p>{lessons.length > 0 && <a class="guided-current-link" href={`#guided-title-${lessons[0].id}`} data-guided-current-link><strong>Przejdź do swojej lekcji ↓</strong><span data-guided-current-label>{lessons[0].title}</span></a>}</div>
+      <div><p class="course-overline">{kicker}</p><h2 id={`${courseId}-heading`}>{heading}<br /><em>{subtitle}</em></h2></div>
+      <div class="guided-intro-action"><p>{intro}</p>{lessons.length > 0 && <a class="guided-current-link" href={`#guided-title-${lessons[0].id}`} data-guided-current-link><strong>Przejdź do swojej lekcji ↓</strong><span data-guided-current-label>{lessons[0].title}</span></a>}</div>
     </header>
+    <slot />
     <div class="guided-tracks" aria-label="Ścieżka nauki">
-      {groups.map((group, index) => <div><span class="guided-track-number">0{index + 1}</span><div><strong>{group.title}</strong><p>{group.description}</p><small>{group.lessons.length} lekcji · {group.lessons.reduce((total, lesson) => total + lesson.minutes, 0)} min planowanej pracy</small></div></div>)}
+      {groups.map((group, index) => <div><span class="guided-track-number">0{index + 1}</span><div><strong>{group.title}</strong><p>{group.description}</p><small>{group.lessons.length} {group.lessons.length === 4 ? 'lekcje' : 'lekcji'} · {group.lessons.reduce((total, lesson) => total + lesson.minutes, 0)} min planowanej pracy</small></div></div>)}
     </div>
-    <details class="guided-resources">
+    {!lessonCatalogs && <details class="guided-resources">
       <summary>Pliki do ćwiczeń <span>CSV · raster · szablon raportu</span></summary>
       <p>Autorskie dane syntetyczne do F06 i M06. Raster oraz geometria mają lokalne współrzędne w metrach, bez EPSG. To ćwiczenie formatów i obliczeń; nie są to rzeczywiste zdjęcia ani ortomozaika.</p>
       <ul>{practiceFiles.map(([file, label]) => <li><a href={`${import.meta.env.BASE_URL}assets/practice/${file}`} download>{label} ↓</a></li>)}</ul>
       <p>Czasy lekcji są planem samodzielnej pracy z tekstem, ćwiczeniem i quizem, nie pomiarem Twojej aktywności. Dodatkowe ćwiczenia w GIS i teren z instruktorem są poza tym planem.</p>
-    </details>
+    </details>}
     {!lessons.length ? <p>Materiały lekcji są przygotowywane.</p> : <div class="guided-shell">
       <aside class="guided-sidebar" aria-label="Plan i postęp nauki">
         <div class="guided-progress"><div><strong>Twoja ścieżka</strong><span data-guided-progress>0 / {lessons.length}</span></div><progress value="0" max={lessons.length} aria-label="Ukończone lekcje"></progress><p>Wrócisz do ostatniej otwartej lekcji.</p></div>
@@ -63,6 +70,7 @@ const practiceFiles = [
           <header class="guided-lesson-header"><p class="course-overline">{lesson.groupTitle} <span>· Lekcja {index + 1} z {lessons.length}</span></p><h2 id={`guided-title-${lesson.id}`} data-guided-title tabindex="-1">{lesson.title}</h2><p>{lesson.summary}</p><div class="guided-lesson-meta"><span>◷ {lesson.minutes} min planowanej pracy</span><a href={`#practice-${lesson.id}`}>Przejdź do ćwiczenia ↓</a></div><div class="guided-objective"><strong>Po tej lekcji potrafisz</strong><p>{lesson.objective}</p></div></header>
           <nav class="guided-lesson-shortcuts" aria-label="Sekcje lekcji"><a href={`#material-${lesson.id}`}>Materiał</a><a href={`#practice-${lesson.id}`}>Ćwiczenie</a><a href={`#check-${lesson.id}`}>Sprawdzian</a><a href={`#journal-${lesson.id}`}>Notatki</a></nav>
           <div class="course-prose guided-prose" id={`material-${lesson.id}`} tabindex="-1" set:html={lessonHtml(lesson)}></div>
+          {!lessonCatalogs && lesson.group === 'electrical' && <p class="g1-bridge"><strong>Rozwinięcie tej wiedzy:</strong> {lesson.id === 'E03' ? 'Ochrona TN/TT/IT, przewody i zabezpieczenia: G02–G03. Organizacja pracy i pomiary: G05–G07.' : lesson.id === 'E02' ? 'Maszyny, moc bierna i kompensacja: G04. Dobór przewodów i bilans obciążenia: G03.' : ['E04','E05'].includes(lesson.id) ? 'PV, magazyny energii i zasilanie z wielu źródeł: G09. Zakres napięciowy świadectwa: G01.' : lesson.id === 'E06' ? 'Eksploatacja, dokumentacja, dozór i studium integracyjne: G06, G10 i G12.' : 'Zakres kwalifikacji i dalsza ścieżka wiedzy elektrycznej: G01–G12.'} <a href="#kwalifikacje-g1">Otwórz ścieżkę G1 →</a></p>}
           <section class="guided-practice" id={`practice-${lesson.id}`} aria-labelledby={`practice-title-${lesson.id}`}>
             <p class="course-overline">Teraz Twoja kolej · {lesson.activity.minutes} min</p><h3 id={`practice-title-${lesson.id}`}>Przygotuj własny rezultat</h3><p class="guided-deliverable"><strong>Do wykonania:</strong> {lesson.activity.deliverable}</p>
             <ol class="guided-activity-steps">{lesson.activity.steps.map((step) => <li><div><span>{step.minutes} min</span><p>{step.instruction}</p><small>Rezultat: {step.output}</small></div></li>)}</ol>
@@ -87,5 +95,5 @@ const practiceFiles = [
 </section>
 <script>
   import { initializeGuidedCourse } from '../lib/guided-course-client.mjs';
-  initializeGuidedCourse();
+  document.querySelectorAll('[data-guided-course]').forEach((root) => initializeGuidedCourse(root));
 </script>

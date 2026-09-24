@@ -65,15 +65,15 @@ export function normalizeGuidedState(raw, lessons) {
   return state;
 }
 
-export function loadGuidedState(storage, lessons) {
-  try { return normalizeGuidedState(JSON.parse(storage?.getItem(GUIDED_STORAGE_KEY) ?? 'null'), lessons); }
+export function loadGuidedState(storage, lessons, storageKey = GUIDED_STORAGE_KEY) {
+  try { return normalizeGuidedState(JSON.parse(storage?.getItem(storageKey) ?? 'null'), lessons); }
   catch { return emptyGuidedState(lessons); }
 }
 
-export function saveGuidedState(storage, state) {
+export function saveGuidedState(storage, state, storageKey = GUIDED_STORAGE_KEY) {
   try {
     if (!storage) return false;
-    storage.setItem(GUIDED_STORAGE_KEY, JSON.stringify(state));
+    storage.setItem(storageKey, JSON.stringify(state));
     return true;
   } catch { return false; }
 }

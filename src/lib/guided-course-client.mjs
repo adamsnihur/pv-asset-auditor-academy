@@ -1,8 +1,7 @@
 import { GUIDED_STORAGE_KEY, REVIEW_ITEMS, canCompleteLesson, emptyGuidedState, exportGuidedNotes,
   gradeQuestions, isLessonUnlocked, loadGuidedState, normalizeGuidedState, saveGuidedState } from './guided-course.mjs';
 
-export function initializeGuidedCourse() {
-  const root = document.querySelector('[data-guided-course]');
+export function initializeGuidedCourse(root = document.querySelector('[data-guided-course]')) {
   if (!root || root.dataset.initialized) return;
   const data = root.querySelector('[data-guided-data]');
   let lessons;
@@ -11,7 +10,8 @@ export function initializeGuidedCourse() {
   root.dataset.initialized = 'true';
   let storage;
   try { storage = window.localStorage; } catch { storage = null; }
-  let state = loadGuidedState(storage, lessons);
+  const storageKey = root.dataset.guidedStorageKey || GUIDED_STORAGE_KEY;
+  let state = loadGuidedState(storage, lessons, storageKey);
   const panels = [...root.querySelectorAll('[data-lesson-panel]')];
   const triggers = [...root.querySelectorAll('[data-lesson-trigger]')];
   const status = root.querySelector('[data-guided-status]');
@@ -30,7 +30,7 @@ export function initializeGuidedCourse() {
   const recordFor = (id) => state.records[id] ??= { answers: [], graded: false, notes: '', review: REVIEW_ITEMS.map(() => false), completed: false };
   const persist = () => {
     state = normalizeGuidedState(state, lessons);
-    storageStatus.textContent = saveGuidedState(storage, state)
+    storageStatus.textContent = saveGuidedState(storage, state, storageKey)
       ? 'Postęp i notatki zapisane w tej przeglądarce.'
       : 'Zapis lokalny niedostępny. Pobierz notatki przed zamknięciem strony.';
   };
@@ -146,7 +146,7 @@ export function initializeGuidedCourse() {
     const url = URL.createObjectURL(new Blob([exportGuidedNotes(lessons, state)], { type: 'text/plain;charset=utf-8' }));
     const anchor = document.createElement('a');
     anchor.href = url;
-    anchor.download = 'pv-asset-auditor-notatki.txt';
+    anchor.download = `pv-asset-auditor-${root.id || 'kurs'}-notatki.txt`;
     anchor.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
     announce('Plik notatek został przygotowany do pobrania.');
@@ -161,7 +161,7 @@ export function initializeGuidedCourse() {
     root.querySelector('[data-guided-reset]').focus();
   });
   root.querySelector('[data-guided-reset-confirm]').addEventListener('click', () => {
-    try { storage?.removeItem(GUIDED_STORAGE_KEY); } catch { /* In-memory reset remains available. */ }
+    try { storage?.removeItem(storageKey); } catch { /* In-memory reset remains available. */ }
     state = emptyGuidedState(lessons);
     resetBox.hidden = true;
     persist(); render(true);
