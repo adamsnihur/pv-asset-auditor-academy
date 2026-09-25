@@ -1,0 +1,1011 @@
+{
+  "lessons": [
+    {
+      "id": "G17",
+      "title": "Uziemienie, połączenia wyrównawcze i ochrona przepięciowa",
+      "file": "g17.md",
+      "minutes": 35,
+      "objective": "rozróżnisz funkcje uziemienia i LPS, zinterpretujesz parametry SPD oraz ocenisz model TT i koordynację PV.",
+      "summary": "Uziemienie, połączenia wyrównawcze i ochrona przepięciowa. Modele obliczeniowe, interpretacja dokumentacji i uzasadnienie decyzji.",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Karta analizy z rachunkami, schematem, warunkami oceny i rozwiązaniem wariantu.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Narysuj drogi prądu TN i TT oraz nazwij funkcje PE, uziomu i połączeń wyrównawczych.",
+            "output": "schemat lub tabela danych wejściowych"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Przelicz modele RA = 90 i 180 Ω przy 30 mA i zadanym UL = 50 V; oddziel kryterium od trendu.",
+            "output": "rachunek z jednostkami i interpretacją"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Zaznacz na schemacie PV porty DC/AC/danych, LPZ i pytania o SPD oraz odstęp od LPS.",
+            "output": "porównanie warunków z ograniczeniami"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Oceń wariant RA = 150 Ω, 30 mA, UL = 50 V i Voc,max = 940 V przy Ucpv = 900 V.",
+            "output": "rozwiązany wariant z uzasadnieniem"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "RA = 150 Ω, IΔn = 30 mA i zadane UL = 50 V. Jaki wniosek?",
+          "options": [
+            "4,5 V spełnia zadany warunek, ale nie zatwierdza całej ochrony.",
+            "4500 V oznacza zwarcie.",
+            "Wynik zawsze odpada, bo przekracza 10 Ω.",
+            "RCD potwierdza wszystkie połączenia."
+          ],
+          "answer": 0,
+          "explanation": "150 × 0,030 = 4,5 V. Potrzebne pozostają czas wyłączenia i inne sprawdzenia.",
+          "critical": true
+        },
+        {
+          "prompt": "Voc,max = 940 V, SPD Ucpv = 900 V. Jak oceniasz?",
+          "options": [
+            "Typ 1 pozwala przekroczyć Ucpv.",
+            "Dobry uziom wystarcza.",
+            "Up zastępuje Ucpv.",
+            "Warunek napięcia ciągłego nie jest spełniony."
+          ],
+          "answer": 3,
+          "explanation": "Maksymalne napięcie generatora przekracza Ucpv o 40 V; pozostałe parametry tego nie naprawiają.",
+          "critical": true
+        },
+        {
+          "prompt": "Co odróżnia Up od Uc?",
+          "options": [
+            "Uc to rezystancja uziomu.",
+            "Oba oznaczają prąd roboczy.",
+            "Up opisuje poziom ochrony w próbie, Uc napięcie pracy ciągłej.",
+            "Up to przekrój przewodu."
+          ],
+          "answer": 2,
+          "explanation": "Parametry odpowiadają na różne pytania: tolerowanie napięcia roboczego i ograniczenie udaru.",
+          "critical": true
+        },
+        {
+          "prompt": "Co wynika z dobrego wyniku uziemienia dla ochrony portu danych falownika?",
+          "options": [
+            "Port nie przewodzi zakłóceń.",
+            "Nie potrzeba SPD AC.",
+            "Port jest zawsze chroniony.",
+            "Potrzebna jest osobna analiza drogi i koordynacji ochrony."
+          ],
+          "answer": 3,
+          "explanation": "Zakłócenie może wejść inną drogą; jeden pomiar nie dowodzi ochrony wszystkich portów.",
+          "critical": true
+        },
+        {
+          "prompt": "Do czego odnoszą się Iimp i In ogranicznika?",
+          "options": [
+            "Do maksymalnej rezystancji PE.",
+            "Do prądów udarowych i określonych przebiegów.",
+            "Do pojemności baterii.",
+            "Do znamionowego prądu odbiornika."
+          ],
+          "answer": 1,
+          "explanation": "Typowe odniesienia to odpowiednio fala 10/350 i 8/20 µs; trzeba odczytać wskazaną drogę prądową.",
+          "critical": false
+        },
+        {
+          "prompt": "Rezystancja wzrosła z 90 do 180 Ω, ale model TT nadal spełnia nierówność. Co dalej?",
+          "options": [
+            "Przestawić typ SPD.",
+            "Uznać pewną korozję bez oględzin.",
+            "Oddzielić spełnienie kryterium od diagnostyki przyczyny wzrostu.",
+            "Zignorować zmianę."
+          ],
+          "answer": 2,
+          "explanation": "Sezonowość i degradacja są różnymi hipotezami wymagającymi danych.",
+          "critical": false
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G17-O1",
+          "prompt": "Instalacja TT ma 90 Ω, później 180 Ω. Oba wyniki spełniają zadany warunek z RCD. Czy zakończysz ocenę i dlaczego?",
+          "modelAnswer": "Najpierw rozdzielam dwie sprawy: spełnienie określonego warunku ochrony oraz wyjaśnienie zmiany stanu instalacji. Przy zadanych 30 mA otrzymuję odpowiednio 2,7 i 5,4 V. Obie wartości pozostają poniżej przyjętych w ćwiczeniu 50 V. Nie wynika z tego kompletna pozytywna ocena, ponieważ rachunek nie sprawdza czasu wyłączenia, ciągłości ani właściwości RCD. Dwukrotny wzrost jest dodatkową informacją diagnostyczną. Sprawdzam porównywalność metod, zakres badanego układu, warunki gruntowe, sezon i wcześniejszą dokumentację. Nie ogłaszam korozji bez dowodów, ale też nie ignoruję możliwego pogorszenia połączenia. Wynik mógł dotyczyć innej liczby równoległych dróg. W protokole zachowuję oba odczyty, warunki i ograniczony wniosek. Dopiero porównanie zgodnych danych pozwala oceniać trend. Granica dziesięciu omów nie rozwiązuje tego przypadku, bo nie jest uniwersalnym kryterium każdej funkcji uziemienia. Odpowiedzialna decyzja wymaga ustalenia, co faktycznie badano i które wymagania obowiązują.",
+          "keyPoints": [
+            "Oddzielenie zgodności i diagnostyki",
+            "2,7 V i 5,4 V przy zadanych warunkach",
+            "Porównywalność metod i sezonu"
+          ],
+          "critical": true,
+          "followUp": "Jak równoległe uziomy mogły zmienić odczyt?"
+        },
+        {
+          "id": "G17-O2",
+          "prompt": "Dlaczego SPD DC o właściwym Ucpv nie wystarcza do ochrony całego falownika?",
+          "modelAnswer": "Właściwe Ucpv potwierdza tylko dopasowanie napięcia pracy ciągłej do rozpatrywanego obwodu i zacisków. Falownik ma więcej niż jedną drogę elektrycznego oddziaływania: wejście DC, wyjście AC, komunikację i połączenia ochronne. Udar może pojawić się na dowolnej z nich. Trzeba odnieść Up do wytrzymałości chronionego urządzenia oraz uwzględnić napięcia na przyłączach. Typ ogranicznika wynika z możliwego dopływu prądu piorunowego albo przepięć indukowanych, a nie z samego napięcia generatora. Sprawdzam LPS, odstęp separacyjny, długości tras, lokalizacje urządzeń i koordynację kolejnych stopni. Dla długiej trasy dokumentacja może wymagać ochrony na obu końcach. Nie przenoszę danych aparatu AC na PV DC, ponieważ warunki gaszenia i konfiguracja są odmienne. Uziemienie oraz połączenia wyrównawcze muszą współpracować z SPD. Zapisuję zatem warunek spełniony i listę pozostałych dowodów, zamiast ogłaszać ochronę kompletnego falownika na podstawie jednej liczby z katalogu.",
+          "keyPoints": [
+            "Uc nie jest Up",
+            "Wszystkie porty i drogi udaru",
+            "LPS, trasa i koordynacja"
+          ],
+          "critical": true,
+          "followUp": "Jak zmieni analizę brak odstępu separacyjnego od LPS?"
+        },
+        {
+          "id": "G17-O3",
+          "prompt": "Jak wyjaśnisz różnicę między połączeniem ochronnym i funkcjonalnym na przykładzie metalowej obudowy sterownika?",
+          "modelAnswer": "Zaczynam od funkcji wymaganej dla danego urządzenia i oznaczeń w dokumentacji. Połączenie ochronne ma uczestniczyć w ochronie przed porażeniem, a funkcjonalne może zapewniać odniesienie potencjału lub ograniczać zakłócenia. Samo połączenie obudowy z ziemią nie dowodzi realizacji obu zadań. Analizuję drogę prądu uszkodzeniowego, ciągłość, wymagania przewodu i możliwość zadziałania środka ochronnego. Następnie sprawdzam wymagania EMC i sposób odniesienia ekranów. Funkcje mogą korzystać ze wspólnego układu, ale rozwiązanie poprawiające działanie elektroniki nie może pogarszać ochrony ludzi. Nie odłączam PE w celu usuwania zakłóceń. Oddzielnie rozpoznaję części przewodzące obce, które mogą wprowadzić potencjał, i potrzebę połączeń wyrównawczych. Nie łączę bez analizy wszystkich metalowych przedmiotów. Ocenę kończę wskazaniem konkretnej funkcji każdego połączenia oraz dokumentu, który ją uzasadnia. Dzięki temu nazwa FE nie staje się automatycznym zamiennikiem PE, a sam sygnał ciągłości nie zastępuje oceny całej ochrony.",
+          "keyPoints": [
+            "Funkcja ochronna i EMC",
+            "Pierwszeństwo ochrony",
+            "Rozpoznanie części obcych i dostępnych"
+          ],
+          "critical": true,
+          "followUp": "Czy niski opór przewodu ekranu dowodzi, że może on pełnić PE?"
+        },
+        {
+          "id": "G17-O4",
+          "prompt": "Jak ocenisz kandydat SPD przy Voc,max 940 V i Ucpv 900 V, jeżeli projektant powołuje się na dobry uziom?",
+          "modelAnswer": "Porównuję napięcie maksymalne generatora, obliczone dla właściwych warunków temperaturowych, z dopuszczalnym napięciem ciągłym ogranicznika. W tym przykładzie 940 V przekracza 900 V o 40 V, więc warunek nie jest spełniony. Dobra rezystancja uziemienia nie zmniejsza normalnego napięcia między biegunami generatora do wartości dopuszczalnej dla SPD. Nie używam też Up jako zastępczej granicy, ponieważ opisuje ono ograniczanie udaru w warunkach próby. Potrzebny jest ponowny dobór urządzenia przy zachowaniu wymagań całego obwodu. Wyższe Ucpv nie wystarcza samo: trzeba ponownie sprawdzić poziom ochrony, typ, konfigurację i prądy oraz instrukcję producenta. Oddzielnie kontroluję maksymalne napięcie falownika i innych elementów. Aparat o większym napięciu znamionowym nie podnosi ich dopuszczalnych wartości. Wniosek dokumentuję jako niedopasowanie jednego parametru, bez twierdzenia, że pomiar uziemienia był błędny. Są to dwa niezależne aspekty, które muszą być poprawne równocześnie.",
+          "keyPoints": [
+            "Przekroczenie o 40 V",
+            "Uziom nie zmienia Ucpv",
+            "Ponowny dobór wszystkich właściwych parametrów"
+          ],
+          "critical": true,
+          "followUp": "Czy większe Ucpv automatycznie oznacza lepszą ochronę napięciową?"
+        }
+      ]
+    },
+    {
+      "id": "G18",
+      "title": "Dobór przewodu od warunków pracy do sprawdzenia zwarcia",
+      "file": "g18.md",
+      "minutes": 35,
+      "objective": "sprawdzisz obciążalność po korektach, ochronę przeciążeniową, warunek adiabatyczny i spadek napięcia.",
+      "summary": "Dobór przewodu od warunków pracy do sprawdzenia zwarcia. Modele obliczeniowe, interpretacja dokumentacji i uzasadnienie decyzji.",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Karta analizy z rachunkami, schematem, warunkami oceny i rozwiązaniem wariantu.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Przygotuj osiem pól karty przewodu: materiał, żyły, izolacja, napięcie, ułożenie, temperatura, grupowanie i źródło danych.",
+            "output": "schemat lub tabela danych wejściowych"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Przelicz obciążalność kandydata A dla dwóch współczynników grupowania z lekcji.",
+            "output": "rachunek z jednostkami i interpretacją"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Oblicz Smin przy I²t = 160000 A²s, k = 115 oraz spadki napięcia z przykładów.",
+            "output": "porównanie warunków z ograniczeniami"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Sprawdź niezależnie kandydata B 6 mm²: wszystkie dane i odpowiedź znajdują się w wariancie lekcji.",
+            "output": "rozwiązany wariant z uzasadnieniem"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Itab = 46 A, kt = 0,87, kg = 0,70. Ile wynosi Iz?",
+          "options": [
+            "46 A.",
+            "28,014 A.",
+            "32,2 A.",
+            "40,02 A."
+          ],
+          "answer": 1,
+          "explanation": "46 × 0,87 × 0,70 = 28,014 A, jeżeli metoda pozwala stosować te korekty.",
+          "critical": true
+        },
+        {
+          "prompt": "Ib = 24 A, In = 25 A, Iz = 21,924 A. Czy wystarczy zmienić In na 20 A?",
+          "options": [
+            "Nie; przy niezmienionym obciążeniu 24 A naruszy Ib ≤ In.",
+            "Tak, bo 20 jest mniejsze od Iz.",
+            "Tak, bez innych zmian.",
+            "Tak, jeśli jest SPD."
+          ],
+          "answer": 0,
+          "explanation": "Dobór musi spełniać oba ograniczenia jednocześnie.",
+          "critical": true
+        },
+        {
+          "prompt": "I²t = 160000 A²s, k = 115. Jaki Smin?",
+          "options": [
+            "Około 3,478 mm² w zadanym modelu.",
+            "0,025 mm².",
+            "Około 1391 mm².",
+            "115 mm²."
+          ],
+          "answer": 0,
+          "explanation": "√160000 /115 = 400/115. k wymaga zgodności materiału, izolacji i temperatur.",
+          "critical": true
+        },
+        {
+          "prompt": "Jednofazowo: ρ = 0,0225, L = 30 m, I = 24 A, S = 6 mm², U = 230 V. Jaki spadek?",
+          "options": [
+            "2,7 V i 1,17%.",
+            "9,35 V i 4,07%.",
+            "54 V i 23,5%.",
+            "5,4 V i około 2,35%."
+          ],
+          "answer": 3,
+          "explanation": "ΔU = 2ρLI/S; długość podana jest w jedną stronę.",
+          "critical": false
+        },
+        {
+          "prompt": "Aparat 6 kA, spodziewane zwarcie 8 kA. Co jest potrzebne?",
+          "options": [
+            "Większe IP przewodu.",
+            "Ponowny dobór albo udokumentowana ochrona rezerwowa konkretnego zestawu.",
+            "Tylko niższy spadek napięcia.",
+            "Zmiana tylko nazwy obwodu."
+          ],
+          "answer": 1,
+          "explanation": "Warunek zdolności wyłączania pozostaje niezależny od obciążalności przewodu.",
+          "critical": true
+        },
+        {
+          "prompt": "Co wynika z oznaczenia IP obudowy?",
+          "options": [
+            "Określona ochrona dostępu, ciał stałych i wody; IK dotyczy uderzeń.",
+            "Zgodność całego projektu EV.",
+            "Pełna odporność na korozję.",
+            "Odporność na każdą energię uderzenia."
+          ],
+          "answer": 0,
+          "explanation": "Trzeba oddzielnie oceniać inne wpływy i wykonanie kompletnej obudowy.",
+          "critical": false
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G18-O1",
+          "prompt": "Po zmianie trasy Iz spadło poniżej In, ale kabel nadal spełnia warunek zwarciowy. Jak wyjaśnisz konieczność zmiany?",
+          "modelAnswer": "Obciążalność długotrwała i wytrzymałość krótkotrwała odpowiadają na różne pytania. Pierwsza dotyczy równowagi cieplnej podczas zwykłej pracy, druga energii przekazanej w krótkim zwarciu. Lepszy wynik jednego badania nie kompensuje niespełnienia drugiego. Po zmianie grupowania albo warunków oddawania ciepła muszę przeliczyć Iz dla nowej trasy. W przykładzie 21,924 A jest mniejsze od In równego 25 A, więc zabezpieczenie nie spełnia podstawowej nierówności względem przewodu. Zmiana na 20 A przy Ib równym 24 A narusza z kolei warunek obciążenia. Rozważam większy przekrój, inną trasę lub rzeczywiste ograniczenie obciążenia, a następnie sprawdzam wszystkie warunki ponownie. Zachowuję źródła tabel oraz współczynników. Dodatkowo sprawdzam spadek napięcia, zwarcie, zdolność wyłączania i warunki ochrony przy uszkodzeniu. Wynik zapisuję jako decyzję dla określonych danych, ponieważ późniejsza zmiana grupowania może ponownie unieważnić wcześniejsze obliczenia.",
+          "keyPoints": [
+            "Dwa różne mechanizmy cieplne",
+            "Ib ≤ In ≤ Iz",
+            "Ponowna pełna ocena po zmianie"
+          ],
+          "critical": true,
+          "followUp": "Kiedy ograniczenie obciążenia byłoby rzeczywistym rozwiązaniem?"
+        },
+        {
+          "id": "G18-O2",
+          "prompt": "Wytłumacz k i I²t osobie, która chce wpisać zawsze 115 oraz prąd znamionowy zabezpieczenia.",
+          "modelAnswer": "Współczynnik k obejmuje właściwości materiału żyły, izolacji oraz przyjętych temperatur początkowej i końcowej. Wartość 115 jest odpowiednia tylko dla określonych warunków, a nie dla wszystkich kabli. I²t opisuje energię cieplną związaną z przepływem prądu w czasie, więc nie zastępuję go kwadratem prądu znamionowego aparatu. Przy zabezpieczeniu ograniczającym prąd właściwe dane mogą pochodzić z charakterystyki energii przepuszczonej. Najpierw rozpoznaję zakres stosowalności modelu adiabatycznego i czas zdarzenia, a potem podstawiam dane. W naszym przykładzie pierwiastek ze 160000 wynosi 400, podzielenie przez 115 daje około 3,478 mm². Wynik jest minimalnym przekrojem dla tego warunku. Wybrany przekrój nadal musi spełniać wymagania mechaniczne, obciążalność, spadek napięcia i pozostałe warunki ochrony. Nie traktuję równania jako kompletnego doboru kabla. Zachowuję jednostki i pochodzenie danych, aby inna osoba mogła odtworzyć obliczenia oraz wykryć niewłaściwe założenia.",
+          "keyPoints": [
+            "k zależy od materiału i temperatur",
+            "Energia przepuszczona zamiast dowolnego prądu",
+            "Ograniczona stosowalność modelu"
+          ],
+          "critical": true,
+          "followUp": "Co zmienia zastosowanie aparatu silnie ograniczającego prąd zwarciowy?"
+        },
+        {
+          "id": "G18-O3",
+          "prompt": "Dlaczego procentowego spadku napięcia jednofazowego nie przenosisz wprost na układ trójfazowy?",
+          "modelAnswer": "W modelu jednofazowym prąd płynie do odbiornika i wraca drugim przewodem, więc przy długości podanej w jedną stronę pojawia się czynnik dwa. W symetrycznym modelu trójfazowym zależność między spadkiem fazowym i międzyfazowym prowadzi do czynnika pierwiastek z trzech. Zmienia się też napięcie odniesienia: w przykładach odpowiednio 230 i 400 V. Dlatego nawet przy tym samym przekroju, długości i prądzie procenty nie muszą być takie same. Uproszczenie rezystancyjne wymaga pomijalnej reaktancji i właściwego współczynnika mocy. W pełniejszym rachunku pojawiają się składniki związane z rezystancją oraz reaktancją. Rezystywność powinna odpowiadać warunkom temperatury. Po obliczeniu wyniku porównuję go z kryterium rzeczywiście przypisanym projektowi i całej wymaganej drodze. Zadane w ćwiczeniu trzy procent nie są uniwersalnym limitem wszystkich obwodów. Na końcu sprawdzam, czy wynik odcinka nie został pomylony ze spadkiem całej instalacji zasilającej odbiornik.",
+          "keyPoints": [
+            "2 i √3 wynikają z układu",
+            "230 V versus 400 V",
+            "Warunki modelu i kryterium projektu"
+          ],
+          "critical": false,
+          "followUp": "Co zmienia cosφ różny od jedności?"
+        },
+        {
+          "id": "G18-O4",
+          "prompt": "Kabel ma właściwy przekrój i wysokie napięcie znamionowe. Dlaczego możesz go odrzucić na trasie zewnętrznej?",
+          "modelAnswer": "Przekrój i napięcie znamionowe potwierdzają tylko część właściwości. Trasa zewnętrzna może wymagać odporności na promieniowanie UV, wodę, temperaturę, naprężenia i uszkodzenia mechaniczne. Sprawdzam przeznaczenie konkretnego wyrobu w karcie producenta, a nie tylko nazwę handlową. Kabel dopuszczony do stałego ułożenia nie musi nadawać się do ciągłego ruchu w prowadniku. Dopuszczenie jednego wariantu do ziemi nie obejmuje automatycznie wszystkich kabli o podobnym symbolu. Znaczenie mają także połączenia, promień gięcia i kompatybilność zacisków z żyłą. Dla obudowy oceniam IP i IK jako różne parametry; żaden nie dowodzi pełnej odporności chemicznej czy właściwej wentylacji. Wysoka klasa kabla nie zwiększa napięcia dopuszczalnego dla falownika i złączy. Decyzję wiążę z konkretnym narażeniem i brakującym potwierdzeniem producenta. Jeżeli dokumentacja nie potwierdza wymaganej właściwości, nie zastępuję jej zapewnieniem, że podobne rozwiązanie wcześniej działało bez awarii.",
+          "keyPoints": [
+            "Wpływy zewnętrzne i przeznaczenie",
+            "Weryfikacja konkretnego wariantu",
+            "Ograniczenia całego toru"
+          ],
+          "critical": true,
+          "followUp": "Czy stopień IP rozdzielnicy gwarantuje odporność kabla na UV?"
+        }
+      ]
+    },
+    {
+      "id": "G19",
+      "title": "Co naprawdę mierzy przyrząd i kiedy wynik coś dowodzi",
+      "file": "g19.md",
+      "minutes": 35,
+      "objective": "powiążesz metodę pomiarową z zakresem dowodu, warunkami próby i kryterium oceny.",
+      "summary": "Co naprawdę mierzy przyrząd i kiedy wynik coś dowodzi. Modele obliczeniowe, interpretacja dokumentacji i uzasadnienie decyzji.",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Karta analizy z rachunkami, schematem, warunkami oceny i rozwiązaniem wariantu.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Ułóż plan oględzin i badań według pytań oraz zależności; nie twórz instrukcji podłączania.",
+            "output": "schemat lub tabela danych wejściowych"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Zapisz trzy pary napięcia próby i minimum izolacji, warunki oraz wyjątek 250 V/1 MΩ.",
+            "output": "rachunek z jednostkami i interpretacją"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Odtwórz przykłady izolacji i pętli; narysuj, dlaczego cęgi potrzebują drogi powrotnej.",
+            "output": "porównanie warunków z ograniczeniami"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Oceń wariant SELV 250 V/0,72 MΩ oraz Zs = 0,98 ±0,08 Ω przy U0 = 230 V i Ia = 200 A.",
+            "output": "rozwiązany wariant z uzasadnieniem"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Przygotowany obwód 230/400 V ma 0,82 MΩ przy 500 V DC. Co wynika z kryterium 1 MΩ?",
+          "options": [
+            "Należy tylko zmienić etykietę napięcia.",
+            "Przechodzi próg SELV 0,5 MΩ.",
+            "Nie spełnia wskazanego minimum; przyczyna wymaga rozpoznania.",
+            "Wynik dowodzi sprawnego RCD."
+          ],
+          "answer": 2,
+          "explanation": "Właściwa klasa obwodu określa kryterium; nie wybiera się niższego progu dla wygody.",
+          "critical": true
+        },
+        {
+          "prompt": "Zastosowano uzasadniony wyjątek 250 V z powodu nieusuwalnego SPD w zwykłym obwodzie. Jakie minimum opisuje źródło?",
+          "options": [
+            "1 MΩ.",
+            "0,25 MΩ.",
+            "0,5 MΩ automatycznie.",
+            "Brak minimum."
+          ],
+          "answer": 0,
+          "explanation": "Redukcja napięcia próby nie zmienia obwodu w SELV.",
+          "critical": true
+        },
+        {
+          "prompt": "U0 = 230 V, Ia = 200 A, Zs = 1,10 ±0,08 Ω; reguła całego przedziału. Jaki wynik?",
+          "options": [
+            "Zs nie ma jednostki.",
+            "Pozytywny, bo 1,10 <1,15.",
+            "Pozytywny po zaokrągleniu.",
+            "Brak jednoznacznie pozytywnej oceny, bo 1,18 >1,15."
+          ],
+          "answer": 3,
+          "explanation": "Górna wartość przedziału przekracza granicę modelu 230/200.",
+          "critical": true
+        },
+        {
+          "prompt": "Dlaczego cęgi nie zmierzą poprawnie pojedynczego odizolowanego uziomu bez drogi powrotnej?",
+          "options": [
+            "Bo grunt zawsze jest izolatorem.",
+            "Bo potrzebują napięcia 400 V.",
+            "Bo mierzą tylko temperaturę.",
+            "Prąd testowy wymaga zamkniętej pętli przez inne drogi."
+          ],
+          "answer": 3,
+          "explanation": "Odczyt dotyczy pętli; metaliczne obejście też może zmienić interpretację.",
+          "critical": true
+        },
+        {
+          "prompt": "RCD zadziałał podczas TEST. Czego to nie dowodzi?",
+          "options": [
+            "Że działał pewien wewnętrzny tor testu.",
+            "Że aparat zmienił stan.",
+            "Że przycisk był naciśnięty.",
+            "Ciągłości PE i kompletnej skuteczności ochrony instalacji."
+          ],
+          "answer": 3,
+          "explanation": "TEST nie zastępuje badań instalacji ani pomiaru parametrów wyzwolenia.",
+          "critical": true
+        },
+        {
+          "prompt": "PV odłączono od AC. Czy można automatycznie stosować zwykłą próbę izolacji?",
+          "options": [
+            "Tak, zawsze najwyższym napięciem.",
+            "Tak, jeśli jest słonecznie.",
+            "Tak, cała instalacja jest beznapięciowa.",
+            "Nie; generator, elektronika i metoda wymagają właściwej procedury."
+          ],
+          "answer": 3,
+          "explanation": "Moduły nadal mogą wytwarzać napięcie. SMA opisuje specjalną metodę i sprzęt.",
+          "critical": true
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G19-O1",
+          "prompt": "Wynik izolacji wynosi 0,82 MΩ. Dlaczego bez napięcia próby i rodzaju obwodu nie możesz go sklasyfikować?",
+          "modelAnswer": "Liczba opisuje zachowanie badanego obiektu przy określonej metodzie, więc potrzebuję warunków uzyskania wyniku. Dla przygotowanego zwykłego obwodu do 500 V tabela przywołana w lekcji przewiduje próbę 500 V DC oraz minimum 1 MΩ. W takim przypadku 0,82 MΩ nie spełnia wskazanego minimum. Dla właściwego SELV lub PELV przy 250 V odniesienie wynosi 0,5 MΩ, ale nie mogę dowolnie zmienić kwalifikacji obwodu. Potrzebuję informacji o odłączonych odbiornikach, SPD, elektronice oraz zakresie instalacji objętym próbą. Obniżenie napięcia w uzasadnionym wyjątku dotyczącym SPD nie obniża automatycznie minimum do wartości SELV. Uwzględniam również warunki środowiskowe i jakość pomiaru. Niski wynik może wskazywać problem, ale nie rozpoznaje jednoznacznie jego przyczyny. W protokole zapisuję metodę, parametry i podstawę oceny, a diagnostykę przyczyny opisuję osobno. Dzięki temu wynik jest możliwy do odtworzenia i porównania podczas kolejnego badania.",
+          "keyPoints": [
+            "Wynik razem z metodą",
+            "Nie przenosić progu SELV",
+            "Stan obiektu i zakres próby"
+          ],
+          "critical": true,
+          "followUp": "Jaki próg pozostaje przy opisanym wyjątku 250 V z powodu SPD?"
+        },
+        {
+          "id": "G19-O2",
+          "prompt": "Cęgi pokazują bardzo małą rezystancję, a pomiar z sondami dużo większą. Jakie hipotezy rozważysz?",
+          "modelAnswer": "Nie zaczynam od stwierdzenia, że jeden miernik jest uszkodzony. Najpierw odtwarzam obwody prądu testowego i sprawdzam, czy obie metody badały ten sam obiekt. Cęgi wymagają zamkniętej pętli. Prąd może wracać przez inne uziomy, ale również przez metalowe połączenie omijające grunt. Wtedy bardzo mały wynik opisuje ciągłość metalicznej pętli, a nie rezystancję pojedynczego uziomu względem ziemi. Metoda z sondami ma własne warunki dotyczące rozmieszczenia i wpływu stref potencjału. Równoległe połączenia także mogą wpływać na jej interpretację. Porównuję dokumentację, zakres, warunki gruntu, jakość kontaktów i ograniczenia przyrządów. Nie rozłączam samowolnie drogi ochronnej tylko po to, aby uzyskać wygodniejszy pomiar. Dobór bezpiecznej procedury należy do przygotowanej osoby odpowiedzialnej za badanie. Wniosek powinien wskazywać, którą rezystancję rzeczywiście wyznaczono oraz czego jeszcze nie potwierdzono. Sam mniejszy odczyt nie jest dowodem lepszego stanu ochrony.",
+          "keyPoints": [
+            "Odtworzenie pętli testowej",
+            "Możliwe metaliczne obejście",
+            "Porównywalność metod i bezpieczna procedura"
+          ],
+          "critical": true,
+          "followUp": "Co pokażą cęgi na pojedynczym odizolowanym uziomie bez pętli?"
+        },
+        {
+          "id": "G19-O3",
+          "prompt": "Jak wyjaśnisz, że RCD przeszedł test aparatu, lecz ochrona obwodu nadal wymaga oceny?",
+          "modelAnswer": "Próba RCD sprawdza zachowanie aparatu przy określonym prądzie, przebiegu i warunkach. Nie sprawdza wszystkich elementów obwodu. Muszę wiedzieć, jaki typ urządzenia badano, czy jest zwłoczne i jaki limit odnosi się do zastosowanej próby. Podane w lekcji 300 ms dotyczy określonego testu ogólnego aparatu bez zwłoki w omówieniu IET, a nie każdej polskiej instalacji. Wymagany czas wyłączenia instalacji może wynikać z innych warunków. Oddzielnie oceniam ciągłość przewodów ochronnych, układ sieci, połączenia i właściwy dobór RCD do możliwych przebiegów. Przycisk TEST nie zastępuje pomiaru czasu ani sprawdzenia PE. Test sinusoidalny nie dowodzi pełnej reakcji na składową stałą generowaną przez elektronikę. W protokole rozdzielam wynik aparatu od oceny środka ochrony. Dopiero komplet zgodnych dowodów pozwala sformułować właściwy wniosek o obwodzie, a braki trzeba nazwać wprost, zamiast ukrywać je pod ogólnym wpisem pozytywnym.",
+          "keyPoints": [
+            "Warunki testu aparatu",
+            "Inne wymagania całego obwodu",
+            "Przebieg i typ RCD"
+          ],
+          "critical": true,
+          "followUp": "Dlaczego przycisk TEST nie wykryje każdej przerwy PE?"
+        },
+        {
+          "id": "G19-O4",
+          "prompt": "Wynik Zs leży poniżej granicy, ale przedział niepewności ją przekracza. Jak zapiszesz decyzję?",
+          "modelAnswer": "Najpierw sprawdzam pochodzenie granicy. W modelu U0 równe 230 V i Ia równe 200 A dają 1,15 Ω. Ia musi odpowiadać wymaganej reakcji zabezpieczenia, nie jest dowolnym prądem znamionowym. Następnie stosuję jawnie przyjętą regułę decyzji. Dla odczytu 1,10 Ω i zadanego przedziału plus minus 0,08 Ω górna wartość wynosi 1,18 Ω. Przy regule wymagającej spełnienia warunku w całym przedziale nie mogę zapisać jednoznacznie pozytywnego wyniku. Nie oznacza to automatycznie, że rzeczywista impedancja na pewno jest niedopuszczalna; oznacza ograniczenie wniosku z dostępnych danych. Zachowuję odczyt, przedział, kryterium i podstawę reguły. Nie poprawiam rezultatu zaokrągleniem. Dalsze działanie może wymagać wyjaśnienia warunków, właściwej metody lub rozwiązania technicznego. Nie uznaję tej dydaktycznej reguły za uniwersalny zapis wszystkich norm. Odpowiedzialny badający musi stosować wymagania właściwe dla konkretnego badania i jego celu.",
+          "keyPoints": [
+            "Właściwe Ia i granica",
+            "Jawna reguła decyzji",
+            "Brak pozytywnego dowodu nie jest pewną diagnozą"
+          ],
+          "critical": true,
+          "followUp": "Jak zmieni ocenę odczyt 0,98 ±0,08 Ω?"
+        }
+      ]
+    },
+    {
+      "id": "G20",
+      "title": "Silnik, transformator i sterowanie jako współpracujący układ",
+      "file": "g20.md",
+      "minutes": 35,
+      "objective": "wyjaśnisz zachowanie napędu podczas rozruchu i zaniku zasilania oraz oszacujesz poślizg i prąd zwarcia transformatora.",
+      "summary": "Silnik, transformator i sterowanie jako współpracujący układ. Modele obliczeniowe, interpretacja dokumentacji i uzasadnienie decyzji.",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Karta analizy z rachunkami, schematem, warunkami oceny i rozwiązaniem wariantu.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Odczytaj dane znamionowe ABB, policz poślizg i nazwij brakujące dane konkretnego egzemplarza.",
+            "output": "schemat lub tabela danych wejściowych"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Narysuj logiczny model podtrzymania i tabelę siedmiu stanów, w tym zaniku i powrotu zasilania.",
+            "output": "rachunek z jednostkami i interpretacją"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Przelicz przykłady momentu rozruchowego i zwarcia przy transformatorze; zapisz ograniczenia.",
+            "output": "porównanie warunków z ograniczeniami"
+          },
+          {
+            "minutes": 5,
+            "instruction": "Oblicz wariant: cztery bieguny, 50 Hz, 1440 obr./min oraz transformator 160 kVA, 400 V, uk = 4%.",
+            "output": "rozwiązany wariant z uzasadnieniem"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Silnik czterobiegunowy 50 Hz, n = 1440 obr./min. Poślizg?",
+          "options": [
+            "4%.",
+            "0,04%.",
+            "96%.",
+            "60%."
+          ],
+          "answer": 0,
+          "explanation": "ns = 1500; (1500−1440)/1500 = 0,04.",
+          "critical": false
+        },
+        {
+          "prompt": "Moment DOL 90 Nm, model gwiazdy 1/3, obciążenie wymaga 45 Nm. Ocena?",
+          "options": [
+            "Rozruch zawsze poprawny.",
+            "Model daje 30 Nm, za mało dla zadanego obciążenia.",
+            "Moment wynosi 270 Nm.",
+            "Tabliczka usuwa potrzebę rachunku."
+          ],
+          "answer": 1,
+          "explanation": "Właściwe napięcie nie gwarantuje wystarczającego momentu rozruchowego.",
+          "critical": true
+        },
+        {
+          "prompt": "Co robi styk pomocniczy NO w podtrzymaniu?",
+          "options": [
+            "Utrzymuje drogę cewki po puszczeniu START, o ile pozostałe warunki są spełnione.",
+            "Zwiększa napięcie silnika.",
+            "Zastępuje zabezpieczenie zwarciowe.",
+            "Izoluje wszystkie źródła energii."
+          ],
+          "answer": 0,
+          "explanation": "STOP i ochrona przerywają drogę sterowania w opisanym modelu.",
+          "critical": false
+        },
+        {
+          "prompt": "Czy zatrzymanie awaryjne oznacza odłączenie izolacyjne?",
+          "options": [
+            "Nie; funkcje i pozostałe źródła energii wymagają oddzielnej oceny.",
+            "Tak zawsze.",
+            "Tak tylko przy czerwonym przycisku.",
+            "Tak jeśli silnik nie wiruje."
+          ],
+          "answer": 0,
+          "explanation": "Brak ruchu nie dowodzi braku napięcia, energii kondensatorów ani izolacji.",
+          "critical": true
+        },
+        {
+          "prompt": "Transformator 160 kVA, 400 V, uk = 4%, pomijalna impedancja sieci. Przybliżony Isc?",
+          "options": [
+            "231 A.",
+            "5774 A przy zaciskach w zadanym modelu.",
+            "160000 A.",
+            "4000 A dokładnie."
+          ],
+          "answer": 1,
+          "explanation": "In≈230,94 A, a Isc≈In/0,04. To nie jest wynik dla dowolnego odległego punktu.",
+          "critical": false
+        },
+        {
+          "prompt": "CT ma prąd pierwotny. Co oznacza otwarcie wtórnego?",
+          "options": [
+            "Zabezpieczenie obwodu przez sam CT.",
+            "Normalny bezpieczny stan jałowy.",
+            "Automatyczne wyzerowanie odczytu bez innych skutków.",
+            "Ryzyko niebezpiecznego napięcia; wymagana jest właściwa procedura obsługi."
+          ],
+          "answer": 3,
+          "explanation": "Przekładnika prądowego nie traktuje się jak otwartego wyjścia zwykłego zasilacza.",
+          "critical": true
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G20-O1",
+          "prompt": "Po zaniku napięcia napęd ma nie ruszyć sam. Jak przeanalizujesz model START/STOP i jego ograniczenia?",
+          "modelAnswer": "Rysuję drogę cewki przez zamknięty STOP i niewyzwoloną ochronę oraz równoległe gałęzie START i styku podtrzymania. Po naciśnięciu START cewka zamyka własny styk pomocniczy. Gdy zasilanie zanika, cewka odpada i styk podtrzymania się otwiera. Po powrocie zasilania, przy puszczonym i sprawnym przycisku START, droga pozostaje przerwana. To wyjaśnia działanie modelu trzyprzewodowego. Następnie sprawdzam ograniczenia: zablokowany START, zewnętrzny rozkaz albo inna logika mogą zmienić zachowanie. Dlatego sam schemat funkcjonalny nie jest dowodem bezpieczeństwa maszyny w każdym uszkodzeniu. Potrzebna jest ocena ryzyka oraz właściwie zaprojektowana funkcja sterowania. Stycznik realizuje łączenie, a zabezpieczenie zwarciowe i przeciążeniowe wykonują inne zadania. Zatrzymanie ruchu nie potwierdza odłączenia izolacyjnego wszystkich źródeł. W tabeli stanów uwzględniam również zadziałanie ochrony i ponowne uruchomienie, aby nie pominąć niezamierzonego restartu podczas obsługi lub powrotu zasilania.",
+          "keyPoints": [
+            "Zanik otwiera podtrzymanie",
+            "Warunki START i rozkazu zewnętrznego",
+            "Model funkcjonalny nie dowodzi bezpieczeństwa"
+          ],
+          "critical": true,
+          "followUp": "Co się zmienia, gdy przycisk START pozostanie mechanicznie wciśnięty?"
+        },
+        {
+          "id": "G20-O2",
+          "prompt": "Silnik ma poprawną tabliczkę dla gwiazda–trójkąt, ale nie rozpędza maszyny. Co może wyjaśnić problem?",
+          "modelAnswer": "Poprawna tabliczka potwierdza możliwość określonego połączenia uzwojeń przy napięciu sieci, ale nie gwarantuje wystarczającego momentu. Podczas etapu gwiazdy uzwojenia otrzymują niższe napięcie niż w docelowym trójkącie. W uproszczonym modelu moment zależy od kwadratu napięcia, więc spada do około jednej trzeciej odpowiedniego momentu rozruchowego. Przy 90 Nm w trójkącie uzyskujemy około 30 Nm w gwieździe. Jeżeli obciążenie wymaga 45 Nm, model nie zapewnia rozpędzenia. Sprawdzam charakterystykę obciążenia, bezwładność, czas rozruchu i dopuszczalne nagrzewanie. Nie zwiększam bez analizy nastawy ochrony, ponieważ może to jedynie wydłużyć stan niekorzystny cieplnie. Rozważenie innego sposobu rozruchu wymaga dokumentacji silnika i układu. Osobno sprawdzam blokady wykluczające jednoczesne załączenie gwiazdy i trójkąta. Tabela napięć, charakterystyka mechaniczna i logika sterowania są trzema współpracującymi elementami oceny. Każdy może być przyczyną niesprawnego albo niebezpiecznego działania napędu.",
+          "keyPoints": [
+            "Moment około jednej trzeciej",
+            "Charakterystyka obciążenia i czas",
+            "Blokady niezależne od tabliczki"
+          ],
+          "critical": true,
+          "followUp": "Dlaczego zwiększenie czasu rozruchu nie zawsze rozwiąże problem?"
+        },
+        {
+          "id": "G20-O3",
+          "prompt": "Wyjaśnij znaczenie uk% oraz ograniczenia oszacowania zwarcia transformatora 160 kVA, 400 V, 4%.",
+          "modelAnswer": "Napięcie zwarcia opisuje właściwość impedancyjną transformatora w określonej próbie, a nie procent prawdopodobieństwa uszkodzenia. Dla trójfazowej mocy 160 kVA i napięcia międzyfazowego 400 V prąd znamionowy wynosi około 230,94 A. Przy pomijalnej impedancji sieci zasilającej i uproszczonym zwarciu na zaciskach dzielę ten prąd przez 0,04. Otrzymuję około 5774 A, czyli rząd wielkości przydatny do rozumienia doboru aparatów. Nie wpisuję jednak tej wartości automatycznie jako prądu w odległej rozdzielnicy. Dalsze przewody, impedancja sieci i warunki źródła zmieniają wynik. Nie stosuję też tego modelu bezpośrednio do falownika ograniczającego prąd. Trzeba rozróżnić prąd znamionowy, przeciążenie i zwarcie. Przy doborze zabezpieczeń potrzebne są odpowiednie maksymalne oraz minimalne warunki zwarciowe. Zapisuję założenia obliczenia, aby przybliżenie nie wyglądało jak wynik pełnego projektu. Niższy prąd na końcu długiej linii może również utrudniać szybkie zadziałanie zabezpieczenia.",
+          "keyPoints": [
+            "uk jako właściwość impedancyjna",
+            "In≈230,94 A i Isc≈5774 A",
+            "Ograniczenia źródła i miejsca zwarcia"
+          ],
+          "critical": false,
+          "followUp": "Dlaczego mały prąd zwarcia może być problemem ochrony?"
+        },
+        {
+          "id": "G20-O4",
+          "prompt": "Dlaczego nie wolno traktować otwartego wtórnego CT jak nieobciążonego zasilacza?",
+          "modelAnswer": "Przekładnik prądowy pracuje w innych warunkach niż typowy transformator zasilający obciążenie napięciowe. Gdy płynie prąd pierwotny, obwód wtórny powinien pozostawać w przewidzianym stanie z właściwym obciążeniem pomiarowym lub rozwiązaniem określonym przez producenta. Otwarcie wtórnego może spowodować powstanie niebezpiecznego napięcia, uszkodzenie izolacji i zagrożenie dla osoby obsługującej. Nie interpretuję braku odczytu miernika jako braku energii. Najpierw identyfikuję typ czujnika, dokumentację i stan obwodu pierwotnego. Nie stosuję improwizowanego przełączania przewodów. Obsługę wykonuje przygotowana osoba według procedury i z właściwym wyposażeniem. Oddzielam przy tym CT od przekładnika napięciowego, którego warunki obsługi są inne. W odpowiedzi egzaminacyjnej ważne jest uzasadnienie zagrożenia, a nie tylko zapamiętanie zakazu. Tak samo zatrzymany silnik nie dowodzi braku napięcia w szafie. Trzeba ustalić wszystkie źródła energii i znaczenie stanu każdego urządzenia, zanim wyciągnie się wniosek o bezpieczeństwie.",
+          "keyPoints": [
+            "CT ma odmienne warunki pracy",
+            "Otwarcie może wytworzyć wysokie napięcie",
+            "Procedura i identyfikacja urządzenia"
+          ],
+          "critical": true,
+          "followUp": "Dlaczego nie przenosimy zasad CT automatycznie na przekładnik napięciowy?"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "G-DEP-P-S-earth",
+      "title": "IEC 60364-5-54:2016, rozdział 542, oficjalny podgląd GSO",
+      "url": "https://gso-sims-preview-doc-aws.s3-eu-west-1.amazonaws.com/gso-iec-60364-5-54-2016-en.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Podgląd standardu: funkcje ochronne i funkcjonalne, korozja i rodzaje uziomów. Nie zastępuje aktualnej normy PN ani projektu. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-spd",
+      "title": "Schneider Electric, The Surge Protection Device (SPD)",
+      "url": "https://www.electrical-installation.org/enwiki/The_Surge_Protection_Device_(SPD)",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Funkcje typów i parametry SPD; nie jest kartą konkretnego doboru. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-pv-spd",
+      "title": "Schneider Electric, SPD for photovoltaic applications",
+      "url": "https://www.electrical-installation.org/enwiki/SPD_for_photovoltaic_applications",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Przykład lokalizacji i koordynacji. Strona ma niespójne zdanie o długości przyłączy (2,5 m/50 cm), dlatego tej wartości nie przeniesiono. Próg 10 m opisano jako przykład wymagający oceny projektu. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-dehn",
+      "title": "DEHNcombo YPV, DCB YPV 1200, numer 900070",
+      "url": "https://www.dehn-international.com/en-INT/store/f/295190/dehncombo",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Dane oficjalnej karty pobrane przez wyszukiwarkę: Ucpv 1200 V, Up <3,8 kV, Iimp 6,25 kA na wskazaną drogę. Próba bezpośredniego open zwróciła błąd; weryfikacja na treści karty w wyniku wyszukania, nie na ofercie pośrednika. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-cable",
+      "title": "LAPP, H1Z2Z2-K optimized version, DB1023757EN",
+      "url": "https://imager.lapp.com/e/lapp/2p-toS56OPeXK223y5ISow~~/DB1023757EN.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Dokument producenta wersja 06; właściwości tego wyrobu, bez uogólniania dopuszczeń na wszystkie kable PV. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-overload",
+      "title": "Schneider Electric, Practical values for a protective scheme",
+      "url": "https://www.electrical-installation.org/enwiki/Practical_values_for_a_protective_scheme",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Warunki Ib/In/Iz/I2 i ochrona rezerwowa. Obciążalności tabelaryczne oraz korekty ćwiczeń są syntetyczne. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-adiabatic",
+      "title": "Schneider Electric, Verification of withstand capabilities of cables under short-circuit conditions",
+      "url": "https://www.electrical-installation.org/enwiki/Verification_of_the_withstand_capabilities_of_cables_under_short-circuit_conditions",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Model adiabatyczny w odpowiednim zakresie krótkiego czasu do 5 s. k=115 tylko dla właściwego przypadku Cu/PVC; nie uniwersalne. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-drop",
+      "title": "Schneider Electric, Calculation of voltage drop in steady load conditions",
+      "url": "https://www.electrical-installation.org/enwiki/Calculation_of_voltage_drop_in_steady_load_conditions",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Równania; przykłady rezystancyjne mają jawnie zadane rho i cosφ. Limit 3% to syntetyczne kryterium ćwiczenia. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-ipik",
+      "title": "Schneider Electric, What is the difference between IP and IK standards",
+      "url": "https://www.se.com/eg/en/faqs/FA163840/",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Rozróżnienie IP oraz IK, bez deklaracji zgodności całej obudowy po montażu. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-ip",
+      "title": "DKC, Gradi di protezione IP per quadri elettrici",
+      "url": "https://www.dkceurope.com/it/case-history/gradi-di-protezione-ip-per-quadri-elettrici",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Oficjalny producent: cyfry IP, X, IP44/IP65 i dobór środowiskowy. Nie przenosimy włoskich wymagań krajowych na Polskę. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-continuity",
+      "title": "Metrel, Verification on Low Voltage Electrical Installations, poster",
+      "url": "https://www.metrel.si/assets/Metrel/PDF_dokumentacija/Posters/Ang/Poster_Verification_on_Low_Voltage_Electrical_Installations_ANG_Ver%201.0._20_752_423.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Oficjalny plakat producenta; wykorzystano parametry próby ciągłości, nie uproszczone ogólne limity uziemienia na plakacie. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-insulation",
+      "title": "Metrel, Guide for Testing and Verification of Low Voltage Installations, version 1.1, tabela 22",
+      "url": "https://manuals.plus/m/2a8861e413049d085219e9657d5f0e2b4aecf8c996746bbda6071d2bc9cb7726.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Pierwotny dokument autora Metrel d.d., zachowany na wtórnym hostingu Manuals.plus. Autorstwo i tytuł sprawdzone w dokumencie, tabela 22 na stronie drukowanej 47 (PDF 49). Nie znaleziono dostępnej oficjalnej kopii pełnego podręcznika; oficjalny plakat potwierdza 250/500 V. Pełny PDF potwierdza 1000 V i wyjątek 250 V z minimum 1 MΩ. Odniesienie IEC, nie deklaracja aktualnej treści polskiej normy. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-rcd",
+      "title": "IET, Changes to RCD testing in BS 7671:2018+A2:2022",
+      "url": "https://electrical.theiet.org/wiring-matters/years/2022/91-july-2022/changes-to-rcd-testing-in-bs-76712018plusa22022/",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Oficjalne objaśnienie brytyjskich zasad, służy rozróżnieniu testu aparatu i ochrony instalacji. 300 ms nie przedstawiono jako polskiego obowiązku ani limitu RCD selektywnego. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-groundtest",
+      "title": "Megger, Q&A: Earth/ground testing",
+      "url": "https://www.megger.com/en/et-online/may-2023/q-and-a-earth-ground-testing",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Pętla cęgowa, równoległe i metaliczne drogi. Nie podajemy instrukcji rozłączania czynnego uziemienia. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-groundmethods",
+      "title": "Megger, A guide to earth testing",
+      "url": "https://www.megger.com/en-gb/et-online/november-2007/a-guide-to-earth-testing",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zasady metod elektrody i gruntu; dokument starszy, wykorzystano trwałe zasady pomiarowe, nie bieżące wymagania prawne. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-pat",
+      "title": "Sonel, PAT-805 miernik bezpieczeństwa sprzętu elektrycznego",
+      "url": "https://sonel.pl/pl/produkt/pat-805",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zakres przyrządu do wyposażenia; nie zastępuje badań instalacji. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-pvtest",
+      "title": "SMA, Check the PV system via insulation resistance measurement for ground faults",
+      "url": "https://manuals.sma.de/STPxx3SE40/en-US/14267430539.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Instrukcja konkretnej rodziny falowników; wymaga przygotowanej osoby i właściwego urządzenia. Nie skopiowano kroków podłączania ani zwarcia PV. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-motor",
+      "title": "ABB, Softstarter Handbook 1SFC132060M0201",
+      "url": "https://library.e.abb.com/public/6b4e1a3530814df0c12579bb0030e58b/1SFC132060M0201.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Wykorzystano podstawy maszyn i metod rozruchu. Stary podręcznik nie jest źródłem aktualnego prawa ani konkretnego doboru nowego napędu. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-rated",
+      "title": "ABB, Technical data 400 V 50 Hz, Process Performance IE4 motors 03-2021",
+      "url": "https://library.e.abb.com/public/833c42cc056142d7a5444041132b03a7/9AKK107424%20EN%2003-2021%20PPM%20IE4.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Rzeczywiste dane katalogowe M3BP 160MLB 4: 15 kW, 1478 obr./min. Jawnie nie przedstawiono tabeli jako fotografii tabliczki konkretnego egzemplarza. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-drive",
+      "title": "Schneider Electric, Residual Current Device, Lexium drive manual",
+      "url": "https://product-help.schneider-electric.com/Machine%20Expert/V2.1/en/Lx32sDr/Lx32sDr/ResidualCurrentDevice-BA47B152.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Dobór do określonej rodziny napędu i zwiększony upływ przy załączeniu. Nie uogólniamy na każdy falownik. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-transformer",
+      "title": "Schneider Electric, Short-circuit current at secondary terminals of MV/LV distribution transformer",
+      "url": "https://www.electrical-installation.org/enwiki/Short-circuit_current_at_the_secondary_terminals_of_a_MV/LV_distribution_transformer",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Uproszczony model na zaciskach przy pomijalnej impedancji zasilania; nie dla dowolnego punktu ani falownika. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    },
+    {
+      "id": "G-DEP-P-S-ct",
+      "title": "Schneider Electric, Current Transformer shorting blocks and open secondary hazards",
+      "url": "https://www.se.com/us/en/faqs/FA125574/",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zagrożenie otwarciem wtórnego przy prądzie pierwotnym. Brak instrukcji przełączania czynnego obwodu CT. Sprawdzenie źródła: 2026-09-24. Ocena ponownego użycia: własna polska parafraza i syntetyczne przykłady z linkiem; bez kopiowania tekstu, ilustracji i tabel źródła. Nie deklarujemy prawa do redystrybucji dokumentu."
+    }
+  ],
+  "claims": [
+    {
+      "id": "G-DEP-P-C-earth",
+      "statement": "Uziemienie ochronne i funkcjonalne mają odmienne cele; wymagania ochronne mają pierwszeństwo, a geometria, grunt i korozja wpływają na dobór.",
+      "source_ids": [
+        "G-DEP-P-S-earth"
+      ],
+      "lesson_ids": [
+        "G17"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-spd",
+      "statement": "Uc/Ucpv, Up, Iimp i In SPD opisują odmienne parametry; ochrona portów PV DC/AC i danych wymaga koordynacji z LPS.",
+      "source_ids": [
+        "G-DEP-P-S-spd",
+        "G-DEP-P-S-pv-spd"
+      ],
+      "lesson_ids": [
+        "G17"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-dehn",
+      "statement": "Karta DEHN DCB YPV 1200 numer 900070 podaje typ1+2, Ucpv1200V, Up<3,8kV i Iimp6,25kA na wskazaną drogę.",
+      "source_ids": [
+        "G-DEP-P-S-dehn"
+      ],
+      "lesson_ids": [
+        "G17"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-cable",
+      "statement": "Dobór przewodu obejmuje właściwości wyrobu, sposób ułożenia, korekty i warunki Ib≤In≤Iz oraz I2≤1,45Iz.",
+      "source_ids": [
+        "G-DEP-P-S-cable",
+        "G-DEP-P-S-overload"
+      ],
+      "lesson_ids": [
+        "G18"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-adiabatic",
+      "statement": "S≥√(I²t)/k jest warunkowym modelem adiabatycznym, k zależy od materiału, izolacji i temperatur.",
+      "source_ids": [
+        "G-DEP-P-S-adiabatic"
+      ],
+      "lesson_ids": [
+        "G18"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-drop",
+      "statement": "Model spadku napięcia zależy od układu jedno/trójfazowego, impedancji, temperatury i współczynnika mocy.",
+      "source_ids": [
+        "G-DEP-P-S-drop"
+      ],
+      "lesson_ids": [
+        "G18"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-ip",
+      "statement": "IP opisuje ochronę obudowy przed dostępem, ciałami stałymi i wodą, IK uderzenia; X oznacza cechę nieokreśloną w kodzie.",
+      "source_ids": [
+        "G-DEP-P-S-ipik",
+        "G-DEP-P-S-ip"
+      ],
+      "lesson_ids": [
+        "G18"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-insulation",
+      "statement": "Tabela22 przewodnika Metrel powołującego IEC60364-6 podaje SELV/PELV250V i≥0,5MΩ, do500V włącznie500V i≥1MΩ, powyżej500V1000V i≥1MΩ; opisany wyjątek250V zeSPD zachowuje1MΩ.",
+      "source_ids": [
+        "G-DEP-P-S-insulation",
+        "G-DEP-P-S-continuity"
+      ],
+      "lesson_ids": [
+        "G19"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-methods",
+      "statement": "Ciągłość, pętla, RCD i uziemienie sprawdzają odmienne własności; pomiar cęgowy wymaga zamkniętej drogi i może mierzyć metaliczne obejście.",
+      "source_ids": [
+        "G-DEP-P-S-continuity",
+        "G-DEP-P-S-groundtest",
+        "G-DEP-P-S-groundmethods",
+        "G-DEP-P-S-rcd"
+      ],
+      "lesson_ids": [
+        "G19"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-pvtest",
+      "statement": "Badanie izolacji PV wymaga właściwego stanu generatora, specjalnego wyposażenia i instrukcji; odłączenie AC nie usuwa generacji DC.",
+      "source_ids": [
+        "G-DEP-P-S-pvtest"
+      ],
+      "lesson_ids": [
+        "G19"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-pat",
+      "statement": "Badanie wyposażenia przyrządem PAT nie jest pełnym badaniem stałej instalacji zasilającej.",
+      "source_ids": [
+        "G-DEP-P-S-pat"
+      ],
+      "lesson_ids": [
+        "G19"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-motor",
+      "statement": "Poślizg i moment wyjaśniają zachowanie indukcyjnego napędu, a dobór DOL/gwiazda-trójkąt/softstarter/VFD wymaga charakterystyki obciążenia.",
+      "source_ids": [
+        "G-DEP-P-S-motor",
+        "G-DEP-P-S-rated"
+      ],
+      "lesson_ids": [
+        "G20"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-drive",
+      "statement": "Przekształtnik i filtry zmieniają warunki upływów oraz doboru RCD; należy stosować instrukcję konkretnego napędu.",
+      "source_ids": [
+        "G-DEP-P-S-drive"
+      ],
+      "lesson_ids": [
+        "G20"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-transformer",
+      "statement": "Przy pomijalnej impedancji zasilania model Isc≈In×100/uk% szacuje zwarcie przy zaciskach transformatora.",
+      "source_ids": [
+        "G-DEP-P-S-transformer"
+      ],
+      "lesson_ids": [
+        "G20"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-P-C-ct",
+      "statement": "Otwarcie wtórnego CT przy prądzie pierwotnym może powodować niebezpieczne napięcie.",
+      "source_ids": [
+        "G-DEP-P-S-ct"
+      ],
+      "lesson_ids": [
+        "G20"
+      ],
+      "status": "supported"
+    }
+  ]
+}

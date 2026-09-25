@@ -1,5 +1,6 @@
 ---
 import GuidedCourse from './GuidedCourse.astro';
+import G1OralPractice from './G1OralPractice.astro';
 import coverage from '../content/g1-coverage.json';
 import '../styles/g1-course.css';
 
@@ -7,20 +8,32 @@ const fragments = Object.values(import.meta.glob('../content/g1-course/*.json', 
 const lessons = fragments.flatMap((fragment) => fragment.lessons).sort((a, b) => a.id.localeCompare(b.id));
 const markdown = import.meta.glob('../content/g1-course/*.md', { eager: true, query: '?raw', import: 'default' });
 const lessonMarkdown = Object.fromEntries(Object.entries(markdown).map(([path, value]) => [path.split('/').pop(), value]));
-const titles = ['Podstawy i ochrona', 'Praca, pomiary i ratownictwo', 'PV, dozór i integracja'];
-const descriptions = ['Zakres świadectwa, ochrona przeciwporażeniowa, przewody, zabezpieczenia i maszyny.', 'Organizacja pracy, utrzymanie, badania ochronne, awarie i pierwsza pomoc.', 'Wiele źródeł energii, odpowiedzialność dozoru, urządzenia specjalistyczne i studium końcowe.'];
+const titles = ['Podstawy i ochrona', 'Praca, pomiary i ratownictwo', 'PV, dozór i integracja', 'Obwody i architektura instalacji', 'Ochrona, pomiary i napędy', 'PV, BESS i zadania dozoru'];
+const descriptions = ['Zakres świadectwa, ochrona przeciwporażeniowa, przewody, zabezpieczenia i maszyny.', 'Organizacja pracy, utrzymanie, badania ochronne, awarie i pierwsza pomoc.', 'Wiele źródeł energii, odpowiedzialność dozoru i pierwsze studium integracyjne.', 'Pogłębienie: AC/DC, schematy, drogi prądu uszkodzeniowego i charakterystyki aparatów.', 'Pogłębienie: uziemienie, SPD, dobór przewodów, interpretacja badań i sterowanie silnikami.', 'Pogłębienie: dobór stringów, tryby zasilania, dokumentacja E/D i obrona zadania końcowego.'];
 const catalogs = titles.map((title, index) => ({ id: `g1-${index + 1}`, title, description: descriptions[index], lessons: lessons.slice(index * 4, index * 4 + 4) }));
 ---
 <GuidedCourse courseId="kwalifikacje-g1" storageKey="pv-asset-auditor-g1:v1"
   lessonCatalogs={catalogs} lessonMarkdown={lessonMarkdown}
   kicker="Rozwinięcie modułów elektrycznych · grupa G1"
   heading="Zrozum ochronę." subtitle="Pracuj świadomie."
-  intro="12 lekcji uzupełniających wiedzę potocznie określaną jako SEP 1: eksploatacja, dozór i czynności kontrolno-pomiarowe. Zacznij po podstawach E01–E06. Ta ścieżka ma własny postęp i dziennik."
+  intro={`${lessons.length} lekcje przygotowania teoretycznego: E + D do 1 kV, pomiary, PV i BESS. G01–G12 budują podstawę, G13–G24 pogłębiają mechanizmy, obliczenia i decyzje. Zacznij po E01–E06; zachowasz dotychczasowy postęp.`}
 >
   <aside class="g1-scope" aria-label="Zakres przygotowania G1">
-    <div><strong>Wiedza → ćwiczenie → uzasadniona decyzja</strong><p>Przykłady liczbowe, analiza dokumentacji, scenariusze awarii i pytania ustne. Zadania wykonujesz na danych dydaktycznych. Sprawność w rzeczywistej pracy wymaga ćwiczeń z instruktorem.</p></div>
+    <div><strong>Wyjaśnij → oblicz → uzasadnij</strong><p>Prześledź prąd w schemacie, dobierz rozwiązanie i oceń wynik. Każda lekcja kończy się własnym zadaniem. Potem przejdź do <a href="#g1-rozmowa">treningu odpowiedzi ustnych i próby przekrojowej ↓</a>.</p></div>
     <div><strong>Co oznacza ukończenie?</strong><p>To zapis samokształcenia, nie świadectwo kwalifikacyjne. Zakres E lub D, czynności i urządzenia ustala się indywidualnie; egzamin obejmuje wiedzę teoretyczną i praktyczną. Specjalistyczne urządzenia poznasz na poziomie orientacji.</p></div>
   </aside>
+  <details class="g1-coverage">
+    <summary>Droga do egzaminu E + D <span>Co umieć samodzielnie, co sprawdzić z instruktorem</span></summary>
+    <ol class="g1-readiness">
+      <li><strong>Podstawa:</strong> E01–E06 oraz G01–G12. Odtwórz obliczenia i nazwij warunki bezpieczeństwa bez podglądu.</li>
+      <li><strong>Mechanizmy i decyzje:</strong> G13–G24. Wyjaśnij drogi prądów, działanie aparatury, warunki ochrony i przyczynę odrzucenia wadliwego rozwiązania. Zachowaj obliczenia oraz dokumentację zadania G24.</li>
+      <li><strong>Odpowiedź ustna:</strong> odpowiedz na wszystkie pytania treningowe, wróć do braków, a próbę przekrojową wykonaj bez materiałów. Samo zaznaczenie kryteriów nie dowodzi wiedzy.</li>
+      <li><strong>Praktyka z instruktorem:</strong> identyfikacja urządzeń i źródeł, przygotowanie strefy pracy, sprawdzenie braku napięcia, dobór i kontrola przyrządów, badania ochronne oraz interpretacja protokołu. Ćwiczenia ratownicze wykonaj na fantomie z AED treningowym. Lista w G24 jest podstawą omówienia, nie zezwoleniem na samodzielne próby.</li>
+      <li><strong>Komisja:</strong> uzgodnij rzeczywisty zakres urządzeń, E/D i czynności; sprawdź wymagane dokumenty oraz otrzymaną tematykę. Egzamin jest ustny, dotyczy teorii i praktyki. Nie istnieje gwarancja zdania przez ukończenie tej strony.</li>
+    </ol>
+    <p>Zakres główny: instalacje do 1 kV oraz odpowiednie źródła, magazyny i aparatura. Część DC PV powyżej 1 kV, SN/WN, Ex, trakcja i urządzenia branżowe wymagają odrębnego przygotowania. Omawianie granic tych dziedzin nie rozszerza świadectwa.</p>
+    <p>Porównano również szczegółowe programy komisji SEP: <a href="https://www.sep.olsztyn.pl/wp-content/uploads/2025/02/WiedzaE_Gr_1_2025.pdf" target="_blank" rel="noopener noreferrer">eksploatacja E</a> i <a href="https://www.sep.olsztyn.pl/wp-content/uploads/2025/02/WiedzaD_Gr_1_2025.pdf" target="_blank" rel="noopener noreferrer">dozór D</a>. To punkt odniesienia do nauki, nie wiążąca lista pytań Twojego egzaminu. Plan G1 obejmuje 12 godzin pracy z tekstem, zadaniami i quizami; tempo jest indywidualne, a trening ustny i praktyka dochodzą osobno.</p>
+  </details>
   <details class="g1-coverage">
     <summary>Mapa wiedzy G1 <span>5 obszarów E · 9 obszarów D · 16 kategorii urządzeń</span></summary>
     <p>Porównanie z dotychczasowym kursem. „Luka” oznacza brak odrębnego nauczania lub ćwiczenia, „częściowo” oznacza obecność fragmentu tematu. Wskazane lekcje rozbudowują wiedzę; tabela nie jest oceną Twoich kwalifikacji. Weryfikacja: {coverage.verified_on}.</p>
@@ -33,3 +46,4 @@ const catalogs = titles.map((title, index) => ({ id: `g1-${index + 1}`, title, d
     <p>Pełne przygotowanie do wszystkich urządzeń G1 nie jest jednym uniwersalnym kursem. Przy SN/WN, trakcji, Ex i urządzeniach branżowych potrzebne jest dalsze szkolenie w konkretnym zakresie.</p>
   </details>
 </GuidedCourse>
+<G1OralPractice lessons={lessons} />

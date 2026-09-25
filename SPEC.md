@@ -1,5 +1,9 @@
 # PV Asset Auditor Academy Technical Specification
 
+## G1 exam preparation depth, 2026-09-24
+
+Confirmed scope: E + D up to 1 kV including control/measurement, PV and BESS. Add G13–G24 advanced instructional sessions after existing G01–G12, preserve all previous lessons and storage keys. Explain mechanisms, schematic reading, faults, calculations, apparatus, tests, operations and documentation with worked and independent cases. Add 48 oral-practice questions with explicit model-answer criteria, a balanced 12-question mock oral session and local self-assessment, clearly separate from an official exam or guaranteed pass. Publish a scope/depth audit and supervised practical-skills checklist. No blanket claims of competence for all G1 equipment. Validate primary-source claims, calculations, assessment feedback, progression/storage, responsive UI and production deployment.
+
 ## G1 knowledge coverage and expansion, 2026-09-20
 
 Audit existing lessons and reference against Polish G1 qualification regulation DU2022/1392 §4, §6 and Annex1, and BHP DU2021/1210. Preserve every existing learning module, quiz and stored progress. Add 12 substantial supplementary G1 lessons connected to existing E01–E06 and reference module2, with independent progress, explanatory quizzes, worked examples, exercises and a capstone. Cover E and D separately, control/measurement tasks, protective systems, equipment selection, machines, work organization, maintenance, emergency/first aid, PV/storage and specialist scope boundaries. Publish an honest before/after coverage map for all five E domains, nine D domains and all16 Annex1 equipment categories; distinguish foundational coverage from specialist practice and certification. Reuse current learning UI; test independent storage, gating, content/source integrity, browser flow and deployment. Standing publication authorization applies.

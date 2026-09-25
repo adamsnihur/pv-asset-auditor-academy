@@ -1,0 +1,1006 @@
+{
+  "lessons": [
+    {
+      "id": "G13",
+      "title": "Dlaczego prąd płynie: obwody DC, AC i trzy fazy",
+      "file": "g13.md",
+      "minutes": 35,
+      "objective": "wyjaśnisz bilans prądów, przesunięcia fazowe, utratę N oraz różnicę PF i sprawności.",
+      "summary": "Dlaczego prąd płynie: obwody DC, AC i trzy fazy. Analiza schematów, obliczenia i uzasadnienie decyzji.",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Karta schematów, obliczeń i warunkowych wniosków.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Narysuj model 24 V: 6 Ω szeregowo z parą równoległych 12 Ω. Wyznacz prądy i napięcia.",
+            "output": "schemat, 2 A źródła i po 1 A gałęzi."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Policz moduł 30 + j40 Ω i moc czynną przy 230 V.",
+            "output": "50 Ω, 4,6 A i 634,8 W."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Przelicz utratę N dla 23 Ω i 46 Ω między dwiema fazami 400 V.",
+            "output": "133,3 V i 266,7 V z uzasadnieniem."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Rozwiąż wariant: 30 V, 5 Ω szeregowo z dwiema gałęziami 20 Ω.",
+            "output": "15 Ω, 2 A, bilans 60 W."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Dwie gałęzie 12 Ω równolegle mają rezystancję:",
+          "options": [
+            "24 Ω.",
+            "12 Ω.",
+            "144 Ω.",
+            "6 Ω."
+          ],
+          "answer": 3,
+          "explanation": "Odwrotności rezystancji sumują się: 1/R = 2/12.",
+          "critical": false
+        },
+        {
+          "prompt": "230 V RMS idealnej sinusoidy oznacza szczyt około:",
+          "options": [
+            "325 V.",
+            "115 V.",
+            "460 V.",
+            "230 V dla każdego przebiegu."
+          ],
+          "answer": 0,
+          "explanation": "Szczyt sinusoidy wynosi √2 razy wartość skuteczna; nie stosuj tego do dowolnego przebiegu.",
+          "critical": false
+        },
+        {
+          "prompt": "Moduł impedancji 30 + j40 Ω wynosi:",
+          "options": [
+            "1200 Ω.",
+            "70 Ω.",
+            "50 Ω.",
+            "10 Ω."
+          ],
+          "answer": 2,
+          "explanation": "Moduł = √(30² + 40²).",
+          "critical": false
+        },
+        {
+          "prompt": "Po utracie N odbiory 23 Ω i 46 Ω tworzą szereg między fazami 400 V. Napięcie na 46 Ω wynosi:",
+          "options": [
+            "400 V na obu naraz.",
+            "Około 266,7 V.",
+            "133,3 V.",
+            "230 V niezależnie od obciążenia."
+          ],
+          "answer": 1,
+          "explanation": "400 × 46/69 = 266,7 V; przerwa N może podnieść napięcie części odbiorów.",
+          "critical": true
+        },
+        {
+          "prompt": "Silnik oddaje 3,6 kW, η = 0,90, PF = 0,80. Pobrane P i S to:",
+          "options": [
+            "3,6 kW i 4 kVA.",
+            "4 kW i 4 kVA.",
+            "5 kW i 4 kVA.",
+            "4 kW i 5 kVA."
+          ],
+          "answer": 3,
+          "explanation": "P = 3,6/0,9; S = P/0,8.",
+          "critical": false
+        },
+        {
+          "prompt": "Zerowy prąd N przy symetrycznych sinusoidach dowodzi, że N można zawsze usunąć?",
+          "options": [
+            "Tak, każda sieć trójfazowa nie potrzebuje N.",
+            "Nie; asymetria i harmoniczne zmieniają bilans.",
+            "Tak, PE zastąpi N.",
+            "Tak, jeśli fazy mają ten sam kolor."
+          ],
+          "answer": 1,
+          "explanation": "Wniosek jest warunkowy; N utrzymuje punkt gwiazdy przy niesymetrycznych odbiorach.",
+          "critical": true
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G13-O1",
+          "prompt": "Dlaczego równoległe odbiory zwiększają prąd źródła, choć napięcie się nie zmienia?",
+          "modelAnswer": "Odbiory są połączone między tymi samymi węzłami, dlatego napięcie każdej gałęzi jest takie samo. Każda dodatkowa gałąź stanowi kolejną drogę przepływu. Jej prąd dodaje się do prądów pozostałych gałęzi zgodnie z pierwszym prawem Kirchhoffa. Dla dwóch rezystorów po 12 Ω przy 12 V każda gałąź pobiera 1 A, a źródło 2 A. Rezystancja zastępcza wynosi 6 Ω. Nie dodaję rezystancji jak w szeregu, ponieważ tam wspólny jest prąd, a tutaj napięcie. Sprawdzam wynik bilansem mocy: źródło oddaje 24 W, odbiory pobierają po 12 W. Rzeczywiste źródło może mieć ograniczenie prądowe i spadek napięcia, więc założenie idealnego napięcia trzeba ujawnić. W odpowiedzi podaję jednostki, przyjęty kształt przebiegu oraz stan obwodu. Sprawdzam wynik niezależnie przez bilans prądów lub energii, aby błąd rachunku nie ukrył błędnego modelu. Ćwiczenie obliczeniowe nie wymaga odtwarzania awarii na rzeczywistym urządzeniu.",
+          "keyPoints": [
+            "Wspólne napięcie",
+            "Suma prądów",
+            "Bilans mocy"
+          ],
+          "critical": false,
+          "followUp": "Co zmieni rezystancja przewodów?"
+        },
+        {
+          "id": "G13-O2",
+          "prompt": "Dlaczego 230 V nie opisuje szczytu napięcia ani każdego przebiegu falownika?",
+          "modelAnswer": "W sieci wartość 230 V jest wartością skuteczną, związaną z efektem cieplnym w rezystorze. Dla idealnej sinusoidy szczyt jest większy o czynnik √2 i wynosi około 325 V. Ten stosunek wynika z kształtu sinusoidy. Przy przebiegu prostokątnym albo impulsowym nie można zastosować go automatycznie. Również miernik reagujący na wartość średnią i wyskalowany dla sinusoidy może podać błędny wynik przy odkształceniu. Potrzebna jest metoda odpowiednia do przebiegu, zakresu częstotliwości i współczynnika szczytu. Przy 50 Hz okres wynosi 20 ms, ale informacja o częstotliwości sama nie potwierdza sinusoidalnego kształtu. Oceniając stronę AC przekształtnika, oddzielam napięcie znamionowe, rzeczywisty przebieg oraz właściwości przyrządu. W odpowiedzi podaję jednostki, przyjęty kształt przebiegu oraz stan obwodu. Sprawdzam wynik niezależnie przez bilans prądów lub energii, aby błąd rachunku nie ukrył błędnego modelu. Ćwiczenie obliczeniowe nie wymaga odtwarzania awarii na rzeczywistym urządzeniu.",
+          "keyPoints": [
+            "RMS i efekt cieplny",
+            "Warunek sinusoidy",
+            "Pasmo przyrządu"
+          ],
+          "critical": false,
+          "followUp": "Czy True RMS ma nieograniczone pasmo?"
+        },
+        {
+          "id": "G13-O3",
+          "prompt": "Wyjaśnij wzrost napięcia na odbiorze 46 Ω po utracie wspólnego N.",
+          "modelAnswer": "Przed przerwą oba odbiory są przyłączone do własnej fazy i wspólnego punktu neutralnego, więc nominalnie mają po 230 V. Po utracie N, przy braku innych dróg i odłączonej trzeciej gałęzi, rezystory 23 Ω i 46 Ω tworzą szereg między dwiema fazami. Całość otrzymuje 400 V, a prąd wynosi 400/69, czyli około 5,80 A. Napięcie dzieli się proporcjonalnie do rezystancji: 133,3 V i 266,7 V. Większa rezystancja dostaje większą część napięcia. To skutek zmiany obwodu, a nie automatycznie udar atmosferyczny. Elektroniczne odbiory mogą zachować się inaczej niż stałe rezystory. Utrata PEN dodatkowo dotyczy ochrony obudów, dlatego nie utożsamiam jej wyłącznie z awarią roboczego N. W odpowiedzi podaję jednostki, przyjęty kształt przebiegu oraz stan obwodu. Sprawdzam wynik niezależnie przez bilans prądów lub energii, aby błąd rachunku nie ukrył błędnego modelu. Ćwiczenie obliczeniowe nie wymaga odtwarzania awarii na rzeczywistym urządzeniu.",
+          "keyPoints": [
+            "Zmiana topologii",
+            "Podział 400 V",
+            "N a PEN"
+          ],
+          "critical": true,
+          "followUp": "Jak zmieni się sytuacja przy równych rezystancjach?"
+        },
+        {
+          "id": "G13-O4",
+          "prompt": "Czy poprawa PF z 0,8 do 1 zwiększa sprawność silnika do 100%?",
+          "modelAnswer": "Nie, ponieważ współczynnik mocy i sprawność opisują inne proporcje. PF jest stosunkiem mocy czynnej pobranej do mocy pozornej, a sprawność stosunkiem użytecznej mocy wyjściowej do pobranej czynnej. Silnik oddający 3,6 kW przy sprawności 0,90 pobiera 4 kW. Przy PF równym 0,80 potrzebuje 5 kVA. Idealna poprawa PF do jedności zmniejszyłaby potrzebną moc pozorną do 4 kVA, lecz nie usunęłaby strat wewnętrznych silnika. Przy niezmienionej pracy przez dwie godziny pobrana energia czynna pozostaje w tym modelu 8 kWh. Mniejszy prąd może zmniejszyć straty przewodów, ale nie oznacza takiej samej procentowej oszczędności całego napędu. Dla odkształceń nie utożsamiam również PF z samym cosinusem przesunięcia fazowego. W odpowiedzi podaję jednostki, przyjęty kształt przebiegu oraz stan obwodu. Sprawdzam wynik niezależnie przez bilans prądów lub energii, aby błąd rachunku nie ukrył błędnego modelu. Ćwiczenie obliczeniowe nie wymaga odtwarzania awarii na rzeczywistym urządzeniu.",
+          "keyPoints": [
+            "PF=P/S",
+            "η=Pwy/Pwe",
+            "Energia i straty"
+          ],
+          "critical": false,
+          "followUp": "Co zmieni kompensacja w stratach I²R?"
+        }
+      ]
+    },
+    {
+      "id": "G14",
+      "title": "Od przyłącza do odbiornika: architektura instalacji",
+      "file": "g14.md",
+      "minutes": 35,
+      "objective": "prześledzisz źródła, granice odłączenia i funkcje obwodów na schemacie.",
+      "summary": "Od przyłącza do odbiornika: architektura instalacji. Analiza schematów, obliczenia i uzasadnienie decyzji.",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Karta schematów, obliczeń i warunkowych wniosków.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Przerysuj RG/RW z G14 i opisz Q0, Q1, F3, F4 i K1.",
+            "output": "pięć funkcji aparatów."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Zaznacz, co pozostaje zasilane po otwarciu Q1 przy jednym źródle.",
+            "output": "kabel W1 przed Q1 nadal może być pod napięciem."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Dodaj szynę rezerwową i policz czasy z 1,2 kWh przy η=0,90 dla 200 W i 1200 W.",
+            "output": "5,4 h i 0,9 h."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Policz wariant 2 kWh DC, η=0,85, 250 W oraz wypisz brakujące dane produktu.",
+            "output": "6,8 h modelowo, ograniczenia mocy i poboru własnego."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Jedna kreska schematu jednokreskowego oznacza:",
+          "options": [
+            "Zawsze tylko przewód fazowy bez powrotu.",
+            "Brak PE.",
+            "Uproszczone przedstawienie obwodu, niekoniecznie jedną żyłę.",
+            "Obwód wyłącznie DC."
+          ],
+          "answer": 2,
+          "explanation": "Opis i legenda określają liczbę torów i parametry.",
+          "critical": false
+        },
+        {
+          "prompt": "Otwarto Q1 na wejściu RW. Czy kabel W1 przed Q1 jest na pewno bez napięcia?",
+          "options": [
+            "Tak, każdy element warsztatu jest wyłączony.",
+            "Nie, może być nadal zasilany z RG.",
+            "Tak, jeżeli zgasła lampa.",
+            "Tak, jeśli K1 jest otwarty."
+          ],
+          "answer": 1,
+          "explanation": "Granica działania Q1 nie obejmuje automatycznie odcinka przed nim.",
+          "critical": true
+        },
+        {
+          "prompt": "Otwarty pierścień w normalnym stanie:",
+          "options": [
+            "Zawsze zasila każdy odbiór z obu stron.",
+            "Nie wymaga sprawdzania obciążalności po przełączeniu.",
+            "Ma otwarty punkt i odcinki pracujące promieniowo.",
+            "Jest tym samym co brak jakiejkolwiek rezerwy."
+          ],
+          "answer": 2,
+          "explanation": "Topologia fizyczna i aktualny stan łączników to różne informacje.",
+          "critical": false
+        },
+        {
+          "prompt": "Model 1,2 kWh DC, η=0,90, obciążenie 200 W daje:",
+          "options": [
+            "0,9 godziny.",
+            "54 godziny.",
+            "5,4 godziny.",
+            "6 godzin bez strat."
+          ],
+          "answer": 2,
+          "explanation": "1,2 × 0,90 / 0,2 = 5,4 h.",
+          "critical": false
+        },
+        {
+          "prompt": "Zielono-żółta izolacja potwierdza ciągłość PE?",
+          "options": [
+            "Tak, jeśli odbiornik działa.",
+            "Tak, przy obecności UPS.",
+            "Tak, kolor jest wynikiem pomiaru.",
+            "Nie; oznaczenie nie zastępuje weryfikacji."
+          ],
+          "answer": 3,
+          "explanation": "Kolor identyfikuje przeznaczenie, nie stan połączenia.",
+          "critical": true
+        },
+        {
+          "prompt": "Zwykły falownik PV zawsze zasili dom po zaniku sieci?",
+          "options": [
+            "Tak, bez zmiany sposobu ochrony.",
+            "Tak, każdy licznik przełącza na wyspę.",
+            "Tak, jeśli świeci słońce.",
+            "Nie; potrzebne są przewidziane funkcje i architektura rezerwowa."
+          ],
+          "answer": 3,
+          "explanation": "Współpraca z siecią nie dowodzi funkcji wyspowej.",
+          "critical": true
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G14-O1",
+          "prompt": "Po otwarciu Q1 w RW zgasły odbiory. Dlaczego W1 może pozostać zasilany?",
+          "modelAnswer": "Q1 znajduje się na końcu kabla W1, przy wejściu do rozdzielnicy warsztatowej. Otwarcie tego aparatu przerywa drogę do odbiorów po jego stronie odpływowej, ale nie usuwa połączenia W1 z rozdzielnicą główną przez F3. Kabel może więc nadal mieć napięcie od strony RG. Zgaśnięcie odbiorów potwierdza tylko utratę ich zwykłego zasilania, nie brak napięcia we wszystkich częściach warsztatu. Na schemacie zaznaczam granicę aparatu i śledzę źródło do obu jego stron. Następnie uwzględniam ewentualny falownik, UPS i obce zasilanie sterowania. Nie wydaję polecenia dotykania zacisków na podstawie obserwacji lampy. Rzeczywiste przygotowanie miejsca pracy ma własne wymagania, których analiza kartkowa nie zastępuje. Końcowy zapis powinien wskazywać konkretny obwód, stan łączników i przyjęte źródła. Dzięki temu druga osoba może odtworzyć tok rozumowania z dokumentacji. Dane nieznane oznaczam jako brak, zamiast uzupełniać je na podstawie wyglądu skrzynki lub przyzwyczajeń.",
+          "keyPoints": [
+            "Granica Q1",
+            "W1 od RG",
+            "Inne źródła"
+          ],
+          "critical": true,
+          "followUp": "Co zmieni UPS dołączony za Q1?"
+        },
+        {
+          "id": "G14-O2",
+          "prompt": "Jak połączysz schemat jednokreskowy, połączeń i sterowania w diagnozie silnika?",
+          "modelAnswer": "Najpierw schemat jednokreskowy pozwala znaleźć źródło, zabezpieczenie gałęzi oraz położenie silnika w instalacji. Następnie schemat połączeń określa zaciski, żyły i odniesienia pomiędzy aparatami. Schemat sterowania wyjaśnia, jakie warunki muszą być spełnione, aby cewka stycznika otrzymała zasilanie. Wspólne identyfikatory pozwalają rozpoznać, że K1 we wszystkich widokach jest tym samym elementem. Otwarcie styku STOP może pozbawić cewkę energii, ale nie musi izolować toru mocy. Brak pracy silnika może wynikać zarówno z zasilania, jak z blokady sterowania. Sprawdzam legendę i aktualność rewizji, ponieważ dwie poprawnie narysowane, lecz różne wersje mogą prowadzić do błędnej interpretacji. Nie traktuję pojedynczej kreski jako pojedynczej fizycznej żyły. Końcowy zapis powinien wskazywać konkretny obwód, stan łączników i przyjęte źródła. Dzięki temu druga osoba może odtworzyć tok rozumowania z dokumentacji. Dane nieznane oznaczam jako brak, zamiast uzupełniać je na podstawie wyglądu skrzynki lub przyzwyczajeń.",
+          "keyPoints": [
+            "Trzy pytania trzech schematów",
+            "Identyfikatory",
+            "Sterowanie a izolacja"
+          ],
+          "critical": false,
+          "followUp": "Dlaczego potrzebna jest wspólna rewizja?"
+        },
+        {
+          "id": "G14-O3",
+          "prompt": "Czy zamknięcie otwartego pierścienia zawsze zwiększy niezawodność?",
+          "modelAnswer": "Otwarty pierścień ma przewidzianą drogę rezerwową, ale jego normalny stan łączników powoduje promieniowe zasilanie odcinków. Zamknięcie punktu zmienia rozpływ prądów i możliwe kierunki zasilania uszkodzenia. Bez sprawdzenia planu ochrony nie mogę uznać takiej zmiany za poprawę. Po izolowaniu uszkodzonego odcinka pozostała droga musi przenieść odbiory, które ma przejąć, oraz zachować wymagane warunki ochrony. W zamkniętym pierścieniu może być potrzebna inna koordynacja niż w promieniu. Rezerwa jest właściwością całego projektu, a nie samego dodatkowego kabla. Rozpatruję osobno stan normalny, uszkodzenie i stan po przełączeniu. Ograniczenia mogą dotyczyć także źródła, szyn, aparatów oraz dopuszczalnej przerwy w zasilaniu odbiorów. Końcowy zapis powinien wskazywać konkretny obwód, stan łączników i przyjęte źródła. Dzięki temu druga osoba może odtworzyć tok rozumowania z dokumentacji. Dane nieznane oznaczam jako brak, zamiast uzupełniać je na podstawie wyglądu skrzynki lub przyzwyczajeń.",
+          "keyPoints": [
+            "Stan normalny",
+            "Rozpływ i ochrona",
+            "Obciążalność rezerwy"
+          ],
+          "critical": true,
+          "followUp": "Jaką informację wnosi normalnie otwarty punkt?"
+        },
+        {
+          "id": "G14-O4",
+          "prompt": "Dlaczego 2 kWh magazynu nie zapewnia dowolnej mocy i pewnych 8 godzin pracy?",
+          "modelAnswer": "Energia i moc opisują dwa różne ograniczenia. Pojemność określa zasób, a moc falownika tempo jego oddawania. Dla dostępnych 2 kWh DC, sprawności toru 0,85 i stałego odbioru 250 W otrzymuję 1,7 kWh AC oraz 6,8 godziny pracy w modelu. Nie jest to osiem godzin, ponieważ uwzględniłem straty. Rzeczywisty czas zmieni pobór własny, temperatura, starzenie, dostępny zakres naładowania i zmienność odbioru. Odbiornik z dużym rozruchem może przekroczyć moc chwilową falownika mimo wystarczającej energii akumulatora. Najpierw definiuję listę odbiorów szyny rezerwowej, potem ich bilans mocy i energii. Sama obecność magazynu nie dowodzi także właściwej architektury przełączenia ani spełnienia wymagań zasilania urządzeń bezpieczeństwa. Końcowy zapis powinien wskazywać konkretny obwód, stan łączników i przyjęte źródła. Dzięki temu druga osoba może odtworzyć tok rozumowania z dokumentacji. Dane nieznane oznaczam jako brak, zamiast uzupełniać je na podstawie wyglądu skrzynki lub przyzwyczajeń.",
+          "keyPoints": [
+            "kWh a kW",
+            "6,8 h modelowo",
+            "Warunki autonomii"
+          ],
+          "critical": false,
+          "followUp": "Co zmieni dołączenie grzejnika?"
+        }
+      ]
+    },
+    {
+      "id": "G15",
+      "title": "Droga uszkodzenia: TN, TT, IT i warstwy ochrony",
+      "file": "g15.md",
+      "minutes": 35,
+      "objective": "wyjaśnisz powrót prądu uszkodzeniowego i warunkowe kryteria wyłączenia.",
+      "summary": "Droga uszkodzenia: TN, TT, IT i warstwy ochrony. Analiza schematów, obliczenia i uzasadnienie decyzji.",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Karta schematów, obliczeń i warunkowych wniosków.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Narysuj TN-C, TN-S, TN-C-S, TT i IT wraz z drogami roboczymi i uszkodzeniowymi.",
+            "output": "pięć opisanych topologii."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Odtwórz TN 230 V/100 A i TT 80 Ω×30 mA.",
+            "output": "2,30 Ω i 2,4 V z ograniczeniami."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Policz TN: U0=230 V, Ia=80 A, Zs=2 Ω.",
+            "output": "115 A, granica 2,875 Ω."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wyjaśnij utratę PEN i drugie uszkodzenie IT.",
+            "output": "dwie pętle i konsekwencje ochronne."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Pierwsza litera I w IT oznacza:",
+          "options": [
+            "Obowiązkową pracę bez kontroli izolacji.",
+            "Prąd impulsowy.",
+            "Izolowanie źródła od ziemi lub połączenie przez dużą impedancję.",
+            "Brak PE we wszystkich odbiornikach."
+          ],
+          "answer": 2,
+          "explanation": "Pierwsza litera dotyczy źródła, druga części dostępnych.",
+          "critical": false
+        },
+        {
+          "prompt": "Po rozdziale PEN można ponownie połączyć PE i N przy odbiorniku?",
+          "options": [
+            "Tak, jeśli N jest niebieski.",
+            "Tak, za każdym RCD.",
+            "Tak, zawsze dla lepszej ochrony.",
+            "Nie; dalej zachowuje się rozdzielone funkcje."
+          ],
+          "answer": 3,
+          "explanation": "Mostek odtwarza niepożądaną wspólną drogę i może skierować prąd roboczy do toru ochronnego.",
+          "critical": true
+        },
+        {
+          "prompt": "TN: U0=230 V, Ia=100 A, Zs=3 Ω. Czy spełniono zadany warunek?",
+          "options": [
+            "Tak, używa się 400 V.",
+            "Nie; prąd modelowy to około 76,7 A.",
+            "Tak, bo zabezpieczenie ma mniej niż 230 A.",
+            "Tak, każdy aparat kiedyś zadziała."
+          ],
+          "answer": 1,
+          "explanation": "Warunek dotyczy Ia dla wymaganego czasu, nie dowolnego późniejszego zadziałania.",
+          "critical": true
+        },
+        {
+          "prompt": "Przy U0=230 V AC, końcowym obwodzie gniazd do 63 A, przewodnik IEC podaje dla TN/TT:",
+          "options": [
+            "0,4 s / 0,2 s, z koniecznością potwierdzenia zastosowania normy.",
+            "0,4 s dla każdego DC.",
+            "Dowolny czas wynikający z wygody.",
+            "5 s / 5 s dla każdego obwodu."
+          ],
+          "answer": 0,
+          "explanation": "Zakres obwodu, napięcie i właściwe wymagania są częścią kryterium.",
+          "critical": true
+        },
+        {
+          "prompt": "RA=80 Ω i IΔn=30 mA dają:",
+          "options": [
+            "0,0024 V.",
+            "2,4 V gwarantowane przy każdym zwarciu.",
+            "2400 V.",
+            "2,4 V jako iloczyn do warunku doboru."
+          ],
+          "answer": 3,
+          "explanation": "Iloczyn RA×IΔn nie jest uniwersalnym napięciem obudowy podczas zwarcia.",
+          "critical": false
+        },
+        {
+          "prompt": "Pierwszy alarm izolacji IT pozwala go ignorować, skoro odbiorniki pracują?",
+          "options": [
+            "Tak, aż do drugiego uszkodzenia.",
+            "Nie; wymaga obsługi i lokalizacji według procedury.",
+            "Tak, IT nie ma prądów doziemnych.",
+            "Tak, gdy obudowy są metalowe."
+          ],
+          "answer": 1,
+          "explanation": "Dalsza praca jest warunkowa, a drugie uszkodzenie zmienia pętlę.",
+          "critical": true
+        },
+        {
+          "prompt": "Jakie jest minimum mechaniczne PEN w instalacji stałej według przywołanego przewodnika IEC?",
+          "options": [
+            "2,5 mm² dla każdego materiału.",
+            "16 mm² Cu i 10 mm² Al, bez innych warunków.",
+            "10 mm² Cu lub 16 mm² Al; nadal trzeba spełnić inne warunki doboru.",
+            "Dowolny przekrój, jeśli istnieje RCD w TN-C."
+          ],
+          "answer": 2,
+          "explanation": "PEN pełni obie funkcje, ma minimum mechaniczne 10 mm² Cu/16 mm² Al i jest stosowany w instalacjach stałych. PE/PEN nie przerywa się aparatem.",
+          "critical": true
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G15-O1",
+          "prompt": "Dlaczego prąd zwarcia do obudowy w TN bywa większy niż w TT?",
+          "modelAnswer": "W TN zasadnicza droga powrotna prowadzi metalicznie przez PE lub PEN do uziemionego punktu źródła. W TT obejmuje zwykle uziom instalacji, grunt i uziemienie źródła, więc impedancja jest często znacznie większa. Przy tym samym napięciu większa impedancja daje mniejszy prąd uszkodzenia. Może on nie wystarczyć do szybkiego zadziałania zabezpieczenia nadprądowego, dlatego w TT typowo wykorzystuje się RCD. Nie mówię, że prąd kończy drogę w ziemi: musi wrócić do źródła. W TN sprawdzam Zs i Ia dla wymaganego czasu. W TT sprawdzam także powiązanie RA z czułością i rzeczywiste wyłączenie. Oba układy wymagają ciągłości właściwych połączeń ochronnych; sama nazwa nie gwarantuje skuteczności. Wniosek ograniczam do wskazanego układu i warunków. Rzeczywista ocena wymaga aktualnej dokumentacji, potwierdzenia połączeń oraz odpowiednich badań. Wartość liczbowa bez napięcia, czasu i rodzaju obwodu nie jest wystarczającym kryterium ochrony i nie dowodzi bezpieczeństwa całej instalacji.",
+          "keyPoints": [
+            "Metaliczny powrót TN",
+            "Ziemia w TT",
+            "Ia i czas"
+          ],
+          "critical": true,
+          "followUp": "Czy sam mały RA zastępuje kontrolę czasu?"
+        },
+        {
+          "id": "G15-O2",
+          "prompt": "Dlaczego po rozdziale PEN nie wykonujemy mostka PE–N?",
+          "modelAnswer": "Rozdział nadaje przewodom odrębne funkcje. N prowadzi prąd roboczy, a PE służy ochronie dostępnych części. Ponowne połączenie umożliwia prądowi roboczemu podział między neutralny i drogi ochronne. Może powodować niepożądane napięcia na tych drogach oraz zaburzać bilans obserwowany przez RCD. Nie jest więc automatycznym zwiększeniem bezpieczeństwa. Dodatkowo uszkodzenie neutralnego w części poprzedzającej mostek może zmienić drogę prądu w niebezpieczny sposób. Na schemacie zaznaczam punkt rozdziału i sprawdzam, że dalej funkcje pozostają osobne. Utrata PEN przed rozdziałem dotyczy jednocześnie odniesienia neutralnego i funkcji ochronnej; dodatkowy uziom nie daje bezwarunkowego rozwiązania. Ocenę trzeba oprzeć na rzeczywistych połączeniach, a nie kolorach przewodów. Wniosek ograniczam do wskazanego układu i warunków. Rzeczywista ocena wymaga aktualnej dokumentacji, potwierdzenia połączeń oraz odpowiednich badań. Wartość liczbowa bez napięcia, czasu i rodzaju obwodu nie jest wystarczającym kryterium ochrony i nie dowodzi bezpieczeństwa całej instalacji.",
+          "keyPoints": [
+            "Rozdzielone funkcje",
+            "Prąd roboczy w PE",
+            "Utrata PEN"
+          ],
+          "critical": true,
+          "followUp": "Czy lokalny uziom zawsze zastępuje PEN?"
+        },
+        {
+          "id": "G15-O3",
+          "prompt": "Dlaczego pierwszy alarm IT nie oznacza tego samego co drugie uszkodzenie?",
+          "modelAnswer": "Przy pierwszym uszkodzeniu przewodu czynnego do części dostępnej droga powrotna może mieć dużą impedancję przez izolację i pojemności względem ziemi. Prąd może pozostać na tyle mały, aby po spełnieniu warunków ochrony utrzymać zasilanie. Wymagane jest monitorowanie izolacji oraz obsługa alarmu i lokalizacja uszkodzenia. Drugie uszkodzenie innego przewodu czynnego może zamknąć znacznie mniejszą pętlę przez dwie obudowy i ich połączenie PE. Na przykład L1 przez pierwsze uszkodzenie, PE i drugie uszkodzenie łączy się z L2. Wtedy potrzebne jest właściwe szybkie wyłączenie. Nie zakładam identycznego zachowania wszystkich IT, ponieważ sposób uziemiania grup odbiorów i rozprowadzenia przewodów zmienia analizę. Brak przerwy w pracy nie usuwa awarii. Wniosek ograniczam do wskazanego układu i warunków. Rzeczywista ocena wymaga aktualnej dokumentacji, potwierdzenia połączeń oraz odpowiednich badań. Wartość liczbowa bez napięcia, czasu i rodzaju obwodu nie jest wystarczającym kryterium ochrony i nie dowodzi bezpieczeństwa całej instalacji.",
+          "keyPoints": [
+            "Pierwsza pętla",
+            "Monitorowanie",
+            "Druga pętla"
+          ],
+          "critical": true,
+          "followUp": "Co zmieniają oddzielne uziemienia odbiorów?"
+        },
+        {
+          "id": "G15-O4",
+          "prompt": "Czy 24 V na tabliczce wystarcza do uznania zasilania za SELV?",
+          "modelAnswer": "Nie, wartość napięcia jest tylko jednym elementem środka ochrony. Trzeba potwierdzić odpowiednie źródło, ochronne oddzielenie od wyższych napięć oraz wykonanie całego obwodu. SELV nie ma zamierzonego połączenia z ziemią; PELV dopuszcza takie połączenie przy zachowaniu właściwego oddzielenia. Zasilacz bez wymaganej separacji nie staje się bezpiecznym źródłem SELV wyłącznie dlatego, że daje 24 V. Również dobór odbiornika i prowadzenie przewodów muszą zachować założenia. Klasa II opisuje izolację podwójną lub wzmocnioną, a klasa III ochronę opartą na SELV bez wytwarzania wyższego napięcia. Nie rozpoznaję klas po samym materiale obudowy. Sprawdzam oznaczenie i dokumentację, a szczególne środowisko może wprowadzać dodatkowe ograniczenia. Wniosek ograniczam do wskazanego układu i warunków. Rzeczywista ocena wymaga aktualnej dokumentacji, potwierdzenia połączeń oraz odpowiednich badań. Wartość liczbowa bez napięcia, czasu i rodzaju obwodu nie jest wystarczającym kryterium ochrony i nie dowodzi bezpieczeństwa całej instalacji.",
+          "keyPoints": [
+            "Źródło i oddzielenie",
+            "SELV a PELV",
+            "Klasy ochronności"
+          ],
+          "critical": true,
+          "followUp": "Dlaczego plastikowa obudowa nie dowodzi klasy II?"
+        }
+      ]
+    },
+    {
+      "id": "G16",
+      "title": "Jak działa aparat: mechanizmy i koordynacja",
+      "file": "g16.md",
+      "minutes": 35,
+      "objective": "powiążesz charakterystyki aparatów z wyłączeniem, rozruchem i selektywnością.",
+      "summary": "Jak działa aparat: mechanizmy i koordynacja. Analiza schematów, obliczenia i uzasadnienie decyzji.",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Karta schematów, obliczeń i warunkowych wniosków.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Porównaj funkcje gG, aM, MCB, RCCB, RCBO i stycznika.",
+            "output": "tabela sześciu aparatów."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Policz Ia i granice Zs dla modelu B16/C16 przy 230 V.",
+            "output": "80/160 A i 2,875/1,4375 Ω."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Oceń rozruch 70 A przez 0,15 s dla B16 i C16.",
+            "output": "4,375 In i brak pełnego dowodu doboru."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Policz wariant C16 przy Zs=1 Ω; dodaj wymagania koordynacji.",
+            "output": "230 A>160 A, konieczna tabela selektywności."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Wkładka aM samodzielnie zapewnia pełną ochronę przeciążeniową silnika?",
+          "options": [
+            "Tak, litera M oznacza wszystkie funkcje.",
+            "Tak, wystarczy stycznik bez przekaźnika.",
+            "Nie; potrzebuje osobnej ochrony przeciążeniowej.",
+            "Tak, jeśli ma duży prąd znamionowy."
+          ],
+          "answer": 2,
+          "explanation": "aM jest niepełnozakresową ochroną zwarciową.",
+          "critical": true
+        },
+        {
+          "prompt": "Górna granica modelowa członu magnetycznego B16 to:",
+          "options": [
+            "160 A.",
+            "16 A.",
+            "80 A przy założeniu 5 In.",
+            "48 A jako gwarantowana granica dla wszystkich B."
+          ],
+          "answer": 2,
+          "explanation": "Do modelu przyjęto górny próg 5×16 A.",
+          "critical": false
+        },
+        {
+          "prompt": "Przy Zs=2 Ω i 230 V model B16/C16 daje:",
+          "options": [
+            "80 A niezależnie od pętli.",
+            "230 A, więc oba spełnione.",
+            "115 A; spełniony próg 80 A, niewykazany próg 160 A.",
+            "115 A, więc oba zawsze identycznie."
+          ],
+          "answer": 2,
+          "explanation": "Zmiana B na C zmienia wymagany prąd szybkiego wyłączenia.",
+          "critical": true
+        },
+        {
+          "prompt": "RCCB z napisem 40 A zapewnia samodzielne wyłączenie przeciążenia 45 A?",
+          "options": [
+            "Nie; nie ma zintegrowanej ochrony nadprądowej.",
+            "Tak, typ A zastępuje MCB.",
+            "Tak, po naciśnięciu TEST.",
+            "Tak, zawsze natychmiast."
+          ],
+          "answer": 0,
+          "explanation": "40 A jest prądem znamionowym toru, a nie progiem członu nadprądowego RCCB.",
+          "critical": true
+        },
+        {
+          "prompt": "Pozytywny TEST RCD dowodzi ciągłości PE i prawidłowego czasu zadziałania w instalacji?",
+          "options": [
+            "Tak, zastępuje wszystkie pomiary.",
+            "Tak, gdy RCD ma 30 mA.",
+            "Nie; test przyciskowy ma ograniczony zakres.",
+            "Tak, jeśli instalacja jest nowa."
+          ],
+          "answer": 2,
+          "explanation": "TEST nie jest kompletnym badaniem ochrony.",
+          "critical": true
+        },
+        {
+          "prompt": "Ochrona rezerwowa i selektywność oznaczają to samo?",
+          "options": [
+            "Tak, jeśli oba mają 6 kA.",
+            "Tak, wystarcza jedna marka.",
+            "Nie; ochronie rezerwowej może towarzyszyć wyłączenie obu aparatów.",
+            "Tak, każda para 16/32 A jest selektywna."
+          ],
+          "answer": 2,
+          "explanation": "Potrzebne są dane konkretnej pary, nastaw i prądu zwarcia.",
+          "critical": false
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G16-O1",
+          "prompt": "Dlaczego C16 może rozwiązać problem rozruchu i jednocześnie pogorszyć ochronę?",
+          "modelAnswer": "Prąd znamionowy 16 A pozostaje taki sam, ale próg szybkiego członu magnetycznego wzrasta. W modelu B16 stosuję górną granicę 80 A, a C16 160 A. Krótki rozruch 70 A znajduje się wewnątrz pasma B, a poniżej dolnej granicy pasma C. C może więc lepiej tolerować taki impuls. Przy pętli 2 Ω i napięciu 230 V prąd uszkodzenia wynosi jednak tylko 115 A. Spełnia przyjęty próg B, lecz nie wykazuje szybkiego działania C. Nie wynika z tego, że C nigdy nie wyłączy, tylko że potrzebny jest inny dowód czasu z charakterystyki. Dobór musi równocześnie uwzględnić rozruch, obciążalność przewodu, zwarcie i warunki ochrony. Każdy wniosek zapisuję wraz z modelem aparatu i warunkami zastosowania. Charakterystyka, zdolność wyłączania i wymagany czas odpowiadają na różne pytania. Dane syntetyczne uczą rozumowania, ale do ostatecznego doboru potrzebna jest dokumentacja konkretnego urządzenia i obwodu.",
+          "keyPoints": [
+            "80/160 A",
+            "115 A pętli",
+            "Rozruch i ochrona"
+          ],
+          "critical": true,
+          "followUp": "Jakie Zs daje granicę modelową C16?"
+        },
+        {
+          "id": "G16-O2",
+          "prompt": "Dlaczego RCCB 40 A/30 mA nie zastępuje wyłącznika nadprądowego?",
+          "modelAnswer": "Dwie liczby opisują różne właściwości. Czterdzieści amperów jest prądem znamionowym toru, a trzydzieści miliamperów znamionowym prądem różnicowym. RCCB nie ma zintegrowanego członu przeciążeniowego i zwarciowego jak RCBO. Obserwuje niezrównoważenie prądów przewodów czynnych. Gdy duży prąd zwarcia płynie L i w całości wraca N przez przekładnik, bilans może pozostać zerowy, mimo że występuje poważne zagrożenie cieplne. Potrzebna jest właściwa ochrona nadprądowa oraz koordynacja aparatu. Typ przebiegu AC, A, F lub B to jeszcze inne zagadnienie i nie dodaje automatycznie członu nadprądowego. Sprawdzam funkcje w dokumentacji zamiast wnioskować z podobnego wyglądu aparatu. Obecność przycisku TEST także nie zmienia tej różnicy konstrukcyjnej. Każdy wniosek zapisuję wraz z modelem aparatu i warunkami zastosowania. Charakterystyka, zdolność wyłączania i wymagany czas odpowiadają na różne pytania. Dane syntetyczne uczą rozumowania, ale do ostatecznego doboru potrzebna jest dokumentacja konkretnego urządzenia i obwodu.",
+          "keyPoints": [
+            "Dwa parametry",
+            "Bilans prądu",
+            "RCCB a RCBO"
+          ],
+          "critical": true,
+          "followUp": "Co dzieje się przy zwarciu L–N?"
+        },
+        {
+          "id": "G16-O3",
+          "prompt": "Dlaczego TEST i typ A nie rozstrzygają zgodności ochrony falownika?",
+          "modelAnswer": "Przycisk TEST wywołuje przewidziany wewnętrzny stan sprawdzający działanie RCD. Nie mierzy kompletnego czasu w instalacji, nie potwierdza ciągłości PE i nie odtwarza wszystkich możliwych przebiegów uszkodzenia przekształtnika. Typ A wykrywa sinusoidalne AC oraz pulsujące DC, lecz nie jest ogólnym detektorem dowolnego gładkiego DC. Przekształtnik może wymagać innego typu albo posiadać określoną funkcję ograniczenia lub detekcji DC, którą trzeba ocenić zgodnie z jego dokumentacją. Ważne są też aparaty znajdujące się wcześniej w instalacji. Nie wybieram typu wyłącznie na podstawie nazwy PV lub BESS. Łączę wymagania producenta z możliwym przebiegiem różnicowym i architekturą całego toru. Wynik TEST jest dowodem tylko ograniczonej funkcji. Każdy wniosek zapisuję wraz z modelem aparatu i warunkami zastosowania. Charakterystyka, zdolność wyłączania i wymagany czas odpowiadają na różne pytania. Dane syntetyczne uczą rozumowania, ale do ostatecznego doboru potrzebna jest dokumentacja konkretnego urządzenia i obwodu.",
+          "keyPoints": [
+            "Zakres TEST",
+            "Przebieg DC",
+            "Dokumentacja toru"
+          ],
+          "critical": true,
+          "followUp": "Co odróżnia odporność na DC od wykrywania DC?"
+        },
+        {
+          "id": "G16-O4",
+          "prompt": "Jak odróżnisz selektywność od ochrony rezerwowej pary aparatów?",
+          "modelAnswer": "Selektywność dotyczy zachowania ciągłości zdrowej części instalacji: w określonym zakresie uszkodzenie odłącza właściwy aparat bliżej niego. Ochrona rezerwowa dotyczy współpracy podczas zwarcia, gdy aparat poprzedzający ogranicza obciążenie aparatu za nim. Może wówczas dojść do wyłączenia obu, więc spełnienie jednej właściwości nie dowodzi drugiej. Sama relacja 16 A do 32 A nie określa zakresu selektywności. Potrzebuję tabeli konkretnej pary, napięcia, nastaw i prądu spodziewanego zwarcia. Porównuję osobno granicę selektywności i dopuszczalność ochrony rezerwowej. Nie zastępuję tych danych ogólną deklaracją jednej marki. Jeżeli producent podaje selektywność częściową, zapisuję jej granicę i sprawdzam, czy obejmuje warunki analizowanego punktu instalacji. Każdy wniosek zapisuję wraz z modelem aparatu i warunkami zastosowania. Charakterystyka, zdolność wyłączania i wymagany czas odpowiadają na różne pytania. Dane syntetyczne uczą rozumowania, ale do ostatecznego doboru potrzebna jest dokumentacja konkretnego urządzenia i obwodu.",
+          "keyPoints": [
+            "Ciągłość zasilania",
+            "Współpraca zwarciowa",
+            "Tabela konkretnej pary"
+          ],
+          "critical": false,
+          "followUp": "Czy w ochronie rezerwowej oba aparaty mogą wyłączyć?"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "G-DEP-C-S-rms",
+      "title": "Fluke: What is true-RMS?",
+      "url": "https://www.fluke.com/en-gb/learn/blog/electrical/what-is-true-rms",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "RMS i odkształcone przebiegi; nie potwierdza pasma dowolnego przyrządu. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-power",
+      "title": "Installed apparent power (kVA)",
+      "url": "https://www.electrical-installation.org/enwiki/Installed_apparent_power_(kVA)",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Moc pozorna, PF; przykłady autorskie, model symetryczny sinusoidalny. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-neutral",
+      "title": "The neutral conductor",
+      "url": "https://www.electrical-installation.org/enwiki/The_neutral_conductor",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Funkcja, oznaczenia i dobór N; harmoniczne wymagają analizy. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-boards",
+      "title": "Distribution switchboards",
+      "url": "https://www.electrical-installation.org/enwiki/Distribution_switchboards",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Hierarchia i funkcje rozdzielnic; schemat RG/RW jest autorski. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-architecture",
+      "title": "Configuration of LV circuits",
+      "url": "https://www.electrical-installation.org/enwiki/Configuration_of_LV_circuits",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Konfiguracje zasilania; nie projekt przełączeń konkretnego obiektu. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-cables",
+      "title": "Cables and busways",
+      "url": "https://www.electrical-installation.org/enwiki/Cables_and_busways",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Identyfikacja żył i metody prowadzenia; kolor nie stanowi pomiaru. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-details",
+      "title": "Choice of architecture details",
+      "url": "https://www.electrical-installation.org/enwiki/Choice_of_architecture_details",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Źródła rezerwowe i UPS; autonomia w kursie syntetyczna. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-earthing",
+      "title": "Definition of standardised earthing schemes",
+      "url": "https://www.electrical-installation.org/enwiki/Definition_of_standardised_earthing_schemes",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Topologie TN/TT/IT; nie diagnoza rzeczywistego układu. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-tn",
+      "title": "TN system - Principle",
+      "url": "https://www.electrical-installation.org/enwiki/TN_system_-_Principle",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Zs, Ia, czasy IEC dla AC; potwierdzić właściwą polską edycję i warunki szczególne. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-tt",
+      "title": "TT system - Principle",
+      "url": "https://www.electrical-installation.org/enwiki/TT_system_-_Principle",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "RA×IΔn i granica napięcia; nie uniwersalne kryterium wszystkich uziomów. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-tt-time",
+      "title": "TT system - Practical aspects",
+      "url": "https://www.electrical-installation.org/enwiki/TT_system_-_Practical_aspects",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Czasy końcowe 63 A gniazda /32 A stałe i rozdzielcze; nie przenosić na DC. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-it",
+      "title": "IT system - Principle",
+      "url": "https://www.electrical-installation.org/enwiki/IT_system_-_Principle",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Pierwsze i drugie uszkodzenie oraz monitorowanie; warunkowa ciągłość pracy. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-elv",
+      "title": "Extra Low Voltage (ELV)",
+      "url": "https://www.electrical-installation.org/enwiki/Extra_Low_Voltage_(ELV)",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "SELV/PELV; szczególne lokalizacje wymagają własnych warunków. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-class",
+      "title": "Class II equipment",
+      "url": "https://www.electrical-installation.org/enwiki/Class_II_equipment",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Izolacja podwójna; nie identyfikować klasy po obudowie. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-separation",
+      "title": "The electrical separation of circuits",
+      "url": "https://www.electrical-installation.org/enwiki/The_electrical_separation_of_circuits",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Separacja i ograniczenia, bez kopiowania schematów. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-curves",
+      "title": "Fundamental characteristics of a circuit-breaker",
+      "url": "https://www.electrical-installation.org/enwiki/Fundamental_characteristics_of_a_circuit-breaker",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "B/C/D dla wskazanych aparatów AC; warianty przemysłowe według producenta. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-switchgear",
+      "title": "Elementary switching devices",
+      "url": "https://www.electrical-installation.org/enwiki/Elementary_switching_devices",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "gG/aM, stycznik, rozłącznik; nie przenosić parametrów AC na DC. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-rcd-types",
+      "title": "Types of RCDs",
+      "url": "https://www.electrical-installation.org/enwiki/Types_of_RCDs",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "AC/A/F/B; dobór według przebiegu i dokumentacji falownika. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-coordination",
+      "title": "Coordination between circuit-breakers",
+      "url": "https://www.electrical-installation.org/enwiki/Coordination_between_circuit-breakers",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Selektywność i ochrona rezerwowa wymagają tabel konkretnej pary. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-pe-size",
+      "title": "Sizing of protective earthing conductor",
+      "url": "https://www.electrical-installation.org/enwiki/Sizing_of_protective_earthing_conductor",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "PEN 10 mm² Cu /16 mm² Al, wyłącznie stałe instalacje; minimum mechaniczne nie zastępuje doboru. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-pe-connect",
+      "title": "Connection and choice for protective earthing conductor",
+      "url": "https://www.electrical-installation.org/enwiki/Connection_and_choice_for_protective_earthing_conductor",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Ciągłość PE/PEN oraz brak ponownego łączenia PE z N. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-rcd-principle",
+      "title": "Description of RCDs",
+      "url": "https://www.electrical-installation.org/enwiki/Description_of_RCDs",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Bilans prądów przekładnika; bez uogólniania zachowania przy zaniku napięcia. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    },
+    {
+      "id": "G-DEP-C-S-rcd-form",
+      "title": "Form factors of RCDs",
+      "url": "https://www.electrical-installation.org/enwiki/Form_factors_of_RCDs",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Rozróżnienie RCCB/RCBO. Źródło pobrano 2026-09-24. Własna parafraza i link, bez reprodukcji tekstu, tabel lub ilustracji; nie deklarujemy licencji na redystrybucję dokumentu."
+    }
+  ],
+  "claims": [
+    {
+      "id": "G-DEP-C-C-rms",
+      "statement": "Dla sinusoidy napięcie szczytowe jest √2 razy większe od skutecznego; odkształcenia wymagają odpowiedniej metody RMS.",
+      "source_ids": [
+        "G-DEP-C-S-rms"
+      ],
+      "lesson_ids": [
+        "G13"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-C-C-power",
+      "statement": "PF=P/S różni się od sprawności; S=UI jednofazowo i √3UI przy symetrycznym układzie trójfazowym.",
+      "source_ids": [
+        "G-DEP-C-S-power"
+      ],
+      "lesson_ids": [
+        "G13"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-C-C-neutral",
+      "statement": "Dobór N zależy od asymetrii, harmonicznych i układu ochrony; kolor nie potwierdza ciągłości.",
+      "source_ids": [
+        "G-DEP-C-S-neutral",
+        "G-DEP-C-S-cables"
+      ],
+      "lesson_ids": [
+        "G13",
+        "G14"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-C-C-architecture",
+      "statement": "Rozdzielnice dzielą zasilanie; alternatywne drogi i źródła wymagają analizy stanów oraz koordynacji.",
+      "source_ids": [
+        "G-DEP-C-S-boards",
+        "G-DEP-C-S-architecture",
+        "G-DEP-C-S-details"
+      ],
+      "lesson_ids": [
+        "G14"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-C-C-earthing",
+      "statement": "TN ma metaliczny powrót ochronny, TT pętlę przez uziemienia, IT warunkową pracę po pierwszym uszkodzeniu.",
+      "source_ids": [
+        "G-DEP-C-S-earthing",
+        "G-DEP-C-S-tn",
+        "G-DEP-C-S-tt",
+        "G-DEP-C-S-it"
+      ],
+      "lesson_ids": [
+        "G15"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-C-C-times",
+      "statement": "Przy U0=230 V AC omawiane IEC czasy TN/TT wynoszą 0,4/0,2 s dla obwodów końcowych z gniazdami do63 A lub stałymi odbiorami do32 A; pozostałe 5/1 s, z potwierdzeniem właściwego zakresu normy.",
+      "source_ids": [
+        "G-DEP-C-S-tn",
+        "G-DEP-C-S-tt-time"
+      ],
+      "lesson_ids": [
+        "G15"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-C-C-pen",
+      "statement": "PEN tylko w instalacjach stałych: minimum10 mm² Cu lub16 mm² Al; nie przerywa się PE/PEN i nie łączy PE z N za rozdziałem; RCD nie w części TN-C.",
+      "source_ids": [
+        "G-DEP-C-S-pe-size",
+        "G-DEP-C-S-pe-connect",
+        "G-DEP-C-S-tn"
+      ],
+      "lesson_ids": [
+        "G15"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-C-C-elv",
+      "statement": "SELV/PELV wymagają właściwego źródła i oddzielenia; sama wartość24 V nie wystarcza. Klasa II opiera ochronę na podwójnej lub wzmocnionej izolacji.",
+      "source_ids": [
+        "G-DEP-C-S-elv",
+        "G-DEP-C-S-class",
+        "G-DEP-C-S-separation"
+      ],
+      "lesson_ids": [
+        "G15"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-C-C-curves",
+      "statement": "Model górnych progów B16/C16:80/160 A, granice230/Ia:2,875/1,4375 Ω, tylko przy ujawnionych założeniach.",
+      "source_ids": [
+        "G-DEP-C-S-curves",
+        "G-DEP-C-S-tn"
+      ],
+      "lesson_ids": [
+        "G16"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-C-C-fuses",
+      "statement": "gG obejmuje przeciążenie i zwarcie, aM wymaga oddzielnej ochrony przeciążeniowej; stycznik nie zastępuje wyłącznika zwarciowego.",
+      "source_ids": [
+        "G-DEP-C-S-switchgear"
+      ],
+      "lesson_ids": [
+        "G16"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-C-C-rcd",
+      "statement": "RCCB nie ma zintegrowanej ochrony nadprądowej, RCBO łączy funkcje; typy RCD zależą od przebiegów różnicowych.",
+      "source_ids": [
+        "G-DEP-C-S-rcd-principle",
+        "G-DEP-C-S-rcd-form",
+        "G-DEP-C-S-rcd-types"
+      ],
+      "lesson_ids": [
+        "G16"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-C-C-coordination",
+      "statement": "Selektywność i ochrona rezerwowa to różne właściwości; deklaracja wymaga danych konkretnej pary.",
+      "source_ids": [
+        "G-DEP-C-S-coordination"
+      ],
+      "lesson_ids": [
+        "G16"
+      ],
+      "status": "supported"
+    }
+  ]
+}

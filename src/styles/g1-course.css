@@ -1,5 +1,6 @@
 .g1-scope { display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:24px;background:#e7efe5;border:1px solid #bacab6;border-radius:12px;color:#23463d;margin:0 0 22px; }
 .g1-scope strong { font-size:16px; }.g1-scope p { font-size:14px;line-height:1.75;margin-top:8px; }
+.g1-scope a{color:inherit;text-underline-offset:3px}.g1-readiness{padding-left:24px;margin:20px 0}.g1-readiness li{font-size:14px;line-height:1.8;color:var(--course-soft);padding:8px 0}.g1-readiness strong{color:var(--course-ink)}
 .g1-coverage { padding:20px 24px;border:1px solid var(--course-line);border-radius:12px;margin-bottom:28px;background:var(--course-panel); }
 .g1-coverage summary { cursor:pointer;font-weight:600;min-height:30px; }.g1-coverage summary span { display:block;font-size:12px;line-height:1.7;font-weight:400;color:var(--course-soft);margin-top:5px; }
 .g1-coverage p { margin:18px 0;font-size:14px;line-height:1.7;color:var(--course-soft); }.g1-coverage a { color:var(--course-ink);text-underline-offset:3px; }

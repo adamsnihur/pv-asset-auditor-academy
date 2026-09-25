@@ -1,5 +1,7 @@
 # Audyt zakresu wiedzy G1
 
+> Aktualizacja: szczegółowy zakres E + D do 1 kV, pomiary i PV/BESS oraz ograniczenia wcześniejszej mapy opisano w [audycie głębokości G1](g1-exam-depth-audit.md).
+
 Stan prawny i treści zweryfikowany: 2026-09-23. Punkt odniesienia:commit 70468dd.
 
 ## Wniosek

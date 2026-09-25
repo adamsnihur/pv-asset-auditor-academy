@@ -1,0 +1,51 @@
+---
+import '../styles/g1-oral.css';
+const { lessons } = Astro.props;
+const bank = lessons.flatMap((lesson) => (lesson.oralQuestions || []).map((item) => ({ ...item, lessonId: lesson.id, lessonTitle: lesson.title })));
+const domains = lessons.filter((lesson) => lesson.oralQuestions?.length);
+const data = JSON.stringify(bank).replace(/</g, '\\u003c');
+---
+<section class="g1-oral" id="g1-rozmowa" data-oral-root aria-labelledby="g1-oral-heading">
+  <div class="wrap">
+    <header class="g1-oral-intro"><p class="course-overline">Powiedz, dlaczego · E + D do 1 kV</p>
+      <h2 id="g1-oral-heading">Przećwicz rozmowę.<br /><em>Obroń swoją odpowiedź.</em></h2>
+      <p>{bank.length} autorskich pytań z kryteriami i przykładowym tokiem rozumowania. Najpierw odpowiedz na głos i zapisz uzasadnienie, potem porównaj je z modelem. To trening, a nie oficjalna baza pytań komisji.</p>
+    </header>
+    <div class="g1-oral-toolbar">
+      <label>Tryb pracy<select data-oral-mode><option value="practice">Powtórka tematyczna</option><option value="mock">Próba przekrojowa</option></select></label>
+      <label data-oral-filter-label>Temat<select data-oral-filter><option value="all">Wszystkie tematy</option>{domains.map((lesson) => <option value={lesson.id}>{lesson.id} · {lesson.title}</option>)}</select></label>
+      <button type="button" data-oral-new hidden>Wylosuj nową próbę</button>
+      <button type="button" data-oral-export>Pobierz odpowiedzi (.txt)</button>
+    </div>
+    <p class="g1-oral-note" data-oral-mode-note>Wybierz temat. Odpowiedzi są zapisywane lokalnie, niezależnie od zaliczeń lekcji.</p>
+    <div class="g1-oral-new-confirm" data-oral-new-confirm hidden><p>Nowa próba zastąpi odpowiedzi poprzedniej próby. Powtórki tematyczne zostaną zachowane. Możesz najpierw pobrać odpowiedzi.</p><button type="button" data-oral-cancel>Zachowaj próbę</button><button type="button" data-oral-start>Rozpocznij nową próbę</button></div>
+    <div class="g1-oral-score" data-oral-summary role="status"></div>
+    <p class="g1-oral-note">Kryteria zaznaczasz samodzielnie. System nie ocenia sensu wypowiedzi ani czynności praktycznych. Poproś instruktora o sprawdzenie odpowiedzi i zadania końcowego G24; samoocena nie przewiduje wyniku egzaminu.</p>
+    <p class="g1-oral-note" data-oral-save role="status">Zapisywanie wymaga JavaScript.</p>
+    <div class="g1-oral-position"><button type="button" data-oral-prev>← Poprzednie pytanie</button><span data-oral-position></span><button type="button" data-oral-next>Następne pytanie →</button></div>
+    {bank.map((item, index) => <article data-oral-card={item.id} hidden={index !== 0} class="g1-oral-card">
+      <p class="course-overline">{item.id} · {item.lessonTitle}{item.critical && <strong> · Bezpieczeństwo</strong>}</p>
+      <h3 tabindex="-1">{item.prompt}</h3>
+      <label for={`oral-${item.id}`}>Twoja odpowiedź i uzasadnienie</label>
+      <p class="g1-oral-note" id={`oral-help-${item.id}`}>Wyjaśnij mechanizm, warunki i wniosek. Zapisz co najmniej 80 znaków, aby odsłonić porównanie. Próg długości nie ocenia poprawności. Nie wpisuj danych klientów.</p>
+      <textarea id={`oral-${item.id}`} data-oral-answer rows="7" maxlength="10000" aria-describedby={`oral-help-${item.id}`}></textarea>
+      <button type="button" data-oral-reveal disabled>Porównaj z odpowiedzią</button>
+      <div data-oral-model hidden class="g1-oral-model">
+        <h4>Przykładowy tok rozumowania</h4><p>{item.modelAnswer}</p>
+        <fieldset><legend>Co rzeczywiście zawarłeś w swojej odpowiedzi?</legend>{item.keyPoints.map((point) => <label><input type="checkbox" data-oral-criterion /><span>{point}</span></label>)}
+          {item.critical && <label class="g1-oral-critical"><input type="checkbox" data-oral-safe /><span>Moja odpowiedź nie dopuszcza działania niebezpiecznego i uwzględnia warunki bezpieczeństwa opisane w modelu.</span></label>}
+        </fieldset>
+        <p><strong>Pytanie pogłębiające:</strong> {item.followUp}</p>
+        <button type="button" data-oral-grade>Zapisz samoocenę</button>
+      </div>
+      <p data-oral-verdict role="status"></p>
+      <p class="g1-oral-note">Do powtórzenia: <strong>{item.lessonId}</strong> w <a href="#kwalifikacje-g1">planie lekcji G1</a>. Zmiana odpowiedzi wymaga ponownego porównania i samooceny.</p>
+    </article>)}
+    <noscript><p>Do zapisywania i losowania potrzebny jest JavaScript. W lekcjach G13–G24 znajdziesz wyjaśnienia, zadania i rozwiązania dostępne również bez tego treningu.</p></noscript>
+  </div>
+  <script type="application/json" data-oral-data set:html={data}></script>
+</section>
+<script>
+  import { initializeOralPractice } from '../lib/g1-oral-client.mjs';
+  initializeOralPractice();
+</script>

@@ -1,0 +1,914 @@
+{
+  "lessons": [
+    {
+      "id": "G21",
+      "title": "PV: dobór stringów, zabezpieczenia i odbiór",
+      "file": "g21.md",
+      "minutes": 35,
+      "objective": "uzasadnisz decyzję techniczną, wykonasz obliczenia i wskażesz dowody wymagane do dopuszczenia pracy.",
+      "summary": "PV: dobór stringów, zabezpieczenia i odbiór",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Cztery karty pracy według przykładów SYN w lekcji.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 1 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Tabela ograniczeń napięciowych i zakres 8–13."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 2 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Porównanie dwóch i trzech stringów oraz prądu wstecznego."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 3 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Lista braków protokołu Voc i izolacji."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 4 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Wariant 550 V z zakresem 8–12."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "SYN-PV: ile modułów dopuszcza pełna analiza napięcia?",
+          "options": [
+            "8–13.",
+            "Dowolnie przy ograniczeniu AC.",
+            "Dokładnie 14.",
+            "5–15."
+          ],
+          "answer": 0,
+          "explanation": "Mróz daje 44,8 V Voc modułu, gorąco 27,06 V Vmp; trzeba też sprawdzić zimne Vmp i start.",
+          "critical": true
+        },
+        {
+          "prompt": "Co oznacza Voc × Isc?",
+          "options": [
+            "Nie jest to moc w rzeczywistym wspólnym punkcie pracy.",
+            "Moc AC.",
+            "Sprawność.",
+            "Moc znamionową."
+          ],
+          "answer": 0,
+          "explanation": "Voc występuje przy zerowym prądzie, a Isc przy napięciu bliskim zeru.",
+          "critical": false
+        },
+        {
+          "prompt": "Trzy stringi: Imp razem 30 A, skorygowane Isc 36 A; limity 22 A i 28 A.",
+          "options": [
+            "Liczy się tylko napięcie.",
+            "Oba warunki są przekroczone.",
+            "Wystarczy zmniejszyć moc AC.",
+            "Wszystko zgodne."
+          ],
+          "answer": 1,
+          "explanation": "Limity prądu roboczego i zwarciowego ocenia się oddzielnie.",
+          "critical": true
+        },
+        {
+          "prompt": "Czy dioda bypass zastępuje blokującą?",
+          "options": [
+            "Tak, zawsze.",
+            "Tak, gdy jest SPD.",
+            "Nie, obejście grupy ogniw i blokowanie prądu wstecznego to różne funkcje.",
+            "Tak, przy dwóch stringach."
+          ],
+          "answer": 2,
+          "explanation": "Różnią się położeniem i zadaniem.",
+          "critical": true
+        },
+        {
+          "prompt": "Poprawne Voc i zapis „izolacja dobra” wystarczają do odbioru?",
+          "options": [
+            "Nie, brakuje metody, kryterium i innych dowodów.",
+            "Tak.",
+            "Tak, jeśli falownik pracuje.",
+            "Tak przy słońcu."
+          ],
+          "answer": 0,
+          "explanation": "Napięcie bez obciążenia nie potwierdza całej ochrony.",
+          "critical": true
+        },
+        {
+          "prompt": "Limit DC zmieniono na 550 V. Jaki jest zakres n?",
+          "options": [
+            "8–13.",
+            "8–12.",
+            "Tylko 13.",
+            "7–14."
+          ],
+          "answer": 1,
+          "explanation": "Dwanaście daje 537,6 V, trzynaście 582,4 V.",
+          "critical": false
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G21-O1",
+          "prompt": "Dlaczego dobry wynik Voc nie pozwala odebrać stringu?",
+          "modelAnswer": "Poprawne napięcie obwodu otwartego mówi, że w danych warunkach źródło wytwarza oczekiwane napięcie. Nie sprawdza zachowania styku pod obciążeniem, ciągłości ochronnej ani izolacji względem ziemi. W modelu string trzynastu modułów może mieć około 520 V przy 25°C, a nadal wykazywać znaczne straty na połączeniu podczas produkcji. Potrzebuję identyfikacji stringu, temperatury ogniw i promieniowania, aby uczciwie porównać wynik z przewidywaniem. Następnie oceniam oględziny i odpowiednie badania według przygotowanej procedury. Zapis izolacji musi zawierać metodę, napięcie próby, obiekt i kryterium. Jeżeli elektronika lub SPD pozostawały podłączone, trzeba wyjaśnić wpływ na badanie. Decyzja o odbiorze pozostaje otwarta, dopóki krytyczne dowody nie są kompletne. Nie wykonuję przypadkowego zwarcia ani nie rozpinam złączy pod obciążeniem. W protokole rozdzielam fakt prawidłowego Voc od wniosku o sprawności całej instalacji i wskazuję osobę odpowiedzialną za uzupełnienie danych.",
+          "keyPoints": [
+            "Voc dotyczy stanu bez obciążenia.",
+            "Izolacja potrzebuje metody i kryterium.",
+            "Odbiór wymaga pełnych dowodów."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G21-O2",
+          "prompt": "Obroń zakres 8–13 modułów i zmianę limitu na 550 V.",
+          "modelAnswer": "Zaczynam od temperatury ogniwa, ponieważ napięcie zimnego modułu jest większe niż wartość przy STC. Dla minus 15°C otrzymuję Voc równe 44,8 V. Trzynaście modułów daje 582,4 V, a czternaście 627,2 V, więc przy granicy 600 V czternaście odpada. Następnie sprawdzam gorące Vmp równe 27,06 V. Dolny próg MPPT 200 V wymaga co najmniej ośmiu modułów. Sprawdzam też zimne Vmp: trzynaście daje 497,64 V wobec górnej granicy 500 V. Napięcie startu oceniam osobno; odpowiednie Voc nie gwarantuje energii przy słabym świetle. Po zmianie maksymalnego DC na 550 V najwyżej dwanaście modułów daje 537,6 V. Wyniki dotyczą modelu bez tolerancji. W rzeczywistym projekcie weryfikuję margines, temperatury lokalne i instrukcję. Ograniczenie mocy AC nie obniża fizycznego napięcia otwartego stringu i nie może być naprawą przekroczenia.",
+          "keyPoints": [
+            "44,8 V zimnego Voc modułu.",
+            "Gorące Vmp ogranicza minimum n.",
+            "550 V oznacza najwyżej 12 modułów."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G21-O3",
+          "prompt": "Jak odróżnisz limit prądu wejścia od potrzeby bezpieczników stringowych?",
+          "modelAnswer": "Limit wejścia falownika oceniam przez sumowanie prądów gałęzi przyłączonych do danego trackera. Dwa stringi modelu mają 20 A roboczo i 24 A skorygowanego Isc, więc mieszczą się odpowiednio w 22 A i 28 A. Trzy przekraczają obie granice. Potrzeba zabezpieczenia stringu dotyczy dodatkowo tego, czy inne gałęzie lub źródła mogą zasilać uszkodzony tor prądem niebezpiecznym dla modułu albo przewodu. Tworzę mapę takich źródeł, szacuję prąd wsteczny i porównuję go z dokumentacją. Nie utożsamiam maksymalnej wkładki szeregowej z dopuszczalnym ciągłym prądem wstecznym. Nie wyprowadzam też uniwersalnej reguły wyłącznie z liczby stringów. Sprawdzam charakterystykę odpowiednich aparatów DC i ich współpracę. Wkładka nie staje się rozłącznikiem obciążenia. Decyzję zapisuję oddzielnie dla limitów falownika i ochrony gałęzi, z założeniami dotyczącymi temperatury, promieniowania oraz źródeł potencjalnego zasilania wstecznego.",
+          "keyPoints": [
+            "20 A i 24 A dla dwóch stringów.",
+            "Prąd wsteczny wymaga mapy źródeł.",
+            "Wkładka i rozłącznik mają różne zadania."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G21-O4",
+          "prompt": "Dlaczego nie wybierzesz RCD i SPD tylko po nazwie PV?",
+          "modelAnswer": "Oznaczenie PV nie opisuje możliwych prądów różnicowych, konstrukcji falownika ani ochrony odgromowej obiektu. Najpierw identyfikuję konkretny model urządzenia i jego instrukcję. Przykład SMA przywołany w lekcji dopuszcza wskazany RCD typu A od 100 mA na określonym przyłączu, ale nie zamienia tej wartości w ochronę dodatkową wszystkich gniazd. Osobno analizuję odbiory backup i wymaganie 30 mA tam, gdzie ma zastosowanie. Dla SPD sprawdzam napięcie trwałej pracy, lokalizację, połączenia, układ ochrony odgromowej i koordynację. Wewnętrzny element falownika nie dowodzi ochrony całej instalacji. Zachowuję również niezależność zabezpieczenia nadprądowego i ochrony przeciwporażeniowej. W dokumentacji przedstawiam podstawę doboru każdego aparatu oraz warunki stosowania. Jeżeli instrukcja jest niepełna lub dotyczy innej wersji urządzenia, nie zatwierdzam zamiennika na podstawie podobieństwa nazwy. Uzupełniam dowód przed decyzją odbiorową, zamiast przenosić liczby między różnymi instalacjami.",
+          "keyPoints": [
+            "Instrukcja konkretnego falownika.",
+            "100 mA nie zastępuje właściwego 30 mA.",
+            "SPD wymaga koordynacji całego układu."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        }
+      ]
+    },
+    {
+      "id": "G22",
+      "title": "BESS, UPS i agregat: energia oraz ochrona w trybach pracy",
+      "file": "g22.md",
+      "minutes": 35,
+      "objective": "uzasadnisz decyzję techniczną, wykonasz obliczenia i wskażesz dowody wymagane do dopuszczenia pracy.",
+      "summary": "BESS, UPS i agregat: energia oraz ochrona w trybach pracy",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Cztery karty pracy według przykładów SYN w lekcji.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 1 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Schemat trzech stanów przełączenia."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 2 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Bilanse energii z granicą pomiarową."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 3 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Ocena mocy grzałki i agregatu."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 4 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Wariant 15 kWh z czasem 5,4 h."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "12 kWh, SOC 90–20%, η 92%, odbiór 1,2 kW: autonomia?",
+          "options": [
+            "6,44 h.",
+            "10 h.",
+            "12 h.",
+            "7 h."
+          ],
+          "answer": 0,
+          "explanation": "12 × 0,70 × 0,92 / 1,2 = 6,44.",
+          "critical": false
+        },
+        {
+          "prompt": "Bateria ma energię, ale odbiory wymagają 4,2 kW przy limicie 3 kW.",
+          "options": [
+            "Zapas kWh usuwa problem.",
+            "Wystarczy policzyć krótszy czas.",
+            "Układ nie spełnia warunku mocy.",
+            "Wystarczy podnieść SOC."
+          ],
+          "answer": 2,
+          "explanation": "Energia i moc są niezależnymi ograniczeniami.",
+          "critical": true
+        },
+        {
+          "prompt": "Czy hybrydowy falownik automatycznie zapewnia backup?",
+          "options": [
+            "Tak bez automatyki.",
+            "Nie, trzeba sprawdzić funkcje, układ separacji i parametry portu.",
+            "Tak zawsze.",
+            "Tak przy dowolnej baterii."
+          ],
+          "answer": 1,
+          "explanation": "Nazwa handlowa nie określa pełnej architektury.",
+          "critical": true
+        },
+        {
+          "prompt": "RCD zbadano tylko przy zasilaniu sieciowym.",
+          "options": [
+            "Nie potwierdza to ochrony w trybie wyspowym.",
+            "Potwierdza każdy tryb.",
+            "PE jest zbędny.",
+            "Należy zawsze dodać mostek N–PE."
+          ],
+          "answer": 0,
+          "explanation": "Źródło, neutralny i prąd zwarciowy mogą się zmieniać.",
+          "critical": true
+        },
+        {
+          "prompt": "10 kWh AC do ładowania, sprawność pełnego cyklu 85%.",
+          "options": [
+            "11,76 kWh.",
+            "Otrzymasz 8,5 kWh AC na tej samej granicy.",
+            "8,5 kW.",
+            "Ponownie mnożysz przez obie sprawności."
+          ],
+          "answer": 1,
+          "explanation": "Pełny cykl obejmuje już ujęte straty.",
+          "critical": false
+        },
+        {
+          "prompt": "Bateria syczy i dymi, BMS zgłosił alarm.",
+          "options": [
+            "Wymusić rozładowanie.",
+            "Przerwać diagnostykę i uruchomić procedurę awaryjną.",
+            "Otworzyć obudowę.",
+            "Zresetować alarm."
+          ],
+          "answer": 1,
+          "explanation": "Odłączenie nie usuwa energii chemicznej; potrzebna eskalacja.",
+          "critical": true
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G22-O1",
+          "prompt": "Czy 12 kWh wystarczy do zasilania warsztatu?",
+          "modelAnswer": "Pojemność energetyczna nie opisuje jeszcze ani czasu pracy, ani możliwości rozruchu. W modelu 12 kWh przy SOC od 90 do 20% daje 8,4 kWh po stronie DC. Po uwzględnieniu przyjętej sprawności 92% pozostaje 7,728 kWh AC. Dla stałych 1,2 kW prognoza wynosi 6,44 h. To rachunek na określonej granicy, bez dodatkowego mnożenia przez ten sam bufor DoD. Następnie porównuję moc odbiorów z mocą ciągłą falownika i jego przeciążalnością. Grzałka zwiększająca sumę do 4,2 kW nie może pracować na wyjściu o limicie 3 kW, nawet przy pełnej baterii. W warsztacie sprawdzam dodatkowo rozruch silników i asymetrię faz. Przyjmuję listę odbiorów krytycznych oraz harmonogram. Wynik energetyczny opisuję jako prognozę zależną od temperatury, starzenia i rzeczywistego profilu pracy, a dopuszczenie układu wiążę również z potwierdzoną ochroną.",
+          "keyPoints": [
+            "7,728 kWh AC i 6,44 h.",
+            "Limit mocy niezależny od energii.",
+            "Nie liczyć bufora SOC dwukrotnie."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G22-O2",
+          "prompt": "Dlaczego działający on-grid może zgasnąć podczas awarii sieci?",
+          "modelAnswer": "Falownik podążający za siecią korzysta z jej napięcia i częstotliwości jako odniesienia. Gdy sieć zanika, nie może dowolnie podtrzymywać zasilania publicznego odcinka. Potrzebna jest ochrona przed niezamierzoną wyspą, również gdy ustawiono brak eksportu. Zasilanie rezerwowe wymaga źródła zdolnego tworzyć napięcie, wydzielonych odbiorników, odpowiedniej automatyki i zapasu energii. Sprawdzam port backup, jego moc, czas przełączenia oraz ograniczenia faz. Sam napis hybrid nie wystarcza. Przy AC coupling dodatkowo muszę wiedzieć, czy falownik PV potrafi współpracować z lokalnie utworzoną wyspą i jak ograniczana jest produkcja. Rysuję normalną pracę, zanik sieci i powrót. W każdym stanie wskazuję otwarte styki i drogę energii. Następnie potwierdzam, że odbiornik akceptuje przerwę przełączenia. Dla wrażliwego sterownika wymagania mogą być inne niż dla oświetlenia. Dopiero komplet tych dowodów pozwala stwierdzić, co rzeczywiście pozostanie zasilane.",
+          "keyPoints": [
+            "Grid-following potrzebuje odniesienia.",
+            "Wydzielony backup i anti-islanding.",
+            "Weryfikacja czasu przełączenia i odbiorów."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G22-O3",
+          "prompt": "Czy pozytywny test ochrony przy sieci można przenieść na wyspę?",
+          "modelAnswer": "Nie przenoszę wyniku automatycznie, ponieważ zmienia się źródło i możliwa droga prądu uszkodzeniowego. Falownik może ograniczyć prąd tak, że zabezpieczenie nadprądowe nie zachowa się jak przy silnej sieci. Potrzebuję charakterystyki źródła i potwierdzenia współpracy z aparatami. Sprawdzam również sposób przełączania przewodu neutralnego oraz tworzenia odniesienia do ziemi. Przykład przekaźnika uziemiającego w instrukcji konkretnego urządzenia pokazuje zależność od trybu, ale nie stanowi zgody na stały mostek N–PE w dowolnej rozdzielnicy. PE zachowuje funkcję ochronną. W obu stanach wymagane są właściwe dowody ciągłości, działania ochrony i separacji od sieci. Test przyciskiem nie zastępuje całego badania skuteczności. W protokole wskazuję tryb, konfigurację, metodę i kryterium. Jeśli brakuje schematu neutralnego, zatrzymuję ocenę tej części do czasu wyjaśnienia. Nie próbuję uzyskać pozytywnego wyniku przez przypadkowe zmiany połączeń.",
+          "keyPoints": [
+            "Inny prąd zwarciowy źródła.",
+            "Neutralny zależny od topologii.",
+            "Osobne dowody ochrony w obu trybach."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G22-O4",
+          "prompt": "Jak zareagujesz na alarm BMS, który wraca po resecie?",
+          "modelAnswer": "Najpierw rozróżniam zwykły komunikat eksploatacyjny od oznak niebezpiecznego uszkodzenia. Sprawdzam znaczenie kodu zgodnie z instrukcją, ale nie wymuszam wielokrotnym resetem ładowania lub rozładowania. BMS jest częścią ochrony baterii, nie gwarancją bezpieczeństwa całej instalacji. Uszkodzenia przewodów, połączeń i mechaniczne zagrożenia mogą wymagać innych działań. Jeśli pojawia się dym, nietypowe grzanie, syczenie lub odkształcenie, przerywam diagnostykę i wdrażam procedurę awaryjną. Ostrzegam osoby, opuszczam zagrożoną strefę i wzywam pomoc, przekazując lokalizację i rodzaj magazynu. Nie otwieram obudowy. Bezpieczne odłączenie według procedury nie usuwa energii chemicznej, dlatego nie ogłaszam likwidacji zagrożenia tylko po wyłączeniu falownika. Po zdarzeniu potrzebna jest ocena uprawnionego serwisu i dokumentacja warunków ponownego dopuszczenia. Zapisuję przebieg alarmu, dostępne bezpiecznie dane i wykonane działania, zachowując pierwszeństwo ochrony ludzi. W razie rozbieżności wyjaśniam przyczynę z osobą odpowiedzialną i dokumentuję ograniczenie decyzji. Nie pomijam brakującego dowodu tylko dlatego, że pozostałe elementy działają pozornie poprawnie.",
+          "keyPoints": [
+            "Nie wymuszać resetem dalszej pracy.",
+            "Eskalacja przy dymie i grzaniu.",
+            "Odłączenie nie usuwa energii chemicznej."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        }
+      ]
+    },
+    {
+      "id": "G23",
+      "title": "Dozór: dokumentacja, organizacja i decyzja eksploatacyjna",
+      "file": "g23.md",
+      "minutes": 35,
+      "objective": "uzasadnisz decyzję techniczną, wykonasz obliczenia i wskażesz dowody wymagane do dopuszczenia pracy.",
+      "summary": "Dozór: dokumentacja, organizacja i decyzja eksploatacyjna",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Cztery karty pracy według przykładów SYN w lekcji.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 1 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Rejestr dokumentów i ich wersji."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 2 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Rachunek przekładni i interpretacja eksportu."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 3 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Karta D2-01 z dowodami potrzebnymi do wznowienia."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 4 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Wariant 100/5 A: 360 kWh albo 18 kWh."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "Przekładnia 200/5 A, przyrost wtórny 12,5 kWh bez przeliczenia.",
+          "options": [
+            "12,5 kWh zawsze.",
+            "500 kWh pierwotnie.",
+            "0,3125 kWh.",
+            "20 000 kWh."
+          ],
+          "answer": 1,
+          "explanation": "Przekładnia wynosi 40; najpierw potwierdza się konfigurację.",
+          "critical": false
+        },
+        {
+          "prompt": "Czy dobrowolność PN znosi obowiązki bezpieczeństwa?",
+          "options": [
+            "Projekt nie ma znaczenia.",
+            "Tak.",
+            "Każda PN jest ustawą.",
+            "Nie; przepisy obowiązują, a norma może być kryterium umownym."
+          ],
+          "answer": 3,
+          "explanation": "Rodzaj i zakres dokumentu trzeba rozróżniać.",
+          "critical": true
+        },
+        {
+          "prompt": "Art. 62: co oznacza kontrola elektryczna co najmniej raz na pięć lat?",
+          "options": [
+            "Zawsze coroczny pełny pomiar elektryczny.",
+            "Nie zwalnia z reakcji na awarie i innych właściwych kontroli.",
+            "Zgodę na każdą pracę przez pięć lat.",
+            "Zakaz wcześniejszej kontroli."
+          ],
+          "answer": 1,
+          "explanation": "GUNB opisuje zakres kontroli pięcioletniej, nie okres bezwarunkowej sprawności.",
+          "critical": true
+        },
+        {
+          "prompt": "Nowy falownik działa, jest faktura i zielona dioda.",
+          "options": [
+            "To za mało do zatwierdzenia odbioru po zmianie.",
+            "Protokół jest zbędny.",
+            "Backup nie zmienia ochrony.",
+            "Wystarczy do pełnego odbioru."
+          ],
+          "answer": 0,
+          "explanation": "Potrzebne są dowody zgodności nowego układu i właściwe badania.",
+          "critical": true
+        },
+        {
+          "prompt": "Czy świadectwo kwalifikacyjne zastępuje upoważnienie pracodawcy?",
+          "options": [
+            "Tak.",
+            "Nie, to różne wymagania.",
+            "Tak przy PV.",
+            "Tak dla każdego D."
+          ],
+          "answer": 1,
+          "explanation": "Rozporządzenie rozróżnia osobę uprawnioną i upoważnioną.",
+          "critical": true
+        },
+        {
+          "prompt": "Co rozstrzyga granicę odpowiedzialności przy liczniku?",
+          "options": [
+            "Zmiana sprzedawcy.",
+            "Sam wygląd licznika.",
+            "Dokumentacja konkretnego przyłączenia i właściwe umowy.",
+            "Domniemanie właściciela."
+          ],
+          "answer": 2,
+          "explanation": "Granicy własności i eksploatacji nie ustala się z pamięci.",
+          "critical": true
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G23-O1",
+          "prompt": "Czy dobrowolność norm pozwala odrzucić wymagania projektu?",
+          "modelAnswer": "Rozdzielam przepis prawa, normę i zobowiązanie umowne. Dobrowolność stosowania Polskich Norm nie znosi obowiązków bezpieczeństwa wynikających z przepisów. Jeśli projekt lub umowa wskazuje konkretną normę jako kryterium wykonania i odbioru, nie mogę jednostronnie zignorować tego uzgodnienia. Sprawdzam numer, wydanie i zakres dokumentu, ponieważ ogólna deklaracja zgodności nie pozwala odtworzyć kryterium. Przy powołaniu w rozporządzeniu analizuję rzeczywiste brzmienie odesłania, zamiast nazywać całą normę ustawą. Jeżeli proponowane jest rozwiązanie odmienne, potrzebna jest udokumentowana ocena spełnienia obowiązków oraz właściwe uzgodnienie zmiany. Samo wycofanie wydania normy również nie oznacza automatycznego zakazu jego stosowania. Dla modernizacji badam, czy stare założenia nadal odpowiadają nowym urządzeniom i sposobowi zasilania. W karcie odbioru podaję konkretne wymaganie, dowód jego spełnienia i osobę odpowiedzialną za decyzję. Braku takiego dowodu nie zastępuję argumentem o dobrowolności.",
+          "keyPoints": [
+            "Prawo, norma i umowa są różne.",
+            "Kryterium musi mieć numer i wydanie.",
+            "Odstępstwo wymaga udokumentowanej oceny."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G23-O2",
+          "prompt": "Jak sprawdzisz rachunek energii z pomiaru przekładnikowego?",
+          "modelAnswer": "Zaczynam od identyfikacji przekładników i konfiguracji rejestru, a nie od automatycznego mnożenia. Dla 200/5 A przekładnia prądowa wynosi 40. Jeśli 12,5 kWh jest przyrostem wtórnym bez zastosowanej przekładni, energia pierwotna wynosi 500 kWh. Jeśli system już ją przeliczył, ponowne mnożenie tworzy błąd. Potwierdzam jednostkę, granicę pomiaru, kierunek energii oraz okres. Następnie rozdzielam rozliczenie energii czynnej, mocy umownej i energii biernej, bo dotyczą różnych wielkości i zasad taryfowych. Chwilowy pik analizatora nie musi odpowiadać mocy rozliczanej w określonym oknie uśrednienia. Weryfikuję obowiązującą taryfę i umowę konkretnego obiektu. Przy podejrzeniu błędu przekładnika lub kierunku pomiaru stosuję procedurę operatora, bez samowolnej ingerencji w zaplombowany układ. Wynik dokumentuję wraz ze źródłem danych i nierozstrzygniętymi pozycjami. Nie zatwierdzam rozliczenia, jeśli nie wiadomo, czy eksport jest pierwotny czy wtórny.",
+          "keyPoints": [
+            "Przekładnia 40 i 500 kWh.",
+            "Sprawdzenie pierwotnego lub wtórnego rejestru.",
+            "Oddzielenie energii, mocy i taryfy."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G23-O3",
+          "prompt": "Dlaczego pięcioletni protokół nie zwalnia z reakcji na usterkę?",
+          "modelAnswer": "Kontrola okresowa dokumentuje stan w określonym czasie i zakresie. Wymaganie kontroli co najmniej raz na pięć lat nie tworzy gwarancji bezpiecznej pracy do następnej daty. Awaria, zalanie, uszkodzenie lub przebudowa mogą zmienić warunki znacznie wcześniej. Oddzielam więc kalendarz kontroli ustawowych od przeglądów producenta, prób funkcjonalnych i badań po naprawach. Gdy wykryto zagrożenie, określam ograniczenie eksploatacji i zabezpieczenie miejsca, a nie tylko nowy termin przeglądu. Każde zalecenie otrzymuje właściciela, datę oraz wymagany dowód zamknięcia. Fakt zlecenia naprawy lub otrzymania faktury nie dowodzi usunięcia usterki. Po wymianie elementu oceniam zakres ponownych badań według tego, jakie warunki zostały zmienione. W dzienniku zapisuję identyfikację urządzenia, objaw, działania i podstawę ponownego dopuszczenia. Dozór ma ocenić wiarygodność dowodów, a nie wyłącznie sprawdzić obecność podpisu na starym protokole. Krytyczny brak pozostaje otwarty do rzeczywistego wyjaśnienia.",
+          "keyPoints": [
+            "Kontrola jest oceną stanu w czasie.",
+            "Zdarzenia wymagają reakcji wcześniej.",
+            "Zamknięcie zalecenia wymaga dowodu."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G23-O4",
+          "prompt": "Co musi się wydarzyć między montażem falownika a zgodą na ruch?",
+          "modelAnswer": "Montaż techniczny jest tylko jednym etapem. Najpierw porównuję nowy model z zatwierdzonym projektem i sprawdzam, czy zmienia RCD, nastawy, automatykę albo możliwość zasilania rezerwowego. Potrzebny jest aktualny schemat pokazujący wszystkie źródła i granice odłączenia. Organizacja pracy obejmuje właściwe role, kwalifikacje i upoważnienia; samo świadectwo nie zastępuje pisemnego upoważnienia pracodawcy. Po montażu wymagane są badania odpowiednie do zmienionego zakresu i funkcjonalne sprawdzenie przewidzianych trybów. Protokół musi identyfikować obiekt, przyrząd, metodę, warunki, kryteria oraz wyniki. Dodatkowo zamykam uwagi, aktualizuję instrukcję i potwierdzam przekazanie obsłudze informacji o zmianach. Zielona dioda oznacza co najwyżej określony stan urządzenia, nie pełną sprawność instalacji. Zgoda na ruch jest osobną decyzją opartą na komplecie dowodów. Jeśli brakuje krytycznej oceny ochrony, pozostaje wstrzymana. Dokumentuję również zagospodarowanie wymienionych elementów i odpadów w właściwym trybie.",
+          "keyPoints": [
+            "Ocena zmian ochrony i schematu.",
+            "Kwalifikacje oraz upoważnienie.",
+            "Osobna zgoda na przywrócenie ruchu."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        }
+      ]
+    },
+    {
+      "id": "G24",
+      "title": "Studium końcowe E+D: PV, BESS i silnik warsztatu",
+      "file": "g24.md",
+      "minutes": 35,
+      "objective": "uzasadnisz decyzję techniczną, wykonasz obliczenia i wskażesz dowody wymagane do dopuszczenia pracy.",
+      "summary": "Studium końcowe E+D: PV, BESS i silnik warsztatu",
+      "activity": {
+        "minutes": 20,
+        "deliverable": "Cztery karty pracy według przykładów SYN w lekcji.",
+        "steps": [
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 1 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Karta obliczeń PV i silnika."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 2 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Rejestr braków P1–P4 i hipotez."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 3 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Plan pracy i kryteria ponownego odbioru."
+          },
+          {
+            "minutes": 5,
+            "instruction": "Wykonaj krok 4 opisany w lekcji; zapisz założenia, rachunek lub decyzję i podstawę oceny.",
+            "output": "Wariant RK 1,8 kW: 4,293 h."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "prompt": "SYN-K: czy pozytywny dobór PV pozwala podpisać całość?",
+          "options": [
+            "Tak.",
+            "Tak po uśrednieniu ocen.",
+            "Nie, krytyczne braki P2–P4 pozostają otwarte.",
+            "Tak, jeśli jest produkcja."
+          ],
+          "answer": 2,
+          "explanation": "Zgodność jednego fragmentu nie zastępuje ochrony całej instalacji.",
+          "critical": true
+        },
+        {
+          "prompt": "Czy dołożysz czternasty moduł przy limicie 600 V?",
+          "options": [
+            "Tak po zwiększeniu RCD.",
+            "Nie, zimne Voc wynosi 627,2 V.",
+            "Tak z ograniczeniem AC.",
+            "Tak, bo STC daje 560 V."
+          ],
+          "answer": 1,
+          "explanation": "Weryfikacja obejmuje mróz, nie tylko STC.",
+          "critical": true
+        },
+        {
+          "prompt": "Jak oceniasz izolację 0,8 MΩ przy szkoleniowym progu 2 MΩ i brakującej karcie próby?",
+          "options": [
+            "Wynik nie spełnia kryterium, a metoda wymaga wyjaśnienia.",
+            "Pozytywnie.",
+            "Próg 2 MΩ to zawsze norma PV.",
+            "Zielona dioda zastępuje wynik."
+          ],
+          "answer": 0,
+          "explanation": "Kryterium jest syntetyczne i nie wolno mylić go z uniwersalną normą.",
+          "critical": true
+        },
+        {
+          "prompt": "M1 pobiera 4,706 kW; backup ma 3 kW.",
+          "options": [
+            "M1 nie może być dołączony w modelu.",
+            "Może przez godzinę.",
+            "Może po zmianie na trójkąt.",
+            "Może, bo bateria ma 12 kWh."
+          ],
+          "answer": 0,
+          "explanation": "Przekroczony jest limit ciągły, jeszcze przed oceną rozruchu.",
+          "critical": true
+        },
+        {
+          "prompt": "RK 1,8 kW i 7,728 kWh dostępnej energii: czas?",
+          "options": [
+            "7,728 h.",
+            "6,44 h.",
+            "13,91 h.",
+            "Około 4,293 h."
+          ],
+          "answer": 3,
+          "explanation": "7,728 / 1,8 = 4,2933.",
+          "critical": false
+        },
+        {
+          "prompt": "Czy otwarcie Q0 usuwa wszystkie źródła?",
+          "options": [
+            "Tak przy małym SOC.",
+            "Tak.",
+            "Tak, jeśli silnik stoi.",
+            "Nie, pozostają PV, bateria i możliwa energia zgromadzona."
+          ],
+          "answer": 3,
+          "explanation": "Plan odłączeń obejmuje wszystkie źródła i weryfikację stanu.",
+          "critical": true
+        }
+      ],
+      "oralQuestions": [
+        {
+          "id": "G24-O1",
+          "prompt": "Obroń odmowę odbioru mimo prawidłowych obliczeń stringów.",
+          "modelAnswer": "Obliczenia potwierdzają tylko konkretną część projektu. Dla trzynastu modułów zimne Voc wynosi 582,4 V, gorące Vmp 351,78 V i zimne Vmp 497,64 V. Te liczby mieszczą się w przyjętych syntetycznych granicach H1. Nie mówią jednak, czy izolacja, połączenia i ochrona instalacji są prawidłowe. P2 ma wynik 0,8 MΩ poniżej szkoleniowego kryterium 2 MΩ, a dodatkowo brakuje karty napięcia próby. P3 nie obejmuje PE rozdzielnicy RK, a P4 nie dowodzi ochrony na wyspie. Z tego powodu nie mogę wydać pozytywnego odbioru całości. Zapisuję zgodność doboru liczby modułów jako rozstrzygnięty fragment i osobno listę krytycznych braków. Dla każdej pozycji określam potrzebny dowód i odpowiedzialność. Po naprawie wymagam właściwego ponownego badania, nie samego skasowania alarmu. Dopiero zamknięcie braków pozwoli zmienić decyzję. Dobra suma punktów z rachunków nie kompensuje nieudowodnionej ochrony.",
+          "keyPoints": [
+            "Poprawne napięcia nie zamykają P2–P4.",
+            "Krytyczne braki blokują odbiór.",
+            "Ponowne badanie po naprawie."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G24-O2",
+          "prompt": "Czy można przenieść silnik M1 do backup i zmienić połączenie uzwojeń?",
+          "modelAnswer": "Nie, model narusza już warunek mocy w stanie ustalonym. Silnik oddaje 4 kW przy sprawności 0,85, więc pobiera około 4,706 kW mocy czynnej. Wyjście backup dopuszcza tylko 3 kW. Zapas 12 kWh opisuje energię, a nie zwiększa mocy falownika. Dodatkowo trzeba byłoby uwzględnić rozruch, moc pozorną i możliwe ograniczenia faz. Tabliczka 230/400 V Δ/Y oznacza, że przy 400 V międzyfazowo uzwojenia powinny pracować w gwieździe. Wtedy otrzymują około 231 V. Połączenie w trójkąt podałoby na nie 400 V, więc nie jest metodą rozwiązania problemu zasilania. Pozostawiam M1 poza RK i dokumentuję odrzucenie propozycji. Jeśli użytkownik rzeczywiście potrzebuje rezerwowania silnika, potrzebny jest nowy dobór architektury, analiza charakterystyk i ochrony. Nie zatwierdzam takiej zmiany na podstawie chwilowego uruchomienia bez obciążenia ani deklaracji większej pojemności baterii.",
+          "keyPoints": [
+            "4,706 kW przekracza 3 kW.",
+            "230/400 Δ/Y wymaga gwiazdy przy 400 V.",
+            "Rozruch to dodatkowy warunek."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G24-O3",
+          "prompt": "Jak sprawdzisz, czy plan odłączenia obejmuje całą instalację?",
+          "modelAnswer": "Na schemacie identyfikuję wszystkie źródła, a następnie porównuję je z kartą pracy. Otwarcie Q0 odłącza wskazany tor sieciowy, ale nie usuwa napięcia z oświetlonego PV ani energii baterii. Pozostają również kondensatory i możliwość zdalnego uruchomienia. Plan musi określać granice strefy, sposób zabezpieczenia przed ponownym załączeniem oraz weryfikację stanu przez przygotowane osoby. Sprawdzam aktualność schematu i identyfikację aparatów, aby nazwa w dokumentacji odpowiadała urządzeniu na miejscu. Role, komunikacja i warunki przerwania pracy powinny być jednoznaczne. Nie uznaję pozycji przełącznika ani komunikatu aplikacji za samodzielny dowód braku napięcia. Po zakończeniu trzeba potwierdzić gotowość do odtworzenia układu i usunąć zabezpieczenia w kontrolowanym trybie zgodnie z procedurą. Osobna decyzja przywrócenia ruchu wymaga zamknięcia krytycznych uwag. W ćwiczeniu oceniam kompletność planu przy biurku; realne czynności wymagają nadzoru, kompetencji i właściwego stanowiska.",
+          "keyPoints": [
+            "Q0 nie odłącza PV i baterii.",
+            "Weryfikacja wszystkich źródeł i strefy.",
+            "Kontrolowane przywrócenie ruchu."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        },
+        {
+          "id": "G24-O4",
+          "prompt": "Jakie dowody gotowości przedstawisz po ukończeniu kursu?",
+          "modelAnswer": "Przedstawiam obliczenia, poprawne rozstrzygnięcia diagnostyczne, kartę organizacji pracy i protokół z jasno opisanymi kryteriami. Muszę umieć uzasadnić, dlaczego brak krytycznej informacji blokuje decyzję, zamiast zgadywać pozytywny wynik. Do części praktycznej potrzebuję oceny instruktora: dobór i sprawdzenie przyrządu, identyfikacja źródeł, LOTO, weryfikacja braku napięcia, ciągłość PE, metoda badania izolacji, badanie RCD oraz dokumentacja. Równie istotny jest trening reakcji awaryjnej i CPR/AED prowadzony przez instruktora, do którego kieruje lekcja G08. W scenariuszu dymienia baterii przerywam badanie, ostrzegam osoby i wzywam pomoc; nie resetuję urządzenia dla uzyskania lepszego wyniku. Instruktor zapisuje rzeczywiście sprawdzone umiejętności oraz błędy wymagające poprawy. Zaliczenie samego quizu nie potwierdza praktycznej samodzielności. Ukończenie materiału nie gwarantuje zdania egzaminu ani nie zastępuje wymaganych kwalifikacji i upoważnień. Gotowość opisuję zakresem udokumentowanych kompetencji, a nie ogólną deklaracją pewności.",
+          "keyPoints": [
+            "Dowody teoretyczne i praktyczne.",
+            "Nadzorowany trening przyrządów i CPR/AED.",
+            "Brak gwarancji egzaminu."
+          ],
+          "critical": true,
+          "followUp": "Który konkretny dokument lub wynik pozwoliłby zmienić twoją decyzję?"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "G-DEP-O-S-pv-design",
+      "title": "SMA: Planning of a PV Generator",
+      "url": "https://files.sma.de/downloads/DC-PL-en-11.pdf",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Temperatura, Voc, Vmp i dobór stringów; historyczne wytyczne nie zastępują instrukcji konkretnego urządzenia. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-pv-input",
+      "title": "SMA: Requirements for the DC Connection",
+      "url": "https://manuals.sma.de/SBxx-1AV-41/en-US/391157771.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Granice zimnego Voc oraz prądu dotyczą wskazanej rodziny falowników. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-pv-protection",
+      "title": "Schneider Electric: PV safety during normal operation",
+      "url": "https://www.electrical-installation.org/enwiki/PV_System%3A_how_to_ensure_safety_during_normal_operation",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Warunkowa ochrona prądu wstecznego i ograniczenia aparatów DC; nie kopiujemy uproszczonej reguły liczby stringów jako uniwersalnego wymagania. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-rcd",
+      "title": "SMA: Residual-current monitoring unit STP Smart Energy",
+      "url": "https://manuals.sma.de/STPxx3SE40/en-US/14412476811.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "100 mA i typ A dotyczą konkretnego przyłącza wskazanego produktu; odbiory backup wymagają osobnej ochrony. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-spd",
+      "title": "SMA: Overvoltage protection equipment",
+      "url": "https://manuals.sma.de/Business-Systeme-PL/en-US/14503733003.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Dobór SPD zależny od układu ochrony, nie uniwersalny zestaw dla każdego PV. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-ess",
+      "title": "Victron: ESS system design",
+      "url": "https://www.victronenergy.com/media/pg/Energy_Storage_System/en/ess-system-design.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Architektura AC/DC coupling, rozmiar backup i anti-islanding; instrukcja konkretnego systemu. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-neutral",
+      "title": "Victron: MultiPlus-II installation",
+      "url": "https://www.victronenergy.com/media/pg/MultiPlus-II_230V/en/installation.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Przekaźnik uziemiający i ochrona dotyczą tego produktu; nie polecenie stałego mostkowania N–PE. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-bms",
+      "title": "Victron: VE.Bus BMS V2 operation",
+      "url": "https://www.victronenergy.com/media/pg/VE.Bus_BMS_V2/en/operation.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Możliwe dalsze rozładowanie przez małe odbiory; nie pełna ocena bezpieczeństwa wszystkich baterii. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-battery-safety",
+      "title": "Victron: Lithium Smart Battery safety precautions",
+      "url": "https://www.victronenergy.com/media/pg/Lithium_Battery_Smart/en/safety-precautions.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Ostrzeżenia produktu; nie instrukcja samodzielnego gaszenia ani otwierania uszkodzonego magazynu. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-pkn",
+      "title": "PKN: Dobrowolność stosowania norm",
+      "url": "https://www.pkn.pl/polskie-normy/informacje-o-pn/zagadnienia-prawne/dobrowolnosc-stosowania-norm",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Stanowisko o dobrowolności PN; konkretne odesłanie prawne wymaga analizy treści przepisu. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-gunb",
+      "title": "GUNB: Kontrole stanu technicznego obiektów",
+      "url": "https://www.gunb.gov.pl/strona/kontrole-stanu-technicznego-obiektow",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Art. 62 i zakres pięcioletniej kontroli; nie zwalnia z innych wymaganych kontroli ani reakcji na zdarzenia. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-connection",
+      "title": "TAURON Dystrybucja: Przyłączenie do sieci",
+      "url": "https://www.tauron-dystrybucja.pl/przylaczenie-do-sieci",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Opis warunków i umowy przyłączenia; granice konkretnego obiektu wynikają z jego dokumentów. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-iriesd",
+      "title": "TAURON Dystrybucja: IRiESD",
+      "url": "https://www.tauron-dystrybucja.pl/uslugi-dystrybucyjne/instrukcja-iriesd",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Strona rozróżnia tekst obowiązujący i projekty aktualizacji; nie zastosowano szczegółowych stawek ani wymagań niewczytanych załączników. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-bhp",
+      "title": "ELI: tekst jednolity BHP przy urządzeniach energetycznych, Dz.U. 2021 poz.1210",
+      "url": "https://eli.gov.pl/api/acts/DU/2021/1210/text.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Instrukcja, uprawnienie, upoważnienie i role z §2 oraz §4–6; dokument nie zastępuje analizy konkretnej pracy. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    },
+    {
+      "id": "G-DEP-O-S-waste",
+      "title": "ELI: baterie i akumulatory, Dz.U. 2022 poz.1113",
+      "url": "https://eli.gov.pl/api/acts/DU/2022/1113/text.html",
+      "kind": "official_doc",
+      "verified": true,
+      "license_checked": true,
+      "limitations": "Punkt odniesienia dla odpadów baterii; obowiązki ewidencyjne i aktualne szczególne przepisy wymagają sprawdzenia dla podmiotu. Źródło pobrane 2026-09-24. Własna parafraza i link, bez kopiowania tabel, ilustracji i tekstu; nie deklarujemy prawa redystrybucji źródła."
+    }
+  ],
+  "claims": [
+    {
+      "id": "G-DEP-O-C-string",
+      "statement": "Napięcia stringu sumują się szeregowo; projekt sprawdza zimne Voc i zakres regulacji, osobno od prądów wejścia.",
+      "source_ids": [
+        "G-DEP-O-S-pv-design",
+        "G-DEP-O-S-pv-input"
+      ],
+      "lesson_ids": [
+        "G21",
+        "G24"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-O-C-reverse",
+      "statement": "Ochrona przed prądem wstecznym zależy od źródeł zasilających uszkodzony string oraz danych modułów i aparatów; bezpiecznik nie jest automatycznie rozłącznikiem obciążenia.",
+      "source_ids": [
+        "G-DEP-O-S-pv-protection"
+      ],
+      "lesson_ids": [
+        "G21"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-O-C-rcd",
+      "statement": "Dla wskazanego STP Smart Energy producent podaje kompatybilność typu A od 100 mA na wskazanym przyłączu i osobno omawia ochronę odbiorów backup.",
+      "source_ids": [
+        "G-DEP-O-S-rcd"
+      ],
+      "lesson_ids": [
+        "G21"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-O-C-spd",
+      "statement": "Dobór ochrony przepięciowej wymaga uwzględnienia układu i instrukcji konkretnego rozwiązania.",
+      "source_ids": [
+        "G-DEP-O-S-spd"
+      ],
+      "lesson_ids": [
+        "G21"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-O-C-ess",
+      "statement": "ESS może wykorzystywać połączenie AC lub DC; backup wymaga dobrania źródła do obciążenia oraz właściwej ochrony przed wyspą.",
+      "source_ids": [
+        "G-DEP-O-S-ess"
+      ],
+      "lesson_ids": [
+        "G22",
+        "G24"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-O-C-neutral",
+      "statement": "Przekaźnik uziemiający w MultiPlus-II stanowi przykład zależnego od trybu zarządzania odniesieniem neutralnego; nie uzasadnia dowolnego stałego mostka.",
+      "source_ids": [
+        "G-DEP-O-S-neutral"
+      ],
+      "lesson_ids": [
+        "G22",
+        "G24"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-O-C-bms",
+      "statement": "BMS nie usuwa wszystkich scenariuszy uszkodzenia baterii, między innymi dalszego rozładowania przez małe odbiory.",
+      "source_ids": [
+        "G-DEP-O-S-bms",
+        "G-DEP-O-S-battery-safety"
+      ],
+      "lesson_ids": [
+        "G22"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-O-C-norms",
+      "statement": "Dobrowolność PN nie znosi obowiązków prawa; kryteria projektu i umowy należy identyfikować oddzielnie.",
+      "source_ids": [
+        "G-DEP-O-S-pkn"
+      ],
+      "lesson_ids": [
+        "G23"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-O-C-checks",
+      "statement": "Art.62 ust.1 pkt2 obejmuje co najmniej pięcioletnią kontrolę instalacji elektrycznej i piorunochronnej w określonym zakresie.",
+      "source_ids": [
+        "G-DEP-O-S-gunb"
+      ],
+      "lesson_ids": [
+        "G23"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-O-C-connection",
+      "statement": "Warunki przyłączenia i IRiESD mają różne funkcje; tekst obowiązujący należy odróżniać od projektu aktualizacji.",
+      "source_ids": [
+        "G-DEP-O-S-connection",
+        "G-DEP-O-S-iriesd"
+      ],
+      "lesson_ids": [
+        "G23"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-O-C-roles",
+      "statement": "Rozporządzenie rozróżnia kwalifikacje, upoważnienie i funkcje organizacji prac oraz wymaga instrukcji eksploatacji i jej aktualizacji.",
+      "source_ids": [
+        "G-DEP-O-S-bhp"
+      ],
+      "lesson_ids": [
+        "G23",
+        "G24"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "G-DEP-O-C-waste",
+      "statement": "Baterie i akumulatory wymagają właściwego postępowania z odpadem oraz ustalenia obowiązków konkretnego podmiotu.",
+      "source_ids": [
+        "G-DEP-O-S-waste"
+      ],
+      "lesson_ids": [
+        "G23"
+      ],
+      "status": "supported"
+    }
+  ]
+}
