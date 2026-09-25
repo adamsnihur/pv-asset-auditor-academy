@@ -1,0 +1,72 @@
+KARTA ZGODNOŚCI I ODSTĘPSTW · TERMOGRAFIA PV
+PV Asset Auditor Academy · autorski szablon edukacyjny, 25.09.2026
+
+Ta karta porządkuje dowody. Nie jest pełnym wykazem wymagań IEC ani certyfikatem.
+Stosuj ją razem z właściwym dokumentem i uzgodnionym zakresem badania.
+
+1. UZGODNIONY ZAKRES
+Obiekt / instalacja / zlecenie:
+Pytanie odbiorcy i cel:
+Dokładny dokument i wydanie (np. IEC TS 62446-3:2017):
+Data sprawdzenia statusu dokumentu / źródło katalogowe:
+Poziom badania: uproszczone / szczegółowe; uzasadnienie:
+Włączone elementy / wyłączenia / ograniczenia dostępu:
+Kryteria przekazania do dalszej diagnostyki:
+Osoba odpowiedzialna / termograf / specjalista PV / pilot:
+Dowody kompetencji i rozdział ról:
+
+2. SPRZĘT I DANE
+Kamera, numer seryjny, obiektyw, oprogramowanie:
+Parametry wymagane w wybranej procedurze / dowód z dokumentacji:
+Wzorcowanie i kontrola przyrządów / daty / ograniczenia:
+Przyrządy środowiskowe i sposób ich użycia:
+Synchronizacja czasu IR / RGB / rejestrów:
+Oryginalne pliki IR + RGB / indeks / wersja analizy:
+Emisyjność i temperatura odbita / sposób ustalenia:
+
+3. WARUNKI I GEOMETRIA
+POA (W/m²), pozycja czujnika, przedział czasu, przebieg zmian:
+Wiatr: prędkość, jednostka, kierunek i zmienność:
+Chmury: rodzaj i pokrycie (okta), odbicia:
+Temperatura otoczenia / zabrudzenie / zacienienie:
+Stan pracy i obciążenie badanego toru / źródło danych:
+Zmiany warunków i dokumentacja stabilizacji:
+Rozmiar rzeczywistego ogniwa / najmniejszego ocenianego elementu:
+Natywne próbkowanie w obu osiach, kąt do płaszczyzny modułu:
+Odległość do celu / rozmycie / ostrość / próbny pas:
+Ocena legalności i bezpieczeństwa operacji UAV (oddzielnie od jakości IR):
+
+4. MACIERZ DOWODÓW
+Uzupełnij każdy mający zastosowanie punkt pełnej procedury.
+Status: spełnione / niespełnione / nieustalone / nie dotyczy (z uzasadnieniem).
+
+Punkt dokumentu | wymaganie | plik/pomiar/dowód | status | odstępstwo | działanie / osoba / termin
+
+Obszary do sprawdzenia w IEC TS 62446-3:2017:
+§4: wyposażenie i jego właściwości
+§5: inspekcja, warunki i rejestracja (w tym §5.4.2: UAV)
+§6–7: analiza i ocena
+§8: raport
+Załączniki normatywne A–C: geometria/procedura, kompetencje, anomalie
+To indeks pomocniczy, nie tekst wymagań.
+
+5. WYNIK I PRZEKAZANIE
+Zakres zaplanowany / faktycznie oceniony / nieocenialny:
+Mapa pokrycia i luk:
+ID obserwacji / element / pozycja na planie / pliki źródłowe:
+Obserwacja / hipotezy / niepewność / dodatkowe badanie:
+Klasyfikacja wg wybranej metody / uzasadnienie / priorytet działania:
+Działania natychmiastowe, jeśli wymagane; odpowiedzialna osoba:
+Lista odstępstw i wpływ na interpretację:
+Zalecenia, dalsze kontrole i odpowiedzialność:
+Podsumowanie zakresu możliwych wniosków:
+Osoba sprawdzająca, data, wersja raportu:
+
+Zgoda na odstępstwo nie oznacza spełnienia niespełnionego wymagania.
+Nie opisuj braku danych jako „bez wad”. Nie traktuj termogramu jako pełnego
+odbioru elektrycznego ani potwierdzenia bezpieczeństwa ukrytych elementów.
+
+Źródła do sprawdzenia statusu:
+https://webstore.iec.ch/en/publication/28628
+https://sklep.pkn.pl/pn-en-62446-1-2016-08e.html
+https://sklep.pkn.pl/normy/pn-en-iec-62446-2-2020-12e.html

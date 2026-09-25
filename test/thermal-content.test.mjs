@@ -54,8 +54,8 @@ test('every topic has resolvable primary HTTPS sources with no orphan source', (
   assert.deepEqual([...used].sort(), [...ids].sort());
 });
 
-test('assessment has eight unique questions with distinct options, valid answers and explanations', () => {
-  assert.equal(thermalQuestions.length, 8);
+test('assessment has twelve unique questions with distinct options, valid answers and explanations', () => {
+  assert.equal(thermalQuestions.length, 12);
   unique(thermalQuestions, 'id');
   unique(thermalQuestions, 'prompt');
   for (const question of thermalQuestions) {

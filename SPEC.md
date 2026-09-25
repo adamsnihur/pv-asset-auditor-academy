@@ -1,5 +1,9 @@
 # PV Asset Auditor Academy Technical Specification
 
+## PV thermography standards, 2026-09-25
+
+Add a sourced standards guide to the existing thermal workshop, cross-linked from F03/F06. Verify exact IEC/PKN designations and status. Teach selected IEC TS 62446-3:2017 criteria with clause references and limitations, distinguish simplified UAV screening from detailed inspection, and provide a standards/evidence worksheet plus four application questions. Preserve all existing lessons, answers and storage keys. No claim of blanket legal obligation or conformity from a checklist; no reproduction of standards. Verify primary sources, content rendering, quiz feedback, responsive layout and existing checks; publish under standing Pages authorization.
+
 ## G1 exam preparation depth, 2026-09-24
 
 Confirmed scope: E + D up to 1 kV including control/measurement, PV and BESS. Add G13–G24 advanced instructional sessions after existing G01–G12, preserve all previous lessons and storage keys. Explain mechanisms, schematic reading, faults, calculations, apparatus, tests, operations and documentation with worked and independent cases. Add 48 oral-practice questions with explicit model-answer criteria, a balanced 12-question mock oral session and local self-assessment, clearly separate from an official exam or guaranteed pass. Publish a scope/depth audit and supervised practical-skills checklist. No blanket claims of competence for all G1 equipment. Validate primary-source claims, calculations, assessment feedback, progression/storage, responsive UI and production deployment.

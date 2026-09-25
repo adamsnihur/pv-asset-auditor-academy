@@ -2,6 +2,7 @@
 import { thermalTopics, thermalSources, thermalMissionSteps, thermalQuestions, thermalGlossary } from '../lib/thermal-content.mjs';
 import { thermalScenes, syntheticTemperature } from '../lib/thermal-lab.mjs';
 import '../styles/thermal-workshop.css';
+import ThermalStandards from './ThermalStandards.astro';
 const first = thermalScenes[0];
 const clientData = JSON.stringify({ thermalQuestions }).replace(/</g, '\\u003c');
 ---
@@ -9,9 +10,9 @@ const clientData = JSON.stringify({ thermalQuestions }).replace(/</g, '\\u003c')
   <div class="wrap">
     <header class="thermal-heading">
       <div><p class="course-overline">Pracownia 02 · termowizja naziemna i UAV</p><h2 id="thermal-heading">Zobacz ciepło.<br /><em>Zrozum sygnał.</em></h2></div>
-      <div><p>Od promieniowania podczerwonego do nalotu dronem. Naucz się czytać obraz, sprawdzać jakość danych i formułować wnioski, które da się zweryfikować.</p><div class="thermal-tags"><span>8 tematów</span><span>3 scenariusze</span><span>2 laboratoria</span></div></div>
+      <div><p>Od promieniowania podczerwonego do nalotu dronem. Naucz się czytać obraz, sprawdzać jakość danych i formułować wnioski, które da się zweryfikować.</p><div class="thermal-tags"><span>8 tematów + normy PV</span><span>3 scenariusze</span><span>2 laboratoria</span></div></div>
     </header>
-    <nav class="thermal-jump" aria-label="Pracownia termowizji"><a href="#thermal-viewer">01 · Czytaj obraz</a><a href="#thermal-topics">02 · Poznaj podstawy</a><a href="#thermal-flight">03 · Zaplanuj geometrię</a><a href="#thermal-mission">04 · Zbuduj raport</a><a href="#thermal-check">05 · Sprawdź się</a></nav>
+    <nav class="thermal-jump" aria-label="Pracownia termowizji"><a href="#thermal-viewer">01 · Czytaj obraz</a><a href="#thermal-topics">02 · Poznaj podstawy</a><a href="#thermal-flight">03 · Zaplanuj geometrię</a><a href="#thermal-mission">04 · Zbuduj raport</a><a href="#thermal-standards">05 · Normy PV</a><a href="#thermal-check">06 · Sprawdź się</a></nav>
 
     <section class="thermal-viewer" id="thermal-viewer" aria-labelledby="thermal-viewer-title">
       <header class="thermal-block-heading"><div><p class="course-overline">Laboratorium obrazu</p><h3 id="thermal-viewer-title">Kolor to sposób wyświetlania.</h3></div><p>Wybierz scenę, zmień paletę i skalę. Obserwuj liczby w punktach A i B: pozostają takie same.</p></header>
@@ -87,7 +88,9 @@ Hipotezy i ograniczenia:
 Następna weryfikacja / odpowiedzialna osoba:</pre><a class="thermal-action" href={`${import.meta.env.BASE_URL}assets/practice/thermal-observation-card.txt`} download data-thermal-download>Pobierz pustą kartę (.txt) ↓</a></div>
     </section>
 
-    <section class="thermal-check" id="thermal-check" aria-labelledby="thermal-check-title"><header class="thermal-block-heading"><div><p class="course-overline">Sprawdź rozumowanie</p><h3 id="thermal-check-title">Osiem decyzji inspektora.</h3></div><p>Odpowiedz na wszystkie pytania. Otrzymasz wyjaśnienie każdej odpowiedzi; ten sprawdzian nie nadaje uprawnień.</p></header><form data-thermal-quiz>{thermalQuestions.map((question,i)=><fieldset><legend><span>{String(i+1).padStart(2,'0')}</span>{question.prompt}</legend>{question.options.map((option,index)=><label><input type="radio" name={`thermal-${question.id}`} value={index} required /><span>{option}</span></label>)}<p class="thermal-feedback" data-thermal-question-feedback={question.id} hidden></p></fieldset>)}<button class="thermal-action" type="submit">Sprawdź odpowiedzi ↗</button><p data-thermal-quiz-result aria-live="polite"></p></form></section>
+    <ThermalStandards />
+
+    <section class="thermal-check" id="thermal-check" aria-labelledby="thermal-check-title"><header class="thermal-block-heading"><div><p class="course-overline">Sprawdź rozumowanie</p><h3 id="thermal-check-title">Dwanaście decyzji inspektora.</h3></div><p>Odpowiedz na wszystkie pytania. Otrzymasz wyjaśnienie każdej odpowiedzi; ten sprawdzian nie nadaje uprawnień.</p></header><form data-thermal-quiz>{thermalQuestions.map((question,i)=><fieldset><legend><span>{String(i+1).padStart(2,'0')}</span>{question.prompt}</legend>{question.options.map((option,index)=><label><input type="radio" name={`thermal-${question.id}`} value={index} required /><span>{option}</span></label>)}<p class="thermal-feedback" data-thermal-question-feedback={question.id} hidden></p></fieldset>)}<button class="thermal-action" type="submit">Sprawdź odpowiedzi ↗</button><p data-thermal-quiz-result aria-live="polite"></p></form></section>
 
     <details class="thermal-glossary"><summary>Słownik termowizji i źródła</summary><dl>{thermalGlossary.map(item=><div><dt>{item.term}</dt><dd>{item.definition}</dd></div>)}</dl><ul>{thermalSources.map(source=><li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a></li>)}</ul><p>Materiał do samodzielnej nauki. Parametry pracy, wymagania misji i interpretację odnosi się do konkretnego obiektu, sprzętu oraz aktualnych zasad.</p></details>
   </div>

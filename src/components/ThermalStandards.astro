@@ -1,0 +1,21 @@
+---
+import material from '../content/thermal-standards.md?raw';
+import { renderCourseMarkdown } from '../lib/course-renderer.mjs';
+---
+<section id="thermal-standards" class="thermal-standards" aria-labelledby="thermal-standards-title">
+  <header class="thermal-block-heading"><div><p class="course-overline">Normy i jakość badania · PV + UAV</p><h3 id="thermal-standards-title">Pokaż dowody zgodności.</h3></div><p>Dobierz dokument, sprawdź warunki i rozpoznaj granice wyniku. Cel: umieć przyjąć materiał albo uzasadnić jego powtórzenie.</p></header>
+  <div class="thermal-standards-content" set:html={renderCourseMarkdown(material)}></div>
+  <a class="thermal-action" href={`${import.meta.env.BASE_URL}assets/practice/thermal-standards-checklist.txt`} download>Pobierz kartę zgodności i odstępstw (.txt) ↓</a>
+</section>
+<style>
+.thermal-standards{margin:60px 0;scroll-margin-top:125px;border:1px solid #bdcbb7;border-radius:14px;padding:30px;background:#fafaf4}
+.thermal-standards-content{max-width:940px;font-size:15px;line-height:1.8;overflow-wrap:anywhere}
+.thermal-standards-content :global(h4){font-size:23px;line-height:1.35;margin:32px 0 14px}
+.thermal-standards-content :global(p){margin:14px 0}
+.thermal-standards-content :global(table){display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:24px 0;font-size:13px}
+.thermal-standards-content :global(th),.thermal-standards-content :global(td){padding:14px;text-align:left;vertical-align:top;border:1px solid #bdcbb7;min-width:155px}
+.thermal-standards-content :global(th){background:#e6e9dd}
+.thermal-standards-content :global(details){border-left:3px solid #9a4b25;padding:14px 20px;background:#e6e9dd}
+.thermal-standards-content :global(summary){cursor:pointer;font-weight:600}
+@media(max-width:600px){.thermal-standards{padding:20px 16px}.thermal-standards-content :global(h4){font-size:21px}.thermal-standards-content :global(th),.thermal-standards-content :global(td){padding:10px;min-width:115px}}
+</style>
